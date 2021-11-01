@@ -1,0 +1,6 @@
+.vscode/*
+.env
+moc_*
+*.o
+Makefile
+.qmake.stash
