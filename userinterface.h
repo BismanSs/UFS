@@ -1,5 +1,4 @@
-#ifndef USERINTERFACE_H
-#define USERINTERFACE_H
+#pragma once
 
 #include <QApplication>
 #include <QWidget>
@@ -77,4 +76,3 @@ private:
 
 
 };
-#endif // USERINTERFACE_H
