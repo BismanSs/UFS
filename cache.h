@@ -1,8 +1,8 @@
 #include <map>
 #include <iostream>
 #include "fighter.h"
-#include "fighter.h"
-#include "fighter.h"
+#include "fight.h"
+#include "event.h"
 #include "bet.h"
 
 class Cache {
@@ -57,6 +57,6 @@ private:
     static std::map<int, Fight*> fights;
     static std::map<int, Event*> events;
     static std::map<int, Bet*> bets;
-    
+
     static std::string outputDirectory;
 }
