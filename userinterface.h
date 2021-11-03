@@ -14,9 +14,13 @@
 #include <QRadioButton>
 #include <QSize>
 #include <QLabel>
+#include <QCloseEvent>
+#include <QString>
 
 #include <vector>
 #include <iostream>
+
+#include "cache.h"
 
 // namespace UFS {
 //   class UserInterface;

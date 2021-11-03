@@ -151,3 +151,16 @@ QFrame *UserInterface::createSearchResultsContentPanel() {
   searchResultsContentPanel->setFixedHeight(500);
   return searchResultsContentPanel;
 }
+
+void UserInterface::closeEvent (QCloseEvent *event)
+{
+    QMessageBox::StandardButton exit = QMessageBox::question(this, tr("Exit UFS?"), tr("Are you sure you want to exit UFS?\n"), QMessageBox::No | QMessageBox::Yes, QMessageBox::No);
+    if (exit != QMessageBox::Yes) {
+        event->ignore();
+    } else {
+
+      Cache::writeCacheToFile(); // save cache to file
+      event->accept();
+
+    }
+}

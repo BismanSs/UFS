@@ -8,7 +8,7 @@
 class Cache {
 public:
     // initializes the static cache
-    static void init(std::string outputDirectory);
+    static void init(std::string outputPath);
 
     // add, remove or replace fighters 
     static void addFighter(int fighterID, Fighter* fighter);
@@ -42,9 +42,13 @@ public:
     static Event* getEvent(int eventID);
     static Bet* getBet(int betID);
 
-    // get or set the output directory of the cache
-    static std::string getOutputDirectory();
-    static void setOutputDirectory(std::string outputDirectory);
+    // get or set the sportsdata.io API key
+    static std::string getSportsDataAPIKey();
+    static void setSportsDataAPIKey(std::string sportsDataAPIKey);
+
+    // get or set the output path of the cache
+    static std::string getOutputPath();
+    static void setOutputPath(std::string outputPath);
 
     // read or write to cache
     static void writeCacheToFile();
@@ -58,5 +62,6 @@ private:
     static std::map<int, Event*> events;
     static std::map<int, Bet*> bets;
 
-    static std::string outputDirectory;
-}
+    static std::string sportsDataAPIKey;
+    static std::string outputPath;
+};
