@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+#include "cache.h"
+
 class Fighter {
 public:
     Fighter(int fighterID,

@@ -3,10 +3,24 @@
 #include <iostream>
 
 #include "fightstat.h"
+#include "cache.h"
 
 class Fight {
 public:
-    Fight();
+    Fight(int fightID,
+        int order,
+        std::string status,
+        std::string weightClass,
+        std::string cardSegment,
+        std::string referee,
+        int rounds,
+        int resultClock,
+        int resultRound,
+        std::string resultType,
+        int winnerID,
+        bool active,
+        FightStat fightStats[2],
+        int eventID);
     ~Fight();
 
     int getFightID();
@@ -46,6 +60,6 @@ private:
     int winnerID;
     bool active;
 
-    []FightStat fighters[2];
+    FightStat fightStats[2];
     int eventID;
 };

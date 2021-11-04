@@ -58,113 +58,113 @@ Fighter::Fighter(int fighterID,
 }
 
 Fighter::~Fighter() {
-
+    Cache::removeFighter(fighterID);
 }
 
 int Fighter::getFighterID() {
-
+    return fighterID;
 }
 
 std::string Fighter::getFirstName() {
-
+    return firstName;
 }
 
 std::string Fighter::getLastName() {
-
+    return lastName;
 }
 
 std::string Fighter::getNickname() {
-
+    return nickname;
 }
 
 std::string Fighter::getWeightClass() {
-
+    return weightClass;
 }
 
 std::string Fighter::getBirthDate() {
-
+    return birthDate;
 }
 
 float Fighter::getHeight() {
-
+    return height;
 }
 
 float Fighter::getWeight() {
-
+    return weight;
 }
 
 float Fighter::getReach() {
-
+    return reach;
 }
 
 int Fighter::getWins() {
-
+    return wins;
 }
 
 int Fighter::getLosses() {
-
+    return losses;
 }
 
 int Fighter::getDraws() {
-
+    return draws;
 }
 
 int Fighter::getNoContests() {
-
+    return noContests;
 }
 
 int Fighter::getTechnicalKnockouts() {
-
+    return technicalKnockouts;
 }
 
 int Fighter::getTechnicalKnockoutLosses() {
-
+    return technicalKnockoutLosses;
 }
 
 int Fighter::getSubmissions() {
-
+    return submissions;
 }
 
 int Fighter::getSubmissionLosses() {
-
+    return submissionLosses;
 }
 
 int Fighter::getTitleWins() {
-
+    return titleWins;
 }
 
 int Fighter::getTitleLosses() {
-
+    return titleLosses;
 }
 
 int Fighter::getTitleDraws() {
-
+    return titleDraws;
 }
 
 float Fighter::getSigStrikesLandedPerMinute() {
-
+    return sigStrikesLandedPerMinute;
 }
 
 float Fighter::getSigStrikeAccuracy() {
-
+    return sigStrikeAccuracy;
 }
 
 float Fighter::getTakedownAverage() {
-
+    return takedownAverage;
 }
 
 float Fighter::getSubmissionAverage() {
-
+    return submissionAverage;
 }
 
 float Fighter::getKnockoutPercentage() {
-
+    return knockoutPercentage;
 }
 
 float Fighter::getTechnicalKnockoutPercentage() {
-
+    return technicalKnockoutPercentage;
 }
 
 float Fighter::getDecisionPercentage() {
-
+    return decisionPercentage;
 }

@@ -214,56 +214,60 @@ Bet* Cache::parseBet(std::string rawBet) {
 
 // add, remove or replace fighters 
 void Cache::addFighter(int fighterID, Fighter* fighter) {
-
+    fighters.insert(std::pair<int, Fighter*>(fighterID, fighter));
 }
 
 void Cache::removeFighter(int fighterID) {
-
+    fighters.erase(fighterID);
 }
 
 void Cache::replaceFighter(int fighterID, Fighter* fighter) {
-
+    if (fighters.count(fighterID) == 0) fighters.insert(std::pair<int, Fighter*>(fighterID, fighter));
+    else fighters.at(fighterID) = fighter;
 }
 
 
 // add, remove or replace fights 
 void Cache::addFight(int fightID, Fight* fight) {
-
+    fights.insert(std::pair<int, Fight*>(fightID, fight));
 }
 
 void Cache::removeFight(int fightID) {
-
+    fights.erase(fightID);
 }
 
 void Cache::replaceFight(int fightID, Fight* fight) {
-
+    if (fights.count(fightID) == 0) fights.insert(std::pair<int, Fight*>(fightID, fight));
+    else fights.at(fightID) = fight;
 }
 
 
 // add, remove or replace events 
 void Cache::addEvent(int eventID, Event* event) {
-
+    events.insert(std::pair<int, Event*>(eventID, event));
 }
 
 void Cache::removeEvent(int eventID) {
-
+    events.erase(eventID);
 }
 
 void Cache::replaceEvent(int eventID, Event* event) {
-
+    if (events.count(eventID) == 0) events.insert(std::pair<int, Event*>(eventID, event));
+    else events.at(eventID) = event;
 }
 
 
 // add, remove or replace bets 
 void Cache::addBet(int betID, Bet* bet) {
-
+    bets.insert(std::pair<int, Bet*>(betID, bet));
 }
 
 void Cache::removeBet(int betID) {
-
+    bets.erase(betID);
 }
 
 void Cache::replaceBet(int betID, Bet* bet) {
-
+    if (bets.count(betID) == 0) bets.insert(std::pair<int, Bet*>(betID, bet));
+    else bets.at(betID) = bet;
 }
 

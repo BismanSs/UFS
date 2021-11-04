@@ -4,7 +4,38 @@
 
 class FightStat {
 public:
-    FightStat();
+    FightStat(int fighterID,
+            std::string firstName,
+            std::string lastName,
+            bool winner,
+            float fantasyPoints,
+            float fantasyPointsDraftKings,
+            float knockdowns,
+            float totalStrikesAttempted,
+            float totalStrikesLanded,
+            float sigStrikesAttempted,
+            float sigStrikesLanded,
+            float takedownsAttempted,
+            float takedownsLanded,
+            float takedownSlams,
+            float takedownAccuracy,
+            float advances,
+            float reverals,
+            float submissions,
+            float slamRate,
+            float timeInControl,
+            bool firstRoundWin,
+            bool secondRoundWin,
+            bool thirdRoundWin,
+            bool fourthRoundWin,
+            bool fifthRoundWin,
+            bool decisionWin,
+            int preFightWins,
+            int preFightLosses,
+            int preFightDraws,
+            int preFightNoContests,
+            int moneyLine,
+            bool active);
     ~FightStat();
 
     int getFighterID();
@@ -45,7 +76,7 @@ public:
     int getPreFightNoContests();
     int getMoneyLine();
 
-    bool isActive(); 
+    bool isActive();
 
 private:
     int fighterID;

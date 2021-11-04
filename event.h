@@ -2,9 +2,20 @@
 
 #include <iostream>
 
+#include "cache.h"
+
 class Event {
 public:
-    Event();
+    Event(int eventID,
+        int leagueID,
+        std::string name,
+        std::string shortName,
+        int season,
+        std::string day,
+        std::string dateTime,
+        std::string status,
+        bool active,
+        int fightIDs[]);
     ~Event();
 
     int getEventID();
@@ -35,5 +46,5 @@ private:
     std::string status;
     bool active;
 
-    int fightIDs[2];
+    int fightIDs[];
 };
