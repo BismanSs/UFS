@@ -1,7 +1,9 @@
 DONE 1. combine sportsdata.io data dictionary entries FightStat and FighterInfo into one class
 2. before JSON object for Fight is saved in cache, FighterInfo is condensed into the FightStat object
 DONE 3. Data from the Event Fight Odds endpoint is behind a paywall and as such relevant data points (those from the FightOdds data dictionary) are removed
-4. go through data dictionary and change every "decimal size 32" variable from double to float because theres no point in using a double
+DONE 4. go through data dictionary and change every "decimal size 32" variable from double to float because theres no point in using a double
 5. before JSON object for Fighter is saved in cache, CareerStat is condensed into the Fighter object
 6. before JSON object for Fight is saved in cache, eventID is appended to the end
-7. Since Event, Bet, Fighter, Fight, FightStat are to be serialized, they must not contain pointers and must use IDs to cross reference instead, only Cache may have pointers to these objects (the exception is when returning an array from getter, it must be handled as a pointer, this does not affect the serialization process i dont think)
+DONE 7. Since Event, Bet, Fighter, Fight, FightStat are to be serialized, they must not contain pointers and must use IDs to cross reference instead, only Cache may have pointers to these objects (the exception is when returning an array from getter, it must be handled as a pointer, this does not affect the serialization process i dont think)
+DONE 8. cahnge visibility of add,remove,replace methods in cache to private later maybe since i dont think they should be called externally
+9. add boost library dependency for string functions 

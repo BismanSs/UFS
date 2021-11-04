@@ -4,7 +4,33 @@
 
 class Fighter {
 public:
-    Fighter();
+    Fighter(int fighterID,
+            std::string firstName,
+            std::string lastName,
+            std::string nickname,
+            std::string weightClass,
+            std::string birthDate,
+            float height,
+            float weight,
+            float reach,
+            int wins,
+            int losses,
+            int draws,
+            int noContests,
+            int technicalKnockouts,
+            int technicalKnockoutLosses,
+            int submissions,
+            int submissionLosses,
+            int titleWins,
+            int titleLosses,
+            int titleDraws,
+            float sigStrikesLandedPerMinute,
+            float sigStrikeAccuracy,
+            float takedownAverage,
+            float submissionAverage,
+            float knockoutPercentage,
+            float technicalKnockoutPercentage,
+            float decisionPercentage);
     ~Fighter();
 
     int getFighterID();
