@@ -1,0 +1,12 @@
+Caches are laid out as follows:
+(subject to change)
+
+sportsdata api key
+[FIGHTERS]
+{JSON formatted Fighter object},{JSON formatted Fighter object},...
+[FIGHTS]
+{JSON formatted Fight object},{JSON formatted Fight object},... (contains embedded FightStat object)
+[EVENTS]
+{JSON formatted Event object},{JSON formatted Event object},...
+[BETS]
+{JSON formatted Bet object},{JSON formatted Bet object},...

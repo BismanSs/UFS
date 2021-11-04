@@ -151,7 +151,7 @@ void Cache::writeCacheToFile() {
 
 void Cache::updateCacheFromFile() {
     try {
-
+        
     } catch (std::exception &e) {
         std::cout << "Error reading from cache file \"" + Cache::outputPath + "\". See README.md for more information on how to use UFS." << std::endl;
     }

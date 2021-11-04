@@ -14,9 +14,9 @@ public:
     std::string getWeightClass();
     std::string getBirthDate();
 
-    double getHeight();
-    double getWeight();
-    double getReach();
+    float getHeight();
+    float getWeight();
+    float getReach();
 
     int getWins();
     int getLosses();
@@ -30,13 +30,13 @@ public:
     int getTitleLosses();
     int getTitleDraws();
     
-    double getSigStrikesLandedPerMinute();
-    double getSigStrikeAccuracy();
-    double getTakedownAverage();
-    double getSubmissionAverage();
-    double getKnockoutPercentage();
-    double getTechnicalKnockoutPercentage();
-    double getDecisionPercentage();
+    float getSigStrikesLandedPerMinute();
+    float getSigStrikeAccuracy();
+    float getTakedownAverage();
+    float getSubmissionAverage();
+    float getKnockoutPercentage();
+    float getTechnicalKnockoutPercentage();
+    float getDecisionPercentage();
 
 private:
     int fighterID;
@@ -47,9 +47,9 @@ private:
     std::string weightClass;
     std::string birthDate;
 
-    double height;
-    double weight;
-    double reach;
+    float height;
+    float weight;
+    float reach;
 
     int wins;
     int losses;
@@ -63,11 +63,11 @@ private:
     int titleLosses;
     int titleDraws;
 
-    double sigStrikesLandedPerMinute;
-    double sigStrikeAccuracy;
-    double takedownAverage;
-    double submissionAverage;
-    double knockoutPercentage;
-    double technicalKnockoutPercentage;
-    double decisionPercentage;
+    float sigStrikesLandedPerMinute;
+    float sigStrikeAccuracy;
+    float takedownAverage;
+    float submissionAverage;
+    float knockoutPercentage;
+    float technicalKnockoutPercentage;
+    float decisionPercentage;
 };
