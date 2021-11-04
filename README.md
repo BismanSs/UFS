@@ -18,5 +18,6 @@ Below are some example program executions
 
 `$ ./UFS 22e46252d5bf42188e84792db12f8c5c`
 `$ ./UFS` (this will only work if an api key had been specified previously)
+
 `$ ./UFS 22e46252d5bf42188e84792db12f8c5c C:/path/to/cache`
 `$ ./UFS 22e46252d5bf42188e84792db12f8c5c cache.txt`
