@@ -18,6 +18,8 @@
 #include <vector>
 #include <iostream>
 
+#include "cache.h"
+
 // namespace UFS {
 //   class UserInterface;
 // }
@@ -26,10 +28,12 @@ class UserInterface : public QMainWindow
 {
   Q_OBJECT
 public:
-  explicit UserInterface(QWidget *parent = nullptr);
-  ~UserInterface();
-// private slots:
-//   void handleExec();
+    explicit UserInterface(QWidget *parent = nullptr);
+    ~UserInterface();
+private slots:
+    void handleExec();
+    std::string getSearchText();
+    void onSearchFighter();
 private:
   QWidget *m_mainPanel;
   QHBoxLayout *m_mainLayout;

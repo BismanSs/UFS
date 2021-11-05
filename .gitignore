@@ -4,3 +4,4 @@ moc_*
 *.o
 Makefile
 .qmake.stash
+CMakeLists.txt

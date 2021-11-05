@@ -139,15 +139,59 @@ UserInterface::UserInterface(QWidget *parent)
   // Connect signals to appropriate slot
   // connect(m_execButton, &QPushButton::released, this, &MainWindow::handleExec);
   // connect(m_inputBox, &QLineEdit::returnPressed, this, &MainWindow::handleExec);
-}
+  connect(m_listFightersButton, &QPushButton::released, this, &UserInterface::onSearchFighter);
+};
 
 UserInterface::~UserInterface() {
 
   delete m_mainLayout;
 }
 
+void UserInterface::handleExec() {
+
+}
+
 QFrame *UserInterface::createSearchResultsContentPanel() {
   QFrame *searchResultsContentPanel = new QFrame();
   searchResultsContentPanel->setFixedHeight(500);
   return searchResultsContentPanel;
+}
+
+/*
+void UserInterface::closeEvent (QCloseEvent *event)
+{
+    QMessageBox::StandardButton exit = QMessageBox::question(this, tr("Exit UFS?"), tr("Are you sure you want to exit UFS?\n"), QMessageBox::No | QMessageBox::Yes, QMessageBox::No);
+    if (exit != QMessageBox::Yes) {
+        event->ignore();
+    } else {
+
+        Cache::writeCacheToFile(); // save cache to file
+        event->accept();
+
+    }
+}*/
+
+std::string UserInterface::getSearchText() {
+    std::string searchIn;
+    searchIn = m_searchBar->text().toStdString();
+
+    return searchIn;
+}
+
+void UserInterface::onSearchFighter(){
+    bool found = false;
+    std::string searchIn = getSearchText();
+
+    QFrame *searchResults = createSearchResultsContentPanel();
+
+    for (auto const& x : Cache::getFighters()){
+        if(x.second->getFirstName() == searchIn){
+            //add fighter statistic page with same first name to QFrame
+            found = true;
+        }
+        else if(x.second->getLastName() == searchIn){
+            //add fighter statistic page with same last name to QFrame
+            found = true;
+        }
+    }
 }
