@@ -12,6 +12,6 @@ std::vector<std::string> Util::splitString(std::string rawText, std::string deli
 }
 
 std::string Util::removeAllChar(std::string rawText, char removed) {
-    boost::erase_all(rawText, "a");
+    boost::erase_all(rawText, removed);
     return rawText;
 }

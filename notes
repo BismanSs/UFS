@@ -7,3 +7,4 @@ DONE 4. go through data dictionary and change every "decimal size 32" variable f
 DONE 7. Since Event, Bet, Fighter, Fight, FightStat are to be serialized, they must not contain pointers and must use IDs to cross reference instead, only Cache may have pointers to these objects (the exception is when returning an array from getter, it must be handled as a pointer, this does not affect the serialization process i dont think)
 DONE 8. cahnge visibility of add,remove,replace methods in cache to private later maybe since i dont think they should be called externally
 9. add boost library dependency for string functions 
+10. make user story 6 search for event instead of fight because its much easier, make search for fight by fighter names a different story or somethign

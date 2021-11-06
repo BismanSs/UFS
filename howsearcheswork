@@ -1,0 +1,21 @@
+a walkthrough of how the information gets from api endpoints to the users search results
+
+cases:
+1. list all fighters
+    - fighters endpoint
+2. click on fighter in list
+    - fighters endpoint to get fighterID
+    - fighter endpoint w/ fighterID
+3. list all events
+    - schedule endpoint
+4. click on event in list
+    - schedule endpoint to get eventID
+    - event endpoint w/ eventID
+5. click on fight from event
+    - already retrieved event endpoint and got fightIDs
+    - fight endpoint w/ fightID
+6. search for fighter by name, id
+    - search fighters endpoint for attrib
+7. search for events by name, shortname, id
+    - search schedule endpoint for attrib
+    - event endpoint w/ eventID to get fights
