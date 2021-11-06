@@ -1,4 +1,4 @@
-QT       += core widgets
+QT       += core widgets network
 TARGET = UFS
 TEMPLATE = app 
 SOURCES += main.cpp userinterface.cpp

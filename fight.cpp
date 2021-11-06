@@ -12,8 +12,7 @@ Fight::Fight(int fightID,
         std::string resultType,
         int winnerID,
         bool active,
-        FightStat fightStats[2],
-        int eventID) {
+        FightStat fightStats[2]) {
     
     this->fightID = fightID;
     this->order = order;
@@ -29,7 +28,6 @@ Fight::Fight(int fightID,
     this->active = active;
     this->fightStats[0] = fightStats[0];
     this->fightStats[1] = fightStats[1];
-    this->eventID = eventID;
 }
 
 Fight::~Fight() {
@@ -86,8 +84,4 @@ bool Fight::isActive() {
 
 FightStat* Fight::getFightStats() {
     return fightStats;
-}
-
-int Fight::getEventID() {
-    return eventID;
 }

@@ -2,20 +2,26 @@ a walkthrough of how the information gets from api endpoints to the users search
 
 cases:
 1. list all fighters
-    - fighters endpoint
-2. click on fighter in list
-    - fighters endpoint to get fighterID
-    - fighter endpoint w/ fighterID
-3. list all events
-    - schedule endpoint
-4. click on event in list
-    - schedule endpoint to get eventID
-    - event endpoint w/ eventID
+    - call Cache::getFighters()
+    - returns fighters if they exist in Cache
+    - tries updating from cache file if they dont exist, saves into Cache
+    - tries updating from fighters endpoint if they dont exist, saves into Cache
+    - cache file updated on closing program?
+2. click on fighter in list/ search fighter
+    - call Cache::getFighter()
+    - tries updating from cache file if fighters dont exist, saves into Cache // getting fighters from API is all or none
+    - tries updating from fighters endpoint if fighters dont exist, saves into Cache
+    - cache file updated on closing program?
+    - if fighters exist but fighter not in it, no need to update, fighter doesnt exist
+3. list all events by season
+    - call Cache::getEventsInSeason(season)
+    - similar to fighters, getting events from API is all or none for now
+    - if events exist in Cache object, search and return
+    - else check cache file and update from
+    - else call schedule endpoint for all valid years and save
+4. click on event in list/ search event by ID or name
+    - Cache::getEventByID(id), Cache::getEventByName(name) // since all events retrieved from schedule these return if event exists
+    - if event.fighters[] is empty, call event endpoint w/ eventID and update
 5. click on fight from event
-    - already retrieved event endpoint and got fightIDs
-    - fight endpoint w/ fightID
-6. search for fighter by name, id
-    - search fighters endpoint for attrib
-7. search for events by name, shortname, id
-    - search schedule endpoint for attrib
-    - event endpoint w/ eventID to get fights
+    - Cache::getFightByID, does not work like the other two, not all fights are retrieved at a time
+    - if not found try fight endpoint w/ fightID and save

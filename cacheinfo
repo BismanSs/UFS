@@ -2,19 +2,19 @@ Caches are laid out as follows:
 (subject to change)
 
 sportsdata api key
-[FIGHTERS]
-{JSON formatted Fighter object}
-{JSON formatted Fighter object}
+[FIGHTERS] // contains all fighters, if this portion is not empty there is no need to call API in this iteration
+{CSV formatted Fighter object}
+{CSV formatted Fighter object}
 ...
-[FIGHTS]
-{JSON formatted Fight object}
-{JSON formatted Fight object}
+[FIGHTS] // does not contain all fighters, if fight not found, call API with id
+{CSV formatted Fight object}
+{CSV formatted Fight object}
 ...
-[EVENTS]
-{JSON formatted Event object}
-{JSON formatted Event object}
+[EVENTS] // contains all events but events may have null Fight array, IF FIGHTS NEEDED check if fights[] null and call event endpoint if so
+{CSV formatted Event object} 
+{CSV formatted Event object}
 ...
-[BETS]
-{JSON formatted Bet object}
-{JSON formatted Bet object}
+[BETS] // thank god for some simplicity
+{CSV formatted Bet object}
+{CSV formatted Bet object}
 ...

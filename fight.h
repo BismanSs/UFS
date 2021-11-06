@@ -19,8 +19,7 @@ public:
         std::string resultType,
         int winnerID,
         bool active,
-        FightStat fightStats[2],
-        int eventID);
+        FightStat fightStats[2]);
     ~Fight();
 
     int getFightID();
@@ -41,7 +40,6 @@ public:
     bool isActive();
     
     FightStat* getFightStats();
-    int getEventID();
 private:
     int fightID;
 
@@ -61,5 +59,4 @@ private:
     bool active;
 
     FightStat fightStats[2];
-    int eventID;
 };

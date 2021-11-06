@@ -10,6 +10,7 @@
 #include "event.h"
 #include "bet.h"
 #include "util.h"
+#include "apihandler.h"
 
 class Cache {
 public:
@@ -77,4 +78,6 @@ private: // member variables
 
     static std::string sportsDataAPIKey;
     static std::string outputPath;
+
+    static 
 };

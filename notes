@@ -8,3 +8,5 @@ DONE 7. Since Event, Bet, Fighter, Fight, FightStat are to be serialized, they m
 DONE 8. cahnge visibility of add,remove,replace methods in cache to private later maybe since i dont think they should be called externally
 9. add boost library dependency for string functions 
 10. make user story 6 search for event instead of fight because its much easier, make search for fight by fighter names a different story or somethign
+11. i dont think fighter endpoint needs to be called in the first iteration of this project since we arent worried about updating and fighters endpoint returns all fighters
+12. cast paramters being passed into the object constructors 

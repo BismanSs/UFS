@@ -23,3 +23,12 @@ Below are some example program executions
 `$ ./UFS 22e46252d5bf42188e84792db12f8c5c C:/path/to/cache`
 
 `$ ./UFS 22e46252d5bf42188e84792db12f8c5c cache.txt`
+
+
+## Third-Party Libraries
+
+### User Interface and HTTP Requests - Qt
+For UFS's user interface we are utilizing the cross-platform user interface development framework Qt. Full credit for the Qt framework goes to the Qt development team at <https://www.qt.io/>
+
+### String Manipulation - Boost C++
+UFS requires Boost C++ libraries for string manipulation. Full credit for the Boost C++ libraries goes to Boost development team at <https://www.boost.org/>
