@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 
     Cache::init(cacheOutputPath);
 
-    if (cache.getSportsDataAPIKey().empty()) {
+    if (Cache::getSportsDataAPIKey().empty()) {
       std::cout << "No SportsData.io API Key found in the default cache file location.\nIf this is your first time running UFS, specify the API key as an argument. See README.md for more information" << std::endl;
       exit(EXIT_FAILURE);
     }

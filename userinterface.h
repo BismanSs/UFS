@@ -16,6 +16,8 @@
 #include <QLabel>
 #include <QCloseEvent>
 #include <QString>
+#include <QCloseEvent>
+#include <QMessageBox>
 
 #include <vector>
 #include <iostream>
@@ -76,7 +78,6 @@ private:
   QFrame *m_notificationsPanel;
   QPushButton *m_viewAllNotificationsButton;
 
-
-
+  void closeEvent(QCloseEvent *event);
 
 };

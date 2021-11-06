@@ -1,3 +1,5 @@
+#pragma once
+
 #include <map>
 #include <iostream>
 #include <fstream>
@@ -79,5 +81,4 @@ private: // member variables
     static std::string sportsDataAPIKey;
     static std::string outputPath;
 
-    static 
 };

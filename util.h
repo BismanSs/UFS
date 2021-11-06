@@ -12,4 +12,4 @@ class Util {
 public:
     static std::vector<std::string> splitString(std::string rawText, std::string delimiter);
     static std::string removeAllChar(std::string rawText, char removed);
-}
+};

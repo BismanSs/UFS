@@ -280,33 +280,33 @@ void Cache::sanitizeCache() {
 Fighter* Cache::parseFighter(std::string rawFighter) {
     std::vector<std::string> memberVariables = Util::splitString(json, ",");
     return new Fighter(
-        memberVariables.at(0),
-        memberVariables.at(1),
-        memberVariables.at(2),
-        memberVariables.at(3),
-        memberVariables.at(4),
-        memberVariables.at(5),
-        memberVariables.at(6),
-        memberVariables.at(7),
-        memberVariables.at(8),
-        memberVariables.at(9),
-        memberVariables.at(10),
-        memberVariables.at(11),
-        memberVariables.at(12),
-        memberVariables.at(13),
-        memberVariables.at(14),
-        memberVariables.at(15),
-        memberVariables.at(16),
-        memberVariables.at(17),
-        memberVariables.at(18),
-        memberVariables.at(19),
-        memberVariables.at(20),
-        memberVariables.at(21),
-        memberVariables.at(22),
-        memberVariables.at(23),
-        memberVariables.at(24),
-        memberVariables.at(25),
-        memberVariables.at(26)
+        std::stoi(memberVariables.at(0)), // fighterID
+        memberVariables.at(1), // firstName
+        memberVariables.at(2), // lastName
+        memberVariables.at(3), // nickname
+        memberVariables.at(4), // weightClass
+        memberVariables.at(5), // birthDate
+        std::stof(memberVariables.at(6)), // height
+        std::stof(memberVariables.at(7)), // weight
+        std::stof(memberVariables.at(8)), // reach
+        std::stoi(memberVariables.at(9)), // wins
+        std::stoi(memberVariables.at(10)), // losses
+        std::stoi(memberVariables.at(11)), // draws
+        std::stoi(memberVariables.at(12)), // noContests
+        std::stoi(memberVariables.at(13)), // technicalKnockouts
+        std::stoi(memberVariables.at(14)), // technicalKnockoutLosses
+        std::stoi(memberVariables.at(15)), // submissions
+        std::stoi(memberVariables.at(16)), // submissionLosses
+        std::stoi(memberVariables.at(17)), // titleWins
+        std::stoi(emberVariables.at(18)), // titleLosses
+        std::stoi(memberVariables.at(19)), // titleDraws
+        std::stof(memberVariables.at(20)), // sigStrikesLandedPerMinute
+        std::stof(memberVariables.at(21)), // sigStrikeAccuracy
+        std::stof(memberVariables.at(22)), // takedownAverage
+        std::stof(memberVariables.at(23)), // submissionAverage
+        std::stof(memberVariables.at(24)), // knockoutPercentage
+        std::stof(memberVariables.at(25)), // technicalKnockoutPercentage
+        std::stof(memberVariables.at(26)) // decisionPercentage
     );
 }
 
@@ -316,87 +316,87 @@ Fight* Cache::parseFight(std::string rawFight) {
     FightStat fightstats[2];
 
     fightstats[0] = FightStat(
-        memberVariables.at(12),
-        memberVariables.at(13),
-        memberVariables.at(14),
-        memberVariables.at(15),
-        memberVariables.at(16),
-        memberVariables.at(17),
-        memberVariables.at(18),
-        memberVariables.at(19),
-        memberVariables.at(20),
-        memberVariables.at(21),
-        memberVariables.at(22),
-        memberVariables.at(23),
-        memberVariables.at(24),
-        memberVariables.at(25),
-        memberVariables.at(26),
-        memberVariables.at(27),
-        memberVariables.at(28),
-        memberVariables.at(29),
-        memberVariables.at(30),
-        memberVariables.at(31),
-        memberVariables.at(32),
-        memberVariables.at(33),
-        memberVariables.at(34),
-        memberVariables.at(35),
-        memberVariables.at(36),
-        memberVariables.at(37),
-        memberVariables.at(38),
-        memberVariables.at(39),
-        memberVariables.at(40),
-        memberVariables.at(41),
-        memberVariables.at(42),
-        memberVariables.at(43)
+        std::stoi(memberVariables.at(12)), // fighterID
+        memberVariables.at(13), // firstName
+        memberVariables.at(14), // lastName
+        std::stoi(memberVariables.at(15)), // winner
+        std::stof(memberVariables.at(16)), // fantasyPoints
+        std::stof(memberVariables.at(17)), // fantasyPointsDraftKings
+        std::stof(memberVariables.at(18)), // knockdowns
+        std::stof(memberVariables.at(19)), // totalStrikesAttempted
+        std::stof(memberVariables.at(20)), // totalStrikesLanded
+        std::stof(memberVariables.at(21)), // sigStrikesAttempted
+        std::stof(memberVariables.at(22)), // sigStrikesLanded
+        std::stof(memberVariables.at(23)), // takedownsAttempted
+        std::stof(memberVariables.at(24)), // takedownsLanded
+        std::stof(memberVariables.at(25)), // takedownSlams
+        std::stof(memberVariables.at(26)), // takedownAccuracy
+        std::stof(memberVariables.at(27)), // advances
+        std::stof(memberVariables.at(28)), // reversals
+        std::stof(memberVariables.at(29)), // submissions
+        std::stof(memberVariables.at(30)), // slamRate
+        std::stof(memberVariables.at(31)), // timeInControl
+        std::stoi(memberVariables.at(32)), // firstRoundWin
+        std::stoi(memberVariables.at(33)), // secondRoundWin
+        std::stoi(memberVariables.at(34)), // thirdRoundWin
+        std::stoi(memberVariables.at(35)), // fourthRoundWin
+        std::stoi(memberVariables.at(36)), // fifthRoundWin
+        std::stoi(memberVariables.at(37)), // decisionWin
+        std::stoi(memberVariables.at(38)), // preFightWins
+        std::stoi(memberVariables.at(39)), // preFightLosses
+        std::stoi(memberVariables.at(40)), // preFightDraws
+        std::stoi(memberVariables.at(41)), // preFightNoContests
+        std::stoi(memberVariables.at(42)), // moneyLine
+        std::stoi(memberVariables.at(43)) // active
     );
     fightstats[1] = FightStat(
-        memberVariables.at(44),
-        memberVariables.at(45),
-        memberVariables.at(46),
-        memberVariables.at(47),
-        memberVariables.at(48),
-        memberVariables.at(49),
-        memberVariables.at(50),
-        memberVariables.at(51),
-        memberVariables.at(52),
-        memberVariables.at(53),
-        memberVariables.at(54),
-        memberVariables.at(55),
-        memberVariables.at(56),
-        memberVariables.at(57),
-        memberVariables.at(58),
-        memberVariables.at(59),
-        memberVariables.at(60),
-        memberVariables.at(61),
-        memberVariables.at(62),
-        memberVariables.at(63),
-        memberVariables.at(64),
-        memberVariables.at(65),
-        memberVariables.at(66),
-        memberVariables.at(67),
-        memberVariables.at(68),
-        memberVariables.at(69),
-        memberVariables.at(70),
-        memberVariables.at(71),
-        memberVariables.at(72),
-        memberVariables.at(73),
-        memberVariables.at(74),
-        memberVariables.at(75)
+        std::stoi(memberVariables.at(44)), // fighterID
+        memberVariables.at(45), // firstName
+        memberVariables.at(46), // lastName
+        std::stoi(memberVariables.at(47)), // winner
+        std::stof(memberVariables.at(48)), // fantasyPoints
+        std::stof(memberVariables.at(49)), // fantasyPointsDraftKings
+        std::stof(memberVariables.at(50)), // knockdowns
+        std::stof(memberVariables.at(51)), // totalStrikesAttempted
+        std::stof(memberVariables.at(52)), // totalStrikesLanded
+        std::stof(memberVariables.at(53)), // sigStrikesAttempted
+        std::stof(memberVariables.at(54)), // sigStrikesLanded
+        std::stof(memberVariables.at(55)), // takedownsAttempted
+        std::stof(memberVariables.at(56)), // takedownsLanded
+        std::stof(memberVariables.at(57)), // takedownSlams
+        std::stof(memberVariables.at(58)), // takedownAccuracy
+        std::stof(memberVariables.at(59)), // advances
+        std::stof(memberVariables.at(60)), // reversals
+        std::stof(memberVariables.at(61)), // submissions
+        std::stof(memberVariables.at(62)), // slamRate
+        std::stof(memberVariables.at(63)), // timeInControl
+        std::stoi(memberVariables.at(64)), // firstRoundWin
+        std::stoi(memberVariables.at(65)), // secondRoundWin
+        std::stoi(memberVariables.at(66)), // thirdRoundWin
+        std::stoi(memberVariables.at(67)), // fourthRoundWin
+        std::stoi(memberVariables.at(68)), // fifthRoundWin
+        std::stoi(memberVariables.at(69)), // decisionWin
+        std::stoi(memberVariables.at(70)), // preFightWins
+        std::stoi(memberVariables.at(71)), // preFightLosses
+        std::stoi(memberVariables.at(72)), // preFightDraws
+        std::stoi(memberVariables.at(73)), // preFightNoContests
+        std::stoi(memberVariables.at(74)), // moneyLine
+        std::stoi(memberVariables.at(75)) // active
     );
 
-    return new Fighter(
-        memberVariables.at(0),
-        memberVariables.at(1),
-        memberVariables.at(2),
-        memberVariables.at(3),
-        memberVariables.at(4),
-        memberVariables.at(5),
-        memberVariables.at(6),
-        memberVariables.at(7),
-        memberVariables.at(8),
-        memberVariables.at(9),
-        memberVariables.at(10),
-        memberVariables.at(11),
+    return new Fight(
+        std::stoi(memberVariables.at(0)), // fightID
+        std::stoi(memberVariables.at(1)), // order
+        memberVariables.at(2), // status
+        memberVariables.at(3), // weightClass
+        memberVariables.at(4), // cardSegment
+        memberVariables.at(5), // referee
+        std::stoi(memberVariables.at(6)), // rounds
+        std::stoi(memberVariables.at(7)), // resultClock
+        std::stoi(memberVariables.at(8)), // resultRound
+        memberVariables.at(9), // resultType
+        std::stoi(memberVariables.at(10)), // winnerID
+        std::stoi(memberVariables.at(11)), // active
         fightstats
     );
 }
@@ -411,15 +411,15 @@ Event* Cache::parseEvent(std::string rawEvent) {
     }
 
     return new Event(
-        memberVariables.at(0),
-        memberVariables.at(1),
-        memberVariables.at(2),
-        memberVariables.at(3),
-        memberVariables.at(4),
-        memberVariables.at(5),
-        memberVariables.at(6),
-        memberVariables.at(7),
-        memberVariables.at(8),
+        std::stoi(memberVariables.at(0)), // eventID
+        std::stoi(memberVariables.at(1)), // leagueID
+        memberVariables.at(2), // name
+        memberVariables.at(3), // shortName
+        std::stoi(memberVariables.at(4)), // season
+        memberVariables.at(5), // day
+        memberVariables.at(6), // dateTime
+        memberVariables.at(7), // status
+        std::stoi(memberVariables.at(8)), // active
         fightIDs
     );
 }
@@ -428,14 +428,14 @@ Bet* Cache::parseBet(std::string rawBet) {
     std::vector<std::string> memberVariables = Util::splitString(json, ",");
 
     return new Bet(
-        memberVariables.at(0),
-        memberVariables.at(1),
-        memberVariables.at(2),
-        memberVariables.at(3),
-        memberVariables.at(4),
-        memberVariables.at(5),
-        memberVariables.at(6),
-        memberVariables.at(7)
+        std::stoi(memberVariables.at(0)), // betID
+        memberVariables.at(1), // title
+        std::stof(memberVariables.at(2)), // amount
+        std::stoi(memberVariables.at(3)), // eventID
+        std::stoi(memberVariables.at(4)), // fightID
+        std::stoi(memberVariables.at(5)), // fighterID
+        std::stoi(memberVariables.at(6)), // winning
+        std::stoi(memberVariables.at(7)) // valid
     );
 }
 

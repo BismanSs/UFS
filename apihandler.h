@@ -8,12 +8,15 @@
 #include <QNetworkAccessManager>
 #include <QNetworkRequest>
 #include <QEventLoop>
+#include <QNetworkReply>
+#include <QUrl>
 
 #include "event.h"
 #include "fight.h"
 #include "fighter.h"
 
 class APIHandler : public QObject {
+    Q_OBJECT
 public:
     explicit APIHandler(std::string sportsDataAPIKey);
     ~APIHandler();
@@ -31,6 +34,6 @@ private: // private methods
     Fight* parseJSONFight(std::string json);
     Fighter* parseJSONFighter(std::string json);
 private:
-    const static std::string SPORTSDATA_API_URL = "https://api.sportsdata.io/v3/mma/scores/json/";
+    const std::string SPORTSDATA_API_URL = "https://api.sportsdata.io/v3/mma/scores/json/";
     std::string sportsDataAPIKey;
-}
+};
