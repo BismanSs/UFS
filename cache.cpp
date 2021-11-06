@@ -5,7 +5,7 @@ void Cache::init(std::string outputPath) {
     Cache::outputPath = outputPath;
 
     Cache::updateCacheFromFile();
-}
+}       
 
 // get cache maps
 std::map<int, Fighter*> Cache::getFighters() {
