@@ -3,12 +3,12 @@
 #include "userinterface.h"
 #include "cache.h"
 
-bool isInit = false;
+bool isInit = false; // flag for whether static cache has been intialized
 
-int main(int argc, char *argv[]) 
+int main(int argc, char *argv[]) // entry point
 {
-  std::string sportsDataAPIKey;
-  std::string cacheOutputPath = "./.cache";
+  std::string sportsDataAPIKey; // API key for sportsdata.io
+  std::string cacheOutputPath = "./.cache"; // output path for cache
 
 
   // rewrite later to be less redundant
@@ -16,9 +16,9 @@ int main(int argc, char *argv[])
     sportsDataAPIKey = argv[1];
     cacheOutputPath = argv[2];
 
-    isInit = Cache::init(cacheOutputPath);
-    Cache::updateCacheFromFile();
-    Cache::setSportsDataAPIKey(sportsDataAPIKey);
+    isInit = Cache::init(cacheOutputPath); // init the static Cache singleton
+    Cache::updateCacheFromFile(); // attempt to update cache from file
+    Cache::setSportsDataAPIKey(sportsDataAPIKey); // set API key
 
   } else if (argc == 2) { // api key specified
     sportsDataAPIKey = argv[1];
@@ -42,8 +42,8 @@ int main(int argc, char *argv[])
 
   }
 
-  QApplication app(argc, argv);
-  UserInterface userInterface;
-  userInterface.showMaximized();
-  return app.exec();  
+  QApplication app(argc, argv); // create QT app
+  UserInterface userInterface; // QMainWindow object
+  userInterface.showMaximized(); // maximize the main window 
+  return app.exec();  // run app
 }

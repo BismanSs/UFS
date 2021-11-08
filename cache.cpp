@@ -1,7 +1,9 @@
 #include "cache.h"
 
+// get whether the cache has been initialized, value stored in main
 extern bool isInit;
 
+// initialize all static variables since there is no constructor
 std::map<int, Fighter*> Cache::fighters = std::map<int, Fighter*>();
 std::map<int, Fight*> Cache::fights = std::map<int, Fight*>();
 std::map<int, Event*> Cache::events = std::map<int, Event*>();
@@ -10,133 +12,126 @@ std::map<int, Bet*> Cache::bets = std::map<int, Bet*>();
 std::string Cache::sportsDataAPIKey = "";
 std::string Cache::outputPath = "";
 
-// initializes the static cache
+// initializes the static cache, returns true when done
 bool Cache::init(std::string outputPath) {
     Cache::outputPath = outputPath;
 
+    // Most likely redundant, TO BE REMOVED
     Cache::fighters = std::map<int, Fighter*>();
     Cache::fights = std::map<int, Fight*>();
     Cache::events = std::map<int, Event*>();
     Cache::bets = std::map<int, Bet*>();
-    // Cache::updateCacheFromFile();
+    // Cache::updateCacheFromFile(); // now called in main
     return true;
 }       
 
-// get cache maps
+// get fighters map
 std::map<int, Fighter*> Cache::getFighters() {
-    if (isInit) {
+    if (isInit) { // check if cache has been initialized
         return fighters;
     }
-    return std::map<int, Fighter*>();
+    return std::map<int, Fighter*>(); // return empty map if not initialized
 }
 
+// get fights map
 std::map<int, Fight*> Cache::getFights() {
-    if (isInit) {
-
+    if (isInit) { // check if cache has been initialized
         return fights;
     }
-    return std::map<int, Fight*>();
+    return std::map<int, Fight*>(); // return empty map if not initialized
 }
 
+// get events map
 std::map<int, Event*> Cache::getEvents() {
-    if (isInit) {
-
+    if (isInit) { // check if cache has been initialized
         return events;
     }
-    return std::map<int, Event*>();
+    return std::map<int, Event*>(); // return empty map if not initialized
 }
 
+// get bets map
 std::map<int, Bet*> Cache::getBets() {
-    if (isInit) {
-
+    if (isInit) { // check if cache has been initialized
         return bets;
     }
-    return std::map<int, Bet*>();
+    return std::map<int, Bet*>(); // return empty map if not initialized
 }
-
 
 // get elements by ID
+// get fighter pointer by fighterID
 Fighter* Cache::getFighter(int fighterID) {
-    if (isInit) {
-
+    if (isInit) { // check if cache has been initialized
         return fighters.at(fighterID);
     }
-    return NULL;
+    return NULL; // return NULL if not initialized
 }
 
+// get fight pointer by fightID
 Fight* Cache::getFight(int fightID) {
-    if (isInit) {
-
+    if (isInit) { // check if cache has been initialized
         return fights.at(fightID);
     }
-    return NULL;
+    return NULL; // return NULL if not initialized
 }
 
+// get event pointer by eventID
 Event* Cache::getEvent(int eventID) {
-    if (isInit) {
-
+    if (isInit) { // check if cache has been initialized
         return events.at(eventID);
     }
-    return NULL;
+    return NULL; // return NULL if not initialized
 }
 
+// get bet pointer by betID
 Bet* Cache::getBet(int betID) {
-    if (isInit) {
-
+    if (isInit) { // check if cache has been initialized
         return bets.at(betID);
     }
-    return NULL;
+    return NULL; // return NULL if not initialized
 }
-
 
 // get or set the sportsdata.io API key
 std::string Cache::getSportsDataAPIKey() {
-    if (isInit) {
-
+    if (isInit) { // check if cache has been initialized
         return sportsDataAPIKey;
     }
-    return "";
+    return ""; // return empty string if not initialized
 }
 
+// set the sportsdata.io API key
 void Cache::setSportsDataAPIKey(std::string sportsDataAPIKey) {
-    if (isInit) {
-    
+    if (isInit) { // check if cache has been initialized
         Cache::sportsDataAPIKey = sportsDataAPIKey;
     }
 }
 
-
-// get or set the output path of the cache
+// get the output path of the cache
 std::string Cache::getOutputPath() {
-    if (isInit) {
-    
+    if (isInit) { // check if cache has been initialized
         return outputPath;
     }
-    return "";
+    return ""; // return empty string if not initialized
 }
 
+// set the output path of the cache
 void Cache::setOutputPath(std::string outputPath) {
-    if (isInit) {
-    
+    if (isInit) { // check if cache has been initialized
         Cache::outputPath = outputPath;
     }
 }
 
-
-// read or write to cache
+// serializes and writes the cache into the cache file at output path
 void Cache::writeCacheToFile() {
-    if (isInit) {
-    
-        std::ofstream myFile (Cache::outputPath);
+    if (isInit) { // check if cache has been initialized
+        std::ofstream myFile (Cache::outputPath); // create output file stream at output path
 
-        if (myFile.is_open()) {
+        if (myFile.is_open()) { // if successfully opened file
+            myFile << sportsDataAPIKey + "\n"; // write sportsdata.io API key into the file
 
-            myFile << sportsDataAPIKey + "\n";
+            myFile << "[FIGHTERS]\n"; // section header segmenting the Fighter objects
 
-            myFile << "[FIGHTERS]\n";
-
-            for (long unsigned int i = 0; i < fighters.size(); i++) {
-                myFile << fighters.at(i)->getFighterID() << ",";
+            for (long unsigned int i = 0; i < fighters.size(); i++) { // loop through fighters
+                myFile << fighters.at(i)->getFighterID() << ","; // write CSV-style member variables to file in the same order as they appeared in the json and are stored in the fighter object
                 myFile << fighters.at(i)->getFirstName() << ",";
                 myFile << fighters.at(i)->getLastName() << ",";
                 myFile << fighters.at(i)->getNickname() << ",";
@@ -166,10 +161,10 @@ void Cache::writeCacheToFile() {
                 myFile << "\n";
             }
 
-            myFile << "[FIGHTS]\n";
+            myFile << "[FIGHTS]\n"; // section header segmenting the Fight objects
 
-            for (long unsigned int i = 0; i < fights.size(); i++) {
-                myFile << fights.at(i)->getFightID() << ",";
+            for (long unsigned int i = 0; i < fights.size(); i++) { // loop through fights
+                myFile << fights.at(i)->getFightID() << ","; // write CSV-style member variables to file in the correct order
                 myFile << fights.at(i)->getOrder() << ",";
                 myFile << fights.at(i)->getStatus() << ",";
                 myFile << fights.at(i)->getWeightClass() << ",";
@@ -182,7 +177,7 @@ void Cache::writeCacheToFile() {
                 myFile << fights.at(i)->getWinnerID() << ",";
                 myFile << fights.at(i)->isActive() << ",";
 
-                for (int j = 0; j < 2; j++) {
+                for (int j = 0; j < 2; j++) { // append the 2 fightstat objects' member variables
                     myFile << fights.at(i)->getFightStats()[j].getFighterID() << ",";
                     myFile << fights.at(i)->getFightStats()[j].getFirstName() << ",";
                     myFile << fights.at(i)->getFightStats()[j].getLastName() << ",";
@@ -219,9 +214,9 @@ void Cache::writeCacheToFile() {
                 myFile << "\n";
             }
 
-            myFile << "[EVENTS]\n";
+            myFile << "[EVENTS]\n"; // section header segmenting event objects
 
-            for (long unsigned int i = 0; i < events.size(); i++) {
+            for (long unsigned int i = 0; i < events.size(); i++) { // loop through events
                 myFile << events.at(i)->getEventID() << ",";
                 myFile << events.at(i)->getLeagueID() << ",";
                 myFile << events.at(i)->getName() << ",";
@@ -232,17 +227,17 @@ void Cache::writeCacheToFile() {
                 myFile << events.at(i)->getStatus() << ",";
                 myFile << events.at(i)->isActive() << ",";
                 
-                for (long unsigned int j = 0; j < events.at(i)->getFightIDs().size()-1; j++) {
-                    myFile << events.at(i)->getFightIDs().at(j) << ",";
+                for (long unsigned int j = 0; j < events.at(i)->getFightIDs().size()-1; j++) { // loop through fight IDs at the end of event object
+                    myFile << events.at(i)->getFightIDs().at(j) << ","; // append fightID
                 }
-                myFile << events.at(i)->getFightIDs().at(events.at(i)->getFightIDs().size()-1);
-                myFile << "\n";
+                myFile << events.at(i)->getFightIDs().at(events.at(i)->getFightIDs().size()-1); // append the last one seperately without ","
+                myFile << "\n"; // append new line
             }
 
-            myFile << "[BETS]\n";
+            myFile << "[BETS]\n"; // section header segmenting bet objects
 
-            for (long unsigned int i = 0; i < bets.size(); i++) {
-                myFile << bets.at(i)->getBetID() << ",";
+            for (long unsigned int i = 0; i < bets.size(); i++) { // loop through bets
+                myFile << bets.at(i)->getBetID() << ","; // append bet member variables
                 myFile << bets.at(i)->getTitle() << ",";
                 myFile << bets.at(i)->getAmount() << ",";
                 myFile << bets.at(i)->getEventID() << ",";
@@ -252,85 +247,86 @@ void Cache::writeCacheToFile() {
                 myFile << bets.at(i)->isValid() << "\n";
             }
 
-            myFile.close();
+            myFile.close(); // close the file
 
-        } else {
+        } else { // if file output stream did not successfully open 
             std::cout << "Error writing to cache file \"" + Cache::outputPath + "\". See README.md for more information on how to use UFS." << std::endl;
-            exit(EXIT_FAILURE);
+            exit(EXIT_FAILURE); // exit program
         }
     }
 }
 
+// deserializes the cache file to update the cache
 void Cache::updateCacheFromFile() {
-    if (isInit) {
+    if (isInit) { // check if cache has been initialized
+
+        std::string line; // line in file
+        std::ifstream myfile (Cache::outputPath); // input file stream at output path
+
+        std::vector<std::string> rawFighters; // raw string for each fighter
+        std::vector<std::string> rawFights; // raw string for each fight
+        std::vector<std::string> rawEvents; // raws string for each event
+        std::vector<std::string> rawBets; // raw string for each bet
 
 
-        std::string line;
-        std::ifstream myfile (Cache::outputPath);
+        enum Section {APIkeys, fighters, fights, events, bets}; // enumeration for different cache file sections
+        Section cacheSection = APIkeys; // API keys is the first section
 
-        std::vector<std::string> rawFighters;
-        std::vector<std::string> rawFights;
-        std::vector<std::string> rawEvents;
-        std::vector<std::string> rawBets;
+        if (myfile.is_open()) { // check if the file input stream opened successfully
+            getline (myfile,line); // read first line from the file
+            Cache::sportsDataAPIKey = line; // first line was the api key
 
+            while ( getline (myfile,line) ) { // loop through rest of the lines in the cache file
 
-        enum Section {APIkeys, fighters, fights, events, bets};
-        Section cacheSection = APIkeys;
-
-        if (myfile.is_open()) {
-            getline (myfile,line);
-            Cache::sportsDataAPIKey = line;
-            while ( getline (myfile,line) ) {
-
-                if (line.compare("[FIGHTERS]")) cacheSection = fighters;
+                if (line.compare("[FIGHTERS]")) cacheSection = fighters; // update section flag when appropriate section head reached
                 else if (line.compare("[FIGHTS]")) cacheSection = fights;
                 else if (line.compare("[EVENTS]")) cacheSection = events;
                 else if (line.compare("[BETS]")) cacheSection = bets;
-                else {
-                    switch (cacheSection) {
+                else { // for non header lines
+                    switch (cacheSection) { // handle depending on which section
                     case fighters:
-                        rawFighters.push_back(line);
+                        rawFighters.push_back(line); // add raw fighter string to vector
                         break;
 
                     case fights:
-                        rawFights.push_back(line);
+                        rawFights.push_back(line); // add raw fight string to vector
                         break;
 
                     case events:
-                        rawEvents.push_back(line);
+                        rawEvents.push_back(line); // add raw event string to vector
                         break;
 
                     case bets:
-                        rawBets.push_back(line);
+                        rawBets.push_back(line); // add raw bet string to vector
                         break;
                     
-                    default:
+                    default: // shouldn't call
                         break;
                     }
                 }
             }
-            myfile.close();
+            myfile.close(); // close file input stream
 
-            for(long unsigned int i = 0; i < rawFighters.size(); i++) {
-                Fighter* fighter = parseFighter(rawFighters[i]);
-                addFighter(fighter->getFighterID(), fighter);
+            for(long unsigned int i = 0; i < rawFighters.size(); i++) { // loop through raw fighter strings
+                Fighter* fighter = parseFighter(rawFighters[i]); // deserialize fighter into heap allocated object
+                addFighter(fighter->getFighterID(), fighter); // store pointer in map at fighter id
             }
-            for(long unsigned int i = 0; i < rawFights.size(); i++) {
-                Fight* fight = parseFight(rawFights[i]);
-                addFight(fight->getFightID(), fight);
+            for(long unsigned int i = 0; i < rawFights.size(); i++) { // loop through raw fight strings
+                Fight* fight = parseFight(rawFights[i]); // deserialize fight into heap allocated object
+                addFight(fight->getFightID(), fight); // store pointer in map at fight id
             }
-            for(long unsigned int i = 0; i < rawEvents.size(); i++) {
-                Event* event = parseEvent(rawEvents[i]);
-                addEvent(event->getEventID(), event);
+            for(long unsigned int i = 0; i < rawEvents.size(); i++) { // loop through raw event strings
+                Event* event = parseEvent(rawEvents[i]); // deserialize event into heap allcoated object
+                addEvent(event->getEventID(), event); // store pointer in map at event id
             }
-            for(long unsigned int i = 0; i < rawBets.size(); i++) {
-                Bet* bet = parseBet(rawBets[i]);
-                addBet(bet->getBetID(), bet);
+            for(long unsigned int i = 0; i < rawBets.size(); i++) { // loop through raw bet strings
+                Bet* bet = parseBet(rawBets[i]); // deserialize bet into heap allocated object
+                addBet(bet->getBetID(), bet); // store pointer in map at bet id
             }
 
-        } else {
+        } else { // error while opening file input stream at output path
             std::cout << "Error reading from cache file \"" + Cache::outputPath + "\". See README.md for more information on how to use UFS." << std::endl;
-            exit(EXIT_FAILURE);
+            exit(EXIT_FAILURE); // exit program
         }
     }
 
@@ -338,17 +334,17 @@ void Cache::updateCacheFromFile() {
 
 // scan cache for invalid data and remove
 void Cache::sanitizeCache() {
-    if (isInit) {
-
+    if (isInit) { // check if cache has been initialized
+        // do stuff
     }
 }
 
-// parse serialized objects
+// deserialize raw fighter string into heap allocated object
 Fighter* Cache::parseFighter(std::string rawFighter) {
-    if (isInit) {
+    if (isInit) { // check if cache has been initialized
     
-        std::vector<std::string> memberVariables = Util::splitString(rawFighter, ",");
-        return new Fighter(
+        std::vector<std::string> memberVariables = Util::splitString(rawFighter, ","); // split string at ","
+        return new Fighter( // create heap allocated object and return pointer
             std::stoi(memberVariables.at(0)), // fighterID
             memberVariables.at(1), // firstName
             memberVariables.at(2), // lastName
@@ -378,16 +374,18 @@ Fighter* Cache::parseFighter(std::string rawFighter) {
             std::stof(memberVariables.at(26)) // decisionPercentage
         );
     }
-    return NULL;
+    return NULL; // return NULL if cache was not initialized
 }
 
+// deserialize raw fight string into heap allocated object
 Fight* Cache::parseFight(std::string rawFight) {
-    if (isInit) {
+    if (isInit) { // check if cache has been initialized
     
-        std::vector<std::string> memberVariables = Util::splitString(rawFight, ",");
+        std::vector<std::string> memberVariables = Util::splitString(rawFight, ","); // split raw string at ","
 
         FightStat fightstats[2];
 
+        // create array of 2 FightStat objects
         fightstats[0] = FightStat(
             std::stoi(memberVariables.at(12)), // fighterID
             memberVariables.at(13), // firstName
@@ -457,6 +455,7 @@ Fight* Cache::parseFight(std::string rawFight) {
             std::stoi(memberVariables.at(75)) // active
         );
 
+        // create heap allocated Fight object and return pointer
         return new Fight(
             std::stoi(memberVariables.at(0)), // fightID
             std::stoi(memberVariables.at(1)), // order
@@ -476,17 +475,19 @@ Fight* Cache::parseFight(std::string rawFight) {
     return NULL;
 }
 
+// deserialize raw event string into heap allocated object
 Event* Cache::parseEvent(std::string rawEvent) {
-    if (isInit) {
+    if (isInit) { // check if cache has been initialized
     
-        std::vector<std::string> memberVariables = Util::splitString(rawEvent, ",");
+        std::vector<std::string> memberVariables = Util::splitString(rawEvent, ","); // split raw event string at ","
 
-        std::vector<int> fightIDs;
+        std::vector<int> fightIDs; // vector of fight ids
 
-        for (long unsigned int i = 9; i < memberVariables.size(); i++) {
-            fightIDs.push_back(std::stoi(memberVariables.at(i)));
+        for (long unsigned int i = 9; i < memberVariables.size(); i++) { // loop through fight IDs, which start at index 9
+            fightIDs.push_back(std::stoi(memberVariables.at(i))); // add fight id to vector
         }
 
+        // create heap allocated event object and return pointer
         return new Event(
             std::stoi(memberVariables.at(0)), // eventID
             std::stoi(memberVariables.at(1)), // leagueID
@@ -500,14 +501,16 @@ Event* Cache::parseEvent(std::string rawEvent) {
             fightIDs
         );
     }
-    return NULL;
+    return NULL; // return NULL if cache not initialized
 }
 
+// deserializes raw bet string into heap allocated object
 Bet* Cache::parseBet(std::string rawBet) {
-    if (isInit) {
+    if (isInit) { // check if cache has been initialized
         
-        std::vector<std::string> memberVariables = Util::splitString(rawBet, ",");
+        std::vector<std::string> memberVariables = Util::splitString(rawBet, ","); // split raw bet string at ","
 
+        // create heap allocated bet object and return pointer
         return new Bet(
             std::stoi(memberVariables.at(0)), // betID
             memberVariables.at(1), // title
@@ -519,101 +522,100 @@ Bet* Cache::parseBet(std::string rawBet) {
             std::stoi(memberVariables.at(7)) // valid
         );
     }
-    return NULL;
+    return NULL; // return NULL if cache not initialized
 }
 
-// add, remove or replace fighters 
+// add fighter pointer to fighter map at key fighterID
 void Cache::addFighter(int fighterID, Fighter* fighter) {
-    if (isInit) {
-    
+    if (isInit) { // check if cache has been initialized
         fighters.insert(std::pair<int, Fighter*>(fighterID, fighter));
     }
 }
 
+// deletes heap allocated fighter object and removes pointer from map at key fighterID
 void Cache::removeFighter(int fighterID) {
-    if (isInit) {
-    
+    if (isInit) { // check if cache has been initialized
+        delete fighters.at(fighterID);
         fighters.erase(fighterID);
     }
 }
 
+// replaces fighter pointer at key fighterID with given fighter pointer
 void Cache::replaceFighter(int fighterID, Fighter* fighter) {
-    if (isInit) {
-        
-        if (fighters.count(fighterID) == 0) fighters.insert(std::pair<int, Fighter*>(fighterID, fighter));
-        else fighters.at(fighterID) = fighter;
+    if (isInit) { // check if cache has been initialized
+        if (fighters.count(fighterID) == 0) fighters.insert(std::pair<int, Fighter*>(fighterID, fighter)); // insert the fighter if he doesnt exist
+        else fighters.at(fighterID) = fighter; // otherwise replace fighter
     }
 }
 
 
-// add, remove or replace fights 
+// add fight pointer to fight map at key fightID
 void Cache::addFight(int fightID, Fight* fight) {
-    if (isInit) {
-    
+    if (isInit) { // check if cache has been initialized
         fights.insert(std::pair<int, Fight*>(fightID, fight));
     }
 }
 
+// deletes heap allocated fight object and removes pointer from map at fightID
 void Cache::removeFight(int fightID) {
-    if (isInit) {
-    
+    if (isInit) { // check if cache has been initialized
+        delete fights.at(fightID);
         fights.erase(fightID);
     }
 }
 
+// replace fight pointer at key fightID with given fight pointer
 void Cache::replaceFight(int fightID, Fight* fight) {
-    if (isInit) {
+    if (isInit) { // check if cache has been initialized
     
-        if (fights.count(fightID) == 0) fights.insert(std::pair<int, Fight*>(fightID, fight));
-        else fights.at(fightID) = fight;
+        if (fights.count(fightID) == 0) fights.insert(std::pair<int, Fight*>(fightID, fight)); // insert fight if not in map
+        else fights.at(fightID) = fight; // otherwise replace fight
     }
 }
 
-
-// add, remove or replace events 
+// add event pointer to event map at key eventID 
 void Cache::addEvent(int eventID, Event* event) {
-    if (isInit) {
-    
+    if (isInit) { // check if cache has been initialized
         events.insert(std::pair<int, Event*>(eventID, event));
     }
 }
 
+// deletes heap allocated event object and removes pointer from map at fightID
 void Cache::removeEvent(int eventID) {
-    if (isInit) {
-    
+    if (isInit) { // check if cache has been initialized
+        delete events.at(eventID);
         events.erase(eventID);
     }
 }
 
+// replace event pointer at key eventID with given event pointer
 void Cache::replaceEvent(int eventID, Event* event) {
-    if (isInit) {
-    
-        if (events.count(eventID) == 0) events.insert(std::pair<int, Event*>(eventID, event));
-        else events.at(eventID) = event;
+    if (isInit) { // check if cache has been initialized
+        if (events.count(eventID) == 0) events.insert(std::pair<int, Event*>(eventID, event)); // insert event if not in map
+        else events.at(eventID) = event; // otherwise replace event
     }
 }
 
-
-// add, remove or replace bets 
+// add bet pointer at key betID 
 void Cache::addBet(int betID, Bet* bet) {
-    if (isInit) {
-        
+    if (isInit) { // check if cache has been initialized
         bets.insert(std::pair<int, Bet*>(betID, bet));
     }
 }
 
+// deletes heap allocated bet object and removes pointer from map at betID
 void Cache::removeBet(int betID) {
-    if (isInit) {
-    
+    if (isInit) { // check if cache has been initialized
+        delete bets.at(betID);
         bets.erase(betID);
     }
 }
 
+// replace bet pointer at key betID with given bet pointer
 void Cache::replaceBet(int betID, Bet* bet) {
-    if (isInit) {
-    
-        if (bets.count(betID) == 0) bets.insert(std::pair<int, Bet*>(betID, bet));
-        else bets.at(betID) = bet;
+    if (isInit) { // check if cache has been initialized
+        if (bets.count(betID) == 0) bets.insert(std::pair<int, Bet*>(betID, bet)); // insert bet if bet not in map
+        else bets.at(betID) = bet; // otherwise replace bet
     }
 }
 

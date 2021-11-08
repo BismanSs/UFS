@@ -14,8 +14,11 @@
 #include "util.h"
 #include "apihandler.h"
 
+// a static singleton class representing all data in the program, 
+// responsible for serializing/deserializing, reading/writing itself to a file and
+// updating itself from APIHandler when needed
 class Cache {
-public:
+public: // public methods
     // initializes the static cache
     static bool init(std::string outputPath);
 

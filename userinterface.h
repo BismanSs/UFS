@@ -23,23 +23,38 @@
 #include <iostream>
 
 #include "cache.h"
-
-// namespace UFS {
-//   class UserInterface;
-// }
  
+ // represents the programs user interface, ie the main window, inherits QMainWindow
 class UserInterface : public QMainWindow
 {
-  Q_OBJECT
-public:
-  explicit UserInterface(QWidget *parent = nullptr);
-  ~UserInterface();
+  Q_OBJECT // needed for Qt to know this is a QObject
+public: // public methods
+  // constructor creates the main window UI
+  explicit UserInterface(QWidget *parent = nullptr); // pass no parent
+  ~UserInterface(); // deconstructor
 // private slots:
 //   void handleExec();
-private:
+private: // private methods
+
+  // create corresponding content panel for center panel
+  QFrame *createSearchResultsContentPanel();
+  QFrame *createListFightersContentPanel();
+  QFrame *createScheduleContentPanel();
+  QFrame *createCompareFightersContentPanel();
+  QFrame *createSettingsContentPanel();
+  QFrame *createAllNewsContentPanel();
+  QFrame *createAllNotificationsContentPanel();
+
+  // handles on X pressed close event
+  void closeEvent(QCloseEvent *event);
+
+private: // private member variables
+
+  // the main panel of the window
   QWidget *m_mainPanel;
   QHBoxLayout *m_mainLayout;
 
+  // the 3 sections of the main panel
   QFrame *m_leftPanel;
   QFrame *m_centerPanel;
   QFrame *m_rightPanel;
@@ -61,14 +76,6 @@ private:
   QRadioButton *m_fightsRadioButton;
   QRadioButton *m_eventsRadioButton;
 
-  QFrame *createSearchResultsContentPanel();
-  QFrame *createListFightersContentPanel();
-  QFrame *createScheduleContentPanel();
-  QFrame *createCompareFightersContentPanel();
-  QFrame *createSettingsContentPanel();
-  QFrame *createAllNewsContentPanel();
-  QFrame *createAllNotificationsContentPanel();
-
   //In the right panel
   QVBoxLayout *m_rightLayout;
   QLabel *m_newsAggregatorLabel;
@@ -77,7 +84,4 @@ private:
   QLabel *m_notificationsLabel;
   QFrame *m_notificationsPanel;
   QPushButton *m_viewAllNotificationsButton;
-
-  void closeEvent(QCloseEvent *event);
-
 };

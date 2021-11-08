@@ -5,8 +5,10 @@
 
 // #include "cache.h"
 
+// represents a UFC event
 class Event {
-public:
+public: // public methods
+    // constructor sets all member variables
     Event(int eventID,
         int leagueID,
         std::string name,
@@ -17,8 +19,9 @@ public:
         std::string status,
         bool active,
         std::vector<int> fightIDs);
-    ~Event();
+    ~Event(); // deconstructor
 
+    // get all member variables
     int getEventID();
 
     int getLeagueID();
@@ -33,7 +36,7 @@ public:
     bool isActive();
 
     std::vector<int> getFightIDs();
-private:
+private: // private member variables
     int eventID;
 
     int leagueID;

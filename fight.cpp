@@ -1,5 +1,6 @@
 #include "fight.h"
 
+// constructor sets all member variables
 Fight::Fight(int fightID,
         int order,
         std::string status,
@@ -30,9 +31,12 @@ Fight::Fight(int fightID,
     this->fightStats[1] = fightStats[1];
 }
 
+// deconstructor
 Fight::~Fight() {
     // Cache::removeFight(fightID);
 }
+
+// get appropriate member variable
 
 int Fight::getFightID() {
     return fightID;

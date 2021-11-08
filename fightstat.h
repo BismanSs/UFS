@@ -2,8 +2,10 @@
 
 #include <iostream>
 
+// represents a UFC fightstat object to be embedded in UFC fight object 
 class FightStat {
-public:
+public: // public methods
+    // constructor sets all member variables
     FightStat(int fighterID,
             std::string firstName,
             std::string lastName,
@@ -36,8 +38,12 @@ public:
             int preFightNoContests,
             int moneyLine,
             bool active);
+
+    // default constructor sets all member variables to 0 or empty string
     FightStat();
-    ~FightStat();
+    ~FightStat(); // deconstructor
+
+    // get appropriate member variable
 
     int getFighterID();
 
@@ -79,7 +85,7 @@ public:
 
     bool isActive();
 
-private:
+private: // private member variables
     int fighterID;
 
     std::string firstName;

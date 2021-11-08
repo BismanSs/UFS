@@ -5,8 +5,10 @@
 #include "fightstat.h"
 // #include "cache.h"
 
+// represents a UFC fight
 class Fight {
-public:
+public: // public methods
+    // constructor sets all member variables
     Fight(int fightID,
         int order,
         std::string status,
@@ -20,7 +22,9 @@ public:
         int winnerID,
         bool active,
         FightStat fightStats[2]);
-    ~Fight();
+    ~Fight(); // deconstructor
+
+    // get appropriate member variables
 
     int getFightID();
 
@@ -40,7 +44,7 @@ public:
     bool isActive();
     
     FightStat* getFightStats();
-private:
+private: // private member variables
     int fightID;
 
     int order;

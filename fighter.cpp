@@ -1,5 +1,6 @@
 #include "fighter.h"
 
+// constructor sets all member variables
 Fighter::Fighter(int fighterID,
                 std::string firstName,
                 std::string lastName,
@@ -57,9 +58,12 @@ Fighter::Fighter(int fighterID,
     this->decisionPercentage = decisionPercentage;
 }
 
+// deconstructor
 Fighter::~Fighter() {
     // Cache::removeFighter(fighterID);
 }
+
+// get appropriate member variable
 
 int Fighter::getFighterID() {
     return fighterID;

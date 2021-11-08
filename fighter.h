@@ -4,8 +4,10 @@
 
 // #include "cache.h"
 
+// represents a UFC fight
 class Fighter {
-public:
+public: // public methods
+    // constructor sets all member variables
     Fighter(int fighterID,
             std::string firstName,
             std::string lastName,
@@ -33,7 +35,9 @@ public:
             float knockoutPercentage,
             float technicalKnockoutPercentage,
             float decisionPercentage);
-    ~Fighter();
+    ~Fighter(); // deconstructor
+
+    // get appropriate member variable
 
     int getFighterID();
     std::string getFirstName();
@@ -66,7 +70,7 @@ public:
     float getTechnicalKnockoutPercentage();
     float getDecisionPercentage();
 
-private:
+private: // private member variables
     int fighterID;
 
     std::string firstName;

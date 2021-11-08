@@ -1,5 +1,6 @@
 #include "fightstat.h"
 
+// constructor sets all member variables
 FightStat::FightStat(int fighterID,
             std::string firstName,
             std::string lastName,
@@ -67,6 +68,7 @@ FightStat::FightStat(int fighterID,
     this->active = active;
 }
 
+// default constructor sets all member variables to 0 or empty string
 FightStat::FightStat() {
     this->fighterID = 0;
     this->firstName = "";
@@ -102,7 +104,11 @@ FightStat::FightStat() {
     this->active = 0;
 }
 
+// deconstructor
 FightStat::~FightStat() {}
+
+
+// get appropriate member variable
 
 int FightStat::getFighterID() {
     return fighterID;
