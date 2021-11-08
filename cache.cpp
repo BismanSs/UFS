@@ -95,7 +95,7 @@ std::string Cache::getSportsDataAPIKey() {
 
         return sportsDataAPIKey;
     }
-    return NULL;
+    return "";
 }
 
 void Cache::setSportsDataAPIKey(std::string sportsDataAPIKey) {
@@ -112,7 +112,7 @@ std::string Cache::getOutputPath() {
     
         return outputPath;
     }
-    return NULL;
+    return "";
 }
 
 void Cache::setOutputPath(std::string outputPath) {
