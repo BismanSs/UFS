@@ -58,7 +58,7 @@ Fighter::Fighter(int fighterID,
 }
 
 Fighter::~Fighter() {
-    Cache::removeFighter(fighterID);
+    // Cache::removeFighter(fighterID);
 }
 
 int Fighter::getFighterID() {

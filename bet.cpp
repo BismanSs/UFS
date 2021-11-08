@@ -19,7 +19,7 @@ Bet::Bet(int betID,
     this->valid = valid;}
         
 Bet::~Bet() {
-    Cache::removeBet(betID);
+    // Cache::removeBet(betID);
 }
 
 int Bet::getBetID() {

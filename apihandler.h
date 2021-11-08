@@ -14,11 +14,12 @@
 #include "event.h"
 #include "fight.h"
 #include "fighter.h"
+#include "util.h"
 
 class APIHandler : public QObject {
     Q_OBJECT
 public:
-    explicit APIHandler(std::string sportsDataAPIKey);
+    explicit APIHandler(std::string sportsDataAPIKey, QObject *parent = nullptr);
     ~APIHandler();
 
     std::vector<Event*> getAllEvents();

@@ -3,6 +3,8 @@
 #include "userinterface.h"
 #include "cache.h"
 
+bool isInit = false;
+
 int main(int argc, char *argv[]) 
 {
   std::string sportsDataAPIKey;
@@ -14,7 +16,8 @@ int main(int argc, char *argv[])
     sportsDataAPIKey = argv[1];
     cacheOutputPath = argv[2];
 
-    Cache::init(cacheOutputPath);
+    isInit = Cache::init(cacheOutputPath);
+    Cache::updateCacheFromFile();
     Cache::setSportsDataAPIKey(sportsDataAPIKey);
 
   } else if (argc == 2) { // api key specified

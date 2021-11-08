@@ -9,7 +9,7 @@ Event::Event(int eventID,
         std::string dateTime,
         std::string status,
         bool active,
-        int fightIDs[]) {
+        std::vector<int> fightIDs) {
     
     this->eventID = eventID;
     this->leagueID = leagueID;
@@ -21,13 +21,13 @@ Event::Event(int eventID,
     this->status = status;
     this->active = active;
 
-    for (int i = 0; i < sizeof(fightIDs)/sizeof(int); i++) {
-        this->fightIDs[i] = fightIDs[i];
+    for (long unsigned int i = 0; i < fightIDs.size(); i++) {
+        this->fightIDs.at(i) = fightIDs.at(i);
     }
 }
 
 Event::~Event() {
-    Cache::removeEvent(eventID);
+    // Cache::removeEvent(eventID);
 }
 
 int Event::getEventID() {
@@ -66,6 +66,6 @@ bool Event::isActive() {
     return active;
 }
 
-int* Event::getFightIDs() {
+std::vector<int> Event::getFightIDs() {
     return fightIDs;
 }

@@ -3,7 +3,7 @@
 #include <iostream>
 
 #include "fightstat.h"
-#include "cache.h"
+// #include "cache.h"
 
 class Fight {
 public:

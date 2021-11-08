@@ -1,8 +1,9 @@
 #pragma once
 
 #include <iostream>
+#include <vector>
 
-#include "cache.h"
+// #include "cache.h"
 
 class Event {
 public:
@@ -15,7 +16,7 @@ public:
         std::string dateTime,
         std::string status,
         bool active,
-        int fightIDs[]);
+        std::vector<int> fightIDs);
     ~Event();
 
     int getEventID();
@@ -31,7 +32,7 @@ public:
     std::string getStatus();
     bool isActive();
 
-    int* getFightIDs();
+    std::vector<int> getFightIDs();
 private:
     int eventID;
 
@@ -46,5 +47,5 @@ private:
     std::string status;
     bool active;
 
-    int fightIDs[];
+    std::vector<int> fightIDs;
 };

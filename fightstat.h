@@ -36,6 +36,7 @@ public:
             int preFightNoContests,
             int moneyLine,
             bool active);
+    FightStat();
     ~FightStat();
 
     int getFighterID();

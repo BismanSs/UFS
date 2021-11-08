@@ -17,7 +17,7 @@
 class Cache {
 public:
     // initializes the static cache
-    static void init(std::string outputPath);
+    static bool init(std::string outputPath);
 
     // get cache maps
     static std::map<int, Fighter*> getFighters();

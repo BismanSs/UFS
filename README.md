@@ -3,6 +3,12 @@
 #### UFC statistics tool
 #### Group #16: Paul Scoropan, Gouri Sikha, Bisman Sawnhey, Omer Noor, Jordan Avelar
 
+## How to compile
+
+Run `$ qmake-qt5`
+
+Run `make`
+
 ## How to run:
 UFS utilizes the sportsdata.io MMA API endpoints, as such an API key is required. All development of UFS was completed using a free trial key however providing a paid subscription key offers the advantages of more accurate data for some minor statistics provided by the API (see <https://sportsdata.io/developers/faq#scrambled-data>).
 

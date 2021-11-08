@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "cache.h"
+// #include "cache.h"
 
 class Fighter {
 public:

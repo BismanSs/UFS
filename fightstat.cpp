@@ -67,6 +67,41 @@ FightStat::FightStat(int fighterID,
     this->active = active;
 }
 
+FightStat::FightStat() {
+    this->fighterID = 0;
+    this->firstName = "";
+    this->lastName = "";
+    this->winner = 0;
+    this->fantasyPoints = 0.0;
+    this->fantasyPointsDraftKings = 0.0;
+    this->knockdowns = 0.0;
+    this->totalStrikesAttempted = 0.0;
+    this->totalStrikesLanded = 0.0;
+    this->sigStrikesAttempted = 0.0;
+    this->sigStrikesLanded = 0.0;
+    this->takedownsAttempted = 0.0;
+    this->takedownsLanded = 0.0;
+    this->takedownSlams = 0.0;
+    this->takedownAccuracy = 0.0;
+    this->advances = 0.0;
+    this->reverals = 0.0;
+    this->submissions = 0.0;
+    this->slamRate = 0.0;
+    this->timeInControl = 0.0;
+    this->firstRoundWin = 0;
+    this->secondRoundWin = 0;
+    this->thirdRoundWin = 0;
+    this->fourthRoundWin = 0;
+    this->fifthRoundWin = 0;
+    this->decisionWin = 0;
+    this->preFightWins = 0;
+    this->preFightLosses = 0;
+    this->preFightDraws = 0;
+    this->preFightNoContests = 0;
+    this->moneyLine = 0;
+    this->active = 0;
+}
+
 FightStat::~FightStat() {}
 
 int FightStat::getFighterID() {

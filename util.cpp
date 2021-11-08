@@ -1,6 +1,7 @@
 #include "util.h"
 
-// UNTESTED
+using namespace boost::algorithm;
+using namespace boost;
 
 std::vector<std::string> Util::splitString(std::string rawText, std::string delimiters) {
     // std::vector<iterator_range<std::string::iterator>> findVector;
@@ -12,6 +13,6 @@ std::vector<std::string> Util::splitString(std::string rawText, std::string deli
 }
 
 std::string Util::removeAllChar(std::string rawText, char removed) {
-    boost::erase_all(rawText, removed);
+    erase_all(rawText, std::string(1, removed));
     return rawText;
 }
