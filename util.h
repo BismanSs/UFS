@@ -16,4 +16,6 @@ public: // public methods
 
     // remove all instances of a char in a string, returns string
     static std::string removeAllChar(std::string rawText, char removed);
+
+    static bool toBool(std::string rawText);
 };

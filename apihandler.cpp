@@ -1,7 +1,7 @@
 #include "apihandler.h"
 
 
-// APIHandler constructor, extends QObject, takes sportsdata.io API key
+// APIHandler constructor, extends QObject, takes sportsdata.io API key and parent
 APIHandler::APIHandler(std::string sportsDataAPIKey , QObject *parent) : QObject(parent) {
     this->sportsDataAPIKey = sportsDataAPIKey;
 }
@@ -18,7 +18,10 @@ std::vector<Event*> APIHandler::getAllEvents() {
     QNetworkAccessManager *manager = new QNetworkAccessManager(this); // manages http requests, sets this as parent
 
     for (int season = 2020; season <= 2021; season++) { // only two seasons offered by the free api
-        QNetworkReply *response = manager->get(QNetworkRequest(QUrl((SPORTSDATA_API_URL + "Schedule/" + std::to_string(season) + "/?key=" + sportsDataAPIKey).c_str()))); // HTTP response object from given URL
+        std::cout << season << std::endl;
+        QNetworkRequest request = QNetworkRequest(QUrl((SPORTSDATA_API_URL + "Schedule/UFC/" + std::to_string(season) + "?key=" + sportsDataAPIKey).c_str()));
+        request.setRawHeader("Content-Type", "application/x-www-form-urlencoded");
+        QNetworkReply *response = manager->get(request); // HTTP response object from given URL
         QEventLoop event; // Use QEventLoop to syncronize HTTP request 
         QObject::connect(response, SIGNAL(finished()), &event, SLOT(quit())); // connect response object on manager signal finished to event on slot quit
         event.exec(); // waits for async call to finish before continuing
@@ -37,8 +40,9 @@ std::vector<Event*> APIHandler::getAllEvents() {
 std::vector<Fighter*> APIHandler::getAllFighters() {
 
     QNetworkAccessManager *manager = new QNetworkAccessManager(this); // manages http requests, sets this as parent
-
-    QNetworkReply *response = manager->get(QNetworkRequest(QUrl((SPORTSDATA_API_URL + "Fighters?key=" + sportsDataAPIKey).c_str()))); // HTTP Response object from given URL
+    QNetworkRequest request = QNetworkRequest(QUrl((SPORTSDATA_API_URL + "Fighters?key=" + sportsDataAPIKey).c_str()));
+    request.setRawHeader("Content-Type", "application/x-www-form-urlencoded");
+    QNetworkReply *response = manager->get(request); // HTTP Response object from given URL
     QEventLoop event; // use QEventLoop to syncronize HTTP request
     QObject::connect(response, SIGNAL(finished()), &event, SLOT(quit())); // connect response object on manager signal finished to event on slot quit
     event.exec(); // waits for async call
@@ -53,8 +57,9 @@ std::vector<Fighter*> APIHandler::getAllFighters() {
 // Returns an event object, including fights array, representing the results from the Event endpoint
 Event* APIHandler::getEvent(int eventID) {
     QNetworkAccessManager *manager = new QNetworkAccessManager(this); // manages HTTP requests
-
-    QNetworkReply *response = manager->get(QNetworkRequest(QUrl((SPORTSDATA_API_URL + "Event/" + std::to_string(eventID) + "/?key=" + sportsDataAPIKey).c_str()))); // HTTP response object from given URL
+    QNetworkRequest request = QNetworkRequest(QUrl((SPORTSDATA_API_URL + "Event/" + std::to_string(eventID) + "/?key=" + sportsDataAPIKey).c_str()));
+    request.setRawHeader("Content-Type", "application/x-www-form-urlencoded");
+    QNetworkReply *response = manager->get(request); // HTTP response object from given URL
     QEventLoop event; // use QEventLoop to syncronize HTTP request
     QObject::connect(response, SIGNAL(finished()), &event, SLOT(quit())); // connect response object on manager signal finished to event on slot quit
     event.exec(); // waits for async call
@@ -69,8 +74,9 @@ Event* APIHandler::getEvent(int eventID) {
 // Returns a fight object, including fightstats, representing the results from the Fight endpoint
 Fight* APIHandler::getFight(int fightID) {
     QNetworkAccessManager *manager = new QNetworkAccessManager(this); // manages HTTP requests
-
-    QNetworkReply *response = manager->get(QNetworkRequest(QUrl((SPORTSDATA_API_URL + "Fight/" + std::to_string(fightID) + "/?key=" + sportsDataAPIKey).c_str()))); // HTTP response object from the given URL
+    QNetworkRequest request = QNetworkRequest(QUrl((SPORTSDATA_API_URL + "Fight/" + std::to_string(fightID) + "/?key=" + sportsDataAPIKey).c_str()));
+    request.setRawHeader("Content-Type", "application/x-www-form-urlencoded");
+    QNetworkReply *response = manager->get(request); // HTTP response object from the given URL
     QEventLoop event; // use QEventLoop to syncronize HTTP request
     QObject::connect(response, SIGNAL(finished()), &event, SLOT(quit())); // connect response object on manager signal finished to event on slot quit
     event.exec(); // waits for async call
@@ -82,6 +88,7 @@ Fight* APIHandler::getFight(int fightID) {
 
 // parses json of all events into an Event* vector
 std::vector<Event*> APIHandler::parseJSONAllEvents(std::string json) {
+    
     std::vector<std::string> events = Util::splitString(json, "EventId"); // split the json at "EventId"
     std::vector<Event*> returnVec; 
 
@@ -104,6 +111,8 @@ std::vector<Fighter*> APIHandler::parseJSONAllFighters(std::string json) {
 
 // parses json and creates a heap allocated Event object
 Event* APIHandler::parseJSONEvent(std::string json) {
+    if (json.find(", ", 0) != std::string::npos)
+        json.replace(json.find(", ", 0), 2, " ");
     std::vector<std::string> memberVariables = Util::splitString(json, ","); // split json at ","
 
     std::vector<int> fightIDsVec;
@@ -111,7 +120,7 @@ Event* APIHandler::parseJSONEvent(std::string json) {
     for (long unsigned int i = 0; i < memberVariables.size(); i++) { // loop through all variables in json
 
         // MAY FIND 0 FighterIds
-        if (memberVariables.at(i).find("FighterId")) { // if the variable is "FighterId" (ie the first line of each element of the JSON's fight array)
+        if (memberVariables.at(i).find("FighterId") != std::string::npos) { // if the variable is "FighterId" (ie the first line of each element of the JSON's fight array)
             fightIDsVec.push_back( // add to the fight ID vector
                 std::stoi( // convert to int
                     Util::splitString( 
@@ -137,13 +146,15 @@ Event* APIHandler::parseJSONEvent(std::string json) {
         memberVariables.at(5), // day
         memberVariables.at(6), // dateTime
         memberVariables.at(7), // status
-        std::stoi(memberVariables.at(8)), // active
+        Util::toBool(memberVariables.at(8)), // active
         fightIDsVec
     );
 }
 
 // parses json and creates a heap allocated Fight object
 Fight* APIHandler::parseJSONFight(std::string json) {
+    if (json.find(", ", 0) != std::string::npos)
+        json.replace(json.find(", ", 0), 2, " ");
     std::vector<std::string> memberVariables = Util::splitString(json, ","); // split json at ","
 
     for (long unsigned int i = 0; i < memberVariables.size(); i++) { // loop through variables in json
@@ -158,7 +169,7 @@ Fight* APIHandler::parseJSONFight(std::string json) {
             std::stoi(memberVariables.at(12)), // fighterID
             memberVariables.at(13), // firstName
             memberVariables.at(14), // lastName
-            std::stoi(memberVariables.at(15)), // winner
+            Util::toBool(memberVariables.at(15)), // winner
             std::stof(memberVariables.at(16)), // fantasyPoints
             std::stof(memberVariables.at(17)), // fantasyPointsDraftKings
             std::stof(memberVariables.at(18)), // knockdowns
@@ -175,24 +186,24 @@ Fight* APIHandler::parseJSONFight(std::string json) {
             std::stof(memberVariables.at(29)), // submissions
             std::stof(memberVariables.at(30)), // slamRate
             std::stof(memberVariables.at(31)), // timeInControl
-            std::stoi(memberVariables.at(32)), // firstRoundWin
-            std::stoi(memberVariables.at(33)), // secondRoundWin
-            std::stoi(memberVariables.at(34)), // thirdRoundWin
-            std::stoi(memberVariables.at(35)), // fourthRoundWin
-            std::stoi(memberVariables.at(36)), // fifthRoundWin
-            std::stoi(memberVariables.at(37)), // decisionWin
+            Util::toBool(memberVariables.at(32)), // firstRoundWin
+            Util::toBool(memberVariables.at(33)), // secondRoundWin
+            Util::toBool(memberVariables.at(34)), // thirdRoundWin
+            Util::toBool(memberVariables.at(35)), // fourthRoundWin
+            Util::toBool(memberVariables.at(36)), // fifthRoundWin
+            Util::toBool(memberVariables.at(37)), // decisionWin
             std::stoi(memberVariables.at(67)), // preFightWins (jump down to "Fighters" in JSON)
             std::stoi(memberVariables.at(68)), // preFightLosses
             std::stoi(memberVariables.at(69)), // preFightDraws
             std::stoi(memberVariables.at(70)), // preFightNoContests
             std::stoi(memberVariables.at(72)), // moneyLine (line 71 of json is repeating)
-            std::stoi(memberVariables.at(73)) // active
+            Util::toBool(memberVariables.at(73)) // active
         ),
         FightStat(
             std::stoi(memberVariables.at(38)), // fighterID
             memberVariables.at(39), // firstName
             memberVariables.at(40), // lastName
-            std::stoi(memberVariables.at(41)), // winner
+            Util::toBool(memberVariables.at(41)), // winner
             std::stof(memberVariables.at(42)), // fantasyPoints
             std::stof(memberVariables.at(43)), // fantasyPointsDraftKings
             std::stof(memberVariables.at(44)), // knockdowns
@@ -209,18 +220,18 @@ Fight* APIHandler::parseJSONFight(std::string json) {
             std::stof(memberVariables.at(55)), // submissions
             std::stof(memberVariables.at(56)), // slamRate
             std::stof(memberVariables.at(57)), // timeInControl
-            std::stoi(memberVariables.at(58)), // firstRoundWin
-            std::stoi(memberVariables.at(59)), // secondRoundWin
-            std::stoi(memberVariables.at(60)), // thirdRoundWin
-            std::stoi(memberVariables.at(61)), // fourthRoundWin
-            std::stoi(memberVariables.at(62)), // fifthRoundWin
-            std::stoi(memberVariables.at(63)), // decisionWin
+            Util::toBool(memberVariables.at(58)), // firstRoundWin
+            Util::toBool(memberVariables.at(59)), // secondRoundWin
+            Util::toBool(memberVariables.at(60)), // thirdRoundWin
+            Util::toBool(memberVariables.at(61)), // fourthRoundWin
+            Util::toBool(memberVariables.at(62)), // fifthRoundWin
+            Util::toBool(memberVariables.at(63)), // decisionWin
             std::stoi(memberVariables.at(77)), // preFightWins (jump down to "Fighters" in JSON)
             std::stoi(memberVariables.at(78)), // preFightLosses
             std::stoi(memberVariables.at(79)), // preFightDraws
             std::stoi(memberVariables.at(80)), // preFightNoContests
             std::stoi(memberVariables.at(82)), // moneyLine (line 71 of json is repeating)
-            std::stoi(memberVariables.at(83)) // active
+            Util::toBool(memberVariables.at(83)) // active
         )
     };
 
@@ -236,13 +247,15 @@ Fight* APIHandler::parseJSONFight(std::string json) {
         std::stoi(memberVariables.at(8)), // resultRound
         memberVariables.at(9), // resultType
         std::stoi(memberVariables.at(10)), // winnerID
-        std::stoi(memberVariables.at(11)), // active
+        Util::toBool(memberVariables.at(11)), // active
         fightstats
     );
 }
 
 // parses json and creates a heap allocated Fighter object
 Fighter* APIHandler::parseJSONFighter(std::string json) {
+    if (json.find(", ", 0) != std::string::npos)
+        json.replace(json.find(", ", 0), 2, " ");
     std::vector<std::string> memberVariables = Util::splitString(json, ","); // split json at ","
 
     for (long unsigned int i = 0; i < memberVariables.size(); i++) { // loop through variables in json

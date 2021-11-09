@@ -11,6 +11,7 @@ std::map<int, Bet*> Cache::bets = std::map<int, Bet*>();
 
 std::string Cache::sportsDataAPIKey = "";
 std::string Cache::outputPath = "";
+QObject* Cache::apiHandlersParent = nullptr;
 
 // initializes the static cache, returns true when done
 bool Cache::init(std::string outputPath) {
@@ -23,17 +24,34 @@ bool Cache::init(std::string outputPath) {
     Cache::bets = std::map<int, Bet*>();
     // Cache::updateCacheFromFile(); // now called in main
     return true;
-}       
+}  
+
+void Cache::setAPIHandlersParent(QObject *parent) {
+    Cache::apiHandlersParent = parent;
+}
+
+QObject* Cache::getAPIHandlersParent() {
+    return Cache::apiHandlersParent;
+}
+
 
 // get fighters map
 std::map<int, Fighter*> Cache::getFighters() {
     if (isInit) { // check if cache has been initialized
+        if (fighters.empty()) {
+            APIHandler apiHandler = APIHandler(sportsDataAPIKey, apiHandlersParent);
+            std::vector<Fighter*> fightersVec = apiHandler.getAllFighters();
+            for(long unsigned int i = 0; i < fightersVec.size(); i++) {
+                fighters.emplace(fightersVec.at(i)->getFighterID(), fightersVec.at(i));
+            }
+        }
+
         return fighters;
     }
     return std::map<int, Fighter*>(); // return empty map if not initialized
 }
 
-// get fights map
+// get fights map, UNNEEDED
 std::map<int, Fight*> Cache::getFights() {
     if (isInit) { // check if cache has been initialized
         return fights;
@@ -44,6 +62,13 @@ std::map<int, Fight*> Cache::getFights() {
 // get events map
 std::map<int, Event*> Cache::getEvents() {
     if (isInit) { // check if cache has been initialized
+        if (events.empty()) {
+            APIHandler apiHandler = APIHandler(sportsDataAPIKey, apiHandlersParent);
+            std::vector<Event*> eventsVec = apiHandler.getAllEvents();
+            for(long unsigned int i = 0; i < eventsVec.size(); i++) {
+                events.emplace(eventsVec.at(i)->getEventID(), eventsVec.at(i));
+            }
+        }
         return events;
     }
     return std::map<int, Event*>(); // return empty map if not initialized
@@ -61,6 +86,13 @@ std::map<int, Bet*> Cache::getBets() {
 // get fighter pointer by fighterID
 Fighter* Cache::getFighter(int fighterID) {
     if (isInit) { // check if cache has been initialized
+        if (fighters.empty()) {
+            APIHandler apiHandler = APIHandler(sportsDataAPIKey, apiHandlersParent);
+            std::vector<Fighter*> fightersVec = apiHandler.getAllFighters();
+            for(long unsigned int i = 0; i < fightersVec.size(); i++) {
+                fighters.emplace(fightersVec.at(i)->getFighterID(), fightersVec.at(i));
+            }
+        }
         return fighters.at(fighterID);
     }
     return NULL; // return NULL if not initialized
@@ -69,6 +101,10 @@ Fighter* Cache::getFighter(int fighterID) {
 // get fight pointer by fightID
 Fight* Cache::getFight(int fightID) {
     if (isInit) { // check if cache has been initialized
+        if (fights.count(fightID) == 0) {
+            APIHandler apiHandler = APIHandler(sportsDataAPIKey, apiHandlersParent);
+            fights.at(fightID) = apiHandler.getFight(fightID);
+        }
         return fights.at(fightID);
     }
     return NULL; // return NULL if not initialized
@@ -77,6 +113,19 @@ Fight* Cache::getFight(int fightID) {
 // get event pointer by eventID
 Event* Cache::getEvent(int eventID) {
     if (isInit) { // check if cache has been initialized
+        std::cout << "2" << std::endl;
+        if (events.empty()) {
+        std::cout << "3" << std::endl;
+            APIHandler apiHandler = APIHandler(sportsDataAPIKey, apiHandlersParent);
+            std::cout << "4" << std::endl;
+            std::vector<Event*> eventsVec = apiHandler.getAllEvents();
+            std::cout << "" << std::endl;
+            for(long unsigned int i = 0; i < eventsVec.size(); i++) {
+                std::cout << eventsVec.at(i)->getEventID() << std::endl;
+                events.emplace(eventsVec.at(i)->getEventID(), eventsVec.at(i));
+                std::cout << events.at(eventsVec.at(i)->getEventID())->getEventID() << std::endl;
+            }
+        }
         return events.at(eventID);
     }
     return NULL; // return NULL if not initialized
@@ -273,8 +322,8 @@ void Cache::updateCacheFromFile() {
         Section cacheSection = APIkeys; // API keys is the first section
 
         if (myfile.is_open()) { // check if the file input stream opened successfully
-            getline (myfile,line); // read first line from the file
-            Cache::sportsDataAPIKey = line; // first line was the api key
+            if (getline (myfile,line)) // read first line from the file
+                Cache::sportsDataAPIKey = line; // first line was the api key
 
             while ( getline (myfile,line) ) { // loop through rest of the lines in the cache file
 
@@ -390,7 +439,7 @@ Fight* Cache::parseFight(std::string rawFight) {
             std::stoi(memberVariables.at(12)), // fighterID
             memberVariables.at(13), // firstName
             memberVariables.at(14), // lastName
-            std::stoi(memberVariables.at(15)), // winner
+            Util::toBool(memberVariables.at(15)), // winner
             std::stof(memberVariables.at(16)), // fantasyPoints
             std::stof(memberVariables.at(17)), // fantasyPointsDraftKings
             std::stof(memberVariables.at(18)), // knockdowns
@@ -407,24 +456,24 @@ Fight* Cache::parseFight(std::string rawFight) {
             std::stof(memberVariables.at(29)), // submissions
             std::stof(memberVariables.at(30)), // slamRate
             std::stof(memberVariables.at(31)), // timeInControl
-            std::stoi(memberVariables.at(32)), // firstRoundWin
-            std::stoi(memberVariables.at(33)), // secondRoundWin
-            std::stoi(memberVariables.at(34)), // thirdRoundWin
-            std::stoi(memberVariables.at(35)), // fourthRoundWin
-            std::stoi(memberVariables.at(36)), // fifthRoundWin
-            std::stoi(memberVariables.at(37)), // decisionWin
+            Util::toBool(memberVariables.at(32)), // firstRoundWin
+            Util::toBool(memberVariables.at(33)), // secondRoundWin
+            Util::toBool(memberVariables.at(34)), // thirdRoundWin
+            Util::toBool(memberVariables.at(35)), // fourthRoundWin
+            Util::toBool(memberVariables.at(36)), // fifthRoundWin
+            Util::toBool(memberVariables.at(37)), // decisionWin
             std::stoi(memberVariables.at(38)), // preFightWins
             std::stoi(memberVariables.at(39)), // preFightLosses
             std::stoi(memberVariables.at(40)), // preFightDraws
             std::stoi(memberVariables.at(41)), // preFightNoContests
             std::stoi(memberVariables.at(42)), // moneyLine
-            std::stoi(memberVariables.at(43)) // active
+            Util::toBool(memberVariables.at(43)) // active
         );
         fightstats[1] = FightStat(
             std::stoi(memberVariables.at(44)), // fighterID
             memberVariables.at(45), // firstName
             memberVariables.at(46), // lastName
-            std::stoi(memberVariables.at(47)), // winner
+            Util::toBool(memberVariables.at(47)), // winner
             std::stof(memberVariables.at(48)), // fantasyPoints
             std::stof(memberVariables.at(49)), // fantasyPointsDraftKings
             std::stof(memberVariables.at(50)), // knockdowns
@@ -441,18 +490,18 @@ Fight* Cache::parseFight(std::string rawFight) {
             std::stof(memberVariables.at(61)), // submissions
             std::stof(memberVariables.at(62)), // slamRate
             std::stof(memberVariables.at(63)), // timeInControl
-            std::stoi(memberVariables.at(64)), // firstRoundWin
-            std::stoi(memberVariables.at(65)), // secondRoundWin
-            std::stoi(memberVariables.at(66)), // thirdRoundWin
-            std::stoi(memberVariables.at(67)), // fourthRoundWin
-            std::stoi(memberVariables.at(68)), // fifthRoundWin
-            std::stoi(memberVariables.at(69)), // decisionWin
+            Util::toBool(memberVariables.at(64)), // firstRoundWin
+            Util::toBool(memberVariables.at(65)), // secondRoundWin
+            Util::toBool(memberVariables.at(66)), // thirdRoundWin
+            Util::toBool(memberVariables.at(67)), // fourthRoundWin
+            Util::toBool(memberVariables.at(68)), // fifthRoundWin
+            Util::toBool(memberVariables.at(69)), // decisionWin
             std::stoi(memberVariables.at(70)), // preFightWins
             std::stoi(memberVariables.at(71)), // preFightLosses
             std::stoi(memberVariables.at(72)), // preFightDraws
             std::stoi(memberVariables.at(73)), // preFightNoContests
             std::stoi(memberVariables.at(74)), // moneyLine
-            std::stoi(memberVariables.at(75)) // active
+            Util::toBool(memberVariables.at(75)) // active
         );
 
         // create heap allocated Fight object and return pointer
@@ -468,7 +517,7 @@ Fight* Cache::parseFight(std::string rawFight) {
             std::stoi(memberVariables.at(8)), // resultRound
             memberVariables.at(9), // resultType
             std::stoi(memberVariables.at(10)), // winnerID
-            std::stoi(memberVariables.at(11)), // active
+            Util::toBool(memberVariables.at(11)), // active
             fightstats
         );
     }
@@ -497,7 +546,7 @@ Event* Cache::parseEvent(std::string rawEvent) {
             memberVariables.at(5), // day
             memberVariables.at(6), // dateTime
             memberVariables.at(7), // status
-            std::stoi(memberVariables.at(8)), // active
+            Util::toBool(memberVariables.at(8)), // active
             fightIDs
         );
     }
@@ -518,8 +567,8 @@ Bet* Cache::parseBet(std::string rawBet) {
             std::stoi(memberVariables.at(3)), // eventID
             std::stoi(memberVariables.at(4)), // fightID
             std::stoi(memberVariables.at(5)), // fighterID
-            std::stoi(memberVariables.at(6)), // winning
-            std::stoi(memberVariables.at(7)) // valid
+            Util::toBool(memberVariables.at(6)), // winning
+            Util::toBool(memberVariables.at(7)) // valid
         );
     }
     return NULL; // return NULL if cache not initialized
@@ -619,3 +668,18 @@ void Cache::replaceBet(int betID, Bet* bet) {
     }
 }
 
+// destroy the cache
+void Cache::destroy() {
+    for(std::map<int, Fighter*>::iterator i = fighters.begin(); i != fighters.end(); i++) {
+        delete i->second;
+    }
+    for(std::map<int, Fight*>::iterator i = fights.begin(); i != fights.end(); i++) {
+        delete i->second;
+    }
+    for(std::map<int, Event*>::iterator i = events.begin(); i != events.end(); i++) {
+        delete i->second;
+    }
+    for(std::map<int, Bet*>::iterator i = bets.begin(); i != bets.end(); i++) {
+        delete i->second;
+    }
+}

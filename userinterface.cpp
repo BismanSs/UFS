@@ -158,12 +158,15 @@ UserInterface::UserInterface(QWidget *parent)
   // Connect signals to appropriate slot
   // connect(m_execButton, &QPushButton::released, this, &MainWindow::handleExec);
   // connect(m_inputBox, &QLineEdit::returnPressed, this, &MainWindow::handleExec);
+
+  std::cout << Cache::getEvent(103)->getName() << std::endl;
 }
 
 // deconstructor
 UserInterface::~UserInterface() {
 
   delete m_mainLayout; // delete heap allocated main layout
+  
   // DELETE ALL OTHER HEAP ALLOCATED OBJECTS HERE
 }
 
@@ -182,7 +185,8 @@ void UserInterface::closeEvent (QCloseEvent *event)
     if (exit != QMessageBox::Yes) { // if not exit
         event->ignore(); // ignore close event
     } else {
-      Cache::writeCacheToFile(); // save cache to file
+      // Cache::writeCacheToFile(); // save cache to file
+      Cache::destroy();
       event->accept(); // accept event, closing window
 
     }

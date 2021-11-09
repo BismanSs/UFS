@@ -7,6 +7,8 @@
 #include <vector>
 #include <algorithm>
 
+#include <QObject>
+
 #include "fighter.h"
 #include "fight.h"
 #include "event.h"
@@ -21,6 +23,9 @@ class Cache {
 public: // public methods
     // initializes the static cache
     static bool init(std::string outputPath);
+
+    static void setAPIHandlersParent(QObject *parent);
+    static QObject* getAPIHandlersParent();
 
     // get cache maps
     static std::map<int, Fighter*> getFighters();
@@ -48,6 +53,9 @@ public: // public methods
 
     // scan cache for invalid data and remove
     static void sanitizeCache();
+
+    // destroy the cache
+    static void destroy();
 
 private: // private member methods
     static Fighter* parseFighter(std::string rawFighter);
@@ -83,5 +91,6 @@ private: // member variables
 
     static std::string sportsDataAPIKey;
     static std::string outputPath;
+    static QObject* apiHandlersParent;
 
 };
