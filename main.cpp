@@ -2,6 +2,7 @@
 
 #include "userinterface.h"
 #include "cache.h"
+#include <QFile>
 
 bool isInit = false; // flag for whether static cache has been intialized
 
@@ -42,7 +43,13 @@ int main(int argc, char *argv[]) // entry point
 
   }
 
+  QFile styleSheetFile("./Diffnes.qss");
+  styleSheetFile.open(QFile::ReadOnly);
+  QString styleSheet = QLatin1String(styleSheetFile.readAll());
+  
   QApplication app(argc, argv); // create QT app
+  app.setStyleSheet(styleSheet);
+
   UserInterface userInterface; // QMainWindow object
   userInterface.showMaximized(); // maximize the main window 
   return app.exec();  // run app
