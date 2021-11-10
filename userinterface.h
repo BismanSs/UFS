@@ -18,6 +18,9 @@
 #include <QString>
 #include <QCloseEvent>
 #include <QMessageBox>
+#include <QCalendarWidget>
+#include <string>
+#include <QListWidget>
 
 #include <vector>
 #include <iostream>
@@ -44,6 +47,7 @@ private: // private methods
   QFrame *createSettingsContentPanel();
   QFrame *createAllNewsContentPanel();
   QFrame *createAllNotificationsContentPanel();
+  void removeCenterPanel();
 
   // handles on X pressed close event
   void closeEvent(QCloseEvent *event);
@@ -52,16 +56,19 @@ private: // private member variables
 
   // the main panel of the window
   QWidget *m_mainPanel;
-  QHBoxLayout *m_mainLayout;
+  QGridLayout *m_mainLayout;
 
   // the 3 sections of the main panel
   QFrame *m_leftPanel;
   QFrame *m_centerPanel;
   QFrame *m_rightPanel;
 
+  //Schedule panel
+  QFrame *m_scheduleCenterPanel;
 
   //In the left panel
   QVBoxLayout *m_leftLayout;
+  QPushButton *m_homeButton;
   QPushButton *m_listFightersButton;
   QPushButton *m_viewScheduleButton;
   QPushButton *m_viewBetsButton;
@@ -76,6 +83,27 @@ private: // private member variables
   QRadioButton *m_fightsRadioButton;
   QRadioButton *m_eventsRadioButton;
 
+  // Center panel - Schedule window
+  QVBoxLayout *m_centerScheduleLayout;
+  QCalendarWidget *m_scheduleCalendar;
+
+  // Center panel - list fighters
+  QVBoxLayout *m_centerFighterListLayout;
+  QListWidget *m_centerFighterList;
+  QFrame *m_centerFighterListPanel;
+
+  // Center panel - view bets 
+  QVBoxLayout *m_centerViewBetsLayout;
+  QListWidget *m_centerViewBets;
+  QFrame *m_centerViewBetsPanel;
+
+  // center panel - compare fighters
+  QGridLayout *m_centerCompFighterLayout;
+  QFrame *m_centerCompFighterPanel;
+  QFrame *m_leftFighterLayout;
+  QFrame *m_rightFighterLayout;
+
+
   //In the right panel
   QVBoxLayout *m_rightLayout;
   QLabel *m_newsAggregatorLabel;
@@ -84,4 +112,19 @@ private: // private member variables
   QLabel *m_notificationsLabel;
   QFrame *m_notificationsPanel;
   QPushButton *m_viewAllNotificationsButton;
+
+  //miscellaneous
+  QRect screen;//sets screen dimensions
+  bool checkPanelScheduleIsSet = false; //check if the onViewScheduleButtonReleased() has been called at least once
+  bool checkPanelFightersListIsSet = false;
+  bool checkViewBetsIsSet = false;
+  bool checkCompFightersIsSet = false;
+  std::string currentCenterPanel = "home"; //possible values "home", "schedule", "bets", "compfighters", "listfighters"
+
+private slots:
+  void onViewScheduleButtonReleased(); //handler for "View UFC Schedule" Button
+  void onHomeButtonReleased(); //handler for "Home" Button
+  void onListFightersButtonReleased();
+  void onViewBetsButtonReleased();
+  void onCompareFightersButtonReleased();
 };
