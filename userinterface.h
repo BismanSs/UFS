@@ -21,6 +21,7 @@
 #include <QCalendarWidget>
 #include <string>
 #include <QListWidget>
+#include <QtWidgets>
 
 #include <vector>
 #include <iostream>
@@ -65,6 +66,7 @@ private: // private member variables
 
   //Schedule panel
   QFrame *m_scheduleCenterPanel;
+  QTextBrowser *m_scheduleText;
 
   //In the left panel
   QVBoxLayout *m_leftLayout;

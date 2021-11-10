@@ -169,6 +169,21 @@ QPushButton
 
 }
 
+QPushButton[released=true]
+{
+	background-color: #9648EE;
+}
+
+QPushButton[released=true]::hover
+{
+	background-color: #9648EE;
+}
+
+QPushButton[released=true]::pressed
+{
+	background-color: #9648EE;
+}
+
 
 QPushButton::flat
 {

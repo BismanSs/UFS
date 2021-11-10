@@ -207,15 +207,19 @@ void UserInterface::onViewScheduleButtonReleased() //Show calendar and schedule 
   {
     checkPanelScheduleIsSet = true;
     m_scheduleCalendar = new QCalendarWidget(); //Calendar widget
-    m_centerScheduleLayout = new QVBoxLayout();
-    m_scheduleCenterPanel = new QFrame(this);
+    m_scheduleText = new QTextBrowser(); // Calendar Text
+    m_scheduleText -> setText(QString::fromStdString("Click on a date to view the schedule for it")); //Default Text 
+    m_centerScheduleLayout = new QVBoxLayout(); //Calendar layout
+
+    m_scheduleCenterPanel = new QFrame(this); //new Frame to add to main layout
 
     m_scheduleCenterPanel->setFixedWidth(screen.width() * (7.0 / 12.0) - 10);
 
-    m_scheduleCenterPanel->setFrameStyle(QFrame::Panel);
+    m_scheduleCenterPanel->setFrameStyle(QFrame::Panel); 
     m_scheduleCenterPanel->setFixedHeight(screen.height() - 50);
 
     m_centerScheduleLayout->addWidget(m_scheduleCalendar);
+    m_centerScheduleLayout->addWidget(m_scheduleText);
     m_scheduleCenterPanel->setLayout(m_centerScheduleLayout);
     m_mainLayout->addWidget(m_scheduleCenterPanel, 0, 2); //Adding schedule Panel as the center panel
   }
@@ -224,7 +228,12 @@ void UserInterface::onViewScheduleButtonReleased() //Show calendar and schedule 
   removeCenterPanel(); //remove any other window
   m_scheduleCenterPanel -> setVisible(true); //set schedule window visible
   currentCenterPanel = "schedule"; //current window is schedule
+  m_viewScheduleButton -> setProperty("released", true);
+  m_viewScheduleButton -> style() -> unpolish(m_viewScheduleButton);
+  m_viewScheduleButton -> style() -> polish(m_viewScheduleButton);
+  
 }
+
 
 void UserInterface::onListFightersButtonReleased() //Show calendar and schedule when Button is pressed
 {
@@ -318,6 +327,11 @@ void UserInterface::onHomeButtonReleased() // Go back to home screen when "Home"
   removeCenterPanel(); //remove anh other window
   m_centerPanel -> setVisible(true); //set home screen visible
   currentCenterPanel = "home"; //current window is schedule
+
+  m_homeButton -> setProperty("released", true); //change colour of Home button initially as it is default
+  m_homeButton  -> style() -> unpolish(m_homeButton );
+  m_homeButton  -> style() -> polish(m_homeButton );
+  
 }
 
 void UserInterface::removeCenterPanel() //hides current center panel
@@ -325,9 +339,15 @@ void UserInterface::removeCenterPanel() //hides current center panel
   if(currentCenterPanel == "home")
   {
     m_centerPanel -> setVisible(false);
+    m_homeButton -> setProperty("released", false); //change colour of Home button initially as it is default
+    m_homeButton  -> style() -> unpolish(m_homeButton );
+    m_homeButton  -> style() -> polish(m_homeButton );
   }
   else if(currentCenterPanel == "schedule")
   {
+    m_viewScheduleButton -> setProperty("released", false);
+    m_viewScheduleButton -> style() -> unpolish(m_viewScheduleButton); //change colour of button
+    m_viewScheduleButton -> style() -> polish(m_viewScheduleButton);
     m_scheduleCenterPanel -> setVisible(false);
   }
   else if(currentCenterPanel == "fighterlist")
@@ -340,16 +360,5 @@ void UserInterface::removeCenterPanel() //hides current center panel
   else if(currentCenterPanel == "compfighter") {
     m_centerCompFighterPanel -> setVisible(false);
   }
-  // else if(currentCenterPanel == "schedule")
-  // {
-  //   m_mainLayout->removeWidget(m_scheduleCenterPanel);
-  // }
-  //   else if(currentCenterPanel == "schedule")
-  // {
-  //   m_mainLayout->removeWidget(m_scheduleCenterPanel);
-  // }
-  //   else if(currentCenterPanel == "schedule")
-  // {
-  //   m_mainLayout->removeWidget(m_scheduleCenterPanel);
-  // }
+
 }
