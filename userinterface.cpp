@@ -164,6 +164,7 @@ UserInterface::UserInterface(QWidget *parent)
       // connect(m_execButton, &QPushButton::released, this, &MainWindow::handleExec);
       // connect(m_inputBox, &QLineEdit::returnPressed, this, &MainWindow::handleExec);
 
+  // USER CAN VIEW RETRIEVED UFC DATA ACCEPTANCE TEST --------
   std::cout << Cache::getEvent(103)->getName() << std::endl;
     
 }

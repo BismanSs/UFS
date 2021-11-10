@@ -39,3 +39,6 @@ For UFS's user interface we are utilizing the cross-platform user interface deve
 
 ### String Manipulation - Boost C++
 UFS requires Boost C++ libraries for string manipulation. Full credit for the Boost C++ libraries goes to Boost development team at <https://www.boost.org/>
+
+## DEVELOPMENT TESTING
+Ann acceptance test to demonstrate data retrieval functionality provided at bottom of UserInterface constructor, only prints to console momentarily
