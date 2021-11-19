@@ -165,8 +165,15 @@ UserInterface::UserInterface(QWidget *parent)
       // connect(m_inputBox, &QLineEdit::returnPressed, this, &MainWindow::handleExec);
 
   // USER CAN VIEW RETRIEVED UFC DATA ACCEPTANCE TEST --------
-  std::cout << Cache::getEvent(103)->getName() << std::endl;
-    
+  // std::cout << Cache::getEvent(103)->getName() << std::endl;
+  std::map<int, Event*> events = Cache::getEvents();
+  std::map<int, Event*>::iterator it;
+  for (it = events.begin(); it != events.end(); it++) {
+    std::cout << it->first    // string (key)
+              << ':'
+              << it->second->getDateTime()   // string's value 
+              << std::endl;
+  }
 }
 
 // deconstructor
