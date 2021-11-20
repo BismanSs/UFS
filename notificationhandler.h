@@ -4,17 +4,20 @@
 #include "notification.h"
 #include "fighter.h"
 
+#include <QObject>
+
 #include <vector>
 #include <map>
 #include <thread> 
 #include <chrono>
 
-class NotificationHandler {
+class NotificationHandler : public QObject {
+    Q_OBJECT
 public:
-    NotificationHandler();
+    explicit NotificationHandler(QObject *parent = nullptr);
     ~NotificationHandler();
 
-    void run();
+    void run(void (*f)(), bool redactYear = false);
     void stop();
 
     static bool isToggleOn();
@@ -42,7 +45,7 @@ public:
     void removeFilterFighterByIndex(int index);
     void clearFilterFighters();
 
-    // std::vector<Event*> getUpcomingEvents();
+    std::map<std::string, Event*> getUpcomingEvents();
     // Event* getUpcomingEventByDate(std::string date);
 private:
     static void update();

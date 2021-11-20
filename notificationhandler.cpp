@@ -2,7 +2,7 @@
 
 bool NotificationHandler::toggleOn = false;
 
-NotificationHandler::NotificationHandler() {
+NotificationHandler::NotificationHandler() : QObject(parent){
     this->notifications = std::vector<Notification*>();
     this->filterFighters = std::vector<Fighter*>();
 }
@@ -12,9 +12,27 @@ NotificationHandler::~NotificationHandler() {
     this->clearFilterFighters();
 }
 
-void NotificationHandler::run() {
+void NotificationHandler::run(void (*f)(), bool redactYear) {
     NotificationHandler::toggleOn = true;
-    this->runThread = std::thread(this->update);
+
+    std::map<int, Event*> events = Cache::getEvents();
+    std::map<int, Event*>::iterator it;
+    for (it = events.begin(); it != events.end(); it++) {
+        std::vector<std::string> parts = Util::splitString(it->second->getDateTime(), "-");
+        std::vector<std::string> parts2 = Util::splitString(it->second->getDateTime(), ":");
+
+        std::time_t t = (redactYear) ? std::time(nullptr)-31556952 : std::time(nullptr); // DATE IS HARD CODED TO BE ONE YEAR BEHIND
+        const std::tm* timeInfo = std::localtime(&t);
+        
+        if(std::stoi(parts.at(0)) > 1900 + timeInfo->tm_year || (std::stoi(parts.at(0)) == 1900 + timeInfo->tm_year && std::stoi(parts.at(1)) >= timeInfo->tm_mon+1 && std::stoi(Util::splitString(parts.at(2), "T").at(0)) >= timeInfo->tm_mday
+            && std::stoi(Util::splitString(parts2.at(0), "T").at(1)) >= timeInfo->tm_hour)
+        ) {
+            std::cout << it->second->getDateTime() << "    " << timeInfo->tm_year << "    " << timeInfo->tm_mon << "     " << timeInfo->tm_mday << std::endl;
+            this->upcomingEvents.emplace(it->second->getDateTime(), it->second);
+        }
+    }
+
+    this->runThread = std::thread(f);
 }
 
 void NotificationHandler::stop() {
@@ -23,11 +41,7 @@ void NotificationHandler::stop() {
 }
 
 void NotificationHandler::update() {
-    while(NotificationHandler::toggleOn) {
-        std::this_thread::sleep_for (std::chrono::seconds(10));
-
-
-    }
+    
 }
 
 bool NotificationHandler::isToggleOn() {
@@ -150,4 +164,8 @@ void NotificationHandler::clearFilterFighters() {
         delete this->notifications.at(i);
         this->notifications.erase(this->notifications.begin()+i);
     }
+}
+
+std::map<std::string, Event*> NotificationHandler::getUpcomingEvents() {
+    return this->upcomingEvents;
 }

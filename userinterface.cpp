@@ -149,6 +149,22 @@ UserInterface::UserInterface(QWidget *parent)
   m_notificationsPanel->setFixedHeight(rightPanelSize.height() / 3.0 - 80);
   m_viewAllNotificationsButton->setFixedHeight(50);
 
+
+  m_notificationsPanelLayout = new QVBoxLayout;
+  m_notificationsPanel->setLayout(m_notificationsPanelLayout);
+
+  notificationHandler = new NotificationHandler(this);
+  notificationHandler->run(UserInterface::updateNotificationsThread, true); // running with redactYear flag set to true
+  // std::cout << notificationHandler->getUpcomingEvents() << std::endl;
+  std::cout << notificationHandler->getUpcomingEvents().size() << std::endl;
+  if (notificationHandler->getUpcomingEvents().empty()) {
+    std::cout << "fafaefa" << std::endl;
+    delete m_viewAllNotificationsButton;
+    m_viewAllNotificationsButton = new QPushButton("No upcoming events, 2022 not yet supported.", this);
+    m_viewAllNotificationsButton->setEnabled(false);
+  }
+
+
   // add elements to the right panel
   m_rightLayout->addWidget(m_newsAggregatorLabel);
   m_rightLayout->addWidget(m_newsAggregatorPanel);
@@ -166,14 +182,7 @@ UserInterface::UserInterface(QWidget *parent)
 
   // USER CAN VIEW RETRIEVED UFC DATA ACCEPTANCE TEST --------
   // std::cout << Cache::getEvent(103)->getName() << std::endl;
-  std::map<int, Event*> events = Cache::getEvents();
-  std::map<int, Event*>::iterator it;
-  for (it = events.begin(); it != events.end(); it++) {
-    std::cout << it->first    // string (key)
-              << ':'
-              << it->second->getDateTime()   // string's value 
-              << std::endl;
-  }
+  
 }
 
 // deconstructor
@@ -182,6 +191,9 @@ UserInterface::~UserInterface()
 
   delete m_mainLayout; // delete heap allocated main layout
   // DELETE ALL OTHER HEAP ALLOCATED OBJECTS HERE
+
+  notificationHandler->stop();
+  delete notificationHandler;
 }
 
 // creates and returns a heap allocated search results content panel
@@ -369,4 +381,14 @@ void UserInterface::removeCenterPanel() //hides current center panel
     m_centerCompFighterPanel -> setVisible(false);
   }
 
+}
+
+void UserInterface::updateNotificationsThread() {
+  while(NotificationHandler::toggleOn) {
+      std::this_thread::sleep_for (std::chrono::seconds(10));
+
+      this->notificationHandler->addNotification(new Notification(0, "WOW!", "wh", "hhh"));
+      m_notificationsPanelLayout->addWidget(this->notificationHandler->getNotificationByIndex(0)->genNotificationFrame());
+        
+    }
 }

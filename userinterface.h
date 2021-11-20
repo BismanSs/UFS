@@ -27,6 +27,7 @@
 #include <iostream>
 #include <map>
 
+#include "notificationhandler.h"
 #include "cache.h"
  
  // represents the programs user interface, ie the main window, inherits QMainWindow
@@ -49,7 +50,9 @@ private: // private methods
   QFrame *createSettingsContentPanel();
   QFrame *createAllNewsContentPanel();
   QFrame *createAllNotificationsContentPanel();
+
   void removeCenterPanel();
+  static void updateNotificationsThread();
 
   // handles on X pressed close event
   void closeEvent(QCloseEvent *event);
@@ -123,6 +126,9 @@ private: // private member variables
   bool checkViewBetsIsSet = false;
   bool checkCompFightersIsSet = false;
   std::string currentCenterPanel = "home"; //possible values "home", "schedule", "bets", "compfighters", "listfighters"
+
+  NotificationHandler* notificationHandler;
+  QVBoxLayout* m_notificationsPanelLayout;
 
 private slots:
   void onViewScheduleButtonReleased(); //handler for "View UFC Schedule" Button

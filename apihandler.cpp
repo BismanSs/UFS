@@ -18,7 +18,6 @@ std::vector<Event*> APIHandler::getAllEvents() {
     QNetworkAccessManager *manager = new QNetworkAccessManager(this); // manages http requests, sets this as parent
 
     for (int season = 2020; season <= 2021; season++) { // only two seasons offered by the free api
-        std::cout << season << std::endl;
         QNetworkRequest request = QNetworkRequest(QUrl((SPORTSDATA_API_URL + "Schedule/UFC/" + std::to_string(season) + "?key=" + sportsDataAPIKey).c_str()));
         request.setRawHeader("Content-Type", "application/x-www-form-urlencoded");
         QNetworkReply *response = manager->get(request); // HTTP response object from given URL
@@ -111,7 +110,8 @@ std::vector<Fighter*> APIHandler::parseJSONAllFighters(std::string json) {
 
 // parses json and creates a heap allocated Event object
 Event* APIHandler::parseJSONEvent(std::string json) {
-    if (json.find(", ", 0) != std::string::npos)
+    json = "\"EventId" + json;
+    while (json.find(", ", 0) != std::string::npos)
         json.replace(json.find(", ", 0), 2, " ");
     std::vector<std::string> memberVariables = Util::splitString(json, ","); // split json at ","
 
@@ -131,10 +131,10 @@ Event* APIHandler::parseJSONEvent(std::string json) {
                             .size())-1))); // last element in split
         }
 
-        memberVariables.at(i) = Util::splitString(memberVariables.at(i), ":").at(Util::splitString(memberVariables.at(i), ":").size()-1); // get last element in variable split at ":"
-        memberVariables.at(i) = Util::removeAllChar(memberVariables.at(i), '"'); // remove any braces
-        memberVariables.at(i) = Util::removeAllChar(memberVariables.at(i), ']');
-        memberVariables.at(i) = Util::removeAllChar(memberVariables.at(i), '}');
+
+        memberVariables.at(i) = formatLine(memberVariables.at(i));
+
+      
     }
 
     return new Event( // create heap allocatec object and return pointer
@@ -153,15 +153,12 @@ Event* APIHandler::parseJSONEvent(std::string json) {
 
 // parses json and creates a heap allocated Fight object
 Fight* APIHandler::parseJSONFight(std::string json) {
-    if (json.find(", ", 0) != std::string::npos)
+    while (json.find(", ", 0) != std::string::npos)
         json.replace(json.find(", ", 0), 2, " ");
     std::vector<std::string> memberVariables = Util::splitString(json, ","); // split json at ","
 
     for (long unsigned int i = 0; i < memberVariables.size(); i++) { // loop through variables in json
-        memberVariables.at(i) = Util::splitString(memberVariables.at(i), ":").at(Util::splitString(memberVariables.at(i), ":").size()-1); // split at ":" and get last element
-        memberVariables.at(i) = Util::removeAllChar(memberVariables.at(i), '"'); // remove any braces
-        memberVariables.at(i) = Util::removeAllChar(memberVariables.at(i), ']');
-        memberVariables.at(i) = Util::removeAllChar(memberVariables.at(i), '}');
+        memberVariables.at(i) = formatLine(memberVariables.at(i));
     }
 
     FightStat fightstats[] = { // initialize FightStat array of size 2
@@ -254,15 +251,12 @@ Fight* APIHandler::parseJSONFight(std::string json) {
 
 // parses json and creates a heap allocated Fighter object
 Fighter* APIHandler::parseJSONFighter(std::string json) {
-    if (json.find(", ", 0) != std::string::npos)
+    while (json.find(", ", 0) != std::string::npos)
         json.replace(json.find(", ", 0), 2, " ");
     std::vector<std::string> memberVariables = Util::splitString(json, ","); // split json at ","
 
     for (long unsigned int i = 0; i < memberVariables.size(); i++) { // loop through variables in json
-        memberVariables.at(i) = Util::splitString(memberVariables.at(i), ":").at(Util::splitString(memberVariables.at(i), ":").size()-1); // split at ":" and get the last element
-        memberVariables.at(i) = Util::removeAllChar(memberVariables.at(i), '"'); // remove all braces
-        memberVariables.at(i) = Util::removeAllChar(memberVariables.at(i), ']');
-        memberVariables.at(i) = Util::removeAllChar(memberVariables.at(i), '}');
+        memberVariables.at(i) = formatLine(memberVariables.at(i));
     }
 
     return new Fighter( // create heap allocated Fighter object and return pointer
@@ -294,4 +288,27 @@ Fighter* APIHandler::parseJSONFighter(std::string json) {
         std::stof(memberVariables.at(28)), // technicalKnockoutPercentage
         std::stof(memberVariables.at(29)) // decisionPercentage
     );
+}
+
+std::string APIHandler::formatLine(std::string line) {
+    std::size_t pos = 0;
+    std::size_t secLastPos = std::string::npos;
+    std::size_t lastPos = std::string::npos;
+    while ((pos = line.find('"', pos+1)) != std::string::npos) {
+        secLastPos = lastPos;
+        lastPos = pos;
+    }
+        
+    std::string returnStr = line;
+
+    if (secLastPos != std::string::npos) {
+        returnStr = line.substr(secLastPos);
+    } else {
+        returnStr = Util::splitString(line, ":").at(Util::splitString(line, ":").size()-1); // get last element in variable split at ":"
+    }
+    returnStr = Util::removeAllChar(returnStr, '"'); // remove any braces
+    returnStr = Util::removeAllChar(returnStr, ']');
+    returnStr = Util::removeAllChar(returnStr, '}');
+
+    return returnStr;
 }
