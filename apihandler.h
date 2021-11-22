@@ -18,7 +18,7 @@
 
 // This class is responsible for making API calls and generating objects from the returned JSON
 class APIHandler : public QObject { // extends QObject as to utilize QT's networking features
-    Q_OBJECT // needed for Qt to understand this is a QObject
+Q_OBJECT // needed for Qt to understand this is a QObject
 public: // public methods
     explicit APIHandler(std::string sportsDataAPIKey, QObject *parent = nullptr); // constructor only needs sportsdata.io API key
     ~APIHandler(); // deconstructor
@@ -35,6 +35,7 @@ private: // private methods
     Event* parseJSONEvent(std::string json); // parses json, creates and returns heap allocated Event
     Fight* parseJSONFight(std::string json); // parses json, creates and returns heap allocated Fight
     Fighter* parseJSONFighter(std::string json); // parses json, creates and returns heap allocated Fighter
+    std::string formatLine(std::string line);
 
 private: // private variables
     const std::string SPORTSDATA_API_URL = "https://api.sportsdata.io/v3/mma/scores/json/"; // sportsdata.io API URL prefix, is constant

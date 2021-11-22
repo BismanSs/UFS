@@ -87,6 +87,7 @@ UserInterface::UserInterface(QWidget *parent)
   m_centerLayout = new QVBoxLayout;              // vertical box layout for center panel
 
   m_searchBar = new QLineEdit("Search", this);                 // Search bar
+  connect(m_searchBar, SIGNAL(returnPressed()), this, SLOT(onSearchInputPressed())); //When you press enter on searchbar
   m_searchOptions = new QGroupBox("Search Options", this);     // Search Options radio button group
   m_fightersRadioButton = new QRadioButton("Search Fighters"); // Search Fighters radio button
   m_fightsRadioButton = new QRadioButton("Search Fights");     // Search Fights radio button
@@ -162,10 +163,10 @@ UserInterface::UserInterface(QWidget *parent)
   this->show(); // show the main window
       // Connect signals to appropriate slot
       // connect(m_execButton, &QPushButton::released, this, &MainWindow::handleExec);
-      // connect(m_inputBox, &QLineEdit::returnPressed, this, &MainWindow::handleExec);
+      // connect(m_searchBar, &QLineEdit::returnPressed, this, &MainWindow::handleExec);
 
   // USER CAN VIEW RETRIEVED UFC DATA ACCEPTANCE TEST --------
-  std::cout << Cache::getEvent(103)->getName() << std::endl;
+  //std::cout << Cache::getEvent(103)->getName() << std::endl;
     
 }
 
@@ -362,4 +363,50 @@ void UserInterface::removeCenterPanel() //hides current center panel
     m_centerCompFighterPanel -> setVisible(false);
   }
 
+}
+
+void UserInterface::onSearchInputPressed() {
+    std::string searchInput = m_searchBar->text().toStdString(); //put search input into string
+
+    if(m_fightersRadioButton->isChecked()){ //GETFIGHTERS NEEDS TO BE FIXED (splitString in util)
+        std::map<int, Fighter*> fighterMap = Cache::getFighters();  //getFighters makes the map with data for each fighter seperated
+        //std::cout << fighterMap.begin()->first << std::endl;
+        for (auto it = fighterMap.begin(); it != fighterMap.end(); ++it){
+
+        }
+    }
+    else if(m_fightsRadioButton->isChecked()){  //Will use event data rather than fight data
+
+    }
+    else if(m_eventsRadioButton->isChecked()){
+        std::map<int, Event*> eventMap = Cache::getEvents();
+        bool found = false;
+        char * p;
+        strtol(searchInput.c_str(), &p, 10);    //Check if the input string is an int
+        if(*p){ //If string is not an int (p will be null if it's an int)
+            for (auto it = eventMap.begin(); it != eventMap.end(); ++it){   //For loop through each event stored in the map
+                if (it->second->getShortName() == searchInput){
+                    found = true;
+                    std::cout << it->second->getDay() << std::endl;
+                }
+                else if (it->second->getName() == searchInput){
+                    found = true;
+                    std::cout << it->second->getDay() << std::endl;
+                }
+            }
+        }
+        else{   //Search based off the input as an int
+            int eventNum = std::stoi(searchInput);
+
+            std::map<int, Event*>::iterator it = eventMap.find(eventNum);   //default finds event by eventId
+            if(it != eventMap.end()) {      //Check if key is found and in iterator
+                found = true;
+                std::cout << it->second->getName() << std::endl;
+            }
+        }
+        if(!found){
+            QMessageBox::information(this, "Event error",
+                                     "The event you searched for does not exist or can't be found",QMessageBox::Ok);
+        }
+    }
 }

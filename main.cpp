@@ -45,7 +45,7 @@ int main(int argc, char *argv[]) // entry point
 
   }
 
-  QFile styleSheetFile("./Diffnes.qss");
+  QFile styleSheetFile("Diffnes.qss");
   styleSheetFile.open(QFile::ReadOnly);
   QString styleSheet = QLatin1String(styleSheetFile.readAll());
   

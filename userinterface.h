@@ -105,6 +105,12 @@ private: // private member variables
   QFrame *m_leftFighterLayout;
   QFrame *m_rightFighterLayout;
 
+  // Center panel - search results
+  QGridLayout *m_centerSearchResultLayout;
+  QFrame *m_fighterSearchResultPanel;
+  QFrame *m_fightSearchResultPanel;
+  QFrame *m_eventSearchResultPanel;
+
 
   //In the right panel
   QVBoxLayout *m_rightLayout;
@@ -129,4 +135,5 @@ private slots:
   void onListFightersButtonReleased();
   void onViewBetsButtonReleased();
   void onCompareFightersButtonReleased();
+  void onSearchInputPressed();
 };

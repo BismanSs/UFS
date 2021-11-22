@@ -4,3 +4,7 @@ moc_*
 *.o
 Makefile
 .qmake.stash
+/UFS.app/
+/boost/
+/cmake-build-debug/
+/CMakeLists.txt
