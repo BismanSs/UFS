@@ -4,20 +4,23 @@
 #include "notification.h"
 #include "fighter.h"
 
-#include <QObject>
+#include <QFrame>
+#include <QVBoxLayout>
+#include <QLabel>
 
 #include <vector>
 #include <map>
 #include <thread> 
 #include <chrono>
+#include <iostream>
 
-class NotificationHandler : public QObject {
+class NotificationHandler : public QFrame {
     Q_OBJECT
 public:
-    explicit NotificationHandler(QObject *parent = nullptr);
+    explicit NotificationHandler(QWidget *parent = nullptr);
     ~NotificationHandler();
 
-    void run(void (*f)(), bool redactYear = false);
+    void run(bool redactYear = false);
     void stop();
 
     static bool isToggleOn();
@@ -48,7 +51,7 @@ public:
     std::map<std::string, Event*> getUpcomingEvents();
     // Event* getUpcomingEventByDate(std::string date);
 private:
-    static void update();
+    void handleNotifications();
 
 public:
     static bool toggleOn;
@@ -59,4 +62,6 @@ private:
     std::map<std::string, Event*> upcomingEvents;
 
     std::thread runThread;
+
+    QVBoxLayout* m_panelLayout;
 };

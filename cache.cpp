@@ -39,7 +39,9 @@ QObject* Cache::getAPIHandlersParent() {
 std::map<int, Fighter*> Cache::getFighters() {
     if (isInit) { // check if cache has been initialized
         if (fighters.empty()) {
+
             APIHandler apiHandler = APIHandler(sportsDataAPIKey, apiHandlersParent);
+
             std::vector<Fighter*> fightersVec = apiHandler.getAllFighters();
             for(long unsigned int i = 0; i < fightersVec.size(); i++) {
                 fighters.emplace(fightersVec.at(i)->getFighterID(), fightersVec.at(i));
@@ -113,17 +115,11 @@ Fight* Cache::getFight(int fightID) {
 // get event pointer by eventID
 Event* Cache::getEvent(int eventID) {
     if (isInit) { // check if cache has been initialized
-        std::cout << "2" << std::endl;
         if (events.empty()) {
-        std::cout << "3" << std::endl;
             APIHandler apiHandler = APIHandler(sportsDataAPIKey, apiHandlersParent);
-            std::cout << "4" << std::endl;
             std::vector<Event*> eventsVec = apiHandler.getAllEvents();
-            std::cout << "" << std::endl;
             for(long unsigned int i = 0; i < eventsVec.size(); i++) {
-                std::cout << eventsVec.at(i)->getEventID() << std::endl;
                 events.emplace(eventsVec.at(i)->getEventID(), eventsVec.at(i));
-                std::cout << events.at(eventsVec.at(i)->getEventID())->getEventID() << std::endl;
             }
         }
         return events.at(eventID);

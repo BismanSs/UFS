@@ -129,9 +129,10 @@ UserInterface::UserInterface(QWidget *parent)
   m_newsAggregatorLabel = new QLabel("News Aggregator", this);                    // News Aggregator label
   m_newsAggregatorPanel = new QFrame(this);                                       // News Aggregator frame
   m_viewAllNewsButton = new QPushButton("View All News", this);                   // View All News button
-  m_notificationsLabel = new QLabel("Notifications", this);                       // Notifications label
-  m_notificationsPanel = new QFrame(this);                                        // Notifications frame
   m_viewAllNotificationsButton = new QPushButton("View All Notifications", this); // View All Notifications button
+  m_notificationsLabel = new QLabel("Notifications", this);   
+  m_notificationsPanel = new NotificationHandler(this);                                        // Notifications frame
+  
 
   // set all elements same fixed width
   m_newsAggregatorLabel->setFixedWidth(rightPanelSize.width() - 20);
@@ -149,15 +150,9 @@ UserInterface::UserInterface(QWidget *parent)
   m_notificationsPanel->setFixedHeight(rightPanelSize.height() / 3.0 - 80);
   m_viewAllNotificationsButton->setFixedHeight(50);
 
-
-  m_notificationsPanelLayout = new QVBoxLayout;
-  m_notificationsPanel->setLayout(m_notificationsPanelLayout);
-
-  notificationHandler = new NotificationHandler(this);
-  notificationHandler->run(UserInterface::updateNotificationsThread, true); // running with redactYear flag set to true
-  // std::cout << notificationHandler->getUpcomingEvents() << std::endl;
-  std::cout << notificationHandler->getUpcomingEvents().size() << std::endl;
-  if (notificationHandler->getUpcomingEvents().empty()) {
+  m_notificationsPanel->run(true); // running with redactYear flag set to true
+  
+  if (m_notificationsPanel->getUpcomingEvents().empty()) {
     std::cout << "fafaefa" << std::endl;
     delete m_viewAllNotificationsButton;
     m_viewAllNotificationsButton = new QPushButton("No upcoming events, 2022 not yet supported.", this);
@@ -181,7 +176,7 @@ UserInterface::UserInterface(QWidget *parent)
       // connect(m_inputBox, &QLineEdit::returnPressed, this, &MainWindow::handleExec);
 
   // USER CAN VIEW RETRIEVED UFC DATA ACCEPTANCE TEST --------
-  // std::cout << Cache::getEvent(103)->getName() << std::endl;
+  std::cout << Cache::getFighters().at(140000025)->getLastName() << std::endl;
   
 }
 
@@ -192,8 +187,8 @@ UserInterface::~UserInterface()
   delete m_mainLayout; // delete heap allocated main layout
   // DELETE ALL OTHER HEAP ALLOCATED OBJECTS HERE
 
-  notificationHandler->stop();
-  delete notificationHandler;
+  m_notificationsPanel->stop();
+  delete m_notificationsPanel;
 }
 
 // creates and returns a heap allocated search results content panel
@@ -381,14 +376,4 @@ void UserInterface::removeCenterPanel() //hides current center panel
     m_centerCompFighterPanel -> setVisible(false);
   }
 
-}
-
-void UserInterface::updateNotificationsThread() {
-  while(NotificationHandler::toggleOn) {
-      std::this_thread::sleep_for (std::chrono::seconds(10));
-
-      this->notificationHandler->addNotification(new Notification(0, "WOW!", "wh", "hhh"));
-      m_notificationsPanelLayout->addWidget(this->notificationHandler->getNotificationByIndex(0)->genNotificationFrame());
-        
-    }
 }

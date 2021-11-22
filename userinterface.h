@@ -52,7 +52,6 @@ private: // private methods
   QFrame *createAllNotificationsContentPanel();
 
   void removeCenterPanel();
-  static void updateNotificationsThread();
 
   // handles on X pressed close event
   void closeEvent(QCloseEvent *event);
@@ -115,9 +114,11 @@ private: // private member variables
   QLabel *m_newsAggregatorLabel;
   QFrame *m_newsAggregatorPanel;
   QPushButton *m_viewAllNewsButton;
-  QLabel *m_notificationsLabel;
-  QFrame *m_notificationsPanel;
+
   QPushButton *m_viewAllNotificationsButton;
+  QLabel *m_notificationsLabel;
+  NotificationHandler *m_notificationsPanel;
+
 
   //miscellaneous
   QRect screen;//sets screen dimensions
@@ -126,9 +127,6 @@ private: // private member variables
   bool checkViewBetsIsSet = false;
   bool checkCompFightersIsSet = false;
   std::string currentCenterPanel = "home"; //possible values "home", "schedule", "bets", "compfighters", "listfighters"
-
-  NotificationHandler* notificationHandler;
-  QVBoxLayout* m_notificationsPanelLayout;
 
 private slots:
   void onViewScheduleButtonReleased(); //handler for "View UFC Schedule" Button

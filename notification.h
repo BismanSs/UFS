@@ -1,6 +1,6 @@
 #pragma once
 
-#include <QObject>
+#include <QWidget>
 #include <QLabel>
 #include <QFrame>
 #include <QVBoxLayout>
@@ -9,11 +9,11 @@
 #include <chrono>
 #include <ctime>
 
-class Notification : public QObject{
+class Notification : public QFrame{
     Q_OBJECT
 public:
-    Notification(int notificationID, QObject *parent = nullptr);
-    Notification(int notificationID, std::string title, std::string shortDesc, std::string longDesc);
+    Notification(int notificationID, std::string title, std::string shortDesc, std::string longDesc, QWidget *parent = nullptr);
+    Notification(int notificationID, std::string title, std::string shortDesc, std::string longDesc, std::string timestamp, QWidget *parent = nullptr, bool expand = false);
 
     int getNotificationID();
 
@@ -28,8 +28,7 @@ public:
 
     std::string getTimestamp();
 
-    QFrame* genNotificationFrame();
-    void updateNotificationFrame();
+    Notification* expand();
 
     ~Notification();
 private:
@@ -39,7 +38,9 @@ private:
     std::string longDesc;
     std::string timestamp;
 
-    QFrame* notificationFrame;
     QVBoxLayout* notificationLayout;
     QLabel* titleLabel;
+    QLabel* shortDescLabel;
+    QLabel* longDescLabel;
+    QLabel* timestampLabel;
 };

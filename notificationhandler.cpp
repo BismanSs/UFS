@@ -2,9 +2,12 @@
 
 bool NotificationHandler::toggleOn = false;
 
-NotificationHandler::NotificationHandler() : QObject(parent){
+NotificationHandler::NotificationHandler(QWidget *parent) : QFrame(parent){
     this->notifications = std::vector<Notification*>();
     this->filterFighters = std::vector<Fighter*>();
+
+
+    this->m_panelLayout = new QVBoxLayout;
 }
 
 NotificationHandler::~NotificationHandler() {
@@ -12,7 +15,7 @@ NotificationHandler::~NotificationHandler() {
     this->clearFilterFighters();
 }
 
-void NotificationHandler::run(void (*f)(), bool redactYear) {
+void NotificationHandler::run(bool redactYear) {
     NotificationHandler::toggleOn = true;
 
     std::map<int, Event*> events = Cache::getEvents();
@@ -27,12 +30,11 @@ void NotificationHandler::run(void (*f)(), bool redactYear) {
         if(std::stoi(parts.at(0)) > 1900 + timeInfo->tm_year || (std::stoi(parts.at(0)) == 1900 + timeInfo->tm_year && std::stoi(parts.at(1)) >= timeInfo->tm_mon+1 && std::stoi(Util::splitString(parts.at(2), "T").at(0)) >= timeInfo->tm_mday
             && std::stoi(Util::splitString(parts2.at(0), "T").at(1)) >= timeInfo->tm_hour)
         ) {
-            std::cout << it->second->getDateTime() << "    " << timeInfo->tm_year << "    " << timeInfo->tm_mon << "     " << timeInfo->tm_mday << std::endl;
             this->upcomingEvents.emplace(it->second->getDateTime(), it->second);
         }
     }
 
-    this->runThread = std::thread(f);
+    this->runThread = std::thread(&NotificationHandler::handleNotifications, this);
 }
 
 void NotificationHandler::stop() {
@@ -40,8 +42,11 @@ void NotificationHandler::stop() {
     this->runThread.join();
 }
 
-void NotificationHandler::update() {
-    
+void NotificationHandler::handleNotifications() {
+    while(NotificationHandler::toggleOn) {
+        std::this_thread::sleep_for (std::chrono::seconds(2));
+        this->addNotification(new Notification(0, "Title", "Short description", "Long desctiption"));
+    }
 }
 
 bool NotificationHandler::isToggleOn() {
@@ -79,6 +84,8 @@ void NotificationHandler::setNotifications(std::vector<Notification*> notificati
     
 void NotificationHandler::addNotification(Notification* notification) {
     this->notifications.push_back(notification);
+    this->m_panelLayout->addWidget(notification);
+    this->update();
 }
     
 void NotificationHandler::removeNotification(Notification* notification) {
