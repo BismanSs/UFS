@@ -130,11 +130,12 @@ UserInterface::UserInterface(QWidget *parent)
   m_newsAggregatorLabel = new QLabel("News Aggregator", this);                    // News Aggregator label
   m_newsAggregatorPanel = new QFrame(this);                                       // News Aggregator frame
   m_viewAllNewsButton = new QPushButton("View All News", this);                   // View All News button
-  m_notificationsLabel = new QLabel("Notifications", this);                       // Notifications label
-  m_notificationsPanel = new QFrame(this);                                        // Notifications frame
   m_viewAllNotificationsButton = new QPushButton("View All Notifications", this); // View All Notifications button
+  m_notificationsLabel = new QLabel("Notifications", this);
+  m_notificationsPanel = new NotificationHandler(this);                                        // Notifications frame
 
-  // set all elements same fixed width
+
+    // set all elements same fixed width
   m_newsAggregatorLabel->setFixedWidth(rightPanelSize.width() - 20);
   m_newsAggregatorPanel->setFixedWidth(rightPanelSize.width() - 20);
   m_viewAllNewsButton->setFixedWidth(rightPanelSize.width() - 20);
@@ -149,6 +150,16 @@ UserInterface::UserInterface(QWidget *parent)
   m_notificationsLabel->setFixedHeight(30);
   m_notificationsPanel->setFixedHeight(rightPanelSize.height() / 3.0 - 80);
   m_viewAllNotificationsButton->setFixedHeight(50);
+
+  m_notificationsPanel->run(true); // running with redactYear flag set to true
+
+  if (m_notificationsPanel->getUpcomingEvents().empty()) {
+      std::cout << "fafaefa" << std::endl;
+      delete m_viewAllNotificationsButton;
+      m_viewAllNotificationsButton = new QPushButton("No upcoming events, 2022 not yet supported.", this);
+      m_viewAllNotificationsButton->setEnabled(false);
+  }
+
 
   // add elements to the right panel
   m_rightLayout->addWidget(m_newsAggregatorLabel);
@@ -167,7 +178,7 @@ UserInterface::UserInterface(QWidget *parent)
 
   // USER CAN VIEW RETRIEVED UFC DATA ACCEPTANCE TEST --------
   //std::cout << Cache::getEvent(103)->getName() << std::endl;
-    
+
 }
 
 // deconstructor
@@ -176,6 +187,9 @@ UserInterface::~UserInterface()
 
   delete m_mainLayout; // delete heap allocated main layout
   // DELETE ALL OTHER HEAP ALLOCATED OBJECTS HERE
+
+  m_notificationsPanel->stop();
+  delete m_notificationsPanel;
 }
 
 // creates and returns a heap allocated search results content panel
@@ -367,12 +381,25 @@ void UserInterface::removeCenterPanel() //hides current center panel
 
 void UserInterface::onSearchInputPressed() {
     std::string searchInput = m_searchBar->text().toStdString(); //put search input into string
+    bool found = false;
 
-    if(m_fightersRadioButton->isChecked()){ //GETFIGHTERS NEEDS TO BE FIXED (splitString in util)
+    if(m_fightersRadioButton->isChecked()){
         std::map<int, Fighter*> fighterMap = Cache::getFighters();  //getFighters makes the map with data for each fighter seperated
-        //std::cout << fighterMap.begin()->first << std::endl;
-        for (auto it = fighterMap.begin(); it != fighterMap.end(); ++it){
 
+        for (auto it = fighterMap.begin(); it != fighterMap.end(); ++it){
+            if(boost::to_lower_copy(it->second->getLastName()) == boost::to_lower_copy(searchInput)){
+                found = true;
+                std::string searchOutput = it->second->getFirstName() + " " + it->second->getLastName() + " AKA: " +
+                        it->second->getNickname() + "\nBirthdate: " + it->second->getBirthDate() + "\nWeightClass: " +
+                        it->second->getWeightClass() + "\nHeight: " + std::to_string(it->second->getHeight()) +
+                        "\tReach:" + std::to_string(it->second->getReach()) + "\nWins: " +
+                        std::to_string(it->second->getWins()) + "\tLosses: " + std::to_string(it->second->getLosses());
+
+                QTextEdit *searchResultsText = new QTextEdit();
+                searchResultsText->setEnabled(false);
+                searchResultsText->setText(QString::fromStdString(searchOutput));
+                m_centerLayout->addWidget(searchResultsText);
+            }
         }
     }
     else if(m_fightsRadioButton->isChecked()){  //Will use event data rather than fight data
@@ -380,18 +407,36 @@ void UserInterface::onSearchInputPressed() {
     }
     else if(m_eventsRadioButton->isChecked()){
         std::map<int, Event*> eventMap = Cache::getEvents();
-        bool found = false;
+
         char * p;
         strtol(searchInput.c_str(), &p, 10);    //Check if the input string is an int
         if(*p){ //If string is not an int (p will be null if it's an int)
             for (auto it = eventMap.begin(); it != eventMap.end(); ++it){   //For loop through each event stored in the map
                 if (it->second->getShortName() == searchInput){
                     found = true;
-                    std::cout << it->second->getDay() << std::endl;
+
+                    std::string searchOutput = it->second->getName() + ":\t" + it->second->getShortName() + "\n" +
+                                               it->second->getDateTime() + "\nStatus: " + it->second->getStatus() + "\nEventID: " +
+                                               std::to_string(it->second->getEventID());
+
+                    QFrame *eventResultFrame = new QFrame(createSearchResultsContentPanel());   //Not used as of now
+                    QTextEdit *searchResultsText = new QTextEdit();
+                    searchResultsText->setEnabled(false);
+                    searchResultsText->setText(QString::fromStdString(searchOutput));
+                    m_centerLayout->addWidget(searchResultsText);
                 }
                 else if (it->second->getName() == searchInput){
                     found = true;
-                    std::cout << it->second->getDay() << std::endl;
+
+                    std::string searchOutput = it->second->getName() + ":\t" + it->second->getShortName() + "\n" +
+                                               it->second->getDateTime() + "\nStatus: " + it->second->getStatus() + "\nEventID: " +
+                                               std::to_string(it->second->getEventID());
+
+                    QFrame *eventResultFrame = new QFrame(createSearchResultsContentPanel());
+                    QTextEdit *searchResultsText = new QTextEdit();
+                    searchResultsText->setEnabled(false);
+                    searchResultsText->setText(QString::fromStdString(searchOutput));
+                    m_centerLayout->addWidget(searchResultsText);
                 }
             }
         }
@@ -401,12 +446,21 @@ void UserInterface::onSearchInputPressed() {
             std::map<int, Event*>::iterator it = eventMap.find(eventNum);   //default finds event by eventId
             if(it != eventMap.end()) {      //Check if key is found and in iterator
                 found = true;
-                std::cout << it->second->getName() << std::endl;
+
+                std::string searchOutput = it->second->getName() + ":\t" + it->second->getShortName() + "\n" +
+                        it->second->getDateTime() + "\nStatus: " + it->second->getStatus() + "\nEventID: " +
+                        std::to_string(it->second->getEventID());
+
+                QFrame *eventResultFrame = new QFrame(createSearchResultsContentPanel());   //Not used as of now
+                QTextEdit *searchResultsText = new QTextEdit();
+                searchResultsText->setEnabled(false);
+                searchResultsText->setText(QString::fromStdString(searchOutput));
+                m_centerLayout->addWidget(searchResultsText);
             }
         }
-        if(!found){
-            QMessageBox::information(this, "Event error",
-                                     "The event you searched for does not exist or can't be found",QMessageBox::Ok);
-        }
+    }
+    if(!found){
+        QMessageBox::information(this, "Search error",
+                                 "Your search term does not exist or can't be found",QMessageBox::Ok);
     }
 }

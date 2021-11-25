@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "userinterface.h"
+#include "notificationhandler.h"
 #include "cache.h"
 #include <QFile>
 

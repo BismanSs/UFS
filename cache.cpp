@@ -39,7 +39,9 @@ QObject* Cache::getAPIHandlersParent() {
 std::map<int, Fighter*> Cache::getFighters() {
     if (isInit) { // check if cache has been initialized
         if (fighters.empty()) {
+
             APIHandler *apiHandler = new APIHandler(sportsDataAPIKey, apiHandlersParent);
+
             std::vector<Fighter*> fightersVec = apiHandler->getAllFighters();
             for(long unsigned int i = 0; i < fightersVec.size(); i++) {
                 fighters.emplace(fightersVec.at(i)->getFighterID(), fightersVec.at(i));

@@ -18,7 +18,6 @@ std::vector<Event*> APIHandler::getAllEvents() {
     QNetworkAccessManager *manager = new QNetworkAccessManager(this); // manages http requests, sets this as parent
 
     for (int season = 2020; season <= 2021; season++) { // only two seasons offered by the free api
-        //std::cout << season << std::endl;
         QNetworkRequest request = QNetworkRequest(QUrl((SPORTSDATA_API_URL + "Schedule/UFC/" + std::to_string(season) + "?key=" + sportsDataAPIKey).c_str()));
         request.setRawHeader("Content-Type", "application/x-www-form-urlencoded");
         QNetworkReply *response = manager->get(request); // HTTP response object from given URL
@@ -100,10 +99,10 @@ std::vector<Event*> APIHandler::parseJSONAllEvents(std::string json) {
 
 // parses json of all fighters into a Fighter* vector
 std::vector<Fighter*> APIHandler::parseJSONAllFighters(std::string json) {
-    std::vector<std::string> fighters = Util::splitString(json, "FighterId"); // split the json at "FighterId"
+    std::vector<std::string> fighters = Util::splitString(json, "},{"); // split the json at "FighterId"
     std::vector<Fighter*> returnVec;
 
-    for (long unsigned int i = 1; i < fighters.size(); i++) { // loop through fighters
+    for (long unsigned int i = 0; i < fighters.size(); i++) { // loop through fighters
         returnVec.push_back(parseJSONFighter(fighters.at(i))); // parse single fighter and add to vector
     }
     return returnVec;
@@ -151,6 +150,8 @@ Event* APIHandler::parseJSONEvent(std::string json) {
 
 // parses json and creates a heap allocated Fight object
 Fight* APIHandler::parseJSONFight(std::string json) {
+
+    json = "\"FightId" + json;
     while (json.find(", ", 0) != std::string::npos)
         json.replace(json.find(", ", 0), 2, " ");
     std::vector<std::string> memberVariables = Util::splitString(json, ","); // split json at ","
@@ -257,38 +258,74 @@ Fighter* APIHandler::parseJSONFighter(std::string json) {
         memberVariables.at(i) = formatLine(memberVariables.at(i));
     }
 
-    return new Fighter( // create heap allocated Fighter object and return pointer
-            std::stoi(memberVariables.at(0)), // fighterID
-            memberVariables.at(1), // firstName
-            memberVariables.at(2), // lastName
-            memberVariables.at(3), // nickname
-            memberVariables.at(4), // weightClass
-            memberVariables.at(5), // birthDate
-            std::stof(memberVariables.at(6)), // height
-            std::stof(memberVariables.at(7)), // weight
-            std::stof(memberVariables.at(8)), // reach
-            std::stoi(memberVariables.at(9)), // wins
-            std::stoi(memberVariables.at(10)), // losses
-            std::stoi(memberVariables.at(11)), // draws
-            std::stoi(memberVariables.at(12)), // noContests
-            std::stoi(memberVariables.at(13)), // technicalKnockouts
-            std::stoi(memberVariables.at(14)), // technicalKnockoutLosses
-            std::stoi(memberVariables.at(15)), // submissions
-            std::stoi(memberVariables.at(16)), // submissionLosses
-            std::stoi(memberVariables.at(17)), // titleWins
-            std::stoi(memberVariables.at(18)), // titleLosses
-            std::stoi(memberVariables.at(19)),  // titleDraws
-            std::stof(memberVariables.at(23)), // sigStrikesLandedPerMinute (jump into career stats and append)
-            std::stof(memberVariables.at(24)), // sigStrikeAccuracy
-            std::stof(memberVariables.at(25)), // takedownAverage
-            std::stof(memberVariables.at(26)), // submissionAverage
-            std::stof(memberVariables.at(27)), // knockoutPercentage
-            std::stof(memberVariables.at(28)), // technicalKnockoutPercentage
-            std::stof(memberVariables.at(29)) // decisionPercentage
-    );
+    if (memberVariables.size() < 23) {
+        return new Fighter( // create heap allocated Fighter object and return pointer
+                std::stoi(memberVariables.at(0)), // fighterID
+                memberVariables.at(1), // firstName
+                memberVariables.at(2), // lastName
+                memberVariables.at(3), // nickname
+                memberVariables.at(4), // weightClass
+                memberVariables.at(5), // birthDate
+                std::stof(memberVariables.at(6)), // height
+                std::stof(memberVariables.at(7)), // weight
+                std::stof(memberVariables.at(8)), // reach
+                std::stoi(memberVariables.at(9)), // wins
+                std::stoi(memberVariables.at(10)), // losses
+                std::stoi(memberVariables.at(11)), // draws
+                std::stoi(memberVariables.at(12)), // noContests
+                std::stoi(memberVariables.at(13)), // technicalKnockouts
+                std::stoi(memberVariables.at(14)), // technicalKnockoutLosses
+                std::stoi(memberVariables.at(15)), // submissions
+                std::stoi(memberVariables.at(16)), // submissionLosses
+                std::stoi(memberVariables.at(17)), // titleWins
+                std::stoi(memberVariables.at(18)), // titleLosses
+                std::stoi(memberVariables.at(19)),  // titleDraws
+                0.0, // sigStrikesLandedPerMinute (jump into career stats and append)
+                0.0, // sigStrikeAccuracy
+                0.0, // takedownAverage
+                0.0, // submissionAverage
+                0.0, // knockoutPercentage
+                0.0, // technicalKnockoutPercentage
+                0.0 // decisionPercentage
+        );
+    } else {
+        return new Fighter( // create heap allocated Fighter object and return pointer
+                std::stoi(memberVariables.at(0)), // fighterID
+                memberVariables.at(1), // firstName
+                memberVariables.at(2), // lastName
+                memberVariables.at(3), // nickname
+                memberVariables.at(4), // weightClass
+                memberVariables.at(5), // birthDate
+                std::stof(memberVariables.at(6)), // height
+                std::stof(memberVariables.at(7)), // weight
+                std::stof(memberVariables.at(8)), // reach
+                std::stoi(memberVariables.at(9)), // wins
+                std::stoi(memberVariables.at(10)), // losses
+                std::stoi(memberVariables.at(11)), // draws
+                std::stoi(memberVariables.at(12)), // noContests
+                std::stoi(memberVariables.at(13)), // technicalKnockouts
+                std::stoi(memberVariables.at(14)), // technicalKnockoutLosses
+                std::stoi(memberVariables.at(15)), // submissions
+                std::stoi(memberVariables.at(16)), // submissionLosses
+                std::stoi(memberVariables.at(17)), // titleWins
+                std::stoi(memberVariables.at(18)), // titleLosses
+                std::stoi(memberVariables.at(19)),  // titleDraws
+                std::stof(memberVariables.at(23)), // sigStrikesLandedPerMinute (jump into career stats and append)
+                std::stof(memberVariables.at(24)), // sigStrikeAccuracy
+                std::stof(memberVariables.at(25)), // takedownAverage
+                std::stof(memberVariables.at(26)), // submissionAverage
+                std::stof(memberVariables.at(27)), // knockoutPercentage
+                std::stof(memberVariables.at(28)), // technicalKnockoutPercentage
+                std::stof(memberVariables.at(29)) // decisionPercentage
+        );
+    }
 }
 
 std::string APIHandler::formatLine(std::string line) {
+    if (line.substr(0, 14).compare("\"CareerStats\":") == 0) line = line.substr(14);
+
+    line = Util::removeAllChar(line, '[');
+    line = Util::removeAllChar(line, '{');
     std::size_t pos = 0;
     std::size_t secLastPos = std::string::npos;
     std::size_t lastPos = std::string::npos;
@@ -307,6 +344,8 @@ std::string APIHandler::formatLine(std::string line) {
     returnStr = Util::removeAllChar(returnStr, '"'); // remove any braces
     returnStr = Util::removeAllChar(returnStr, ']');
     returnStr = Util::removeAllChar(returnStr, '}');
+
+    if (returnStr.compare("null") == 0) return "0";
 
     return returnStr;
 }

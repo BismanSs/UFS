@@ -25,7 +25,9 @@
 
 #include <vector>
 #include <iostream>
+#include <map>
 
+#include "notificationhandler.h"
 #include "cache.h"
  
  // represents the programs user interface, ie the main window, inherits QMainWindow
@@ -48,6 +50,7 @@ private: // private methods
   QFrame *createSettingsContentPanel();
   QFrame *createAllNewsContentPanel();
   QFrame *createAllNotificationsContentPanel();
+
   void removeCenterPanel();
 
   // handles on X pressed close event
@@ -106,7 +109,6 @@ private: // private member variables
   QFrame *m_rightFighterLayout;
 
   // Center panel - search results
-  QGridLayout *m_centerSearchResultLayout;
   QFrame *m_fighterSearchResultPanel;
   QFrame *m_fightSearchResultPanel;
   QFrame *m_eventSearchResultPanel;
@@ -117,9 +119,10 @@ private: // private member variables
   QLabel *m_newsAggregatorLabel;
   QFrame *m_newsAggregatorPanel;
   QPushButton *m_viewAllNewsButton;
-  QLabel *m_notificationsLabel;
-  QFrame *m_notificationsPanel;
+
   QPushButton *m_viewAllNotificationsButton;
+  QLabel *m_notificationsLabel;
+  NotificationHandler *m_notificationsPanel;
 
   //miscellaneous
   QRect screen;//sets screen dimensions
