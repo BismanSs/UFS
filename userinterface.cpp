@@ -381,22 +381,28 @@ void UserInterface::removeCenterPanel() //hides current center panel
 
 void UserInterface::onSearchInputPressed() {
     std::string searchInput = m_searchBar->text().toStdString(); //put search input into string
-    bool found = false;
+    bool found = false; //If found stays false until the end then must have found no results
 
     if(m_fightersRadioButton->isChecked()){
         std::map<int, Fighter*> fighterMap = Cache::getFighters();  //getFighters makes the map with data for each fighter seperated
 
-        for (auto it = fighterMap.begin(); it != fighterMap.end(); ++it){
+        for (auto it = fighterMap.begin(); it != fighterMap.end(); ++it){   //Loops through fighterMap with iterator it
             if(boost::to_lower_copy(it->second->getLastName()) == boost::to_lower_copy(searchInput)){
+                //If statement checks if searchInput and current member of map are equal when both are lowercase
                 found = true;
+                //Assembling the output string with all data
                 std::string searchOutput = it->second->getFirstName() + " " + it->second->getLastName() + " AKA: " +
                         it->second->getNickname() + "\nBirthdate: " + it->second->getBirthDate() + "\nWeightClass: " +
                         it->second->getWeightClass() + "\nHeight: " + std::to_string(it->second->getHeight()) +
                         "\tReach:" + std::to_string(it->second->getReach()) + "\nWins: " +
-                        std::to_string(it->second->getWins()) + "\tLosses: " + std::to_string(it->second->getLosses());
+                        std::to_string(it->second->getWins()) + "\tLosses: " + std::to_string(it->second->getLosses()) +
+                        "\tDecisions %: " + std::to_string(it->second->getDecisionPercentage()) + "\nKO %" +
+                        std::to_string(it->second->getKnockoutPercentage()) + "\tTKOs: " +
+                        std::to_string(it->second->getTechnicalKnockouts()) + "\nTitle Wins: " +
+                        std::to_string(it->second->getTitleWins());
 
-                QTextEdit *searchResultsText = new QTextEdit();
-                searchResultsText->setEnabled(false);
+                QTextEdit *searchResultsText = new QTextEdit(); //Using qtextedit to display results
+                searchResultsText->setEnabled(false);   //Make it read only
                 searchResultsText->setText(QString::fromStdString(searchOutput));
                 m_centerLayout->addWidget(searchResultsText);
             }
@@ -414,7 +420,7 @@ void UserInterface::onSearchInputPressed() {
             for (auto it = eventMap.begin(); it != eventMap.end(); ++it){   //For loop through each event stored in the map
                 if (it->second->getShortName() == searchInput){
                     found = true;
-
+                    //Assembling output string with all data
                     std::string searchOutput = it->second->getName() + ":\t" + it->second->getShortName() + "\n" +
                                                it->second->getDateTime() + "\nStatus: " + it->second->getStatus() + "\nEventID: " +
                                                std::to_string(it->second->getEventID());
@@ -459,7 +465,7 @@ void UserInterface::onSearchInputPressed() {
             }
         }
     }
-    if(!found){
+    if(!found){ //Error message popup when no matching results are found after the search
         QMessageBox::information(this, "Search error",
                                  "Your search term does not exist or can't be found",QMessageBox::Ok);
     }
