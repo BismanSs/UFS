@@ -22,6 +22,7 @@
 #include <string>
 #include <QListWidget>
 #include <QtWidgets>
+#include <QScrollArea>
 
 #include <vector>
 #include <iostream>
@@ -109,10 +110,8 @@ private: // private member variables
   QFrame *m_rightFighterLayout;
 
   // Center panel - search results
-  QFrame *m_fighterSearchResultPanel;
-  QFrame *m_fightSearchResultPanel;
-  QFrame *m_eventSearchResultPanel;
-
+  QScrollArea *m_searchScroll;
+  QVBoxLayout *m_searchLayout;
 
   //In the right panel
   QVBoxLayout *m_rightLayout;

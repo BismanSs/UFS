@@ -113,12 +113,24 @@ UserInterface::UserInterface(QWidget *parent)
 
   m_searchOptions->setLayout(radioLayout); // set radio group box layout
 
+  //Create scroll area for search results
+  m_searchScroll = new QScrollArea;
+  m_searchScroll->setFixedWidth(centerPanelSize.width() - 30);
+  m_searchScroll->setFixedHeight(centerPanelSize.height() - 200);
+  m_searchScroll->setWidgetResizable(true);
+
+  //QWidget holds layout for the results to be added to
+  QWidget* resultContainer = new QWidget();
+  m_searchLayout = new QVBoxLayout(resultContainer);
+  m_searchScroll->setWidget(resultContainer);   //Can't be set as layout, done through QWidget
+
   // add search bar and radio button group to center layout
   m_centerLayout->addWidget(m_searchBar);
   m_centerLayout->addWidget(m_searchOptions);
 
   // create and add search results content panel to center layout on construction, replace with other panels later as needed
-  m_centerLayout->addWidget(createSearchResultsContentPanel(), 0, Qt::AlignBottom);
+  //m_centerLayout->addWidget(createSearchResultsContentPanel(), 0, Qt::AlignBottom);
+  m_centerLayout->addWidget(m_searchScroll, Qt::AlignBottom); //adding scroll widget last
 
   m_centerPanel->setLayout(m_centerLayout); // set layout of center panel
   // ------------------------------
@@ -404,14 +416,16 @@ void UserInterface::onSearchInputPressed() {
                 QTextEdit *searchResultsText = new QTextEdit(); //Using qtextedit to display results
                 searchResultsText->setEnabled(false);   //Make it read only
                 searchResultsText->setText(QString::fromStdString(searchOutput));
-                m_centerLayout->addWidget(searchResultsText);
+                //Find and set the minimum height of the resulting QTextEdit box so all info is visible
+                QFontMetrics m (searchResultsText->font());
+                int rowHeight = m.lineSpacing();
+                searchResultsText->setMinimumHeight(rowHeight * 8);
+                //Add to m_searchLayout which is in the QScrollBar already
+                m_searchLayout->addWidget(searchResultsText);
             }
         }
     }
-    else if(m_fightsRadioButton->isChecked()){  //Will use event data rather than fight data
-
-    }
-    else if(m_eventsRadioButton->isChecked()){
+    else if(m_eventsRadioButton->isChecked() || m_fightsRadioButton->isChecked()){
         std::map<int, Event*> eventMap = Cache::getEvents();
 
         char * p;
@@ -423,13 +437,18 @@ void UserInterface::onSearchInputPressed() {
                     //Assembling output string with all data
                     std::string searchOutput = it->second->getName() + ":\t" + it->second->getShortName() + "\n" +
                                                it->second->getDateTime() + "\nStatus: " + it->second->getStatus() + "\nEventID: " +
-                                               std::to_string(it->second->getEventID());
+                                               std::to_string(it->second->getEventID()) + "\nSeason: " +
+                                               std::to_string(it->second->getSeason());
 
-                    QFrame *eventResultFrame = new QFrame(createSearchResultsContentPanel());   //Not used as of now
                     QTextEdit *searchResultsText = new QTextEdit();
                     searchResultsText->setEnabled(false);
                     searchResultsText->setText(QString::fromStdString(searchOutput));
-                    m_centerLayout->addWidget(searchResultsText);
+
+                    QFontMetrics m (searchResultsText->font());
+                    int rowHeight = m.lineSpacing();
+                    searchResultsText->setMinimumHeight(rowHeight * 7);
+
+                    m_searchLayout->addWidget(searchResultsText);
                 }
                 else if (it->second->getName() == searchInput){
                     found = true;
@@ -438,11 +457,15 @@ void UserInterface::onSearchInputPressed() {
                                                it->second->getDateTime() + "\nStatus: " + it->second->getStatus() + "\nEventID: " +
                                                std::to_string(it->second->getEventID());
 
-                    QFrame *eventResultFrame = new QFrame(createSearchResultsContentPanel());
                     QTextEdit *searchResultsText = new QTextEdit();
                     searchResultsText->setEnabled(false);
                     searchResultsText->setText(QString::fromStdString(searchOutput));
-                    m_centerLayout->addWidget(searchResultsText);
+
+                    QFontMetrics m (searchResultsText->font());
+                    int rowHeight = m.lineSpacing();
+                    searchResultsText->setMinimumHeight(rowHeight * 7);
+
+                    m_searchLayout->addWidget(searchResultsText);
                 }
             }
         }
@@ -457,11 +480,15 @@ void UserInterface::onSearchInputPressed() {
                         it->second->getDateTime() + "\nStatus: " + it->second->getStatus() + "\nEventID: " +
                         std::to_string(it->second->getEventID());
 
-                QFrame *eventResultFrame = new QFrame(createSearchResultsContentPanel());   //Not used as of now
                 QTextEdit *searchResultsText = new QTextEdit();
                 searchResultsText->setEnabled(false);
                 searchResultsText->setText(QString::fromStdString(searchOutput));
-                m_centerLayout->addWidget(searchResultsText);
+
+                QFontMetrics m (searchResultsText->font());
+                int rowHeight = m.lineSpacing();
+                searchResultsText->setMinimumHeight(rowHeight * 7);
+
+                m_searchLayout->addWidget(searchResultsText);
             }
         }
     }
