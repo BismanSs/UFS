@@ -10,6 +10,7 @@ std::vector<std::string> Util::splitString(std::string rawText, std::string deli
     int start = 0;
     int end = 0;
     while(end!=std::string::npos){
+        // TODO remove this if not needed
         // std::cout << delimiter << std::endl;
         // if (delimiter.compare(",") == 0) {
         //     std::cout << rawText.substr(rawText.find(delimiter, start), rawText.find(delimiter, start)+2) << "hhhhhhhh" << std::endl;
@@ -34,7 +35,7 @@ std::vector<std::string> Util::splitString(std::string rawText, std::string deli
         start = end + delimiter.length();
         
     }
-
+    // TODO remove this if not needed
     // split(splitVec, "1,2000000,3", is_any_of(","), token_compress_on);
     // std::cout << "SPLIT" << rawText << std::endl;
     // split( splitVec, rawText, delimiter, token_compress_on ); // boost split function
@@ -47,6 +48,7 @@ std::string Util::removeAllChar(std::string rawText, char removed) {
     return rawText;
 }
 
+// turns a string into the bool it was representing
 bool Util::toBool(std::string rawText) {
-    return (rawText.compare("true") == 0 || rawText.compare("True") == 0) ? true : false;
+    return (rawText.compare("true") == 0 || rawText.compare("True") == 0) ? true : false; // return false unless string is "true" or "True"
 }

@@ -34,7 +34,7 @@ int main(int argc, char *argv[]) // entry point
     isInit = Cache::init(cacheOutputPath); // init the static Cache singleton
     Cache::updateCacheFromFile(); // attempt to update cache from file
 
-    if (Cache::getSportsDataAPIKey().empty()) {
+    if (Cache::getSportsDataAPIKey().empty()) { // No API key provided
       std::cout << "No SportsData.io API Key found in the default cache file location.\nIf this is your first time running UFS, specify the API key as an argument. See README.md for more information" << std::endl;
       exit(EXIT_FAILURE);
     }
@@ -46,14 +46,14 @@ int main(int argc, char *argv[]) // entry point
 
   }
 
-  QFile styleSheetFile("./Diffnes.qss");
-  styleSheetFile.open(QFile::ReadOnly);
-  QString styleSheet = QLatin1String(styleSheetFile.readAll());
+  QFile styleSheetFile("./Diffnes.qss"); // set QT stylesheet file
+  styleSheetFile.open(QFile::ReadOnly); // open stylesheet file as read only
+  QString styleSheet = QLatin1String(styleSheetFile.readAll()); // read stylesheet file
   
   QApplication *app = new QApplication(argc, argv); // create QT app
-  app->setStyleSheet(styleSheet);
+  app->setStyleSheet(styleSheet); // apply stylesheet // TODO move all this stylesheet into UserInterface and use this->setStylesheet
 
-  Cache::setAPIHandlersParent(app);
+  Cache::setAPIHandlersParent(app); // set APIHandler's parent to UserInterface so that it can use QT's network features (Cache handles APIHandler)
 
   UserInterface userInterface; // QMainWindow object
   userInterface.showMaximized(); // maximize the main window 

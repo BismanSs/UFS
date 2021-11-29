@@ -14,54 +14,55 @@
 #include <chrono>
 #include <iostream>
 
+// Notification Handler, responsible for managing the lifetimes of notifications, inherits QFrame
 class NotificationHandler : public QFrame {
     Q_OBJECT
 public:
-    explicit NotificationHandler(QWidget *parent = nullptr);
-    ~NotificationHandler();
+    explicit NotificationHandler(QWidget *parent = nullptr); // constructor, initializes handler
+    ~NotificationHandler(); // deconstructor
 
-    void run(bool redactYear = false);
-    void stop();
+    void run(bool redactYear = false); // starts the notifications thread
+    void stop(); // stop the notifications thread
 
-    static bool isToggleOn();
+    static bool isToggleOn(); // is the handler running
 
-    bool isToggleFilterFighters();
-    void setToggleFilterFighters(bool toggleFilterFighters);
+    bool isToggleFilterFighters(); // is the handler filtering notifications by fighters
+    void setToggleFilterFighters(bool toggleFilterFighters); // toggles whether to filter notifications by a list of fighters
 
-    std::vector<Notification*> getNotifications();
-    Notification* getNotificationByIndex(int index);
-    Notification* getNotificationByID(int notificationID);
-    void setNotifications(std::vector<Notification*> notifications);
-    void addNotification(Notification* notification);
-    void removeNotification(Notification* notification);
-    void removeNotificationByID(int notificationID);
-    void removeNotificationByIndex(int index);
-    void clearNotifications();
+    std::vector<Notification*> getNotifications(); // get the notifications vector
+    Notification* getNotificationByIndex(int index); // get the notification at an index
+    Notification* getNotificationByID(int notificationID); // get the notification by ID
+    void setNotifications(std::vector<Notification*> notifications); // sets the notifications vector
+    void addNotification(Notification* notification); // adds a notification to the vector
+    void removeNotification(Notification* notification); // removes a notification by pointer
+    void removeNotificationByID(int notificationID); // removes a notification by ID
+    void removeNotificationByIndex(int index); // removes a notification by index
+    void clearNotifications(); // clear the notifications vector
 
-    std::vector<Fighter*> getFilterFighters();
-    Fighter* getFilterFighterByIndex(int index);
-    Fighter* getFilterFighterByID(int fighterID);
-    void setFilterFighters(std::vector<Fighter*> filterFighters);
-    void addFilterFighter(Fighter* filterFighter);
-    void removeFilterFighter(Fighter* filterFighter);
-    void removeFilterFighterByID(int fighterID);
-    void removeFilterFighterByIndex(int index);
-    void clearFilterFighters();
+    std::vector<Fighter*> getFilterFighters(); // get the vector of fighters to filter the notifications by
+    Fighter* getFilterFighterByIndex(int index); // get the fighter by index
+    Fighter* getFilterFighterByID(int fighterID); // get the fighter by ID
+    void setFilterFighters(std::vector<Fighter*> filterFighters); // set the filter fighter vector
+    void addFilterFighter(Fighter* filterFighter); // add a fighter to filter
+    void removeFilterFighter(Fighter* filterFighter); // remove a fighter by pointer
+    void removeFilterFighterByID(int fighterID); // remove a fighter by ID
+    void removeFilterFighterByIndex(int index); // remove a fighter by index
+    void clearFilterFighters(); // clear the filter fighters vector
 
-    std::map<std::string, Event*> getUpcomingEvents();
-    // Event* getUpcomingEventByDate(std::string date);
+    std::map<std::string, Event*> getUpcomingEvents(); // get map of upcoming events with date as key
+    // Event* getUpcomingEventByDate(std::string date); // get upcoming event by date
 private:
-    void handleNotifications();
+    void handleNotifications(); // notifications thread handler
 
 public:
-    static bool toggleOn;
+    static bool toggleOn; // toggle for if the notification handler thread is running
 private:
-    bool toggleFilterFighters = false;
-    std::vector<Notification*> notifications;
-    std::vector<Fighter*> filterFighters;
-    std::map<std::string, Event*> upcomingEvents;
+    bool toggleFilterFighters = false; // toggle for if notifications are filtered by a vector of fighters
+    std::vector<Notification*> notifications; // vector of live notifications
+    std::vector<Fighter*> filterFighters; // vector of fighters to filter by
+    std::map<std::string, Event*> upcomingEvents; // map of upcoming events with date as key
 
-    std::thread runThread;
+    std::thread runThread; // notification handler thread
 
-    QVBoxLayout* m_panelLayout;
+    QVBoxLayout* m_panelLayout; // the layout for this (QFrame)
 };

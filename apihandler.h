@@ -35,7 +35,7 @@ private: // private methods
     Event* parseJSONEvent(std::string json); // parses json, creates and returns heap allocated Event
     Fight* parseJSONFight(std::string json); // parses json, creates and returns heap allocated Fight
     Fighter* parseJSONFighter(std::string json); // parses json, creates and returns heap allocated Fighter
-    std::string formatLine(std::string line);
+    std::string formatLine(std::string line); // formats a given line to avoid parsing errors
 
 private: // private variables
     const std::string SPORTSDATA_API_URL = "https://api.sportsdata.io/v3/mma/scores/json/"; // sportsdata.io API URL prefix, is constant

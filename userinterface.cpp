@@ -153,7 +153,6 @@ UserInterface::UserInterface(QWidget *parent)
   m_notificationsPanel->run(true); // running with redactYear flag set to true
   
   if (m_notificationsPanel->getUpcomingEvents().empty()) {
-    std::cout << "fafaefa" << std::endl;
     delete m_viewAllNotificationsButton;
     m_viewAllNotificationsButton = new QPushButton("No upcoming events, 2022 not yet supported.", this);
     m_viewAllNotificationsButton->setEnabled(false);
@@ -176,7 +175,17 @@ UserInterface::UserInterface(QWidget *parent)
       // connect(m_inputBox, &QLineEdit::returnPressed, this, &MainWindow::handleExec);
 
   // USER CAN VIEW RETRIEVED UFC DATA ACCEPTANCE TEST --------
-  std::cout << Cache::getFighters().at(140000025)->getLastName() << std::endl;
+  if (Cache::getFighters().size() > 1) { // valid map check, may return invalid map if no internet connection
+    std::cout << Cache::getFighters().at(140000025)->getLastName() << std::endl;
+  } else {
+    std::cout << "API data could not be retrieved, are you sure you are connected to the internet?" << std::endl;
+
+    QMessageBox::StandardButton connError = QMessageBox::question(this, tr("Connection Error"), tr("There was an issue retrieving API data, please check your internet connection. Would you like to exit?\n"), QMessageBox::Ok | QMessageBox::No , QMessageBox::Ok);
+    if (connError == QMessageBox::Ok)
+    {                  
+      this->close();
+    }
+  }
   
 }
 
@@ -203,8 +212,8 @@ QFrame *UserInterface::createSearchResultsContentPanel()
 void UserInterface::closeEvent(QCloseEvent *event)
 {
   // confirmation popup box
-  QMessageBox::StandardButton exit = QMessageBox::question(this, tr("Exit UFS?"), tr("Are you sure you want to exit UFS?\n"), QMessageBox::No | QMessageBox::Yes, QMessageBox::No);
-  if (exit != QMessageBox::Yes)
+  QMessageBox::StandardButton exitBox = QMessageBox::question(this, tr("Exit UFS?"), tr("Are you sure you want to exit UFS?\n"), QMessageBox::No | QMessageBox::Yes, QMessageBox::No);
+  if (exitBox != QMessageBox::Yes)
   {                  // if not exit
     event->ignore(); // ignore close event
   }
@@ -213,6 +222,7 @@ void UserInterface::closeEvent(QCloseEvent *event)
     // Cache::writeCacheToFile(); // save cache to file
     Cache::destroy();
     event->accept();           // accept event, closing window
+    exit(0);
   }
 }
 

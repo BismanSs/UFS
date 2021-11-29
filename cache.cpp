@@ -43,12 +43,13 @@ std::map<int, Fighter*> Cache::getFighters() {
             APIHandler apiHandler = APIHandler(sportsDataAPIKey, apiHandlersParent);
 
             std::vector<Fighter*> fightersVec = apiHandler.getAllFighters();
-            for(long unsigned int i = 0; i < fightersVec.size(); i++) {
-                fighters.emplace(fightersVec.at(i)->getFighterID(), fightersVec.at(i));
+            if (fighters.size() > 1 && fighters.at(0) != NULL) { // invalid vector catch, caused by no internet connection
+                for(long unsigned int i = 0; i < fightersVec.size(); i++) {
+                    fighters.emplace(fightersVec.at(i)->getFighterID(), fightersVec.at(i));
+                }
+                return fighters;
             }
         }
-
-        return fighters;
     }
     return std::map<int, Fighter*>(); // return empty map if not initialized
 }

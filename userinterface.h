@@ -26,6 +26,7 @@
 #include <vector>
 #include <iostream>
 #include <map>
+#include <stdlib.h>
 
 #include "notificationhandler.h"
 #include "cache.h"
