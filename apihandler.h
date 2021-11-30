@@ -72,6 +72,12 @@ public:
     Fight* getFight(int fightID); // creates and returns heap allocated Fight object, with fightstats, from the Fight endpoint
 
 private: // private methods
+    /*!
+    * \brief Gets a UFC fight by fight ID from the sportsdata.io API
+    * \details creates and returns a Fight pointer to a heap allocated Fight object from the /Fight endpoint
+    * \author Paul Scoropan
+    * \param[in] fightID The ID of the fight, previously retrieved from an /Event API call
+    */
     std::vector<Event*> parseJSONAllEvents(std::string json); // parses json, creates and returns vector of heap allocated Events
     std::vector<Fighter*> parseJSONAllFighters(std::string json); // parses json, creates and returns vector of heap allocated Fighters
     Event* parseJSONEvent(std::string json); // parses json, creates and returns heap allocated Event

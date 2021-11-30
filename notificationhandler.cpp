@@ -53,7 +53,7 @@ void NotificationHandler::handleNotifications() {
     int i = 0;
     while(NotificationHandler::toggleOn) { // loop while on
 
-        std::this_thread::sleep_for (std::chrono::seconds(rand() % 120 + 1));
+        std::this_thread::sleep_for (std::chrono::seconds(rand() % 60 + 1));
 
         if (!upcomingEvents.empty() && i < upcomingEvents.size()) {
             addNotification(new Notification(i, "Upcoming Event!", "Watch " + upcomingEvents.at(i)->getName() + " at " + upcomingEvents.at(i)->getDateTime(), ""));
