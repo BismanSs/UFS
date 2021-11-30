@@ -19,4 +19,6 @@ public: // public methods
 
     // turn a string into the bool it represents
     static bool toBool(std::string rawText);
+
+    inline static bool insensitiveEquals(std::string a, std::string b) { return boost::iequals(a,b);}
 };

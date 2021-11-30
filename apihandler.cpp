@@ -38,6 +38,7 @@ std::vector<Event*> APIHandler::getAllEvents() {
 
 // Gets all available MMA fighters from sportsdata.io Fighters endpoint
 std::vector<Fighter*> APIHandler::getAllFighters() {
+    std::cout << 0 << std::endl;
     QNetworkAccessManager *manager = new QNetworkAccessManager(this); // manages http requests, sets this as parent
     QNetworkRequest request = QNetworkRequest(QUrl((SPORTSDATA_API_URL + "Fighters?key=" + sportsDataAPIKey).c_str()));
     request.setRawHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -99,7 +100,7 @@ std::vector<Event*> APIHandler::parseJSONAllEvents(std::string json) {
 
 // parses json of all fighters into a Fighter* vector
 std::vector<Fighter*> APIHandler::parseJSONAllFighters(std::string json) {
-
+    std::cout << 1 << std::endl;
     std::vector<std::string> fighters = Util::splitString(json, "},{"); // split the json at "FighterId"
     std::vector<Fighter*> returnVec;
 

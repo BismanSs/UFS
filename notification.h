@@ -16,6 +16,7 @@ public:
     // Constructors, initialize member variables based on number of parameters provided
     Notification(int notificationID, std::string title, std::string shortDesc, std::string longDesc, QWidget *parent = nullptr);
     Notification(int notificationID, std::string title, std::string shortDesc, std::string longDesc, std::string timestamp, QWidget *parent = nullptr, bool expand = false);
+    static Notification* copy(Notification* other, bool expand = false);
 
     ~Notification(); // deconstructor
 

@@ -40,17 +40,17 @@ std::map<int, Fighter*> Cache::getFighters() {
     if (isInit) { // check if cache has been initialized
         if (fighters.empty()) {
 
-            APIHandler apiHandler = APIHandler(sportsDataAPIKey, apiHandlersParent);
-
-            std::vector<Fighter*> fightersVec = apiHandler.getAllFighters();
-            if (fighters.size() > 1 && fighters.at(0) != NULL) { // invalid vector catch, caused by no internet connection
+            APIHandler *apiHandler = new APIHandler(sportsDataAPIKey, apiHandlersParent);
+            std::vector<Fighter*> fightersVec = apiHandler->getAllFighters();
+            if (fightersVec.size() > 1 && fightersVec.at(0) != nullptr) { // invalid vector catch, caused by no internet connection
                 for(long unsigned int i = 0; i < fightersVec.size(); i++) {
                     fighters.emplace(fightersVec.at(i)->getFighterID(), fightersVec.at(i));
                 }
                 return fighters;
             }
-        }
+        } else return fighters;
     }
+    std::cout << "WAHT\n";
     return std::map<int, Fighter*>(); // return empty map if not initialized
 }
 
@@ -90,8 +90,8 @@ std::map<int, Bet*> Cache::getBets() {
 Fighter* Cache::getFighter(int fighterID) {
     if (isInit) { // check if cache has been initialized
         if (fighters.empty()) {
-            APIHandler apiHandler = APIHandler(sportsDataAPIKey, apiHandlersParent);
-            std::vector<Fighter*> fightersVec = apiHandler.getAllFighters();
+            APIHandler *apiHandler = new APIHandler(sportsDataAPIKey, apiHandlersParent);
+            std::vector<Fighter*> fightersVec = apiHandler->getAllFighters();
             for(long unsigned int i = 0; i < fightersVec.size(); i++) {
                 fighters.emplace(fightersVec.at(i)->getFighterID(), fightersVec.at(i));
             }
@@ -105,8 +105,8 @@ Fighter* Cache::getFighter(int fighterID) {
 Fight* Cache::getFight(int fightID) {
     if (isInit) { // check if cache has been initialized
         if (fights.count(fightID) == 0) {
-            APIHandler apiHandler = APIHandler(sportsDataAPIKey, apiHandlersParent);
-            fights.at(fightID) = apiHandler.getFight(fightID);
+            APIHandler *apiHandler = new APIHandler(sportsDataAPIKey, apiHandlersParent);
+            fights.at(fightID) = apiHandler->getFight(fightID);
         }
         return fights.at(fightID);
     }
@@ -117,8 +117,8 @@ Fight* Cache::getFight(int fightID) {
 Event* Cache::getEvent(int eventID) {
     if (isInit) { // check if cache has been initialized
         if (events.empty()) {
-            APIHandler apiHandler = APIHandler(sportsDataAPIKey, apiHandlersParent);
-            std::vector<Event*> eventsVec = apiHandler.getAllEvents();
+            APIHandler *apiHandler = new APIHandler(sportsDataAPIKey, apiHandlersParent);
+            std::vector<Event*> eventsVec = apiHandler->getAllEvents();
             for(long unsigned int i = 0; i < eventsVec.size(); i++) {
                 events.emplace(eventsVec.at(i)->getEventID(), eventsVec.at(i));
             }

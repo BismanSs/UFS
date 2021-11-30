@@ -20,9 +20,17 @@ Notification::Notification(int notificationID, std::string title, std::string sh
     this->longDescLabel = new QLabel(QString::fromStdString(this->longDesc));
     this->timestampLabel = new QLabel(QString::fromStdString(this->timestamp));
 
+    this->titleLabel->setFixedHeight(15);
+    this->shortDescLabel->setFixedHeight(15);
+    this->longDescLabel->setFixedHeight(30);
+    this->timestampLabel->setFixedHeight(10);
+    this->setFixedHeight(70);
+
     // add widgets to layout
     this->notificationLayout->addWidget(this->titleLabel);
     this->notificationLayout->addWidget(this->shortDescLabel);
+
+    this->setLayout(this->notificationLayout);
 
 }
 
@@ -51,6 +59,12 @@ Notification::Notification(int notificationID, std::string title, std::string sh
     this->longDescLabel = new QLabel(QString::fromStdString(this->longDesc));
     this->timestampLabel = new QLabel(QString::fromStdString(this->timestamp));
 
+    this->titleLabel->setFixedHeight(15);
+    this->shortDescLabel->setFixedHeight(15);
+    this->longDescLabel->setFixedHeight(30);
+    this->timestampLabel->setFixedHeight(10);
+    this->setFixedHeight(70);
+
     // add widgets to layout
     this->notificationLayout->addWidget(this->titleLabel);
     this->notificationLayout->addWidget(this->shortDescLabel);
@@ -60,6 +74,15 @@ Notification::Notification(int notificationID, std::string title, std::string sh
         this->notificationLayout->addWidget(this->timestampLabel);
     }
 
+
+
+    this->setLayout(this->notificationLayout);
+
+
+}
+
+Notification* Notification::copy(Notification* other, bool expand) {
+    return new Notification(other->getNotificationID(), other->getTitle(), other->getShortDesc(), other->getLongDesc(), other->getTimestamp(), nullptr, expand);
 }
 
 // deconstructor, deletes memory allocation

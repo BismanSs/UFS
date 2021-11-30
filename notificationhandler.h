@@ -4,24 +4,24 @@
 #include "notification.h"
 #include "fighter.h"
 
-#include <QFrame>
-#include <QVBoxLayout>
-#include <QLabel>
+#include <QObject>
+#include <QThread>
 
 #include <vector>
 #include <map>
 #include <thread> 
 #include <chrono>
 #include <iostream>
+#include <stdlib.h>
+#include <time.h>
 
 // Notification Handler, responsible for managing the lifetimes of notifications, inherits QFrame
-class NotificationHandler : public QFrame {
+class NotificationHandler : public QObject {
     Q_OBJECT
 public:
-    explicit NotificationHandler(QWidget *parent = nullptr); // constructor, initializes handler
+    explicit NotificationHandler(); // constructor, initializes handler
     ~NotificationHandler(); // deconstructor
 
-    void run(bool redactYear = false); // starts the notifications thread
     void stop(); // stop the notifications thread
 
     static bool isToggleOn(); // is the handler running
@@ -49,20 +49,25 @@ public:
     void removeFilterFighterByIndex(int index); // remove a fighter by index
     void clearFilterFighters(); // clear the filter fighters vector
 
-    std::map<std::string, Event*> getUpcomingEvents(); // get map of upcoming events with date as key
+    std::vector<Event*> getUpcomingEvents(); // get map of upcoming events with date as key
     // Event* getUpcomingEventByDate(std::string date); // get upcoming event by date
+
+public slots:
+    void run(bool redactYear = false); // starts the notifications thread
+
 private:
     void handleNotifications(); // notifications thread handler
 
+signals:
+    void updateNotifications();
+
 public:
     static bool toggleOn; // toggle for if the notification handler thread is running
+
 private:
     bool toggleFilterFighters = false; // toggle for if notifications are filtered by a vector of fighters
     std::vector<Notification*> notifications; // vector of live notifications
     std::vector<Fighter*> filterFighters; // vector of fighters to filter by
-    std::map<std::string, Event*> upcomingEvents; // map of upcoming events with date as key
+    std::vector<Event*> upcomingEvents; // map of upcoming events with date as key
 
-    std::thread runThread; // notification handler thread
-
-    QVBoxLayout* m_panelLayout; // the layout for this (QFrame)
 };

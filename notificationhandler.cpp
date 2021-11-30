@@ -3,12 +3,9 @@
 bool NotificationHandler::toggleOn = false; // initialize static variable, TODO: try reverting use of static here
 
 // Notification Handler constructor, initializes member variables
-NotificationHandler::NotificationHandler(QWidget *parent) : QFrame(parent){
+NotificationHandler::NotificationHandler() : QObject(nullptr){
     this->notifications = std::vector<Notification*>();
     this->filterFighters = std::vector<Fighter*>();
-
-
-    this->m_panelLayout = new QVBoxLayout;
 }
 
 // Notification Handler deconstructor, deletes memory allocated
@@ -34,28 +31,35 @@ void NotificationHandler::run(bool redactYear) {
         if(std::stoi(parts.at(0)) > 1900 + timeInfo->tm_year || (std::stoi(parts.at(0)) == 1900 + timeInfo->tm_year && std::stoi(parts.at(1)) >= timeInfo->tm_mon+1 && std::stoi(Util::splitString(parts.at(2), "T").at(0)) >= timeInfo->tm_mday
             && std::stoi(Util::splitString(parts2.at(0), "T").at(1)) >= timeInfo->tm_hour) // if date hasnt happened yet
         ) {
-            this->upcomingEvents.emplace(it->second->getDateTime(), it->second); // add to upcoming events
+            this->upcomingEvents.push_back(it->second); // add to upcoming events
         }
     }
+   
 
-    this->runThread = std::thread(&NotificationHandler::handleNotifications, this); // start the thread running the handleNotifications() method
+    this->handleNotifications();
 }
-
 
 // call to stop the notification handler thread
 void NotificationHandler::stop() {
     NotificationHandler::toggleOn = false; // toggle off
-    this->runThread.join(); // join the thread to the main thread
+    for(long unsigned int i = 0; i < notifications.size(); i++)
+        delete notifications.at(i);
+    // this->runThread.quit(); // join the thread to the main thread
 }
 
 // private, handles the notifications thread
 void NotificationHandler::handleNotifications() {
+    srand (time(NULL));
+    int i = 0;
     while(NotificationHandler::toggleOn) { // loop while on
 
-        // TO DO
+        std::this_thread::sleep_for (std::chrono::seconds(rand() % 120 + 1));
 
-        std::this_thread::sleep_for (std::chrono::seconds(2));
-        this->addNotification(new Notification(0, "Title", "Short description", "Long desctiption"));
+        if (!upcomingEvents.empty() && i < upcomingEvents.size()) {
+            addNotification(new Notification(i, "Upcoming Event!", "Watch " + upcomingEvents.at(i)->getName() + " at " + upcomingEvents.at(i)->getDateTime(), ""));
+        }
+        i++;
+        emit updateNotifications();
     }
 }
 
@@ -102,8 +106,6 @@ void NotificationHandler::setNotifications(std::vector<Notification*> notificati
 // add a notification to the vector
 void NotificationHandler::addNotification(Notification* notification) {
     this->notifications.push_back(notification);
-    this->m_panelLayout->addWidget(notification); // also add the notification as a widget to the layout
-    this->update(); // update the QFrame
 }
 
 // remove notification by pointer
@@ -208,7 +210,7 @@ void NotificationHandler::clearFilterFighters() {
 }
 
 // get upcoming events map
-std::map<std::string, Event*> NotificationHandler::getUpcomingEvents() {
+std::vector<Event*> NotificationHandler::getUpcomingEvents() {
     return this->upcomingEvents;
 }
 
