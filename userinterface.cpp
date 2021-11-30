@@ -122,7 +122,8 @@ UserInterface::UserInterface(QWidget *parent)
   //QWidget holds layout for the results to be added to
   QWidget* resultContainer = new QWidget();
   m_searchLayout = new QVBoxLayout(resultContainer);
-  m_searchScroll->setWidget(resultContainer);   //Can't be set as layout, done through QWidget
+  m_searchLayout->setDirection(QBoxLayout::BottomToTop);    //Sets direction to allow newest search result to be on top
+  m_searchScroll->setWidget(resultContainer);   //Can't be set as layout normally, done through QWidget
 
   // add search bar and radio button group to center layout
   m_centerLayout->addWidget(m_searchBar);
@@ -390,7 +391,11 @@ void UserInterface::removeCenterPanel() //hides current center panel
   }
 
 }
-
+/**
+ * @brief Function called when enter is pressed on the search bar checks what radio button is selected and
+ * performs that certain search, then creates results in QTextBoxes, then displays these results on the main window
+ * @author Jordan Avelar
+ */
 void UserInterface::onSearchInputPressed() {
     std::string searchInput = m_searchBar->text().toStdString(); //put search input into string
     bool found = false; //If found stays false until the end then must have found no results
@@ -399,14 +404,16 @@ void UserInterface::onSearchInputPressed() {
         std::map<int, Fighter*> fighterMap = Cache::getFighters();  //getFighters makes the map with data for each fighter seperated
 
         for (auto it = fighterMap.begin(); it != fighterMap.end(); ++it){   //Loops through fighterMap with iterator it
-            if(boost::to_lower_copy(it->second->getLastName()) == boost::to_lower_copy(searchInput)){
+            if(boost::to_lower_copy(it->second->getLastName()) == boost::to_lower_copy(searchInput) ||
+                    boost::to_lower_copy(it->second->getFirstName()) == boost::to_lower_copy(searchInput)){
                 //If statement checks if searchInput and current member of map are equal when both are lowercase
                 found = true;
                 //Assembling the output string with all data
                 std::string searchOutput = it->second->getFirstName() + " " + it->second->getLastName() + " AKA: " +
                         it->second->getNickname() + "\nBirthdate: " + it->second->getBirthDate() + "\nWeightClass: " +
-                        it->second->getWeightClass() + "\nHeight: " + std::to_string(it->second->getHeight()) +
-                        "\tReach:" + std::to_string(it->second->getReach()) + "\nWins: " +
+                        it->second->getWeightClass() + "\tWeight: " + std::to_string((int)round(it->second->getWeight())) +
+                        "\nHeight: " + std::to_string((int)round(it->second->getHeight())) +
+                        "\tReach:" + std::to_string((int)round(it->second->getReach())) + "\nWins: " +
                         std::to_string(it->second->getWins()) + "\tLosses: " + std::to_string(it->second->getLosses()) +
                         "\tDecisions %: " + std::to_string(it->second->getDecisionPercentage()) + "\nKO %" +
                         std::to_string(it->second->getKnockoutPercentage()) + "\tTKOs: " +
@@ -436,26 +443,28 @@ void UserInterface::onSearchInputPressed() {
                     found = true;
                     //Assembling output string with all data
                     std::string searchOutput = it->second->getName() + ":\t" + it->second->getShortName() + "\n" +
-                                               it->second->getDateTime() + "\nStatus: " + it->second->getStatus() + "\nEventID: " +
-                                               std::to_string(it->second->getEventID()) + "\nSeason: " +
+                                               it->second->getDateTime() + "\nStatus: " + it->second->getStatus() +
+                                               "\nEventID: " + std::to_string(it->second->getEventID()) + "\nSeason: " +
                                                std::to_string(it->second->getSeason());
 
                     QTextEdit *searchResultsText = new QTextEdit();
                     searchResultsText->setEnabled(false);
                     searchResultsText->setText(QString::fromStdString(searchOutput));
-
+                    //Setting up results to be displayed properly in a QTextEdit box
                     QFontMetrics m (searchResultsText->font());
                     int rowHeight = m.lineSpacing();
                     searchResultsText->setMinimumHeight(rowHeight * 7);
 
                     m_searchLayout->addWidget(searchResultsText);
                 }
+                //Else if input matches an event name
                 else if (it->second->getName() == searchInput){
                     found = true;
 
                     std::string searchOutput = it->second->getName() + ":\t" + it->second->getShortName() + "\n" +
-                                               it->second->getDateTime() + "\nStatus: " + it->second->getStatus() + "\nEventID: " +
-                                               std::to_string(it->second->getEventID());
+                                               it->second->getDateTime() + "\nStatus: " + it->second->getStatus() +
+                                               "\nEventID: " + std::to_string(it->second->getEventID()) + "\nSeason: " +
+                                               std::to_string(it->second->getSeason());
 
                     QTextEdit *searchResultsText = new QTextEdit();
                     searchResultsText->setEnabled(false);
@@ -478,7 +487,7 @@ void UserInterface::onSearchInputPressed() {
 
                 std::string searchOutput = it->second->getName() + ":\t" + it->second->getShortName() + "\n" +
                         it->second->getDateTime() + "\nStatus: " + it->second->getStatus() + "\nEventID: " +
-                        std::to_string(it->second->getEventID());
+                        std::to_string(it->second->getEventID()) + "\nSeason: " + std::to_string(it->second->getSeason());
 
                 QTextEdit *searchResultsText = new QTextEdit();
                 searchResultsText->setEnabled(false);
