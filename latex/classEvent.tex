@@ -16,36 +16,26 @@ Represents a UFC event.
 \begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classEvent}{Event}} constructor. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classEvent_a7704ec01ce91e673885792054214b3d2}{$\sim$\+Event}} ()
 \begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classEvent}{Event}} destructor. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classEvent_ac7492a35d23c5451fdda43107813310a}\label{classEvent_ac7492a35d23c5451fdda43107813310a}} 
-int {\bfseries get\+Event\+ID} ()
-\item 
-\mbox{\Hypertarget{classEvent_a92b6c074207483fc40b61ac533dc6b69}\label{classEvent_a92b6c074207483fc40b61ac533dc6b69}} 
-int {\bfseries get\+League\+ID} ()
-\item 
-\mbox{\Hypertarget{classEvent_adf0f3e50061123d6f24200661eeb66eb}\label{classEvent_adf0f3e50061123d6f24200661eeb66eb}} 
-std\+::string {\bfseries get\+Name} ()
-\item 
-\mbox{\Hypertarget{classEvent_aa1b1a78c90b19d2f528fcb89c7bd27e0}\label{classEvent_aa1b1a78c90b19d2f528fcb89c7bd27e0}} 
-std\+::string {\bfseries get\+Short\+Name} ()
-\item 
-\mbox{\Hypertarget{classEvent_ae1695deca613386963690b05eb4650e1}\label{classEvent_ae1695deca613386963690b05eb4650e1}} 
-int {\bfseries get\+Season} ()
-\item 
-\mbox{\Hypertarget{classEvent_ab4cbf5d2d314bb12efa02c326c668785}\label{classEvent_ab4cbf5d2d314bb12efa02c326c668785}} 
-std\+::string {\bfseries get\+Day} ()
-\item 
-\mbox{\Hypertarget{classEvent_adfb3cae2f413cefd8b1d3f030f62f076}\label{classEvent_adfb3cae2f413cefd8b1d3f030f62f076}} 
-std\+::string {\bfseries get\+Date\+Time} ()
-\item 
-\mbox{\Hypertarget{classEvent_a9af446c0f67b7e332eceb95fa725ec97}\label{classEvent_a9af446c0f67b7e332eceb95fa725ec97}} 
-std\+::string {\bfseries get\+Status} ()
-\item 
-\mbox{\Hypertarget{classEvent_a273a216d2f6c9596e6e92ebf2c9ac36c}\label{classEvent_a273a216d2f6c9596e6e92ebf2c9ac36c}} 
-bool {\bfseries is\+Active} ()
-\item 
-\mbox{\Hypertarget{classEvent_abb240e8d4313197caeaae2f6c9d9b8ca}\label{classEvent_abb240e8d4313197caeaae2f6c9d9b8ca}} 
-std\+::vector$<$ int $>$ {\bfseries get\+Fight\+IDs} ()
-\end{DoxyCompactItemize}
+int \mbox{\hyperlink{classEvent_ac7492a35d23c5451fdda43107813310a}{get\+Event\+ID}} ()
+\begin{DoxyCompactList}\small\item\em Get event ID. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classEvent_a92b6c074207483fc40b61ac533dc6b69}{get\+League\+ID}} ()
+\begin{DoxyCompactList}\small\item\em Get event league ID. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classEvent_adf0f3e50061123d6f24200661eeb66eb}{get\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Get event name. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classEvent_aa1b1a78c90b19d2f528fcb89c7bd27e0}{get\+Short\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Get event short name. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classEvent_ae1695deca613386963690b05eb4650e1}{get\+Season}} ()
+\begin{DoxyCompactList}\small\item\em Get event season. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classEvent_ab4cbf5d2d314bb12efa02c326c668785}{get\+Day}} ()
+\begin{DoxyCompactList}\small\item\em Get event day. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classEvent_adfb3cae2f413cefd8b1d3f030f62f076}{get\+Date\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Get event date time. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classEvent_a9af446c0f67b7e332eceb95fa725ec97}{get\+Status}} ()
+\begin{DoxyCompactList}\small\item\em Get event status. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classEvent_a273a216d2f6c9596e6e92ebf2c9ac36c}{is\+Active}} ()
+\begin{DoxyCompactList}\small\item\em Get is event active. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{classEvent_abb240e8d4313197caeaae2f6c9d9b8ca}{get\+Fight\+IDs}} ()
+\begin{DoxyCompactList}\small\item\em Get event \mbox{\hyperlink{classFight}{Fight}} IDs. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -67,7 +57,10 @@ Paul Scoropan
 
 \mbox{\hyperlink{classEvent}{Event}} constructor. 
 
-Constructor sets all important member variables 
+Constructor sets all important member variables \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
 \begin{DoxyParams}{Parameters}
 {\em event\+ID} & int \\
 \hline
@@ -100,7 +93,173 @@ Constructor sets all important member variables
 
 \mbox{\hyperlink{classEvent}{Event}} destructor. 
 
-Deletes any memory saved on the heap 
+Deletes any memory saved on the heap \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classEvent_adfb3cae2f413cefd8b1d3f030f62f076}\label{classEvent_adfb3cae2f413cefd8b1d3f030f62f076}} 
+\index{Event@{Event}!getDateTime@{getDateTime}}
+\index{getDateTime@{getDateTime}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getDateTime()}{getDateTime()}}
+{\footnotesize\ttfamily std\+::string Event\+::get\+Date\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get event date time. 
+
+Returns event date time \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+event date time 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classEvent_ab4cbf5d2d314bb12efa02c326c668785}\label{classEvent_ab4cbf5d2d314bb12efa02c326c668785}} 
+\index{Event@{Event}!getDay@{getDay}}
+\index{getDay@{getDay}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getDay()}{getDay()}}
+{\footnotesize\ttfamily std\+::string Event\+::get\+Day (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get event day. 
+
+Returns event day \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+event day 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classEvent_ac7492a35d23c5451fdda43107813310a}\label{classEvent_ac7492a35d23c5451fdda43107813310a}} 
+\index{Event@{Event}!getEventID@{getEventID}}
+\index{getEventID@{getEventID}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getEventID()}{getEventID()}}
+{\footnotesize\ttfamily int Event\+::get\+Event\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get event ID. 
+
+Returns event ID \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+event ID 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classEvent_abb240e8d4313197caeaae2f6c9d9b8ca}\label{classEvent_abb240e8d4313197caeaae2f6c9d9b8ca}} 
+\index{Event@{Event}!getFightIDs@{getFightIDs}}
+\index{getFightIDs@{getFightIDs}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getFightIDs()}{getFightIDs()}}
+{\footnotesize\ttfamily std\+::vector$<$ int $>$ Event\+::get\+Fight\+IDs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get event \mbox{\hyperlink{classFight}{Fight}} IDs. 
+
+Returns event \mbox{\hyperlink{classFight}{Fight}} IDs vector \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+event fight\+IDs 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classEvent_a92b6c074207483fc40b61ac533dc6b69}\label{classEvent_a92b6c074207483fc40b61ac533dc6b69}} 
+\index{Event@{Event}!getLeagueID@{getLeagueID}}
+\index{getLeagueID@{getLeagueID}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getLeagueID()}{getLeagueID()}}
+{\footnotesize\ttfamily int Event\+::get\+League\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get event league ID. 
+
+Returns event league ID \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+event league ID 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classEvent_adf0f3e50061123d6f24200661eeb66eb}\label{classEvent_adf0f3e50061123d6f24200661eeb66eb}} 
+\index{Event@{Event}!getName@{getName}}
+\index{getName@{getName}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily std\+::string Event\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get event name. 
+
+Returns event name \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+event name 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classEvent_ae1695deca613386963690b05eb4650e1}\label{classEvent_ae1695deca613386963690b05eb4650e1}} 
+\index{Event@{Event}!getSeason@{getSeason}}
+\index{getSeason@{getSeason}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getSeason()}{getSeason()}}
+{\footnotesize\ttfamily int Event\+::get\+Season (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get event season. 
+
+Returns event season \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+event season 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classEvent_aa1b1a78c90b19d2f528fcb89c7bd27e0}\label{classEvent_aa1b1a78c90b19d2f528fcb89c7bd27e0}} 
+\index{Event@{Event}!getShortName@{getShortName}}
+\index{getShortName@{getShortName}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getShortName()}{getShortName()}}
+{\footnotesize\ttfamily std\+::string Event\+::get\+Short\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get event short name. 
+
+Returns event short name \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+event short name 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classEvent_a9af446c0f67b7e332eceb95fa725ec97}\label{classEvent_a9af446c0f67b7e332eceb95fa725ec97}} 
+\index{Event@{Event}!getStatus@{getStatus}}
+\index{getStatus@{getStatus}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getStatus()}{getStatus()}}
+{\footnotesize\ttfamily std\+::string Event\+::get\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get event status. 
+
+Returns event status \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+event status 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classEvent_a273a216d2f6c9596e6e92ebf2c9ac36c}\label{classEvent_a273a216d2f6c9596e6e92ebf2c9ac36c}} 
+\index{Event@{Event}!isActive@{isActive}}
+\index{isActive@{isActive}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{isActive()}{isActive()}}
+{\footnotesize\ttfamily bool Event\+::is\+Active (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get is event active. 
+
+Returns is event active \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+event active 
+\end{DoxyReturn}
+
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

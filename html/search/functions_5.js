@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['init_0',['init',['../classCache.html#a2f871a069d658c8d27645df946aff3bd',1,'Cache']]],
-  ['iswinning_1',['isWinning',['../classBet.html#a8759aab7051fecb874ba17ec0a9b7773',1,'Bet']]]
+  ['fight_0',['Fight',['../classFight.html#ab21a2330ecef22f79ccdaa3b0f2cb3e9',1,'Fight']]],
+  ['fighter_1',['Fighter',['../classFighter.html#ac056d174f50b252fd163a7a2f7104f5e',1,'Fighter']]]
 ];

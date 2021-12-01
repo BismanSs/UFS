@@ -71,67 +71,80 @@ $(function() {
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;fightstat.h&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="classFight.html">   10</a></span><span class="keyword">class </span><a class="code hl_class" href="classFight.html">Fight</a> {</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">public</span>: <span class="comment">// public methods</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment"></span>    <a class="code hl_function" href="classFight.html#ab21a2330ecef22f79ccdaa3b0f2cb3e9">Fight</a>(<span class="keywordtype">int</span> fightID,</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>          <span class="keywordtype">int</span> order,</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>          std::string status,</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>          std::string weightClass,</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>          std::string cardSegment,</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>          std::string referee,</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>          <span class="keywordtype">int</span> rounds,</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>          <span class="keywordtype">int</span> resultClock,</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>          <span class="keywordtype">int</span> resultRound,</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>          std::string resultType,</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>          <span class="keywordtype">int</span> winnerID,</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>          <span class="keywordtype">bool</span> active,</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>          <a class="code hl_class" href="classFightStat.html">FightStat</a> fightStats[2]);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <a class="code hl_function" href="classFight.html#a18cf7a66723c83b0406cf87a1d566e5c">~Fight</a>(); <span class="comment">// deconstructor</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="comment">// get appropriate member variables</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="classFight.html">   11</a></span><span class="keyword">class </span><a class="code hl_class" href="classFight.html">Fight</a> {</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">public</span>: <span class="comment">// public methods</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment"></span>    <a class="code hl_function" href="classFight.html#ab21a2330ecef22f79ccdaa3b0f2cb3e9">Fight</a>(<span class="keywordtype">int</span> fightID,</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>          <span class="keywordtype">int</span> order,</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>          std::string status,</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>          std::string weightClass,</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>          std::string cardSegment,</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>          std::string referee,</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>          <span class="keywordtype">int</span> rounds,</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>          <span class="keywordtype">int</span> resultClock,</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>          <span class="keywordtype">int</span> resultRound,</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>          std::string resultType,</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>          <span class="keywordtype">int</span> winnerID,</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>          <span class="keywordtype">bool</span> active,</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>          <a class="code hl_class" href="classFightStat.html">FightStat</a> fightStats[2]);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <a class="code hl_function" href="classFight.html#a18cf7a66723c83b0406cf87a1d566e5c">~Fight</a>(); <span class="comment">// deconstructor</span></div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">int</span> getFightID();</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">int</span> getOrder();</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    std::string getStatus(); </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    std::string getWeightClass();</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    std::string getCardSegment();</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    std::string getReferee();</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordtype">int</span> getRounds();</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordtype">int</span> getResultClock();</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordtype">int</span> getResultRound();</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    std::string getResultType();</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordtype">int</span> getWinnerID();</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">bool</span> isActive();</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <a class="code hl_class" href="classFightStat.html">FightStat</a>* getFightStats();</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="keyword">private</span>: <span class="comment">// private member variables</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordtype">int</span> fightID;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordtype">int</span> order;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    std::string status; </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    std::string weightClass;</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    std::string cardSegment;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    std::string referee;</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keywordtype">int</span> rounds;</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordtype">int</span> resultClock;</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keywordtype">int</span> resultRound;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classFight.html#a1f9f54ba918fdbe9f8e6d4f9cfb6ff82">getFightID</a>();</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classFight.html#ad987cc82d666f0f3f6c3b1617747c0ef">getOrder</a>();</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    std::string <a class="code hl_function" href="classFight.html#a1ccaad27176465085fa0d7752f9aa007">getStatus</a>(); </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    std::string <a class="code hl_function" href="classFight.html#ac7cf2725bcc5e8fbe387a0cf818cee6a">getWeightClass</a>();</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    std::string resultType;</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordtype">int</span> winnerID;</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordtype">bool</span> active;</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <a class="code hl_class" href="classFightStat.html">FightStat</a> fightStats[2];</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>};</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    std::string <a class="code hl_function" href="classFight.html#ac07a0d86137aa216aa0ba9b2bb4d67db">getCardSegment</a>();</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    std::string <a class="code hl_function" href="classFight.html#abdbd05290255c78e3d42e35b21d8f129">getReferee</a>();</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classFight.html#acc692169216d4ee7322c5faf322bbb2e">getRounds</a>();</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classFight.html#abe164993adeac9c1ebd71e8b266ac0b4">getResultClock</a>();</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classFight.html#a969ae2aa7eefadaba55d7febaf0a76a0">getResultRound</a>();</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    std::string <a class="code hl_function" href="classFight.html#af5b06a4be17491c457aabb3cfea131c8">getResultType</a>();</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classFight.html#a15fa43122ce46d3f28cd8eb5fe585069">getWinnerID</a>();</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classFight.html#a91fdc5bf681d470afb4beecd39c137c9">isActive</a>();</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    <a class="code hl_class" href="classFightStat.html">FightStat</a>* <a class="code hl_function" href="classFight.html#a1206339114466ae23294c9400e2055b6">getFightStats</a>();</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span><span class="keyword">private</span>: <span class="comment">// private member variables</span></div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <span class="keywordtype">int</span> fightID; </div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    <span class="keywordtype">int</span> order; </div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    std::string status;  </div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    std::string weightClass; </div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    std::string cardSegment; </div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    std::string referee; </div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="keywordtype">int</span> rounds; </div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    <span class="keywordtype">int</span> resultClock; </div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    <span class="keywordtype">int</span> resultRound; </div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    std::string resultType; </div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    <span class="keywordtype">int</span> winnerID; </div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    <span class="keywordtype">bool</span> active; </div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    <a class="code hl_class" href="classFightStat.html">FightStat</a> fightStats[2]; </div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>};</div>
 <div class="ttc" id="aclassFightStat_html"><div class="ttname"><a href="classFightStat.html">FightStat</a></div><div class="ttdef"><b>Definition:</b> fightstat.h:6</div></div>
-<div class="ttc" id="aclassFight_html"><div class="ttname"><a href="classFight.html">Fight</a></div><div class="ttdoc">Represents a fight.</div><div class="ttdef"><b>Definition:</b> fight.h:10</div></div>
+<div class="ttc" id="aclassFight_html"><div class="ttname"><a href="classFight.html">Fight</a></div><div class="ttdoc">Represents a fight.</div><div class="ttdef"><b>Definition:</b> fight.h:11</div></div>
+<div class="ttc" id="aclassFight_html_a1206339114466ae23294c9400e2055b6"><div class="ttname"><a href="classFight.html#a1206339114466ae23294c9400e2055b6">Fight::getFightStats</a></div><div class="ttdeci">FightStat * getFightStats()</div><div class="ttdoc">Get fight stats array.</div><div class="ttdef"><b>Definition:</b> fight.cpp:89</div></div>
+<div class="ttc" id="aclassFight_html_a15fa43122ce46d3f28cd8eb5fe585069"><div class="ttname"><a href="classFight.html#a15fa43122ce46d3f28cd8eb5fe585069">Fight::getWinnerID</a></div><div class="ttdeci">int getWinnerID()</div><div class="ttdoc">Get fight winner ID.</div><div class="ttdef"><b>Definition:</b> fight.cpp:81</div></div>
 <div class="ttc" id="aclassFight_html_a18cf7a66723c83b0406cf87a1d566e5c"><div class="ttname"><a href="classFight.html#a18cf7a66723c83b0406cf87a1d566e5c">Fight::~Fight</a></div><div class="ttdeci">~Fight()</div><div class="ttdoc">Fight destructor.</div><div class="ttdef"><b>Definition:</b> fight.cpp:35</div></div>
+<div class="ttc" id="aclassFight_html_a1ccaad27176465085fa0d7752f9aa007"><div class="ttname"><a href="classFight.html#a1ccaad27176465085fa0d7752f9aa007">Fight::getStatus</a></div><div class="ttdeci">std::string getStatus()</div><div class="ttdoc">Get fight status.</div><div class="ttdef"><b>Definition:</b> fight.cpp:49</div></div>
+<div class="ttc" id="aclassFight_html_a1f9f54ba918fdbe9f8e6d4f9cfb6ff82"><div class="ttname"><a href="classFight.html#a1f9f54ba918fdbe9f8e6d4f9cfb6ff82">Fight::getFightID</a></div><div class="ttdeci">int getFightID()</div><div class="ttdoc">Get fight ID.</div><div class="ttdef"><b>Definition:</b> fight.cpp:41</div></div>
+<div class="ttc" id="aclassFight_html_a91fdc5bf681d470afb4beecd39c137c9"><div class="ttname"><a href="classFight.html#a91fdc5bf681d470afb4beecd39c137c9">Fight::isActive</a></div><div class="ttdeci">bool isActive()</div><div class="ttdoc">Get is fight active.</div><div class="ttdef"><b>Definition:</b> fight.cpp:85</div></div>
+<div class="ttc" id="aclassFight_html_a969ae2aa7eefadaba55d7febaf0a76a0"><div class="ttname"><a href="classFight.html#a969ae2aa7eefadaba55d7febaf0a76a0">Fight::getResultRound</a></div><div class="ttdeci">int getResultRound()</div><div class="ttdoc">Get fight result round.</div><div class="ttdef"><b>Definition:</b> fight.cpp:73</div></div>
 <div class="ttc" id="aclassFight_html_ab21a2330ecef22f79ccdaa3b0f2cb3e9"><div class="ttname"><a href="classFight.html#ab21a2330ecef22f79ccdaa3b0f2cb3e9">Fight::Fight</a></div><div class="ttdeci">Fight(int fightID, int order, std::string status, std::string weightClass, std::string cardSegment, std::string referee, int rounds, int resultClock, int resultRound, std::string resultType, int winnerID, bool active, FightStat fightStats[2])</div><div class="ttdoc">Fight constructor.</div><div class="ttdef"><b>Definition:</b> fight.cpp:4</div></div>
+<div class="ttc" id="aclassFight_html_abdbd05290255c78e3d42e35b21d8f129"><div class="ttname"><a href="classFight.html#abdbd05290255c78e3d42e35b21d8f129">Fight::getReferee</a></div><div class="ttdeci">std::string getReferee()</div><div class="ttdoc">Get fight referee.</div><div class="ttdef"><b>Definition:</b> fight.cpp:61</div></div>
+<div class="ttc" id="aclassFight_html_abe164993adeac9c1ebd71e8b266ac0b4"><div class="ttname"><a href="classFight.html#abe164993adeac9c1ebd71e8b266ac0b4">Fight::getResultClock</a></div><div class="ttdeci">int getResultClock()</div><div class="ttdoc">Get fight result clock.</div><div class="ttdef"><b>Definition:</b> fight.cpp:69</div></div>
+<div class="ttc" id="aclassFight_html_ac07a0d86137aa216aa0ba9b2bb4d67db"><div class="ttname"><a href="classFight.html#ac07a0d86137aa216aa0ba9b2bb4d67db">Fight::getCardSegment</a></div><div class="ttdeci">std::string getCardSegment()</div><div class="ttdoc">Get fight card segment.</div><div class="ttdef"><b>Definition:</b> fight.cpp:57</div></div>
+<div class="ttc" id="aclassFight_html_ac7cf2725bcc5e8fbe387a0cf818cee6a"><div class="ttname"><a href="classFight.html#ac7cf2725bcc5e8fbe387a0cf818cee6a">Fight::getWeightClass</a></div><div class="ttdeci">std::string getWeightClass()</div><div class="ttdoc">Get fight weight class.</div><div class="ttdef"><b>Definition:</b> fight.cpp:53</div></div>
+<div class="ttc" id="aclassFight_html_acc692169216d4ee7322c5faf322bbb2e"><div class="ttname"><a href="classFight.html#acc692169216d4ee7322c5faf322bbb2e">Fight::getRounds</a></div><div class="ttdeci">int getRounds()</div><div class="ttdoc">Get fight rounds.</div><div class="ttdef"><b>Definition:</b> fight.cpp:65</div></div>
+<div class="ttc" id="aclassFight_html_ad987cc82d666f0f3f6c3b1617747c0ef"><div class="ttname"><a href="classFight.html#ad987cc82d666f0f3f6c3b1617747c0ef">Fight::getOrder</a></div><div class="ttdeci">int getOrder()</div><div class="ttdoc">Get fight order.</div><div class="ttdef"><b>Definition:</b> fight.cpp:45</div></div>
+<div class="ttc" id="aclassFight_html_af5b06a4be17491c457aabb3cfea131c8"><div class="ttname"><a href="classFight.html#af5b06a4be17491c457aabb3cfea131c8">Fight::getResultType</a></div><div class="ttdeci">std::string getResultType()</div><div class="ttdoc">Get fight result type.</div><div class="ttdef"><b>Definition:</b> fight.cpp:77</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

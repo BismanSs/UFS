@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['qt_5fmeta_5fstringdata_5fapihandler_5ft_0',['qt_meta_stringdata_APIHandler_t',['../structqt__meta__stringdata__APIHandler__t.html',1,'']]],
-  ['qt_5fmeta_5fstringdata_5fmainwindow_5ft_1',['qt_meta_stringdata_MainWindow_t',['../structqt__meta__stringdata__MainWindow__t.html',1,'']]],
-  ['qt_5fmeta_5fstringdata_5fnotification_5ft_2',['qt_meta_stringdata_Notification_t',['../structqt__meta__stringdata__Notification__t.html',1,'']]],
-  ['qt_5fmeta_5fstringdata_5fnotificationhandler_5ft_3',['qt_meta_stringdata_NotificationHandler_t',['../structqt__meta__stringdata__NotificationHandler__t.html',1,'']]],
-  ['qt_5fmeta_5fstringdata_5fuserinterface_5ft_4',['qt_meta_stringdata_UserInterface_t',['../structqt__meta__stringdata__UserInterface__t.html',1,'']]]
+  ['notification_0',['Notification',['../classNotification.html',1,'Notification'],['../classNotification.html#a2dbcf9edad618633e22c067ecdce047b',1,'Notification::Notification(int notificationID, std::string title, std::string shortDesc, std::string longDesc, QWidget *parent=nullptr)'],['../classNotification.html#abb5907310fad98c8e35a11ee9793d881',1,'Notification::Notification(int notificationID, std::string title, std::string shortDesc, std::string longDesc, std::string timestamp, QWidget *parent=nullptr, bool expand=false)']]],
+  ['notificationhandler_1',['NotificationHandler',['../classNotificationHandler.html',1,'NotificationHandler'],['../classNotificationHandler.html#ae1cf02ab543eefde41d5223f2e1e1aa7',1,'NotificationHandler::NotificationHandler()']]]
 ];

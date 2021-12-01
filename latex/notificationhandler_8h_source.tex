@@ -18,61 +18,76 @@
 \DoxyCodeLine{15 \textcolor{preprocessor}{\#include <stdlib.h>}}
 \DoxyCodeLine{16 \textcolor{preprocessor}{\#include <time.h>}}
 \DoxyCodeLine{17 }
-\DoxyCodeLine{18 \textcolor{comment}{// Notification Handler, responsible for managing the lifetimes of notifications, inherits QFrame}}
-\DoxyCodeLine{19 \textcolor{keyword}{class }\mbox{\hyperlink{classNotificationHandler}{NotificationHandler}} : \textcolor{keyword}{public} QObject \{}
-\DoxyCodeLine{20     Q\_OBJECT}
-\DoxyCodeLine{21 \textcolor{keyword}{public}:}
-\DoxyCodeLine{22     \textcolor{keyword}{explicit} \mbox{\hyperlink{classNotificationHandler}{NotificationHandler}}(); \textcolor{comment}{// constructor, initializes handler}}
-\DoxyCodeLine{23     \mbox{\hyperlink{classNotificationHandler}{\string~NotificationHandler}}(); \textcolor{comment}{// deconstructor}}
-\DoxyCodeLine{24 }
-\DoxyCodeLine{25     \textcolor{keywordtype}{void} stop(); \textcolor{comment}{// stop the notifications thread}}
-\DoxyCodeLine{26 }
-\DoxyCodeLine{27     \textcolor{keyword}{static} \textcolor{keywordtype}{bool} isToggleOn(); \textcolor{comment}{// is the handler running}}
-\DoxyCodeLine{28 }
-\DoxyCodeLine{29     \textcolor{keywordtype}{bool} isToggleFilterFighters(); \textcolor{comment}{// is the handler filtering notifications by fighters}}
-\DoxyCodeLine{30     \textcolor{keywordtype}{void} setToggleFilterFighters(\textcolor{keywordtype}{bool} toggleFilterFighters); \textcolor{comment}{// toggles whether to filter notifications by a list of fighters}}
-\DoxyCodeLine{31 }
-\DoxyCodeLine{32     std::vector<Notification*> getNotifications(); \textcolor{comment}{// get the notifications vector}}
-\DoxyCodeLine{33     \mbox{\hyperlink{classNotification}{Notification}}* getNotificationByIndex(\textcolor{keywordtype}{int} index); \textcolor{comment}{// get the notification at an index}}
-\DoxyCodeLine{34     \mbox{\hyperlink{classNotification}{Notification}}* getNotificationByID(\textcolor{keywordtype}{int} notificationID); \textcolor{comment}{// get the notification by ID}}
-\DoxyCodeLine{35     \textcolor{keywordtype}{void} setNotifications(std::vector<Notification*> notifications); \textcolor{comment}{// sets the notifications vector}}
-\DoxyCodeLine{36     \textcolor{keywordtype}{void} addNotification(\mbox{\hyperlink{classNotification}{Notification}}* notification); \textcolor{comment}{// adds a notification to the vector}}
-\DoxyCodeLine{37     \textcolor{keywordtype}{void} removeNotification(\mbox{\hyperlink{classNotification}{Notification}}* notification); \textcolor{comment}{// removes a notification by pointer}}
-\DoxyCodeLine{38     \textcolor{keywordtype}{void} removeNotificationByID(\textcolor{keywordtype}{int} notificationID); \textcolor{comment}{// removes a notification by ID}}
-\DoxyCodeLine{39     \textcolor{keywordtype}{void} removeNotificationByIndex(\textcolor{keywordtype}{int} index); \textcolor{comment}{// removes a notification by index}}
-\DoxyCodeLine{40     \textcolor{keywordtype}{void} clearNotifications(); \textcolor{comment}{// clear the notifications vector}}
-\DoxyCodeLine{41 }
-\DoxyCodeLine{42     std::vector<Fighter*> getFilterFighters(); \textcolor{comment}{// get the vector of fighters to filter the notifications by}}
-\DoxyCodeLine{43     \mbox{\hyperlink{classFighter}{Fighter}}* getFilterFighterByIndex(\textcolor{keywordtype}{int} index); \textcolor{comment}{// get the fighter by index}}
-\DoxyCodeLine{44     \mbox{\hyperlink{classFighter}{Fighter}}* getFilterFighterByID(\textcolor{keywordtype}{int} fighterID); \textcolor{comment}{// get the fighter by ID}}
-\DoxyCodeLine{45     \textcolor{keywordtype}{void} setFilterFighters(std::vector<Fighter*> filterFighters); \textcolor{comment}{// set the filter fighter vector}}
-\DoxyCodeLine{46     \textcolor{keywordtype}{void} addFilterFighter(\mbox{\hyperlink{classFighter}{Fighter}}* filterFighter); \textcolor{comment}{// add a fighter to filter}}
-\DoxyCodeLine{47     \textcolor{keywordtype}{void} removeFilterFighter(\mbox{\hyperlink{classFighter}{Fighter}}* filterFighter); \textcolor{comment}{// remove a fighter by pointer}}
-\DoxyCodeLine{48     \textcolor{keywordtype}{void} removeFilterFighterByID(\textcolor{keywordtype}{int} fighterID); \textcolor{comment}{// remove a fighter by ID}}
-\DoxyCodeLine{49     \textcolor{keywordtype}{void} removeFilterFighterByIndex(\textcolor{keywordtype}{int} index); \textcolor{comment}{// remove a fighter by index}}
-\DoxyCodeLine{50     \textcolor{keywordtype}{void} clearFilterFighters(); \textcolor{comment}{// clear the filter fighters vector}}
-\DoxyCodeLine{51 }
-\DoxyCodeLine{52     std::vector<Event*> getUpcomingEvents(); \textcolor{comment}{// get map of upcoming events with date as key}}
-\DoxyCodeLine{53     \textcolor{comment}{// Event* getUpcomingEventByDate(std::string date); // get upcoming event by date}}
+\DoxyCodeLine{23 \textcolor{keyword}{class }\mbox{\hyperlink{classNotificationHandler}{NotificationHandler}} : \textcolor{keyword}{public} QObject \{}
+\DoxyCodeLine{24     Q\_OBJECT}
+\DoxyCodeLine{25 \textcolor{keyword}{public}:}
+\DoxyCodeLine{31     \textcolor{keyword}{explicit} \mbox{\hyperlink{classNotificationHandler_ae1cf02ab543eefde41d5223f2e1e1aa7}{NotificationHandler}}(); \textcolor{comment}{// constructor, initializes handler}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{38     \mbox{\hyperlink{classNotificationHandler_acd42d7e3b401215d65a28d589f31381a}{\string~NotificationHandler}}(); \textcolor{comment}{// deconstructor}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{45     \textcolor{keywordtype}{void} \mbox{\hyperlink{classNotificationHandler_af6221db2992ba36df9e895efc4fa174b}{stop}}(); \textcolor{comment}{// stop the notifications thread}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{53     \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classNotificationHandler_a86576e93bd8fb4b610129e1dd74c7ba9}{isToggleOn}}(); \textcolor{comment}{// is the handler running}}
 \DoxyCodeLine{54 }
-\DoxyCodeLine{55 \textcolor{keyword}{public} slots:}
-\DoxyCodeLine{56     \textcolor{keywordtype}{void} run(\textcolor{keywordtype}{bool} redactYear = \textcolor{keyword}{false}); \textcolor{comment}{// starts the notifications thread}}
-\DoxyCodeLine{57 }
-\DoxyCodeLine{58 \textcolor{keyword}{private}:}
-\DoxyCodeLine{59     \textcolor{keywordtype}{void} handleNotifications(); \textcolor{comment}{// notifications thread handler}}
-\DoxyCodeLine{60 }
-\DoxyCodeLine{61 signals:}
-\DoxyCodeLine{62     \textcolor{keywordtype}{void} updateNotifications();}
-\DoxyCodeLine{63 }
-\DoxyCodeLine{64 \textcolor{keyword}{public}:}
-\DoxyCodeLine{65     \textcolor{keyword}{static} \textcolor{keywordtype}{bool} toggleOn; \textcolor{comment}{// toggle for if the notification handler thread is running}}
-\DoxyCodeLine{66 }
-\DoxyCodeLine{67 \textcolor{keyword}{private}:}
-\DoxyCodeLine{68     \textcolor{keywordtype}{bool} toggleFilterFighters = \textcolor{keyword}{false}; \textcolor{comment}{// toggle for if notifications are filtered by a vector of fighters}}
-\DoxyCodeLine{69     std::vector<Notification*> notifications; \textcolor{comment}{// vector of live notifications}}
-\DoxyCodeLine{70     std::vector<Fighter*> filterFighters; \textcolor{comment}{// vector of fighters to filter by}}
-\DoxyCodeLine{71     std::vector<Event*> upcomingEvents; \textcolor{comment}{// map of upcoming events with date as key}}
-\DoxyCodeLine{72 }
-\DoxyCodeLine{73 \};}
+\DoxyCodeLine{61     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classNotificationHandler_a4c1c709e7718b1f40c59e00c9a9f794e}{isToggleFilterFighters}}(); \textcolor{comment}{// is the handler filtering notifications by fighters}}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{69     \textcolor{keywordtype}{void} \mbox{\hyperlink{classNotificationHandler_a7611152b2a2535034c873bf95b3cd60a}{setToggleFilterFighters}}(\textcolor{keywordtype}{bool} toggleFilterFighters); \textcolor{comment}{// toggles whether to filter notifications by a list of fighters}}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{77     std::vector<Notification*> \mbox{\hyperlink{classNotificationHandler_abafdab94565bef2abefcebee11ee87d0}{getNotifications}}(); \textcolor{comment}{// get the notifications vector}}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{86     \mbox{\hyperlink{classNotification}{Notification}}* \mbox{\hyperlink{classNotificationHandler_ae213e2cf3f1b4df0255a6db825fd86df}{getNotificationByIndex}}(\textcolor{keywordtype}{int} index); \textcolor{comment}{// get the notification at an index}}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{95     \mbox{\hyperlink{classNotification}{Notification}}* \mbox{\hyperlink{classNotificationHandler_a0d016993ce4e441d63d2d52b2aae662e}{getNotificationByID}}(\textcolor{keywordtype}{int} notificationID); \textcolor{comment}{// get the notification by ID}}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{103     \textcolor{keywordtype}{void} \mbox{\hyperlink{classNotificationHandler_a6513585f3c798fb35fc53cf219dfe1ba}{setNotifications}}(std::vector<Notification*> notifications); \textcolor{comment}{// sets the notifications vector}}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{111     \textcolor{keywordtype}{void} \mbox{\hyperlink{classNotificationHandler_ab2ec5da1d217b9cd2dbf2eb38d30190d}{addNotification}}(\mbox{\hyperlink{classNotification}{Notification}}* notification); \textcolor{comment}{// adds a notification to the vector}}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{119     \textcolor{keywordtype}{void} \mbox{\hyperlink{classNotificationHandler_aefb876603ead34eaa444b36bfe5ade01}{removeNotification}}(\mbox{\hyperlink{classNotification}{Notification}}* notification); \textcolor{comment}{// removes a notification by pointer}}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{127     \textcolor{keywordtype}{void} \mbox{\hyperlink{classNotificationHandler_aae4283317c2d61a7faf206071cd79bad}{removeNotificationByID}}(\textcolor{keywordtype}{int} notificationID); \textcolor{comment}{// removes a notification by ID}}
+\DoxyCodeLine{128 }
+\DoxyCodeLine{135     \textcolor{keywordtype}{void} \mbox{\hyperlink{classNotificationHandler_acc1931c9916b27ca6ec7d39f856f6f91}{removeNotificationByIndex}}(\textcolor{keywordtype}{int} index); \textcolor{comment}{// removes a notification by index}}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{142     \textcolor{keywordtype}{void} \mbox{\hyperlink{classNotificationHandler_aca78dc1ac35d4ea9b22d54fc02c23c62}{clearNotifications}}(); \textcolor{comment}{// clear the notifications vector}}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{150     std::vector<Fighter*> \mbox{\hyperlink{classNotificationHandler_a47baa96e7d5f5da07462ee82f8260bcc}{getFilterFighters}}(); \textcolor{comment}{// get the vector of fighters to filter the notifications by}}
+\DoxyCodeLine{151 }
+\DoxyCodeLine{158     \mbox{\hyperlink{classFighter}{Fighter}}* \mbox{\hyperlink{classNotificationHandler_a6cd0775290e36f190d5966b8f3064728}{getFilterFighterByIndex}}(\textcolor{keywordtype}{int} index); \textcolor{comment}{// get the fighter by index}}
+\DoxyCodeLine{159 }
+\DoxyCodeLine{166     \mbox{\hyperlink{classFighter}{Fighter}}* \mbox{\hyperlink{classNotificationHandler_a2e81491216619def9dc8733384217b65}{getFilterFighterByID}}(\textcolor{keywordtype}{int} fighterID); \textcolor{comment}{// get the fighter by ID}}
+\DoxyCodeLine{167 }
+\DoxyCodeLine{174     \textcolor{keywordtype}{void} \mbox{\hyperlink{classNotificationHandler_a1e48d8bfa96786a00ecb4ec9f3b83cf7}{setFilterFighters}}(std::vector<Fighter*> filterFighters); \textcolor{comment}{// set the filter fighter vector}}
+\DoxyCodeLine{175 }
+\DoxyCodeLine{182     \textcolor{keywordtype}{void} \mbox{\hyperlink{classNotificationHandler_ae1e63121d7800c4d3ee039ce24f19f36}{addFilterFighter}}(\mbox{\hyperlink{classFighter}{Fighter}}* filterFighter); \textcolor{comment}{// add a fighter to filter}}
+\DoxyCodeLine{183 }
+\DoxyCodeLine{190     \textcolor{keywordtype}{void} \mbox{\hyperlink{classNotificationHandler_aa3f42fc7cf4b2ee818696083a869214a}{removeFilterFighter}}(\mbox{\hyperlink{classFighter}{Fighter}}* filterFighter); \textcolor{comment}{// remove a fighter by pointer}}
+\DoxyCodeLine{191 }
+\DoxyCodeLine{198     \textcolor{keywordtype}{void} \mbox{\hyperlink{classNotificationHandler_a1fedf1bc9438cd93d7d4ae5b05f3441a}{removeFilterFighterByID}}(\textcolor{keywordtype}{int} fighterID); \textcolor{comment}{// remove a fighter by ID}}
+\DoxyCodeLine{199     \textcolor{keywordtype}{void} removeFilterFighterByIndex(\textcolor{keywordtype}{int} index); \textcolor{comment}{// remove a fighter by index}}
+\DoxyCodeLine{200     \textcolor{keywordtype}{void} clearFilterFighters(); \textcolor{comment}{// clear the filter fighters vector}}
+\DoxyCodeLine{201 }
+\DoxyCodeLine{202     std::vector<Event*> getUpcomingEvents(); \textcolor{comment}{// get map of upcoming events with date as key}}
+\DoxyCodeLine{203     \textcolor{comment}{// Event* getUpcomingEventByDate(std::string date); // get upcoming event by date}}
+\DoxyCodeLine{204 }
+\DoxyCodeLine{205 \textcolor{keyword}{public} slots:}
+\DoxyCodeLine{206     \textcolor{keywordtype}{void} run(\textcolor{keywordtype}{bool} redactYear = \textcolor{keyword}{false}); \textcolor{comment}{// starts the notifications thread}}
+\DoxyCodeLine{207 }
+\DoxyCodeLine{208 \textcolor{keyword}{private}:}
+\DoxyCodeLine{209     \textcolor{keywordtype}{void} handleNotifications(); \textcolor{comment}{// notifications thread handler}}
+\DoxyCodeLine{210 }
+\DoxyCodeLine{211 signals:}
+\DoxyCodeLine{212     \textcolor{keywordtype}{void} updateNotifications();}
+\DoxyCodeLine{213 }
+\DoxyCodeLine{214 \textcolor{keyword}{public}:}
+\DoxyCodeLine{215     \textcolor{keyword}{static} \textcolor{keywordtype}{bool} toggleOn; \textcolor{comment}{// toggle for if the notification handler thread is running}}
+\DoxyCodeLine{216 }
+\DoxyCodeLine{217 \textcolor{keyword}{private}:}
+\DoxyCodeLine{218     \textcolor{keywordtype}{bool} toggleFilterFighters = \textcolor{keyword}{false}; \textcolor{comment}{// toggle for if notifications are filtered by a vector of fighters}}
+\DoxyCodeLine{219     std::vector<Notification*> notifications; \textcolor{comment}{// vector of live notifications}}
+\DoxyCodeLine{220     std::vector<Fighter*> filterFighters; \textcolor{comment}{// vector of fighters to filter by}}
+\DoxyCodeLine{221     std::vector<Event*> upcomingEvents; \textcolor{comment}{// map of upcoming events with date as key}}
+\DoxyCodeLine{222 }
+\DoxyCodeLine{223 \};}
 
 \end{DoxyCode}

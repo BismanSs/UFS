@@ -13,26 +13,25 @@ Represents a user bet on a specific fighter in a fight.
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classBet_aa6ae60b227fec117f5c18d843c878157}{Bet}} (int bet\+ID, std\+::string title, float amount, int event\+ID, int fight\+ID, int fighter\+ID, bool winning, bool valid)
-\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classBet}{Bet}} constructor. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classBet}{Bet}} Constructor. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classBet_af0c424c5648484debecd1e13ae990ae2}{$\sim$\+Bet}} ()
 \begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classBet}{Bet}} deconstructor. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classBet_a273d6d2d8c037e65783a5990c5dabc28}{get\+Bet\+ID}} ()
-\begin{DoxyCompactList}\small\item\em get bet ID \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Get bet ID. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{classBet_a448953f64e56a5449b2d3fd6e0f4ebcf}{get\+Title}} ()
-\begin{DoxyCompactList}\small\item\em get bet title \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Get bet title. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{classBet_a21ed874095a424c98d398aebee77232a}{get\+Amount}} ()
-\begin{DoxyCompactList}\small\item\em get bet amount \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Get bet amount. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classBet_afa811fca541904b755bf6f1d784cf2b5}{get\+Event\+ID}} ()
-\begin{DoxyCompactList}\small\item\em get bet event ID \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Get bet event ID. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classBet_af20e51cab47ac4ea498410b184476b87}{get\+Fight\+ID}} ()
-\begin{DoxyCompactList}\small\item\em get bet fight ID \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Get bet fight ID. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classBet_a478db2ad41769d7f3df0de6c7e9d049b}{get\+Fighter\+ID}} ()
-\begin{DoxyCompactList}\small\item\em get bet fighter ID \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Get bet fighter ID. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classBet_a8759aab7051fecb874ba17ec0a9b7773}{is\+Winning}} ()
-\begin{DoxyCompactList}\small\item\em is bet winning \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classBet_a842c3eeffa874ac1b4c0740e9054aad5}\label{classBet_a842c3eeffa874ac1b4c0740e9054aad5}} 
-bool {\bfseries is\+Valid} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Is bet winning. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classBet_a842c3eeffa874ac1b4c0740e9054aad5}{is\+Valid}} ()
+\begin{DoxyCompactList}\small\item\em Is bet valid. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -52,8 +51,32 @@ Paul Scoropan
 
 
 
-\mbox{\hyperlink{classBet}{Bet}} constructor. 
+\mbox{\hyperlink{classBet}{Bet}} Constructor. 
 
+\mbox{\hyperlink{classBet}{Bet}} constructor.
+
+Initializes member variables. \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em bet\+ID} & bet ID \\
+\hline
+\mbox{\texttt{ in}}  & {\em title} & bet title \\
+\hline
+\mbox{\texttt{ in}}  & {\em amount} & bet amount \\
+\hline
+\mbox{\texttt{ in}}  & {\em event\+ID} & bet event ID \\
+\hline
+\mbox{\texttt{ in}}  & {\em fight\+ID} & bet fight ID \\
+\hline
+\mbox{\texttt{ in}}  & {\em fighter\+ID} & bet fighter ID \\
+\hline
+\mbox{\texttt{ in}}  & {\em winning} & is bet winning \\
+\hline
+\mbox{\texttt{ in}}  & {\em valid} & is bet valid\\
+\hline
+\end{DoxyParams}
 Takes as parameters all member variables in the order they appear in serialized cache \begin{DoxyAuthor}{Author}
 Paul Scoropan 
 \end{DoxyAuthor}
@@ -100,8 +123,16 @@ Paul Scoropan
 
 
 
-get bet amount 
+Get bet amount. 
 
+get bet amount
+
+Return amount \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+bet amount
+\end{DoxyReturn}
 returns bet amount \begin{DoxyAuthor}{Author}
 Paul Scoropan 
 \end{DoxyAuthor}
@@ -113,8 +144,16 @@ Paul Scoropan
 
 
 
-get bet ID 
+Get bet ID. 
 
+get bet ID
+
+Returns bet ID \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+bet ID
+\end{DoxyReturn}
 returns bet ID \begin{DoxyAuthor}{Author}
 Paul Scoropan 
 \end{DoxyAuthor}
@@ -126,8 +165,16 @@ Paul Scoropan
 
 
 
-get bet event ID 
+Get bet event ID. 
 
+get bet event ID
+
+Return bet event ID \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+bet event ID
+\end{DoxyReturn}
 returns bet event ID \begin{DoxyAuthor}{Author}
 Paul Scoropan 
 \end{DoxyAuthor}
@@ -139,8 +186,16 @@ Paul Scoropan
 
 
 
-get bet fighter ID 
+Get bet fighter ID. 
 
+get bet fighter ID
+
+Return fighter ID \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classBet}{Bet}} fighter ID
+\end{DoxyReturn}
 returns bet figher ID \begin{DoxyAuthor}{Author}
 Paul Scoropan 
 \end{DoxyAuthor}
@@ -152,8 +207,16 @@ Paul Scoropan
 
 
 
-get bet fight ID 
+Get bet fight ID. 
 
+get bet fight ID
+
+Return bet fight ID \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classBet}{Bet}} fight ID
+\end{DoxyReturn}
 returns bet fight ID \begin{DoxyAuthor}{Author}
 Paul Scoropan 
 \end{DoxyAuthor}
@@ -165,11 +228,35 @@ Paul Scoropan
 
 
 
-get bet title 
+Get bet title. 
 
+get bet title
+
+Return title \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+bet title
+\end{DoxyReturn}
 returns bet title \begin{DoxyAuthor}{Author}
 Paul Scoropan 
 \end{DoxyAuthor}
+\mbox{\Hypertarget{classBet_a842c3eeffa874ac1b4c0740e9054aad5}\label{classBet_a842c3eeffa874ac1b4c0740e9054aad5}} 
+\index{Bet@{Bet}!isValid@{isValid}}
+\index{isValid@{isValid}!Bet@{Bet}}
+\doxysubsubsection{\texorpdfstring{isValid()}{isValid()}}
+{\footnotesize\ttfamily bool Bet\+::is\+Valid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Is bet valid. 
+
+Returns whether bet is valid \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+is valid 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classBet_a8759aab7051fecb874ba17ec0a9b7773}\label{classBet_a8759aab7051fecb874ba17ec0a9b7773}} 
 \index{Bet@{Bet}!isWinning@{isWinning}}
 \index{isWinning@{isWinning}!Bet@{Bet}}
@@ -178,8 +265,16 @@ Paul Scoropan
 
 
 
-is bet winning 
+Is bet winning. 
 
+is bet winning
+
+Returns whether bet is winning \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+is winning
+\end{DoxyReturn}
 returns is bet winning \begin{DoxyAuthor}{Author}
 Paul Scoropan 
 \end{DoxyAuthor}

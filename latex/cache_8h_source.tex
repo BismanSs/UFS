@@ -19,79 +19,81 @@
 \DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}util.h"{}}}
 \DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}apihandler.h"{}}}
 \DoxyCodeLine{18 }
-\DoxyCodeLine{25 \textcolor{keyword}{class }\mbox{\hyperlink{classCache}{Cache}} \{}
-\DoxyCodeLine{26 \textcolor{keyword}{public}: \textcolor{comment}{// public methods}}
-\DoxyCodeLine{32 \textcolor{comment}{}    \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classCache_a2f871a069d658c8d27645df946aff3bd}{init}}(std::string outputPath);}
-\DoxyCodeLine{33 }
-\DoxyCodeLine{34     \textcolor{keyword}{static} \textcolor{keywordtype}{void} setAPIHandlersParent(QObject *parent);}
-\DoxyCodeLine{35     \textcolor{keyword}{static} QObject* getAPIHandlersParent();}
-\DoxyCodeLine{36 }
-\DoxyCodeLine{37     \textcolor{comment}{// get cache maps}}
-\DoxyCodeLine{38     \textcolor{keyword}{static} std::map<int, Fighter*> getFighters();}
-\DoxyCodeLine{39     \textcolor{keyword}{static} std::map<int, Fight*> getFights();}
-\DoxyCodeLine{40     \textcolor{keyword}{static} std::map<int, Event*> getEvents();}
-\DoxyCodeLine{41     \textcolor{keyword}{static} std::map<int, Bet*> getBets();}
+\DoxyCodeLine{24 \textcolor{keyword}{class }\mbox{\hyperlink{classCache}{Cache}} \{}
+\DoxyCodeLine{25 \textcolor{keyword}{public}: \textcolor{comment}{// public methods}}
+\DoxyCodeLine{33 \textcolor{comment}{}    \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classCache_a2f871a069d658c8d27645df946aff3bd}{init}}(std::string outputPath);}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{41     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{classCache_a1da0fb254f448a5b981e7b1d32e0b2ac}{setAPIHandlersParent}}(QObject *parent);}
 \DoxyCodeLine{42 }
-\DoxyCodeLine{43     \textcolor{comment}{// get elements by ID}}
-\DoxyCodeLine{44     \textcolor{keyword}{static} \mbox{\hyperlink{classFighter}{Fighter}}* getFighter(\textcolor{keywordtype}{int} fighterID);}
-\DoxyCodeLine{45     \textcolor{keyword}{static} \mbox{\hyperlink{classFight}{Fight}}* getFight(\textcolor{keywordtype}{int} fightID);}
-\DoxyCodeLine{46     \textcolor{keyword}{static} \mbox{\hyperlink{classEvent}{Event}}* getEvent(\textcolor{keywordtype}{int} eventID);}
-\DoxyCodeLine{47     \textcolor{keyword}{static} \mbox{\hyperlink{classBet}{Bet}}* getBet(\textcolor{keywordtype}{int} betID);}
-\DoxyCodeLine{48 }
-\DoxyCodeLine{49     \textcolor{comment}{// get or set the sportsdata.io API key}}
-\DoxyCodeLine{50     \textcolor{keyword}{static} std::string getSportsDataAPIKey();}
-\DoxyCodeLine{51     \textcolor{keyword}{static} \textcolor{keywordtype}{void} setSportsDataAPIKey(std::string sportsDataAPIKey);}
-\DoxyCodeLine{52 }
-\DoxyCodeLine{53     \textcolor{comment}{// get or set the output path of the cache}}
-\DoxyCodeLine{54     \textcolor{keyword}{static} std::string getOutputPath();}
-\DoxyCodeLine{55     \textcolor{keyword}{static} \textcolor{keywordtype}{void} setOutputPath(std::string outputPath);}
-\DoxyCodeLine{56 }
-\DoxyCodeLine{57     \textcolor{comment}{// read or write to cache}}
-\DoxyCodeLine{58     \textcolor{keyword}{static} \textcolor{keywordtype}{void} writeCacheToFile();}
-\DoxyCodeLine{59     \textcolor{keyword}{static} \textcolor{keywordtype}{void} updateCacheFromFile();}
-\DoxyCodeLine{60 }
-\DoxyCodeLine{61     \textcolor{comment}{// scan cache for invalid data and remove}}
-\DoxyCodeLine{62     \textcolor{keyword}{static} \textcolor{keywordtype}{void} sanitizeCache();}
-\DoxyCodeLine{63 }
-\DoxyCodeLine{64     \textcolor{comment}{// destroy the cache}}
-\DoxyCodeLine{65     \textcolor{keyword}{static} \textcolor{keywordtype}{void} destroy();}
-\DoxyCodeLine{66 }
-\DoxyCodeLine{67 \textcolor{keyword}{private}: \textcolor{comment}{// private member methods}}
-\DoxyCodeLine{68     \textcolor{keyword}{static} \mbox{\hyperlink{classFighter}{Fighter}}* parseFighter(std::string rawFighter);}
-\DoxyCodeLine{69     \textcolor{keyword}{static} \mbox{\hyperlink{classFight}{Fight}}* parseFight(std::string rawFight);}
-\DoxyCodeLine{70     \textcolor{keyword}{static} \mbox{\hyperlink{classEvent}{Event}}* parseEvent(std::string rawEvent);}
-\DoxyCodeLine{71     \textcolor{keyword}{static} \mbox{\hyperlink{classBet}{Bet}}* parseBet(std::string rawBet);}
-\DoxyCodeLine{72 }
-\DoxyCodeLine{73     \textcolor{comment}{// add, remove or replace fighters }}
-\DoxyCodeLine{74     \textcolor{keyword}{static} \textcolor{keywordtype}{void} addFighter(\textcolor{keywordtype}{int} fighterID, \mbox{\hyperlink{classFighter}{Fighter}}* fighter);}
-\DoxyCodeLine{75     \textcolor{keyword}{static} \textcolor{keywordtype}{void} removeFighter(\textcolor{keywordtype}{int} fighterID);}
-\DoxyCodeLine{76     \textcolor{keyword}{static} \textcolor{keywordtype}{void} replaceFighter(\textcolor{keywordtype}{int} fighterID, \mbox{\hyperlink{classFighter}{Fighter}}* fighter);}
-\DoxyCodeLine{77 }
-\DoxyCodeLine{78     \textcolor{comment}{// add, remove or replace fights }}
-\DoxyCodeLine{79     \textcolor{keyword}{static} \textcolor{keywordtype}{void} addFight(\textcolor{keywordtype}{int} fightID, \mbox{\hyperlink{classFight}{Fight}}* fight);}
-\DoxyCodeLine{80     \textcolor{keyword}{static} \textcolor{keywordtype}{void} removeFight(\textcolor{keywordtype}{int} fightID);}
-\DoxyCodeLine{81     \textcolor{keyword}{static} \textcolor{keywordtype}{void} replaceFight(\textcolor{keywordtype}{int} fightID, \mbox{\hyperlink{classFight}{Fight}}* fight);}
-\DoxyCodeLine{82 }
-\DoxyCodeLine{83     \textcolor{comment}{// add, remove or replace events }}
-\DoxyCodeLine{84     \textcolor{keyword}{static} \textcolor{keywordtype}{void} addEvent(\textcolor{keywordtype}{int} eventID, \mbox{\hyperlink{classEvent}{Event}}* event);}
-\DoxyCodeLine{85     \textcolor{keyword}{static} \textcolor{keywordtype}{void} removeEvent(\textcolor{keywordtype}{int} eventID);}
-\DoxyCodeLine{86     \textcolor{keyword}{static} \textcolor{keywordtype}{void} replaceEvent(\textcolor{keywordtype}{int} eventID, \mbox{\hyperlink{classEvent}{Event}}* event);}
+\DoxyCodeLine{49     \textcolor{keyword}{static} QObject* \mbox{\hyperlink{classCache_a9d0ceb57d97ebae2366f89f55d36e332}{getAPIHandlersParent}}();}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{57     \textcolor{keyword}{static} std::map<int, Fighter*> \mbox{\hyperlink{classCache_af3c1ff8cb640bb0b2963e9d0b2e7208e}{getFighters}}();}
+\DoxyCodeLine{64     \textcolor{keyword}{static} std::map<int, Fight*> \mbox{\hyperlink{classCache_a616858fd60116df2c95fc127bbc1b145}{getFights}}();}
+\DoxyCodeLine{71     \textcolor{keyword}{static} std::map<int, Event*> \mbox{\hyperlink{classCache_a74070da6513103c6dd76499063078b78}{getEvents}}();}
+\DoxyCodeLine{78     \textcolor{keyword}{static} std::map<int, Bet*> \mbox{\hyperlink{classCache_ad84a2571004bc1389a10b035e04783cf}{getBets}}();}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{86     \textcolor{keyword}{static} \mbox{\hyperlink{classFighter}{Fighter}}* \mbox{\hyperlink{classCache_a81741cdb34fdbb38dace5b374dcb1d55}{getFighter}}(\textcolor{keywordtype}{int} fighterID);}
 \DoxyCodeLine{87 }
-\DoxyCodeLine{88     \textcolor{comment}{// add, remove or replace bets }}
-\DoxyCodeLine{89     \textcolor{keyword}{static} \textcolor{keywordtype}{void} addBet(\textcolor{keywordtype}{int} betID, \mbox{\hyperlink{classBet}{Bet}}* bet);}
-\DoxyCodeLine{90     \textcolor{keyword}{static} \textcolor{keywordtype}{void} removeBet(\textcolor{keywordtype}{int} betID);}
-\DoxyCodeLine{91     \textcolor{keyword}{static} \textcolor{keywordtype}{void} replaceBet(\textcolor{keywordtype}{int} betID, \mbox{\hyperlink{classBet}{Bet}}* bet);}
-\DoxyCodeLine{92 }
-\DoxyCodeLine{93 \textcolor{keyword}{private}: \textcolor{comment}{// member variables}}
-\DoxyCodeLine{94     \textcolor{keyword}{static} std::map<int, Fighter*> fighters;}
-\DoxyCodeLine{95     \textcolor{keyword}{static} std::map<int, Fight*> fights;}
-\DoxyCodeLine{96     \textcolor{keyword}{static} std::map<int, Event*> events;}
-\DoxyCodeLine{97     \textcolor{keyword}{static} std::map<int, Bet*> bets;}
-\DoxyCodeLine{98 }
-\DoxyCodeLine{99     \textcolor{keyword}{static} std::string sportsDataAPIKey;}
-\DoxyCodeLine{100     \textcolor{keyword}{static} std::string outputPath;}
-\DoxyCodeLine{101     \textcolor{keyword}{static} QObject* apiHandlersParent;}
-\DoxyCodeLine{102 }
-\DoxyCodeLine{103 \};}
+\DoxyCodeLine{94     \textcolor{keyword}{static} \mbox{\hyperlink{classFight}{Fight}}* \mbox{\hyperlink{classCache_aa5b52210348b852a4dbc8365fd2a599c}{getFight}}(\textcolor{keywordtype}{int} fightID);}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{102     \textcolor{keyword}{static} \mbox{\hyperlink{classEvent}{Event}}* \mbox{\hyperlink{classCache_a9eebde552b24e9d9abe5e6c99219b42d}{getEvent}}(\textcolor{keywordtype}{int} eventID);}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{110     \textcolor{keyword}{static} \mbox{\hyperlink{classBet}{Bet}}* \mbox{\hyperlink{classCache_ad4867c8b443724e5b6f36823e6d0d698}{getBet}}(\textcolor{keywordtype}{int} betID);}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{118     \textcolor{keyword}{static} std::string \mbox{\hyperlink{classCache_a438b9cec24c42b3df522704c2b31b6fa}{getSportsDataAPIKey}}();}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{126     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{classCache_ad07d30ba47f611d22c51cfd44fab9ceb}{setSportsDataAPIKey}}(std::string sportsDataAPIKey);}
+\DoxyCodeLine{127 }
+\DoxyCodeLine{134     \textcolor{keyword}{static} std::string \mbox{\hyperlink{classCache_ab2739cacbe3454597f579f2668345422}{getOutputPath}}();}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{142     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{classCache_a1e048a2c71df537a487b9cdb80941dc4}{setOutputPath}}(std::string outputPath);}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{149     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{classCache_a5522cf2cc65eaf3c8c31db9af30d6e0d}{writeCacheToFile}}();}
+\DoxyCodeLine{150 }
+\DoxyCodeLine{156     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{classCache_ae6179c97d77ef2dc84f0c0558ad75cc3}{updateCacheFromFile}}();}
+\DoxyCodeLine{157 }
+\DoxyCodeLine{163     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{classCache_a1c991199e62752174994dffead00ff12}{destroy}}();}
+\DoxyCodeLine{164 }
+\DoxyCodeLine{165 \textcolor{keyword}{private}: \textcolor{comment}{// private member methods}}
+\DoxyCodeLine{173 \textcolor{comment}{}    \textcolor{keyword}{static} \mbox{\hyperlink{classFighter}{Fighter}}* parseFighter(std::string rawFighter); }
+\DoxyCodeLine{182     \textcolor{keyword}{static} \mbox{\hyperlink{classFight}{Fight}}* parseFight(std::string rawFight);}
+\DoxyCodeLine{183 }
+\DoxyCodeLine{191     \textcolor{keyword}{static} \mbox{\hyperlink{classEvent}{Event}}* parseEvent(std::string rawEvent);}
+\DoxyCodeLine{192 }
+\DoxyCodeLine{200     \textcolor{keyword}{static} \mbox{\hyperlink{classBet}{Bet}}* parseBet(std::string rawBet);}
+\DoxyCodeLine{201 }
+\DoxyCodeLine{209     \textcolor{keyword}{static} \textcolor{keywordtype}{void} addFighter(\textcolor{keywordtype}{int} fighterID, \mbox{\hyperlink{classFighter}{Fighter}}* fighter);}
+\DoxyCodeLine{210     }
+\DoxyCodeLine{217     \textcolor{keyword}{static} \textcolor{keywordtype}{void} removeFighter(\textcolor{keywordtype}{int} fighterID);}
+\DoxyCodeLine{218 }
+\DoxyCodeLine{226     \textcolor{keyword}{static} \textcolor{keywordtype}{void} replaceFighter(\textcolor{keywordtype}{int} fighterID, \mbox{\hyperlink{classFighter}{Fighter}}* fighter);}
+\DoxyCodeLine{227 }
+\DoxyCodeLine{235     \textcolor{keyword}{static} \textcolor{keywordtype}{void} addFight(\textcolor{keywordtype}{int} fightID, \mbox{\hyperlink{classFight}{Fight}}* fight);}
+\DoxyCodeLine{236 }
+\DoxyCodeLine{243     \textcolor{keyword}{static} \textcolor{keywordtype}{void} removeFight(\textcolor{keywordtype}{int} fightID);}
+\DoxyCodeLine{244 }
+\DoxyCodeLine{252     \textcolor{keyword}{static} \textcolor{keywordtype}{void} replaceFight(\textcolor{keywordtype}{int} fightID, \mbox{\hyperlink{classFight}{Fight}}* fight);}
+\DoxyCodeLine{253 }
+\DoxyCodeLine{261     \textcolor{keyword}{static} \textcolor{keywordtype}{void} addEvent(\textcolor{keywordtype}{int} eventID, \mbox{\hyperlink{classEvent}{Event}}* event);}
+\DoxyCodeLine{262 }
+\DoxyCodeLine{269     \textcolor{keyword}{static} \textcolor{keywordtype}{void} removeEvent(\textcolor{keywordtype}{int} eventID);}
+\DoxyCodeLine{270 }
+\DoxyCodeLine{278     \textcolor{keyword}{static} \textcolor{keywordtype}{void} replaceEvent(\textcolor{keywordtype}{int} eventID, \mbox{\hyperlink{classEvent}{Event}}* event);}
+\DoxyCodeLine{279 }
+\DoxyCodeLine{287     \textcolor{keyword}{static} \textcolor{keywordtype}{void} addBet(\textcolor{keywordtype}{int} betID, \mbox{\hyperlink{classBet}{Bet}}* bet);}
+\DoxyCodeLine{288 }
+\DoxyCodeLine{295     \textcolor{keyword}{static} \textcolor{keywordtype}{void} removeBet(\textcolor{keywordtype}{int} betID);}
+\DoxyCodeLine{296 }
+\DoxyCodeLine{304     \textcolor{keyword}{static} \textcolor{keywordtype}{void} replaceBet(\textcolor{keywordtype}{int} betID, \mbox{\hyperlink{classBet}{Bet}}* bet);}
+\DoxyCodeLine{305 }
+\DoxyCodeLine{306 \textcolor{keyword}{private}: \textcolor{comment}{// member variables}}
+\DoxyCodeLine{307     \textcolor{keyword}{static} std::map<int, Fighter*> fighters; }
+\DoxyCodeLine{308     \textcolor{keyword}{static} std::map<int, Fight*> fights; }
+\DoxyCodeLine{309     \textcolor{keyword}{static} std::map<int, Event*> events; }
+\DoxyCodeLine{310     \textcolor{keyword}{static} std::map<int, Bet*> bets; }
+\DoxyCodeLine{312     \textcolor{keyword}{static} std::string sportsDataAPIKey; }
+\DoxyCodeLine{313     \textcolor{keyword}{static} std::string outputPath; }
+\DoxyCodeLine{314     \textcolor{keyword}{static} QObject* apiHandlersParent; }
+\DoxyCodeLine{316 \};}
 
 \end{DoxyCode}

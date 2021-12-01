@@ -1,5 +1,14 @@
 \hypertarget{classNotification}{}\doxysection{Notification Class Reference}
 \label{classNotification}\index{Notification@{Notification}}
+
+
+Represents a notification.  
+
+
+
+
+{\ttfamily \#include $<$notification.\+h$>$}
+
 Inheritance diagram for Notification\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,45 +18,286 @@ Inheritance diagram for Notification\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classNotification_a2dbcf9edad618633e22c067ecdce047b}\label{classNotification_a2dbcf9edad618633e22c067ecdce047b}} 
-{\bfseries Notification} (int notification\+ID, std\+::string title, std\+::string short\+Desc, std\+::string long\+Desc, QWidget $\ast$parent=nullptr)
-\item 
-\mbox{\Hypertarget{classNotification_abb5907310fad98c8e35a11ee9793d881}\label{classNotification_abb5907310fad98c8e35a11ee9793d881}} 
-{\bfseries Notification} (int notification\+ID, std\+::string title, std\+::string short\+Desc, std\+::string long\+Desc, std\+::string timestamp, QWidget $\ast$parent=nullptr, bool expand=false)
-\item 
-\mbox{\Hypertarget{classNotification_ab80ddc009f7c482a05018c1031a3c12f}\label{classNotification_ab80ddc009f7c482a05018c1031a3c12f}} 
-int {\bfseries get\+Notification\+ID} ()
-\item 
-\mbox{\Hypertarget{classNotification_a7599a002f19eaf3828cf83cabf6fc69a}\label{classNotification_a7599a002f19eaf3828cf83cabf6fc69a}} 
-std\+::string {\bfseries get\+Title} ()
-\item 
-\mbox{\Hypertarget{classNotification_af788c2489d559603e0f57ce63ab4b035}\label{classNotification_af788c2489d559603e0f57ce63ab4b035}} 
-void {\bfseries set\+Title} (std\+::string title)
-\item 
-\mbox{\Hypertarget{classNotification_ac051981129e97161c241a61b17f9e20d}\label{classNotification_ac051981129e97161c241a61b17f9e20d}} 
-std\+::string {\bfseries get\+Short\+Desc} ()
-\item 
-\mbox{\Hypertarget{classNotification_a94b68557ac5350312d24cb78eccc5e47}\label{classNotification_a94b68557ac5350312d24cb78eccc5e47}} 
-void {\bfseries set\+Short\+Desc} (std\+::string title)
-\item 
-\mbox{\Hypertarget{classNotification_a0255d2903c6518520f15cea91a3450f7}\label{classNotification_a0255d2903c6518520f15cea91a3450f7}} 
-std\+::string {\bfseries get\+Long\+Desc} ()
-\item 
-\mbox{\Hypertarget{classNotification_af1fa1d3b9fae2ee902e1f4f3c52c852f}\label{classNotification_af1fa1d3b9fae2ee902e1f4f3c52c852f}} 
-void {\bfseries set\+Long\+Desc} (std\+::string long\+Desc)
-\item 
-\mbox{\Hypertarget{classNotification_af6bf3e1d775974dbbdd39a36bf350649}\label{classNotification_af6bf3e1d775974dbbdd39a36bf350649}} 
-std\+::string {\bfseries get\+Timestamp} ()
-\item 
-\mbox{\Hypertarget{classNotification_a78b96333212f175171c623d72109eb1f}\label{classNotification_a78b96333212f175171c623d72109eb1f}} 
-\mbox{\hyperlink{classNotification}{Notification}} $\ast$ {\bfseries expand} ()
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{classNotification_a2dbcf9edad618633e22c067ecdce047b}{Notification}} (int notification\+ID, std\+::string title, std\+::string short\+Desc, std\+::string long\+Desc, QWidget $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classNotification}{Notification}} constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classNotification_abb5907310fad98c8e35a11ee9793d881}{Notification}} (int notification\+ID, std\+::string title, std\+::string short\+Desc, std\+::string long\+Desc, std\+::string timestamp, QWidget $\ast$parent=nullptr, bool \mbox{\hyperlink{classNotification_a78b96333212f175171c623d72109eb1f}{expand}}=false)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classNotification}{Notification}} expanded constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classNotification_a46fd3a902eb1bc5e7edfdba2b2f8c392}{$\sim$\+Notification}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classNotification}{Notification}} deconstructor. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classNotification_ab80ddc009f7c482a05018c1031a3c12f}{get\+Notification\+ID}} ()
+\begin{DoxyCompactList}\small\item\em get notification ID \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classNotification_a7599a002f19eaf3828cf83cabf6fc69a}{get\+Title}} ()
+\begin{DoxyCompactList}\small\item\em get notification title \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNotification_af788c2489d559603e0f57ce63ab4b035}{set\+Title}} (std\+::string title)
+\begin{DoxyCompactList}\small\item\em set notification title \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classNotification_ac051981129e97161c241a61b17f9e20d}{get\+Short\+Desc}} ()
+\begin{DoxyCompactList}\small\item\em get notification short description \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNotification_a94b68557ac5350312d24cb78eccc5e47}{set\+Short\+Desc}} (std\+::string title)
+\begin{DoxyCompactList}\small\item\em set notification short description \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classNotification_a0255d2903c6518520f15cea91a3450f7}{get\+Long\+Desc}} ()
+\begin{DoxyCompactList}\small\item\em get notification long description \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNotification_af1fa1d3b9fae2ee902e1f4f3c52c852f}{set\+Long\+Desc}} (std\+::string long\+Desc)
+\begin{DoxyCompactList}\small\item\em set notification long description \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classNotification_af6bf3e1d775974dbbdd39a36bf350649}{get\+Timestamp}} ()
+\begin{DoxyCompactList}\small\item\em get notification timestamp \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classNotification}{Notification}} $\ast$ \mbox{\hyperlink{classNotification_a78b96333212f175171c623d72109eb1f}{expand}} ()
+\begin{DoxyCompactList}\small\item\em get expanded copy of notification \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+static \mbox{\hyperlink{classNotification}{Notification}} $\ast$ \mbox{\hyperlink{classNotification_a017af0f2ee2e701cb7ba28ea9395d543}{copy}} (\mbox{\hyperlink{classNotification}{Notification}} $\ast$other, bool \mbox{\hyperlink{classNotification_a78b96333212f175171c623d72109eb1f}{expand}}=false)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classNotification}{Notification}} copy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a notification. 
+
+This class represents a notification QFrame, lifetime handled by \mbox{\hyperlink{classNotificationHandler}{Notification\+Handler}} \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classNotification_a2dbcf9edad618633e22c067ecdce047b}\label{classNotification_a2dbcf9edad618633e22c067ecdce047b}} 
+\index{Notification@{Notification}!Notification@{Notification}}
+\index{Notification@{Notification}!Notification@{Notification}}
+\doxysubsubsection{\texorpdfstring{Notification()}{Notification()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Notification\+::\+Notification (\begin{DoxyParamCaption}\item[{int}]{notification\+ID,  }\item[{std\+::string}]{title,  }\item[{std\+::string}]{short\+Desc,  }\item[{std\+::string}]{long\+Desc,  }\item[{QWidget $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{classNotification}{Notification}} constructor. 
+
+initialize base member variables \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em notification\+ID} & notification ID \\
+\hline
+\mbox{\texttt{ in}}  & {\em title} & notification title \\
+\hline
+\mbox{\texttt{ in}}  & {\em short\+Desc} & notification short description \\
+\hline
+\mbox{\texttt{ in}}  & {\em long\+Desc} & notification long description (Not implemented in final project) \\
+\hline
+\mbox{\texttt{ in}}  & {\em parent} & notification QWidget parent \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classNotification_abb5907310fad98c8e35a11ee9793d881}\label{classNotification_abb5907310fad98c8e35a11ee9793d881}} 
+\index{Notification@{Notification}!Notification@{Notification}}
+\index{Notification@{Notification}!Notification@{Notification}}
+\doxysubsubsection{\texorpdfstring{Notification()}{Notification()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Notification\+::\+Notification (\begin{DoxyParamCaption}\item[{int}]{notification\+ID,  }\item[{std\+::string}]{title,  }\item[{std\+::string}]{short\+Desc,  }\item[{std\+::string}]{long\+Desc,  }\item[{std\+::string}]{timestamp,  }\item[{QWidget $\ast$}]{parent = {\ttfamily nullptr},  }\item[{bool}]{expand = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{classNotification}{Notification}} expanded constructor. 
+
+initialize all member variables \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em notification\+ID} & notification ID \\
+\hline
+\mbox{\texttt{ in}}  & {\em title} & notification title \\
+\hline
+\mbox{\texttt{ in}}  & {\em short\+Desc} & notification short description \\
+\hline
+\mbox{\texttt{ in}}  & {\em long\+Desc} & notification long description (Not implemented in final project) \\
+\hline
+\mbox{\texttt{ in}}  & {\em timestamp} & the time of the notification \\
+\hline
+\mbox{\texttt{ in}}  & {\em parent} & notification QWidget parent \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classNotification_a46fd3a902eb1bc5e7edfdba2b2f8c392}\label{classNotification_a46fd3a902eb1bc5e7edfdba2b2f8c392}} 
+\index{Notification@{Notification}!````~Notification@{$\sim$Notification}}
+\index{````~Notification@{$\sim$Notification}!Notification@{Notification}}
+\doxysubsubsection{\texorpdfstring{$\sim$Notification()}{~Notification()}}
+{\footnotesize\ttfamily Notification\+::$\sim$\+Notification (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{classNotification}{Notification}} deconstructor. 
+
+deallocates \mbox{\hyperlink{classNotification}{Notification}} memory \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classNotification_a017af0f2ee2e701cb7ba28ea9395d543}\label{classNotification_a017af0f2ee2e701cb7ba28ea9395d543}} 
-static \mbox{\hyperlink{classNotification}{Notification}} $\ast$ {\bfseries copy} (\mbox{\hyperlink{classNotification}{Notification}} $\ast$other, bool expand=false)
-\end{DoxyCompactItemize}
+\index{Notification@{Notification}!copy@{copy}}
+\index{copy@{copy}!Notification@{Notification}}
+\doxysubsubsection{\texorpdfstring{copy()}{copy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classNotification}{Notification}} $\ast$ Notification\+::copy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNotification}{Notification}} $\ast$}]{other,  }\item[{bool}]{expand = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\mbox{\hyperlink{classNotification}{Notification}} copy. 
+
+make a copy of the given notification in memory \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em other} & the notification to copy \\
+\hline
+\mbox{\texttt{ in}}  & {\em expand} & false by default, is the notification expanded \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classNotification_a78b96333212f175171c623d72109eb1f}\label{classNotification_a78b96333212f175171c623d72109eb1f}} 
+\index{Notification@{Notification}!expand@{expand}}
+\index{expand@{expand}!Notification@{Notification}}
+\doxysubsubsection{\texorpdfstring{expand()}{expand()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classNotification}{Notification}} $\ast$ Notification\+::expand (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get expanded copy of notification 
+
+returns expanded copy of the notification \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+an expanded copy of the notification 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classNotification_a0255d2903c6518520f15cea91a3450f7}\label{classNotification_a0255d2903c6518520f15cea91a3450f7}} 
+\index{Notification@{Notification}!getLongDesc@{getLongDesc}}
+\index{getLongDesc@{getLongDesc}!Notification@{Notification}}
+\doxysubsubsection{\texorpdfstring{getLongDesc()}{getLongDesc()}}
+{\footnotesize\ttfamily std\+::string Notification\+::get\+Long\+Desc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get notification long description 
+
+returns notification long description \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+notification long description 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classNotification_ab80ddc009f7c482a05018c1031a3c12f}\label{classNotification_ab80ddc009f7c482a05018c1031a3c12f}} 
+\index{Notification@{Notification}!getNotificationID@{getNotificationID}}
+\index{getNotificationID@{getNotificationID}!Notification@{Notification}}
+\doxysubsubsection{\texorpdfstring{getNotificationID()}{getNotificationID()}}
+{\footnotesize\ttfamily int Notification\+::get\+Notification\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get notification ID 
+
+returns notification ID \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+notification ID 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classNotification_ac051981129e97161c241a61b17f9e20d}\label{classNotification_ac051981129e97161c241a61b17f9e20d}} 
+\index{Notification@{Notification}!getShortDesc@{getShortDesc}}
+\index{getShortDesc@{getShortDesc}!Notification@{Notification}}
+\doxysubsubsection{\texorpdfstring{getShortDesc()}{getShortDesc()}}
+{\footnotesize\ttfamily std\+::string Notification\+::get\+Short\+Desc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get notification short description 
+
+returns notification short description \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+notification short description 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classNotification_af6bf3e1d775974dbbdd39a36bf350649}\label{classNotification_af6bf3e1d775974dbbdd39a36bf350649}} 
+\index{Notification@{Notification}!getTimestamp@{getTimestamp}}
+\index{getTimestamp@{getTimestamp}!Notification@{Notification}}
+\doxysubsubsection{\texorpdfstring{getTimestamp()}{getTimestamp()}}
+{\footnotesize\ttfamily std\+::string Notification\+::get\+Timestamp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get notification timestamp 
+
+returns notification timestamp \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+notification timestamp 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classNotification_a7599a002f19eaf3828cf83cabf6fc69a}\label{classNotification_a7599a002f19eaf3828cf83cabf6fc69a}} 
+\index{Notification@{Notification}!getTitle@{getTitle}}
+\index{getTitle@{getTitle}!Notification@{Notification}}
+\doxysubsubsection{\texorpdfstring{getTitle()}{getTitle()}}
+{\footnotesize\ttfamily std\+::string Notification\+::get\+Title (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get notification title 
+
+returns notification title \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+notification title 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classNotification_af1fa1d3b9fae2ee902e1f4f3c52c852f}\label{classNotification_af1fa1d3b9fae2ee902e1f4f3c52c852f}} 
+\index{Notification@{Notification}!setLongDesc@{setLongDesc}}
+\index{setLongDesc@{setLongDesc}!Notification@{Notification}}
+\doxysubsubsection{\texorpdfstring{setLongDesc()}{setLongDesc()}}
+{\footnotesize\ttfamily void Notification\+::set\+Long\+Desc (\begin{DoxyParamCaption}\item[{std\+::string}]{long\+Desc }\end{DoxyParamCaption})}
+
+
+
+set notification long description 
+
+sets notification long description \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em long\+Desc} & notification long description \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classNotification_a94b68557ac5350312d24cb78eccc5e47}\label{classNotification_a94b68557ac5350312d24cb78eccc5e47}} 
+\index{Notification@{Notification}!setShortDesc@{setShortDesc}}
+\index{setShortDesc@{setShortDesc}!Notification@{Notification}}
+\doxysubsubsection{\texorpdfstring{setShortDesc()}{setShortDesc()}}
+{\footnotesize\ttfamily void Notification\+::set\+Short\+Desc (\begin{DoxyParamCaption}\item[{std\+::string}]{title }\end{DoxyParamCaption})}
+
+
+
+set notification short description 
+
+sets notification short description \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em short\+Desc} & notification short description \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classNotification_af788c2489d559603e0f57ce63ab4b035}\label{classNotification_af788c2489d559603e0f57ce63ab4b035}} 
+\index{Notification@{Notification}!setTitle@{setTitle}}
+\index{setTitle@{setTitle}!Notification@{Notification}}
+\doxysubsubsection{\texorpdfstring{setTitle()}{setTitle()}}
+{\footnotesize\ttfamily void Notification\+::set\+Title (\begin{DoxyParamCaption}\item[{std\+::string}]{title }\end{DoxyParamCaption})}
+
+
+
+set notification title 
+
+sets notification title \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em title} & notification title \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

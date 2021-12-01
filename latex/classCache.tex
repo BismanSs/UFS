@@ -14,60 +14,40 @@ Represents all the data in the program.
 \item 
 static bool \mbox{\hyperlink{classCache_a2f871a069d658c8d27645df946aff3bd}{init}} (std\+::string output\+Path)
 \begin{DoxyCompactList}\small\item\em Initialize the static cache. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classCache_a1da0fb254f448a5b981e7b1d32e0b2ac}\label{classCache_a1da0fb254f448a5b981e7b1d32e0b2ac}} 
-static void {\bfseries set\+APIHandlers\+Parent} (QObject $\ast$parent)
-\item 
-\mbox{\Hypertarget{classCache_a9d0ceb57d97ebae2366f89f55d36e332}\label{classCache_a9d0ceb57d97ebae2366f89f55d36e332}} 
-static QObject $\ast$ {\bfseries get\+APIHandlers\+Parent} ()
-\item 
-\mbox{\Hypertarget{classCache_af3c1ff8cb640bb0b2963e9d0b2e7208e}\label{classCache_af3c1ff8cb640bb0b2963e9d0b2e7208e}} 
-static std\+::map$<$ int, \mbox{\hyperlink{classFighter}{Fighter}} $\ast$ $>$ {\bfseries get\+Fighters} ()
-\item 
-\mbox{\Hypertarget{classCache_a616858fd60116df2c95fc127bbc1b145}\label{classCache_a616858fd60116df2c95fc127bbc1b145}} 
-static std\+::map$<$ int, \mbox{\hyperlink{classFight}{Fight}} $\ast$ $>$ {\bfseries get\+Fights} ()
-\item 
-\mbox{\Hypertarget{classCache_a74070da6513103c6dd76499063078b78}\label{classCache_a74070da6513103c6dd76499063078b78}} 
-static std\+::map$<$ int, \mbox{\hyperlink{classEvent}{Event}} $\ast$ $>$ {\bfseries get\+Events} ()
-\item 
-\mbox{\Hypertarget{classCache_ad84a2571004bc1389a10b035e04783cf}\label{classCache_ad84a2571004bc1389a10b035e04783cf}} 
-static std\+::map$<$ int, \mbox{\hyperlink{classBet}{Bet}} $\ast$ $>$ {\bfseries get\+Bets} ()
-\item 
-\mbox{\Hypertarget{classCache_a81741cdb34fdbb38dace5b374dcb1d55}\label{classCache_a81741cdb34fdbb38dace5b374dcb1d55}} 
-static \mbox{\hyperlink{classFighter}{Fighter}} $\ast$ {\bfseries get\+Fighter} (int fighter\+ID)
-\item 
-\mbox{\Hypertarget{classCache_aa5b52210348b852a4dbc8365fd2a599c}\label{classCache_aa5b52210348b852a4dbc8365fd2a599c}} 
-static \mbox{\hyperlink{classFight}{Fight}} $\ast$ {\bfseries get\+Fight} (int fight\+ID)
-\item 
-\mbox{\Hypertarget{classCache_a9eebde552b24e9d9abe5e6c99219b42d}\label{classCache_a9eebde552b24e9d9abe5e6c99219b42d}} 
-static \mbox{\hyperlink{classEvent}{Event}} $\ast$ {\bfseries get\+Event} (int event\+ID)
-\item 
-\mbox{\Hypertarget{classCache_ad4867c8b443724e5b6f36823e6d0d698}\label{classCache_ad4867c8b443724e5b6f36823e6d0d698}} 
-static \mbox{\hyperlink{classBet}{Bet}} $\ast$ {\bfseries get\+Bet} (int bet\+ID)
-\item 
-\mbox{\Hypertarget{classCache_a438b9cec24c42b3df522704c2b31b6fa}\label{classCache_a438b9cec24c42b3df522704c2b31b6fa}} 
-static std\+::string {\bfseries get\+Sports\+Data\+APIKey} ()
-\item 
-\mbox{\Hypertarget{classCache_ad07d30ba47f611d22c51cfd44fab9ceb}\label{classCache_ad07d30ba47f611d22c51cfd44fab9ceb}} 
-static void {\bfseries set\+Sports\+Data\+APIKey} (std\+::string sports\+Data\+APIKey)
-\item 
-\mbox{\Hypertarget{classCache_ab2739cacbe3454597f579f2668345422}\label{classCache_ab2739cacbe3454597f579f2668345422}} 
-static std\+::string {\bfseries get\+Output\+Path} ()
-\item 
-\mbox{\Hypertarget{classCache_a1e048a2c71df537a487b9cdb80941dc4}\label{classCache_a1e048a2c71df537a487b9cdb80941dc4}} 
-static void {\bfseries set\+Output\+Path} (std\+::string output\+Path)
-\item 
-\mbox{\Hypertarget{classCache_a5522cf2cc65eaf3c8c31db9af30d6e0d}\label{classCache_a5522cf2cc65eaf3c8c31db9af30d6e0d}} 
-static void {\bfseries write\+Cache\+To\+File} ()
-\item 
-\mbox{\Hypertarget{classCache_ae6179c97d77ef2dc84f0c0558ad75cc3}\label{classCache_ae6179c97d77ef2dc84f0c0558ad75cc3}} 
-static void {\bfseries update\+Cache\+From\+File} ()
-\item 
-\mbox{\Hypertarget{classCache_a18089513fb8fe0426b965d5e736b2304}\label{classCache_a18089513fb8fe0426b965d5e736b2304}} 
-static void {\bfseries sanitize\+Cache} ()
-\item 
-\mbox{\Hypertarget{classCache_a1c991199e62752174994dffead00ff12}\label{classCache_a1c991199e62752174994dffead00ff12}} 
-static void {\bfseries destroy} ()
-\end{DoxyCompactItemize}
+static void \mbox{\hyperlink{classCache_a1da0fb254f448a5b981e7b1d32e0b2ac}{set\+APIHandlers\+Parent}} (QObject $\ast$parent)
+\begin{DoxyCompactList}\small\item\em Sets API Handlers parent. \end{DoxyCompactList}\item 
+static QObject $\ast$ \mbox{\hyperlink{classCache_a9d0ceb57d97ebae2366f89f55d36e332}{get\+APIHandlers\+Parent}} ()
+\begin{DoxyCompactList}\small\item\em Get API Handlers parent. \end{DoxyCompactList}\item 
+static std\+::map$<$ int, \mbox{\hyperlink{classFighter}{Fighter}} $\ast$ $>$ \mbox{\hyperlink{classCache_af3c1ff8cb640bb0b2963e9d0b2e7208e}{get\+Fighters}} ()
+\begin{DoxyCompactList}\small\item\em Get map of fighters. \end{DoxyCompactList}\item 
+static std\+::map$<$ int, \mbox{\hyperlink{classFight}{Fight}} $\ast$ $>$ \mbox{\hyperlink{classCache_a616858fd60116df2c95fc127bbc1b145}{get\+Fights}} ()
+\begin{DoxyCompactList}\small\item\em Get map of fights. \end{DoxyCompactList}\item 
+static std\+::map$<$ int, \mbox{\hyperlink{classEvent}{Event}} $\ast$ $>$ \mbox{\hyperlink{classCache_a74070da6513103c6dd76499063078b78}{get\+Events}} ()
+\begin{DoxyCompactList}\small\item\em Get map of events. \end{DoxyCompactList}\item 
+static std\+::map$<$ int, \mbox{\hyperlink{classBet}{Bet}} $\ast$ $>$ \mbox{\hyperlink{classCache_ad84a2571004bc1389a10b035e04783cf}{get\+Bets}} ()
+\begin{DoxyCompactList}\small\item\em Get map of bets. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classFighter}{Fighter}} $\ast$ \mbox{\hyperlink{classCache_a81741cdb34fdbb38dace5b374dcb1d55}{get\+Fighter}} (int fighter\+ID)
+\begin{DoxyCompactList}\small\item\em Get a fighter by ID. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classFight}{Fight}} $\ast$ \mbox{\hyperlink{classCache_aa5b52210348b852a4dbc8365fd2a599c}{get\+Fight}} (int fight\+ID)
+\begin{DoxyCompactList}\small\item\em Get a fight by ID. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classEvent}{Event}} $\ast$ \mbox{\hyperlink{classCache_a9eebde552b24e9d9abe5e6c99219b42d}{get\+Event}} (int event\+ID)
+\begin{DoxyCompactList}\small\item\em Get a event by ID. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classBet}{Bet}} $\ast$ \mbox{\hyperlink{classCache_ad4867c8b443724e5b6f36823e6d0d698}{get\+Bet}} (int bet\+ID)
+\begin{DoxyCompactList}\small\item\em Get a bet by ID. \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{classCache_a438b9cec24c42b3df522704c2b31b6fa}{get\+Sports\+Data\+APIKey}} ()
+\begin{DoxyCompactList}\small\item\em Get the sportsdata.\+io API key. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classCache_ad07d30ba47f611d22c51cfd44fab9ceb}{set\+Sports\+Data\+APIKey}} (std\+::string sports\+Data\+APIKey)
+\begin{DoxyCompactList}\small\item\em Set the sportsdata.\+io API key. \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{classCache_ab2739cacbe3454597f579f2668345422}{get\+Output\+Path}} ()
+\begin{DoxyCompactList}\small\item\em Get the cache output path. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classCache_a1e048a2c71df537a487b9cdb80941dc4}{set\+Output\+Path}} (std\+::string output\+Path)
+\begin{DoxyCompactList}\small\item\em Set the cache output path. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classCache_a5522cf2cc65eaf3c8c31db9af30d6e0d}{write\+Cache\+To\+File}} ()
+\begin{DoxyCompactList}\small\item\em write cache to file \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classCache_ae6179c97d77ef2dc84f0c0558ad75cc3}{update\+Cache\+From\+File}} ()
+\begin{DoxyCompactList}\small\item\em update cache from file \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classCache_a1c991199e62752174994dffead00ff12}{destroy}} ()
+\begin{DoxyCompactList}\small\item\em destroy the cache \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -79,6 +59,195 @@ Paul Scoropan
 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCache_a1c991199e62752174994dffead00ff12}\label{classCache_a1c991199e62752174994dffead00ff12}} 
+\index{Cache@{Cache}!destroy@{destroy}}
+\index{destroy@{destroy}!Cache@{Cache}}
+\doxysubsubsection{\texorpdfstring{destroy()}{destroy()}}
+{\footnotesize\ttfamily void Cache\+::destroy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+destroy the cache 
+
+deallocate cache memory \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{classCache_a9d0ceb57d97ebae2366f89f55d36e332}\label{classCache_a9d0ceb57d97ebae2366f89f55d36e332}} 
+\index{Cache@{Cache}!getAPIHandlersParent@{getAPIHandlersParent}}
+\index{getAPIHandlersParent@{getAPIHandlersParent}!Cache@{Cache}}
+\doxysubsubsection{\texorpdfstring{getAPIHandlersParent()}{getAPIHandlersParent()}}
+{\footnotesize\ttfamily QObject $\ast$ Cache\+::get\+APIHandlers\+Parent (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get API Handlers parent. 
+
+Returns API Handlers parent \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+QObject parent 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCache_ad4867c8b443724e5b6f36823e6d0d698}\label{classCache_ad4867c8b443724e5b6f36823e6d0d698}} 
+\index{Cache@{Cache}!getBet@{getBet}}
+\index{getBet@{getBet}!Cache@{Cache}}
+\doxysubsubsection{\texorpdfstring{getBet()}{getBet()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBet}{Bet}} $\ast$ Cache\+::get\+Bet (\begin{DoxyParamCaption}\item[{int}]{bet\+ID }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get a bet by ID. 
+
+Returns a bet object by given ID \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+a bet object 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCache_ad84a2571004bc1389a10b035e04783cf}\label{classCache_ad84a2571004bc1389a10b035e04783cf}} 
+\index{Cache@{Cache}!getBets@{getBets}}
+\index{getBets@{getBets}!Cache@{Cache}}
+\doxysubsubsection{\texorpdfstring{getBets()}{getBets()}}
+{\footnotesize\ttfamily std\+::map$<$ int, \mbox{\hyperlink{classBet}{Bet}} $\ast$ $>$ Cache\+::get\+Bets (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get map of bets. 
+
+Returns bet object map \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+map of bets 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCache_a9eebde552b24e9d9abe5e6c99219b42d}\label{classCache_a9eebde552b24e9d9abe5e6c99219b42d}} 
+\index{Cache@{Cache}!getEvent@{getEvent}}
+\index{getEvent@{getEvent}!Cache@{Cache}}
+\doxysubsubsection{\texorpdfstring{getEvent()}{getEvent()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEvent}{Event}} $\ast$ Cache\+::get\+Event (\begin{DoxyParamCaption}\item[{int}]{event\+ID }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get a event by ID. 
+
+Returns a event object by given ID \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+a event object 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCache_a74070da6513103c6dd76499063078b78}\label{classCache_a74070da6513103c6dd76499063078b78}} 
+\index{Cache@{Cache}!getEvents@{getEvents}}
+\index{getEvents@{getEvents}!Cache@{Cache}}
+\doxysubsubsection{\texorpdfstring{getEvents()}{getEvents()}}
+{\footnotesize\ttfamily std\+::map$<$ int, \mbox{\hyperlink{classEvent}{Event}} $\ast$ $>$ Cache\+::get\+Events (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get map of events. 
+
+Returns events object map \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+map of events 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCache_aa5b52210348b852a4dbc8365fd2a599c}\label{classCache_aa5b52210348b852a4dbc8365fd2a599c}} 
+\index{Cache@{Cache}!getFight@{getFight}}
+\index{getFight@{getFight}!Cache@{Cache}}
+\doxysubsubsection{\texorpdfstring{getFight()}{getFight()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classFight}{Fight}} $\ast$ Cache\+::get\+Fight (\begin{DoxyParamCaption}\item[{int}]{fight\+ID }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get a fight by ID. 
+
+Returns a fight object by given ID \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+a fight object 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCache_a81741cdb34fdbb38dace5b374dcb1d55}\label{classCache_a81741cdb34fdbb38dace5b374dcb1d55}} 
+\index{Cache@{Cache}!getFighter@{getFighter}}
+\index{getFighter@{getFighter}!Cache@{Cache}}
+\doxysubsubsection{\texorpdfstring{getFighter()}{getFighter()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classFighter}{Fighter}} $\ast$ Cache\+::get\+Fighter (\begin{DoxyParamCaption}\item[{int}]{fighter\+ID }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get a fighter by ID. 
+
+Returns a fighter object by given ID \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+a fighter object 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCache_af3c1ff8cb640bb0b2963e9d0b2e7208e}\label{classCache_af3c1ff8cb640bb0b2963e9d0b2e7208e}} 
+\index{Cache@{Cache}!getFighters@{getFighters}}
+\index{getFighters@{getFighters}!Cache@{Cache}}
+\doxysubsubsection{\texorpdfstring{getFighters()}{getFighters()}}
+{\footnotesize\ttfamily std\+::map$<$ int, \mbox{\hyperlink{classFighter}{Fighter}} $\ast$ $>$ Cache\+::get\+Fighters (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get map of fighters. 
+
+Returns fighter object map \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+map of fighters 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCache_a616858fd60116df2c95fc127bbc1b145}\label{classCache_a616858fd60116df2c95fc127bbc1b145}} 
+\index{Cache@{Cache}!getFights@{getFights}}
+\index{getFights@{getFights}!Cache@{Cache}}
+\doxysubsubsection{\texorpdfstring{getFights()}{getFights()}}
+{\footnotesize\ttfamily std\+::map$<$ int, \mbox{\hyperlink{classFight}{Fight}} $\ast$ $>$ Cache\+::get\+Fights (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get map of fights. 
+
+Returns fight object map \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+map of fights 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCache_ab2739cacbe3454597f579f2668345422}\label{classCache_ab2739cacbe3454597f579f2668345422}} 
+\index{Cache@{Cache}!getOutputPath@{getOutputPath}}
+\index{getOutputPath@{getOutputPath}!Cache@{Cache}}
+\doxysubsubsection{\texorpdfstring{getOutputPath()}{getOutputPath()}}
+{\footnotesize\ttfamily std\+::string Cache\+::get\+Output\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get the cache output path. 
+
+Returns the cache output path \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+the cache output path 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCache_a438b9cec24c42b3df522704c2b31b6fa}\label{classCache_a438b9cec24c42b3df522704c2b31b6fa}} 
+\index{Cache@{Cache}!getSportsDataAPIKey@{getSportsDataAPIKey}}
+\index{getSportsDataAPIKey@{getSportsDataAPIKey}!Cache@{Cache}}
+\doxysubsubsection{\texorpdfstring{getSportsDataAPIKey()}{getSportsDataAPIKey()}}
+{\footnotesize\ttfamily std\+::string Cache\+::get\+Sports\+Data\+APIKey (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get the sportsdata.\+io API key. 
+
+Returns the sportsdata.\+io API key \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+the sportsdata.\+io API key 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classCache_a2f871a069d658c8d27645df946aff3bd}\label{classCache_a2f871a069d658c8d27645df946aff3bd}} 
 \index{Cache@{Cache}!init@{init}}
 \index{init@{init}!Cache@{Cache}}
@@ -89,6 +258,9 @@ Paul Scoropan
 
 Initialize the static cache. 
 
+Initializes member variables \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
 
 \begin{DoxyParams}{Parameters}
 {\em output\+Path} & String holding the output\+Path to be written to \\
@@ -97,6 +269,86 @@ Initialize the static cache.
 \begin{DoxyReturn}{Returns}
 bool true for success, error if else 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classCache_a1da0fb254f448a5b981e7b1d32e0b2ac}\label{classCache_a1da0fb254f448a5b981e7b1d32e0b2ac}} 
+\index{Cache@{Cache}!setAPIHandlersParent@{setAPIHandlersParent}}
+\index{setAPIHandlersParent@{setAPIHandlersParent}!Cache@{Cache}}
+\doxysubsubsection{\texorpdfstring{setAPIHandlersParent()}{setAPIHandlersParent()}}
+{\footnotesize\ttfamily void Cache\+::set\+APIHandlers\+Parent (\begin{DoxyParamCaption}\item[{QObject $\ast$}]{parent }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Sets API Handlers parent. 
+
+Sets API Handler\textquotesingle{}s parent to a QObject \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & the QObject parent \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCache_a1e048a2c71df537a487b9cdb80941dc4}\label{classCache_a1e048a2c71df537a487b9cdb80941dc4}} 
+\index{Cache@{Cache}!setOutputPath@{setOutputPath}}
+\index{setOutputPath@{setOutputPath}!Cache@{Cache}}
+\doxysubsubsection{\texorpdfstring{setOutputPath()}{setOutputPath()}}
+{\footnotesize\ttfamily void Cache\+::set\+Output\+Path (\begin{DoxyParamCaption}\item[{std\+::string}]{output\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Set the cache output path. 
+
+sets the cache output path \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em output\+Path} & the cache output path \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCache_ad07d30ba47f611d22c51cfd44fab9ceb}\label{classCache_ad07d30ba47f611d22c51cfd44fab9ceb}} 
+\index{Cache@{Cache}!setSportsDataAPIKey@{setSportsDataAPIKey}}
+\index{setSportsDataAPIKey@{setSportsDataAPIKey}!Cache@{Cache}}
+\doxysubsubsection{\texorpdfstring{setSportsDataAPIKey()}{setSportsDataAPIKey()}}
+{\footnotesize\ttfamily void Cache\+::set\+Sports\+Data\+APIKey (\begin{DoxyParamCaption}\item[{std\+::string}]{sports\+Data\+APIKey }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Set the sportsdata.\+io API key. 
+
+sets the sportsdata.\+io API key \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em sports\+Data\+APIKey} & the sportsdata.\+io API key \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCache_ae6179c97d77ef2dc84f0c0558ad75cc3}\label{classCache_ae6179c97d77ef2dc84f0c0558ad75cc3}} 
+\index{Cache@{Cache}!updateCacheFromFile@{updateCacheFromFile}}
+\index{updateCacheFromFile@{updateCacheFromFile}!Cache@{Cache}}
+\doxysubsubsection{\texorpdfstring{updateCacheFromFile()}{updateCacheFromFile()}}
+{\footnotesize\ttfamily void Cache\+::update\+Cache\+From\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+update cache from file 
+
+read and deserealize the cache from output file \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{classCache_a5522cf2cc65eaf3c8c31db9af30d6e0d}\label{classCache_a5522cf2cc65eaf3c8c31db9af30d6e0d}} 
+\index{Cache@{Cache}!writeCacheToFile@{writeCacheToFile}}
+\index{writeCacheToFile@{writeCacheToFile}!Cache@{Cache}}
+\doxysubsubsection{\texorpdfstring{writeCacheToFile()}{writeCacheToFile()}}
+{\footnotesize\ttfamily void Cache\+::write\+Cache\+To\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+write cache to file 
+
+serealize and write the cache to output file \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

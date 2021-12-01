@@ -1,5 +1,14 @@
 \hypertarget{classNotificationHandler}{}\doxysection{Notification\+Handler Class Reference}
 \label{classNotificationHandler}\index{NotificationHandler@{NotificationHandler}}
+
+
+\mbox{\hyperlink{classNotification}{Notification}} Handler.  
+
+
+
+
+{\ttfamily \#include $<$notificationhandler.\+h$>$}
+
 Inheritance diagram for Notification\+Handler\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,63 +30,48 @@ void {\bfseries update\+Notifications} ()
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classNotificationHandler_af6221db2992ba36df9e895efc4fa174b}\label{classNotificationHandler_af6221db2992ba36df9e895efc4fa174b}} 
-void {\bfseries stop} ()
-\item 
-\mbox{\Hypertarget{classNotificationHandler_a4c1c709e7718b1f40c59e00c9a9f794e}\label{classNotificationHandler_a4c1c709e7718b1f40c59e00c9a9f794e}} 
-bool {\bfseries is\+Toggle\+Filter\+Fighters} ()
-\item 
-\mbox{\Hypertarget{classNotificationHandler_a7611152b2a2535034c873bf95b3cd60a}\label{classNotificationHandler_a7611152b2a2535034c873bf95b3cd60a}} 
-void {\bfseries set\+Toggle\+Filter\+Fighters} (bool toggle\+Filter\+Fighters)
-\item 
-\mbox{\Hypertarget{classNotificationHandler_abafdab94565bef2abefcebee11ee87d0}\label{classNotificationHandler_abafdab94565bef2abefcebee11ee87d0}} 
-std\+::vector$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ {\bfseries get\+Notifications} ()
-\item 
-\mbox{\Hypertarget{classNotificationHandler_ae213e2cf3f1b4df0255a6db825fd86df}\label{classNotificationHandler_ae213e2cf3f1b4df0255a6db825fd86df}} 
-\mbox{\hyperlink{classNotification}{Notification}} $\ast$ {\bfseries get\+Notification\+By\+Index} (int index)
-\item 
-\mbox{\Hypertarget{classNotificationHandler_a0d016993ce4e441d63d2d52b2aae662e}\label{classNotificationHandler_a0d016993ce4e441d63d2d52b2aae662e}} 
-\mbox{\hyperlink{classNotification}{Notification}} $\ast$ {\bfseries get\+Notification\+By\+ID} (int notification\+ID)
-\item 
-\mbox{\Hypertarget{classNotificationHandler_a6513585f3c798fb35fc53cf219dfe1ba}\label{classNotificationHandler_a6513585f3c798fb35fc53cf219dfe1ba}} 
-void {\bfseries set\+Notifications} (std\+::vector$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ notifications)
-\item 
-\mbox{\Hypertarget{classNotificationHandler_ab2ec5da1d217b9cd2dbf2eb38d30190d}\label{classNotificationHandler_ab2ec5da1d217b9cd2dbf2eb38d30190d}} 
-void {\bfseries add\+Notification} (\mbox{\hyperlink{classNotification}{Notification}} $\ast$notification)
-\item 
-\mbox{\Hypertarget{classNotificationHandler_aefb876603ead34eaa444b36bfe5ade01}\label{classNotificationHandler_aefb876603ead34eaa444b36bfe5ade01}} 
-void {\bfseries remove\+Notification} (\mbox{\hyperlink{classNotification}{Notification}} $\ast$notification)
-\item 
-\mbox{\Hypertarget{classNotificationHandler_aae4283317c2d61a7faf206071cd79bad}\label{classNotificationHandler_aae4283317c2d61a7faf206071cd79bad}} 
-void {\bfseries remove\+Notification\+By\+ID} (int notification\+ID)
-\item 
-\mbox{\Hypertarget{classNotificationHandler_acc1931c9916b27ca6ec7d39f856f6f91}\label{classNotificationHandler_acc1931c9916b27ca6ec7d39f856f6f91}} 
-void {\bfseries remove\+Notification\+By\+Index} (int index)
-\item 
-\mbox{\Hypertarget{classNotificationHandler_aca78dc1ac35d4ea9b22d54fc02c23c62}\label{classNotificationHandler_aca78dc1ac35d4ea9b22d54fc02c23c62}} 
-void {\bfseries clear\+Notifications} ()
-\item 
-\mbox{\Hypertarget{classNotificationHandler_a47baa96e7d5f5da07462ee82f8260bcc}\label{classNotificationHandler_a47baa96e7d5f5da07462ee82f8260bcc}} 
-std\+::vector$<$ \mbox{\hyperlink{classFighter}{Fighter}} $\ast$ $>$ {\bfseries get\+Filter\+Fighters} ()
-\item 
-\mbox{\Hypertarget{classNotificationHandler_a6cd0775290e36f190d5966b8f3064728}\label{classNotificationHandler_a6cd0775290e36f190d5966b8f3064728}} 
-\mbox{\hyperlink{classFighter}{Fighter}} $\ast$ {\bfseries get\+Filter\+Fighter\+By\+Index} (int index)
-\item 
-\mbox{\Hypertarget{classNotificationHandler_a2e81491216619def9dc8733384217b65}\label{classNotificationHandler_a2e81491216619def9dc8733384217b65}} 
-\mbox{\hyperlink{classFighter}{Fighter}} $\ast$ {\bfseries get\+Filter\+Fighter\+By\+ID} (int fighter\+ID)
-\item 
-\mbox{\Hypertarget{classNotificationHandler_a1e48d8bfa96786a00ecb4ec9f3b83cf7}\label{classNotificationHandler_a1e48d8bfa96786a00ecb4ec9f3b83cf7}} 
-void {\bfseries set\+Filter\+Fighters} (std\+::vector$<$ \mbox{\hyperlink{classFighter}{Fighter}} $\ast$ $>$ filter\+Fighters)
-\item 
-\mbox{\Hypertarget{classNotificationHandler_ae1e63121d7800c4d3ee039ce24f19f36}\label{classNotificationHandler_ae1e63121d7800c4d3ee039ce24f19f36}} 
-void {\bfseries add\+Filter\+Fighter} (\mbox{\hyperlink{classFighter}{Fighter}} $\ast$filter\+Fighter)
-\item 
-\mbox{\Hypertarget{classNotificationHandler_aa3f42fc7cf4b2ee818696083a869214a}\label{classNotificationHandler_aa3f42fc7cf4b2ee818696083a869214a}} 
-void {\bfseries remove\+Filter\+Fighter} (\mbox{\hyperlink{classFighter}{Fighter}} $\ast$filter\+Fighter)
-\item 
-\mbox{\Hypertarget{classNotificationHandler_a1fedf1bc9438cd93d7d4ae5b05f3441a}\label{classNotificationHandler_a1fedf1bc9438cd93d7d4ae5b05f3441a}} 
-void {\bfseries remove\+Filter\+Fighter\+By\+ID} (int fighter\+ID)
-\item 
+\mbox{\hyperlink{classNotificationHandler_ae1cf02ab543eefde41d5223f2e1e1aa7}{Notification\+Handler}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classNotification}{Notification}} Handler constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classNotificationHandler_acd42d7e3b401215d65a28d589f31381a}{$\sim$\+Notification\+Handler}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classNotification}{Notification}} Handler deconstructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNotificationHandler_af6221db2992ba36df9e895efc4fa174b}{stop}} ()
+\begin{DoxyCompactList}\small\item\em stops notifications thread loop \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classNotificationHandler_a4c1c709e7718b1f40c59e00c9a9f794e}{is\+Toggle\+Filter\+Fighters}} ()
+\begin{DoxyCompactList}\small\item\em are notifications filtering by fighters \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNotificationHandler_a7611152b2a2535034c873bf95b3cd60a}{set\+Toggle\+Filter\+Fighters}} (bool toggle\+Filter\+Fighters)
+\begin{DoxyCompactList}\small\item\em set are notifications filtering by fighters \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ \mbox{\hyperlink{classNotificationHandler_abafdab94565bef2abefcebee11ee87d0}{get\+Notifications}} ()
+\begin{DoxyCompactList}\small\item\em get notifications vector \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classNotification}{Notification}} $\ast$ \mbox{\hyperlink{classNotificationHandler_ae213e2cf3f1b4df0255a6db825fd86df}{get\+Notification\+By\+Index}} (int index)
+\begin{DoxyCompactList}\small\item\em get notification by index \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classNotification}{Notification}} $\ast$ \mbox{\hyperlink{classNotificationHandler_a0d016993ce4e441d63d2d52b2aae662e}{get\+Notification\+By\+ID}} (int notification\+ID)
+\begin{DoxyCompactList}\small\item\em get notification by id \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNotificationHandler_a6513585f3c798fb35fc53cf219dfe1ba}{set\+Notifications}} (std\+::vector$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ notifications)
+\begin{DoxyCompactList}\small\item\em set notifications vector \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNotificationHandler_ab2ec5da1d217b9cd2dbf2eb38d30190d}{add\+Notification}} (\mbox{\hyperlink{classNotification}{Notification}} $\ast$notification)
+\begin{DoxyCompactList}\small\item\em add notification to vector \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNotificationHandler_aefb876603ead34eaa444b36bfe5ade01}{remove\+Notification}} (\mbox{\hyperlink{classNotification}{Notification}} $\ast$notification)
+\begin{DoxyCompactList}\small\item\em remove notification from vector \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNotificationHandler_aae4283317c2d61a7faf206071cd79bad}{remove\+Notification\+By\+ID}} (int notification\+ID)
+\begin{DoxyCompactList}\small\item\em remove notification from vector by notification ID \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNotificationHandler_acc1931c9916b27ca6ec7d39f856f6f91}{remove\+Notification\+By\+Index}} (int index)
+\begin{DoxyCompactList}\small\item\em remove notification from vector by notification index \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNotificationHandler_aca78dc1ac35d4ea9b22d54fc02c23c62}{clear\+Notifications}} ()
+\begin{DoxyCompactList}\small\item\em clear notifications vector \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classFighter}{Fighter}} $\ast$ $>$ \mbox{\hyperlink{classNotificationHandler_a47baa96e7d5f5da07462ee82f8260bcc}{get\+Filter\+Fighters}} ()
+\begin{DoxyCompactList}\small\item\em get filter fighters vector \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classFighter}{Fighter}} $\ast$ \mbox{\hyperlink{classNotificationHandler_a6cd0775290e36f190d5966b8f3064728}{get\+Filter\+Fighter\+By\+Index}} (int index)
+\begin{DoxyCompactList}\small\item\em get filter fighter by index \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classFighter}{Fighter}} $\ast$ \mbox{\hyperlink{classNotificationHandler_a2e81491216619def9dc8733384217b65}{get\+Filter\+Fighter\+By\+ID}} (int fighter\+ID)
+\begin{DoxyCompactList}\small\item\em get filter fighter by ID \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNotificationHandler_a1e48d8bfa96786a00ecb4ec9f3b83cf7}{set\+Filter\+Fighters}} (std\+::vector$<$ \mbox{\hyperlink{classFighter}{Fighter}} $\ast$ $>$ filter\+Fighters)
+\begin{DoxyCompactList}\small\item\em set filter fighters vector \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNotificationHandler_ae1e63121d7800c4d3ee039ce24f19f36}{add\+Filter\+Fighter}} (\mbox{\hyperlink{classFighter}{Fighter}} $\ast$filter\+Fighter)
+\begin{DoxyCompactList}\small\item\em add filter fighter to vector \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNotificationHandler_aa3f42fc7cf4b2ee818696083a869214a}{remove\+Filter\+Fighter}} (\mbox{\hyperlink{classFighter}{Fighter}} $\ast$filter\+Fighter)
+\begin{DoxyCompactList}\small\item\em remove filter fighter from vector \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNotificationHandler_a1fedf1bc9438cd93d7d4ae5b05f3441a}{remove\+Filter\+Fighter\+By\+ID}} (int fighter\+ID)
+\begin{DoxyCompactList}\small\item\em remove filter fighter from vector by fighter ID \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classNotificationHandler_ae3e58906f8f52e08dc474ab9360b9b39}\label{classNotificationHandler_ae3e58906f8f52e08dc474ab9360b9b39}} 
 void {\bfseries remove\+Filter\+Fighter\+By\+Index} (int index)
 \item 
@@ -90,15 +84,398 @@ std\+::vector$<$ \mbox{\hyperlink{classEvent}{Event}} $\ast$ $>$ {\bfseries get\
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classNotificationHandler_a86576e93bd8fb4b610129e1dd74c7ba9}\label{classNotificationHandler_a86576e93bd8fb4b610129e1dd74c7ba9}} 
-static bool {\bfseries is\+Toggle\+On} ()
-\end{DoxyCompactItemize}
+static bool \mbox{\hyperlink{classNotificationHandler_a86576e93bd8fb4b610129e1dd74c7ba9}{is\+Toggle\+On}} ()
+\begin{DoxyCompactList}\small\item\em is notifications thread loop running \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{classNotificationHandler_ac720a3a7505b2ef245f7840af1b370b7}\label{classNotificationHandler_ac720a3a7505b2ef245f7840af1b370b7}} 
 static bool {\bfseries toggle\+On} = false
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classNotification}{Notification}} Handler. 
+
+responsible for managing the lifetimes of notifications, inherits QFrame \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classNotificationHandler_ae1cf02ab543eefde41d5223f2e1e1aa7}\label{classNotificationHandler_ae1cf02ab543eefde41d5223f2e1e1aa7}} 
+\index{NotificationHandler@{NotificationHandler}!NotificationHandler@{NotificationHandler}}
+\index{NotificationHandler@{NotificationHandler}!NotificationHandler@{NotificationHandler}}
+\doxysubsubsection{\texorpdfstring{NotificationHandler()}{NotificationHandler()}}
+{\footnotesize\ttfamily Notification\+Handler\+::\+Notification\+Handler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+\mbox{\hyperlink{classNotification}{Notification}} Handler constructor. 
+
+initializes notification handler member variables, is explicit \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{classNotificationHandler_acd42d7e3b401215d65a28d589f31381a}\label{classNotificationHandler_acd42d7e3b401215d65a28d589f31381a}} 
+\index{NotificationHandler@{NotificationHandler}!````~NotificationHandler@{$\sim$NotificationHandler}}
+\index{````~NotificationHandler@{$\sim$NotificationHandler}!NotificationHandler@{NotificationHandler}}
+\doxysubsubsection{\texorpdfstring{$\sim$NotificationHandler()}{~NotificationHandler()}}
+{\footnotesize\ttfamily Notification\+Handler\+::$\sim$\+Notification\+Handler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{classNotification}{Notification}} Handler deconstructor. 
+
+deallocates any memory allocation \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classNotificationHandler_ae1e63121d7800c4d3ee039ce24f19f36}\label{classNotificationHandler_ae1e63121d7800c4d3ee039ce24f19f36}} 
+\index{NotificationHandler@{NotificationHandler}!addFilterFighter@{addFilterFighter}}
+\index{addFilterFighter@{addFilterFighter}!NotificationHandler@{NotificationHandler}}
+\doxysubsubsection{\texorpdfstring{addFilterFighter()}{addFilterFighter()}}
+{\footnotesize\ttfamily void Notification\+Handler\+::add\+Filter\+Fighter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classFighter}{Fighter}} $\ast$}]{filter\+Fighter }\end{DoxyParamCaption})}
+
+
+
+add filter fighter to vector 
+
+adds the filter fighter to the filter fighter vector \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em filter\+Fighter} & the filter fighter to add \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classNotificationHandler_ab2ec5da1d217b9cd2dbf2eb38d30190d}\label{classNotificationHandler_ab2ec5da1d217b9cd2dbf2eb38d30190d}} 
+\index{NotificationHandler@{NotificationHandler}!addNotification@{addNotification}}
+\index{addNotification@{addNotification}!NotificationHandler@{NotificationHandler}}
+\doxysubsubsection{\texorpdfstring{addNotification()}{addNotification()}}
+{\footnotesize\ttfamily void Notification\+Handler\+::add\+Notification (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNotification}{Notification}} $\ast$}]{notification }\end{DoxyParamCaption})}
+
+
+
+add notification to vector 
+
+adds notification to the notifications vector \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em notification} & notification to add to vector \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classNotificationHandler_aca78dc1ac35d4ea9b22d54fc02c23c62}\label{classNotificationHandler_aca78dc1ac35d4ea9b22d54fc02c23c62}} 
+\index{NotificationHandler@{NotificationHandler}!clearNotifications@{clearNotifications}}
+\index{clearNotifications@{clearNotifications}!NotificationHandler@{NotificationHandler}}
+\doxysubsubsection{\texorpdfstring{clearNotifications()}{clearNotifications()}}
+{\footnotesize\ttfamily void Notification\+Handler\+::clear\+Notifications (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+clear notifications vector 
+
+removes all notifications \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{classNotificationHandler_a2e81491216619def9dc8733384217b65}\label{classNotificationHandler_a2e81491216619def9dc8733384217b65}} 
+\index{NotificationHandler@{NotificationHandler}!getFilterFighterByID@{getFilterFighterByID}}
+\index{getFilterFighterByID@{getFilterFighterByID}!NotificationHandler@{NotificationHandler}}
+\doxysubsubsection{\texorpdfstring{getFilterFighterByID()}{getFilterFighterByID()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classFighter}{Fighter}} $\ast$ Notification\+Handler\+::get\+Filter\+Fighter\+By\+ID (\begin{DoxyParamCaption}\item[{int}]{fighter\+ID }\end{DoxyParamCaption})}
+
+
+
+get filter fighter by ID 
+
+returns the filter fighter by ID \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+fighter ID 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classNotificationHandler_a6cd0775290e36f190d5966b8f3064728}\label{classNotificationHandler_a6cd0775290e36f190d5966b8f3064728}} 
+\index{NotificationHandler@{NotificationHandler}!getFilterFighterByIndex@{getFilterFighterByIndex}}
+\index{getFilterFighterByIndex@{getFilterFighterByIndex}!NotificationHandler@{NotificationHandler}}
+\doxysubsubsection{\texorpdfstring{getFilterFighterByIndex()}{getFilterFighterByIndex()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classFighter}{Fighter}} $\ast$ Notification\+Handler\+::get\+Filter\+Fighter\+By\+Index (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+get filter fighter by index 
+
+returns the filter fighter by index \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+filter fighter index 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classNotificationHandler_a47baa96e7d5f5da07462ee82f8260bcc}\label{classNotificationHandler_a47baa96e7d5f5da07462ee82f8260bcc}} 
+\index{NotificationHandler@{NotificationHandler}!getFilterFighters@{getFilterFighters}}
+\index{getFilterFighters@{getFilterFighters}!NotificationHandler@{NotificationHandler}}
+\doxysubsubsection{\texorpdfstring{getFilterFighters()}{getFilterFighters()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classFighter}{Fighter}} $\ast$ $>$ Notification\+Handler\+::get\+Filter\+Fighters (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get filter fighters vector 
+
+returns the filter fighters vector \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+filter fighters vector 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classNotificationHandler_a0d016993ce4e441d63d2d52b2aae662e}\label{classNotificationHandler_a0d016993ce4e441d63d2d52b2aae662e}} 
+\index{NotificationHandler@{NotificationHandler}!getNotificationByID@{getNotificationByID}}
+\index{getNotificationByID@{getNotificationByID}!NotificationHandler@{NotificationHandler}}
+\doxysubsubsection{\texorpdfstring{getNotificationByID()}{getNotificationByID()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classNotification}{Notification}} $\ast$ Notification\+Handler\+::get\+Notification\+By\+ID (\begin{DoxyParamCaption}\item[{int}]{notification\+ID }\end{DoxyParamCaption})}
+
+
+
+get notification by id 
+
+returns notifications by id from vector \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em notification\+ID} & notification ID \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+notification pointer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classNotificationHandler_ae213e2cf3f1b4df0255a6db825fd86df}\label{classNotificationHandler_ae213e2cf3f1b4df0255a6db825fd86df}} 
+\index{NotificationHandler@{NotificationHandler}!getNotificationByIndex@{getNotificationByIndex}}
+\index{getNotificationByIndex@{getNotificationByIndex}!NotificationHandler@{NotificationHandler}}
+\doxysubsubsection{\texorpdfstring{getNotificationByIndex()}{getNotificationByIndex()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classNotification}{Notification}} $\ast$ Notification\+Handler\+::get\+Notification\+By\+Index (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+get notification by index 
+
+returns notifications by index from vector \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em notification\+ID} & notification index \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+notification pointer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classNotificationHandler_abafdab94565bef2abefcebee11ee87d0}\label{classNotificationHandler_abafdab94565bef2abefcebee11ee87d0}} 
+\index{NotificationHandler@{NotificationHandler}!getNotifications@{getNotifications}}
+\index{getNotifications@{getNotifications}!NotificationHandler@{NotificationHandler}}
+\doxysubsubsection{\texorpdfstring{getNotifications()}{getNotifications()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$ Notification\+Handler\+::get\+Notifications (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get notifications vector 
+
+returns notifications vector \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+notifications vector 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classNotificationHandler_a4c1c709e7718b1f40c59e00c9a9f794e}\label{classNotificationHandler_a4c1c709e7718b1f40c59e00c9a9f794e}} 
+\index{NotificationHandler@{NotificationHandler}!isToggleFilterFighters@{isToggleFilterFighters}}
+\index{isToggleFilterFighters@{isToggleFilterFighters}!NotificationHandler@{NotificationHandler}}
+\doxysubsubsection{\texorpdfstring{isToggleFilterFighters()}{isToggleFilterFighters()}}
+{\footnotesize\ttfamily bool Notification\+Handler\+::is\+Toggle\+Filter\+Fighters (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+are notifications filtering by fighters 
+
+returns true if filtering by fighters \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+whether notifications are filtering by fighters 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classNotificationHandler_a86576e93bd8fb4b610129e1dd74c7ba9}\label{classNotificationHandler_a86576e93bd8fb4b610129e1dd74c7ba9}} 
+\index{NotificationHandler@{NotificationHandler}!isToggleOn@{isToggleOn}}
+\index{isToggleOn@{isToggleOn}!NotificationHandler@{NotificationHandler}}
+\doxysubsubsection{\texorpdfstring{isToggleOn()}{isToggleOn()}}
+{\footnotesize\ttfamily bool Notification\+Handler\+::is\+Toggle\+On (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+is notifications thread loop running 
+
+returns true if emitting notification updates \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+whether notifications thread loop is running 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classNotificationHandler_aa3f42fc7cf4b2ee818696083a869214a}\label{classNotificationHandler_aa3f42fc7cf4b2ee818696083a869214a}} 
+\index{NotificationHandler@{NotificationHandler}!removeFilterFighter@{removeFilterFighter}}
+\index{removeFilterFighter@{removeFilterFighter}!NotificationHandler@{NotificationHandler}}
+\doxysubsubsection{\texorpdfstring{removeFilterFighter()}{removeFilterFighter()}}
+{\footnotesize\ttfamily void Notification\+Handler\+::remove\+Filter\+Fighter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classFighter}{Fighter}} $\ast$}]{filter\+Fighter }\end{DoxyParamCaption})}
+
+
+
+remove filter fighter from vector 
+
+removes the filter fighter from the filter fighter vector \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em filter\+Fighter} & the filter fighter to remove \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classNotificationHandler_a1fedf1bc9438cd93d7d4ae5b05f3441a}\label{classNotificationHandler_a1fedf1bc9438cd93d7d4ae5b05f3441a}} 
+\index{NotificationHandler@{NotificationHandler}!removeFilterFighterByID@{removeFilterFighterByID}}
+\index{removeFilterFighterByID@{removeFilterFighterByID}!NotificationHandler@{NotificationHandler}}
+\doxysubsubsection{\texorpdfstring{removeFilterFighterByID()}{removeFilterFighterByID()}}
+{\footnotesize\ttfamily void Notification\+Handler\+::remove\+Filter\+Fighter\+By\+ID (\begin{DoxyParamCaption}\item[{int}]{fighter\+ID }\end{DoxyParamCaption})}
+
+
+
+remove filter fighter from vector by fighter ID 
+
+removes the filter fighter from the filter fighter vector \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em filter\+Fighter} & the filter fighter to remove \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classNotificationHandler_aefb876603ead34eaa444b36bfe5ade01}\label{classNotificationHandler_aefb876603ead34eaa444b36bfe5ade01}} 
+\index{NotificationHandler@{NotificationHandler}!removeNotification@{removeNotification}}
+\index{removeNotification@{removeNotification}!NotificationHandler@{NotificationHandler}}
+\doxysubsubsection{\texorpdfstring{removeNotification()}{removeNotification()}}
+{\footnotesize\ttfamily void Notification\+Handler\+::remove\+Notification (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNotification}{Notification}} $\ast$}]{notification }\end{DoxyParamCaption})}
+
+
+
+remove notification from vector 
+
+removes notification from the notifications vector \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em notification} & notification to remove from vector \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classNotificationHandler_aae4283317c2d61a7faf206071cd79bad}\label{classNotificationHandler_aae4283317c2d61a7faf206071cd79bad}} 
+\index{NotificationHandler@{NotificationHandler}!removeNotificationByID@{removeNotificationByID}}
+\index{removeNotificationByID@{removeNotificationByID}!NotificationHandler@{NotificationHandler}}
+\doxysubsubsection{\texorpdfstring{removeNotificationByID()}{removeNotificationByID()}}
+{\footnotesize\ttfamily void Notification\+Handler\+::remove\+Notification\+By\+ID (\begin{DoxyParamCaption}\item[{int}]{notification\+ID }\end{DoxyParamCaption})}
+
+
+
+remove notification from vector by notification ID 
+
+removes notification from the notifications vector by notification ID \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em notification} & notification ID \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classNotificationHandler_acc1931c9916b27ca6ec7d39f856f6f91}\label{classNotificationHandler_acc1931c9916b27ca6ec7d39f856f6f91}} 
+\index{NotificationHandler@{NotificationHandler}!removeNotificationByIndex@{removeNotificationByIndex}}
+\index{removeNotificationByIndex@{removeNotificationByIndex}!NotificationHandler@{NotificationHandler}}
+\doxysubsubsection{\texorpdfstring{removeNotificationByIndex()}{removeNotificationByIndex()}}
+{\footnotesize\ttfamily void Notification\+Handler\+::remove\+Notification\+By\+Index (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+remove notification from vector by notification index 
+
+removes notification from the notifications vector by notification index \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em notification} & notification index \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classNotificationHandler_a1e48d8bfa96786a00ecb4ec9f3b83cf7}\label{classNotificationHandler_a1e48d8bfa96786a00ecb4ec9f3b83cf7}} 
+\index{NotificationHandler@{NotificationHandler}!setFilterFighters@{setFilterFighters}}
+\index{setFilterFighters@{setFilterFighters}!NotificationHandler@{NotificationHandler}}
+\doxysubsubsection{\texorpdfstring{setFilterFighters()}{setFilterFighters()}}
+{\footnotesize\ttfamily void Notification\+Handler\+::set\+Filter\+Fighters (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classFighter}{Fighter}} $\ast$ $>$}]{filter\+Fighters }\end{DoxyParamCaption})}
+
+
+
+set filter fighters vector 
+
+sets the filter fighters vector to new vector \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em filter\+Fighters} & new filter fighters vector \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classNotificationHandler_a6513585f3c798fb35fc53cf219dfe1ba}\label{classNotificationHandler_a6513585f3c798fb35fc53cf219dfe1ba}} 
+\index{NotificationHandler@{NotificationHandler}!setNotifications@{setNotifications}}
+\index{setNotifications@{setNotifications}!NotificationHandler@{NotificationHandler}}
+\doxysubsubsection{\texorpdfstring{setNotifications()}{setNotifications()}}
+{\footnotesize\ttfamily void Notification\+Handler\+::set\+Notifications (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classNotification}{Notification}} $\ast$ $>$}]{notifications }\end{DoxyParamCaption})}
+
+
+
+set notifications vector 
+
+sets notifications to given vector \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em notifications} & notification pointer vector \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classNotificationHandler_a7611152b2a2535034c873bf95b3cd60a}\label{classNotificationHandler_a7611152b2a2535034c873bf95b3cd60a}} 
+\index{NotificationHandler@{NotificationHandler}!setToggleFilterFighters@{setToggleFilterFighters}}
+\index{setToggleFilterFighters@{setToggleFilterFighters}!NotificationHandler@{NotificationHandler}}
+\doxysubsubsection{\texorpdfstring{setToggleFilterFighters()}{setToggleFilterFighters()}}
+{\footnotesize\ttfamily void Notification\+Handler\+::set\+Toggle\+Filter\+Fighters (\begin{DoxyParamCaption}\item[{bool}]{toggle\+Filter\+Fighters }\end{DoxyParamCaption})}
+
+
+
+set are notifications filtering by fighters 
+
+toggle whether notifications filtering by fighters \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em toggle\+Filter\+Fighters} & toggle notifications are filtering by fighters \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classNotificationHandler_af6221db2992ba36df9e895efc4fa174b}\label{classNotificationHandler_af6221db2992ba36df9e895efc4fa174b}} 
+\index{NotificationHandler@{NotificationHandler}!stop@{stop}}
+\index{stop@{stop}!NotificationHandler@{NotificationHandler}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily void Notification\+Handler\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+stops notifications thread loop 
+
+stops emiting notification updates \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

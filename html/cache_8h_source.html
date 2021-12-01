@@ -84,85 +84,104 @@ $(function() {
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;util.h&quot;</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;apihandler.h&quot;</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classCache.html">   25</a></span><span class="keyword">class </span><a class="code hl_class" href="classCache.html">Cache</a> {</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">public</span>: <span class="comment">// public methods</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment"></span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classCache.html#a2f871a069d658c8d27645df946aff3bd">init</a>(std::string outputPath);</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> setAPIHandlersParent(QObject *parent);</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keyword">static</span> QObject* getAPIHandlersParent();</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="comment">// get cache maps</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keyword">static</span> std::map&lt;int, Fighter*&gt; getFighters();</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keyword">static</span> std::map&lt;int, Fight*&gt; getFights();</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keyword">static</span> std::map&lt;int, Event*&gt; getEvents();</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keyword">static</span> std::map&lt;int, Bet*&gt; getBets();</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classCache.html">   24</a></span><span class="keyword">class </span><a class="code hl_class" href="classCache.html">Cache</a> {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">public</span>: <span class="comment">// public methods</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment"></span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classCache.html#a2f871a069d658c8d27645df946aff3bd">init</a>(std::string outputPath);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classCache.html#a1da0fb254f448a5b981e7b1d32e0b2ac">setAPIHandlersParent</a>(QObject *parent);</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="comment">// get elements by ID</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keyword">static</span> <a class="code hl_class" href="classFighter.html">Fighter</a>* getFighter(<span class="keywordtype">int</span> fighterID);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keyword">static</span> <a class="code hl_class" href="classFight.html">Fight</a>* getFight(<span class="keywordtype">int</span> fightID);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keyword">static</span> <a class="code hl_class" href="classEvent.html">Event</a>* getEvent(<span class="keywordtype">int</span> eventID);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keyword">static</span> <a class="code hl_class" href="classBet.html">Bet</a>* getBet(<span class="keywordtype">int</span> betID);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="comment">// get or set the sportsdata.io API key</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keyword">static</span> std::string getSportsDataAPIKey();</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> setSportsDataAPIKey(std::string sportsDataAPIKey);</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="comment">// get or set the output path of the cache</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keyword">static</span> std::string getOutputPath();</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> setOutputPath(std::string outputPath);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="comment">// read or write to cache</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> writeCacheToFile();</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> updateCacheFromFile();</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="comment">// scan cache for invalid data and remove</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> sanitizeCache();</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="comment">// destroy the cache</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> destroy();</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="keyword">private</span>: <span class="comment">// private member methods</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keyword">static</span> <a class="code hl_class" href="classFighter.html">Fighter</a>* parseFighter(std::string rawFighter);</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keyword">static</span> <a class="code hl_class" href="classFight.html">Fight</a>* parseFight(std::string rawFight);</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keyword">static</span> <a class="code hl_class" href="classEvent.html">Event</a>* parseEvent(std::string rawEvent);</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keyword">static</span> <a class="code hl_class" href="classBet.html">Bet</a>* parseBet(std::string rawBet);</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="comment">// add, remove or replace fighters </span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> addFighter(<span class="keywordtype">int</span> fighterID, <a class="code hl_class" href="classFighter.html">Fighter</a>* fighter);</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> removeFighter(<span class="keywordtype">int</span> fighterID);</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> replaceFighter(<span class="keywordtype">int</span> fighterID, <a class="code hl_class" href="classFighter.html">Fighter</a>* fighter);</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="comment">// add, remove or replace fights </span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> addFight(<span class="keywordtype">int</span> fightID, <a class="code hl_class" href="classFight.html">Fight</a>* fight);</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> removeFight(<span class="keywordtype">int</span> fightID);</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> replaceFight(<span class="keywordtype">int</span> fightID, <a class="code hl_class" href="classFight.html">Fight</a>* fight);</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="comment">// add, remove or replace events </span></div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> addEvent(<span class="keywordtype">int</span> eventID, <a class="code hl_class" href="classEvent.html">Event</a>* event);</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> removeEvent(<span class="keywordtype">int</span> eventID);</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> replaceEvent(<span class="keywordtype">int</span> eventID, <a class="code hl_class" href="classEvent.html">Event</a>* event);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keyword">static</span> QObject* <a class="code hl_function" href="classCache.html#a9d0ceb57d97ebae2366f89f55d36e332">getAPIHandlersParent</a>();</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keyword">static</span> std::map&lt;int, Fighter*&gt; <a class="code hl_function" href="classCache.html#af3c1ff8cb640bb0b2963e9d0b2e7208e">getFighters</a>();</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keyword">static</span> std::map&lt;int, Fight*&gt; <a class="code hl_function" href="classCache.html#a616858fd60116df2c95fc127bbc1b145">getFights</a>();</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keyword">static</span> std::map&lt;int, Event*&gt; <a class="code hl_function" href="classCache.html#a74070da6513103c6dd76499063078b78">getEvents</a>();</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keyword">static</span> std::map&lt;int, Bet*&gt; <a class="code hl_function" href="classCache.html#ad84a2571004bc1389a10b035e04783cf">getBets</a>();</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keyword">static</span> <a class="code hl_class" href="classFighter.html">Fighter</a>* <a class="code hl_function" href="classCache.html#a81741cdb34fdbb38dace5b374dcb1d55">getFighter</a>(<span class="keywordtype">int</span> fighterID);</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="comment">// add, remove or replace bets </span></div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> addBet(<span class="keywordtype">int</span> betID, <a class="code hl_class" href="classBet.html">Bet</a>* bet);</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> removeBet(<span class="keywordtype">int</span> betID);</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> replaceBet(<span class="keywordtype">int</span> betID, <a class="code hl_class" href="classBet.html">Bet</a>* bet);</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="keyword">private</span>: <span class="comment">// member variables</span></div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keyword">static</span> std::map&lt;int, Fighter*&gt; fighters;</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keyword">static</span> std::map&lt;int, Fight*&gt; fights;</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keyword">static</span> std::map&lt;int, Event*&gt; events;</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keyword">static</span> std::map&lt;int, Bet*&gt; bets;</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keyword">static</span> std::string sportsDataAPIKey;</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keyword">static</span> std::string outputPath;</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keyword">static</span> QObject* apiHandlersParent;</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>};</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keyword">static</span> <a class="code hl_class" href="classFight.html">Fight</a>* <a class="code hl_function" href="classCache.html#aa5b52210348b852a4dbc8365fd2a599c">getFight</a>(<span class="keywordtype">int</span> fightID);</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keyword">static</span> <a class="code hl_class" href="classEvent.html">Event</a>* <a class="code hl_function" href="classCache.html#a9eebde552b24e9d9abe5e6c99219b42d">getEvent</a>(<span class="keywordtype">int</span> eventID);</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keyword">static</span> <a class="code hl_class" href="classBet.html">Bet</a>* <a class="code hl_function" href="classCache.html#ad4867c8b443724e5b6f36823e6d0d698">getBet</a>(<span class="keywordtype">int</span> betID);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keyword">static</span> std::string <a class="code hl_function" href="classCache.html#a438b9cec24c42b3df522704c2b31b6fa">getSportsDataAPIKey</a>();</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classCache.html#ad07d30ba47f611d22c51cfd44fab9ceb">setSportsDataAPIKey</a>(std::string sportsDataAPIKey);</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    <span class="keyword">static</span> std::string <a class="code hl_function" href="classCache.html#ab2739cacbe3454597f579f2668345422">getOutputPath</a>();</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classCache.html#a1e048a2c71df537a487b9cdb80941dc4">setOutputPath</a>(std::string outputPath);</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classCache.html#a5522cf2cc65eaf3c8c31db9af30d6e0d">writeCacheToFile</a>();</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classCache.html#ae6179c97d77ef2dc84f0c0558ad75cc3">updateCacheFromFile</a>();</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classCache.html#a1c991199e62752174994dffead00ff12">destroy</a>();</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span><span class="keyword">private</span>: <span class="comment">// private member methods</span></div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="comment"></span>    <span class="keyword">static</span> <a class="code hl_class" href="classFighter.html">Fighter</a>* parseFighter(std::string rawFighter); </div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    <span class="keyword">static</span> <a class="code hl_class" href="classFight.html">Fight</a>* parseFight(std::string rawFight);</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span> </div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    <span class="keyword">static</span> <a class="code hl_class" href="classEvent.html">Event</a>* parseEvent(std::string rawEvent);</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span> </div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    <span class="keyword">static</span> <a class="code hl_class" href="classBet.html">Bet</a>* parseBet(std::string rawBet);</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> addFighter(<span class="keywordtype">int</span> fighterID, <a class="code hl_class" href="classFighter.html">Fighter</a>* fighter);</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    </div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> removeFighter(<span class="keywordtype">int</span> fighterID);</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span> </div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> replaceFighter(<span class="keywordtype">int</span> fighterID, <a class="code hl_class" href="classFighter.html">Fighter</a>* fighter);</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span> </div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> addFight(<span class="keywordtype">int</span> fightID, <a class="code hl_class" href="classFight.html">Fight</a>* fight);</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span> </div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> removeFight(<span class="keywordtype">int</span> fightID);</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span> </div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> replaceFight(<span class="keywordtype">int</span> fightID, <a class="code hl_class" href="classFight.html">Fight</a>* fight);</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span> </div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> addEvent(<span class="keywordtype">int</span> eventID, <a class="code hl_class" href="classEvent.html">Event</a>* event);</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span> </div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> removeEvent(<span class="keywordtype">int</span> eventID);</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span> </div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> replaceEvent(<span class="keywordtype">int</span> eventID, <a class="code hl_class" href="classEvent.html">Event</a>* event);</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span> </div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> addBet(<span class="keywordtype">int</span> betID, <a class="code hl_class" href="classBet.html">Bet</a>* bet);</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span> </div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> removeBet(<span class="keywordtype">int</span> betID);</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span> </div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> replaceBet(<span class="keywordtype">int</span> betID, <a class="code hl_class" href="classBet.html">Bet</a>* bet);</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span> </div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span><span class="keyword">private</span>: <span class="comment">// member variables</span></div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>    <span class="keyword">static</span> std::map&lt;int, Fighter*&gt; fighters; </div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>    <span class="keyword">static</span> std::map&lt;int, Fight*&gt; fights; </div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>    <span class="keyword">static</span> std::map&lt;int, Event*&gt; events; </div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>    <span class="keyword">static</span> std::map&lt;int, Bet*&gt; bets; </div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>    <span class="keyword">static</span> std::string sportsDataAPIKey; </div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>    <span class="keyword">static</span> std::string outputPath; </div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>    <span class="keyword">static</span> QObject* apiHandlersParent; </div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>};</div>
 <div class="ttc" id="aclassBet_html"><div class="ttname"><a href="classBet.html">Bet</a></div><div class="ttdoc">Represents a user bet on a specific fighter in a fight.</div><div class="ttdef"><b>Definition:</b> bet.h:12</div></div>
-<div class="ttc" id="aclassCache_html"><div class="ttname"><a href="classCache.html">Cache</a></div><div class="ttdoc">Represents all the data in the program.</div><div class="ttdef"><b>Definition:</b> cache.h:25</div></div>
+<div class="ttc" id="aclassCache_html"><div class="ttname"><a href="classCache.html">Cache</a></div><div class="ttdoc">Represents all the data in the program.</div><div class="ttdef"><b>Definition:</b> cache.h:24</div></div>
+<div class="ttc" id="aclassCache_html_a1c991199e62752174994dffead00ff12"><div class="ttname"><a href="classCache.html#a1c991199e62752174994dffead00ff12">Cache::destroy</a></div><div class="ttdeci">static void destroy()</div><div class="ttdoc">destroy the cache</div><div class="ttdef"><b>Definition:</b> cache.cpp:662</div></div>
+<div class="ttc" id="aclassCache_html_a1da0fb254f448a5b981e7b1d32e0b2ac"><div class="ttname"><a href="classCache.html#a1da0fb254f448a5b981e7b1d32e0b2ac">Cache::setAPIHandlersParent</a></div><div class="ttdeci">static void setAPIHandlersParent(QObject *parent)</div><div class="ttdoc">Sets API Handlers parent.</div><div class="ttdef"><b>Definition:</b> cache.cpp:29</div></div>
+<div class="ttc" id="aclassCache_html_a1e048a2c71df537a487b9cdb80941dc4"><div class="ttname"><a href="classCache.html#a1e048a2c71df537a487b9cdb80941dc4">Cache::setOutputPath</a></div><div class="ttdeci">static void setOutputPath(std::string outputPath)</div><div class="ttdoc">Set the cache output path.</div><div class="ttdef"><b>Definition:</b> cache.cpp:163</div></div>
 <div class="ttc" id="aclassCache_html_a2f871a069d658c8d27645df946aff3bd"><div class="ttname"><a href="classCache.html#a2f871a069d658c8d27645df946aff3bd">Cache::init</a></div><div class="ttdeci">static bool init(std::string outputPath)</div><div class="ttdoc">Initialize the static cache.</div><div class="ttdef"><b>Definition:</b> cache.cpp:17</div></div>
+<div class="ttc" id="aclassCache_html_a438b9cec24c42b3df522704c2b31b6fa"><div class="ttname"><a href="classCache.html#a438b9cec24c42b3df522704c2b31b6fa">Cache::getSportsDataAPIKey</a></div><div class="ttdeci">static std::string getSportsDataAPIKey()</div><div class="ttdoc">Get the sportsdata.io API key.</div><div class="ttdef"><b>Definition:</b> cache.cpp:140</div></div>
+<div class="ttc" id="aclassCache_html_a5522cf2cc65eaf3c8c31db9af30d6e0d"><div class="ttname"><a href="classCache.html#a5522cf2cc65eaf3c8c31db9af30d6e0d">Cache::writeCacheToFile</a></div><div class="ttdeci">static void writeCacheToFile()</div><div class="ttdoc">write cache to file</div><div class="ttdef"><b>Definition:</b> cache.cpp:170</div></div>
+<div class="ttc" id="aclassCache_html_a616858fd60116df2c95fc127bbc1b145"><div class="ttname"><a href="classCache.html#a616858fd60116df2c95fc127bbc1b145">Cache::getFights</a></div><div class="ttdeci">static std::map&lt; int, Fight * &gt; getFights()</div><div class="ttdoc">Get map of fights.</div><div class="ttdef"><b>Definition:</b> cache.cpp:58</div></div>
+<div class="ttc" id="aclassCache_html_a74070da6513103c6dd76499063078b78"><div class="ttname"><a href="classCache.html#a74070da6513103c6dd76499063078b78">Cache::getEvents</a></div><div class="ttdeci">static std::map&lt; int, Event * &gt; getEvents()</div><div class="ttdoc">Get map of events.</div><div class="ttdef"><b>Definition:</b> cache.cpp:66</div></div>
+<div class="ttc" id="aclassCache_html_a81741cdb34fdbb38dace5b374dcb1d55"><div class="ttname"><a href="classCache.html#a81741cdb34fdbb38dace5b374dcb1d55">Cache::getFighter</a></div><div class="ttdeci">static Fighter * getFighter(int fighterID)</div><div class="ttdoc">Get a fighter by ID.</div><div class="ttdef"><b>Definition:</b> cache.cpp:90</div></div>
+<div class="ttc" id="aclassCache_html_a9d0ceb57d97ebae2366f89f55d36e332"><div class="ttname"><a href="classCache.html#a9d0ceb57d97ebae2366f89f55d36e332">Cache::getAPIHandlersParent</a></div><div class="ttdeci">static QObject * getAPIHandlersParent()</div><div class="ttdoc">Get API Handlers parent.</div><div class="ttdef"><b>Definition:</b> cache.cpp:33</div></div>
+<div class="ttc" id="aclassCache_html_a9eebde552b24e9d9abe5e6c99219b42d"><div class="ttname"><a href="classCache.html#a9eebde552b24e9d9abe5e6c99219b42d">Cache::getEvent</a></div><div class="ttdeci">static Event * getEvent(int eventID)</div><div class="ttdoc">Get a event by ID.</div><div class="ttdef"><b>Definition:</b> cache.cpp:117</div></div>
+<div class="ttc" id="aclassCache_html_aa5b52210348b852a4dbc8365fd2a599c"><div class="ttname"><a href="classCache.html#aa5b52210348b852a4dbc8365fd2a599c">Cache::getFight</a></div><div class="ttdeci">static Fight * getFight(int fightID)</div><div class="ttdoc">Get a fight by ID.</div><div class="ttdef"><b>Definition:</b> cache.cpp:105</div></div>
+<div class="ttc" id="aclassCache_html_ab2739cacbe3454597f579f2668345422"><div class="ttname"><a href="classCache.html#ab2739cacbe3454597f579f2668345422">Cache::getOutputPath</a></div><div class="ttdeci">static std::string getOutputPath()</div><div class="ttdoc">Get the cache output path.</div><div class="ttdef"><b>Definition:</b> cache.cpp:155</div></div>
+<div class="ttc" id="aclassCache_html_ad07d30ba47f611d22c51cfd44fab9ceb"><div class="ttname"><a href="classCache.html#ad07d30ba47f611d22c51cfd44fab9ceb">Cache::setSportsDataAPIKey</a></div><div class="ttdeci">static void setSportsDataAPIKey(std::string sportsDataAPIKey)</div><div class="ttdoc">Set the sportsdata.io API key.</div><div class="ttdef"><b>Definition:</b> cache.cpp:148</div></div>
+<div class="ttc" id="aclassCache_html_ad4867c8b443724e5b6f36823e6d0d698"><div class="ttname"><a href="classCache.html#ad4867c8b443724e5b6f36823e6d0d698">Cache::getBet</a></div><div class="ttdeci">static Bet * getBet(int betID)</div><div class="ttdoc">Get a bet by ID.</div><div class="ttdef"><b>Definition:</b> cache.cpp:132</div></div>
+<div class="ttc" id="aclassCache_html_ad84a2571004bc1389a10b035e04783cf"><div class="ttname"><a href="classCache.html#ad84a2571004bc1389a10b035e04783cf">Cache::getBets</a></div><div class="ttdeci">static std::map&lt; int, Bet * &gt; getBets()</div><div class="ttdoc">Get map of bets.</div><div class="ttdef"><b>Definition:</b> cache.cpp:81</div></div>
+<div class="ttc" id="aclassCache_html_ae6179c97d77ef2dc84f0c0558ad75cc3"><div class="ttname"><a href="classCache.html#ae6179c97d77ef2dc84f0c0558ad75cc3">Cache::updateCacheFromFile</a></div><div class="ttdeci">static void updateCacheFromFile()</div><div class="ttdoc">update cache from file</div><div class="ttdef"><b>Definition:</b> cache.cpp:306</div></div>
+<div class="ttc" id="aclassCache_html_af3c1ff8cb640bb0b2963e9d0b2e7208e"><div class="ttname"><a href="classCache.html#af3c1ff8cb640bb0b2963e9d0b2e7208e">Cache::getFighters</a></div><div class="ttdeci">static std::map&lt; int, Fighter * &gt; getFighters()</div><div class="ttdoc">Get map of fighters.</div><div class="ttdef"><b>Definition:</b> cache.cpp:39</div></div>
 <div class="ttc" id="aclassEvent_html"><div class="ttname"><a href="classEvent.html">Event</a></div><div class="ttdoc">Represents a UFC event.</div><div class="ttdef"><b>Definition:</b> event.h:11</div></div>
-<div class="ttc" id="aclassFight_html"><div class="ttname"><a href="classFight.html">Fight</a></div><div class="ttdoc">Represents a fight.</div><div class="ttdef"><b>Definition:</b> fight.h:10</div></div>
+<div class="ttc" id="aclassFight_html"><div class="ttname"><a href="classFight.html">Fight</a></div><div class="ttdoc">Represents a fight.</div><div class="ttdef"><b>Definition:</b> fight.h:11</div></div>
 <div class="ttc" id="aclassFighter_html"><div class="ttname"><a href="classFighter.html">Fighter</a></div><div class="ttdoc">Represents a UFC fighter.</div><div class="ttdef"><b>Definition:</b> fighter.h:10</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

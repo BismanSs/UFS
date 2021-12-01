@@ -12,44 +12,46 @@
 \DoxyCodeLine{9 \textcolor{preprocessor}{\#include <chrono>}}
 \DoxyCodeLine{10 \textcolor{preprocessor}{\#include <ctime>}}
 \DoxyCodeLine{11 }
-\DoxyCodeLine{12 \textcolor{comment}{// Represents a Notification, inherits QFrame, lifetime handled by NotificationHandler}}
-\DoxyCodeLine{13 \textcolor{keyword}{class }\mbox{\hyperlink{classNotification}{Notification}} : \textcolor{keyword}{public} QFrame\{}
-\DoxyCodeLine{14     Q\_OBJECT}
-\DoxyCodeLine{15 \textcolor{keyword}{public}:}
-\DoxyCodeLine{16     \textcolor{comment}{// Constructors, initialize member variables based on number of parameters provided}}
-\DoxyCodeLine{17     \mbox{\hyperlink{classNotification}{Notification}}(\textcolor{keywordtype}{int} notificationID, std::string title, std::string shortDesc, std::string longDesc, QWidget *parent = \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{18     \mbox{\hyperlink{classNotification}{Notification}}(\textcolor{keywordtype}{int} notificationID, std::string title, std::string shortDesc, std::string longDesc, std::string timestamp, QWidget *parent = \textcolor{keyword}{nullptr}, \textcolor{keywordtype}{bool} expand = \textcolor{keyword}{false});}
-\DoxyCodeLine{19     \textcolor{keyword}{static} \mbox{\hyperlink{classNotification}{Notification}}* copy(\mbox{\hyperlink{classNotification}{Notification}}* other, \textcolor{keywordtype}{bool} expand = \textcolor{keyword}{false});}
-\DoxyCodeLine{20 }
-\DoxyCodeLine{21     \mbox{\hyperlink{classNotification}{\string~Notification}}(); \textcolor{comment}{// deconstructor}}
-\DoxyCodeLine{22 }
-\DoxyCodeLine{23     \textcolor{keywordtype}{int} getNotificationID(); \textcolor{comment}{// get notification ID}}
-\DoxyCodeLine{24 }
-\DoxyCodeLine{25     std::string getTitle(); \textcolor{comment}{// get title}}
-\DoxyCodeLine{26     \textcolor{keywordtype}{void} setTitle(std::string title); \textcolor{comment}{// set title}}
-\DoxyCodeLine{27 }
-\DoxyCodeLine{28     std::string getShortDesc(); \textcolor{comment}{// get short description}}
-\DoxyCodeLine{29     \textcolor{keywordtype}{void} setShortDesc(std::string title); \textcolor{comment}{// set short description}}
-\DoxyCodeLine{30 }
-\DoxyCodeLine{31     std::string getLongDesc(); \textcolor{comment}{// get long description}}
-\DoxyCodeLine{32     \textcolor{keywordtype}{void} setLongDesc(std::string longDesc); \textcolor{comment}{// set long description}}
-\DoxyCodeLine{33 }
-\DoxyCodeLine{34     std::string getTimestamp(); \textcolor{comment}{// get the timestamp // TODO do we need to worry about this?}}
-\DoxyCodeLine{35 }
-\DoxyCodeLine{36     \mbox{\hyperlink{classNotification}{Notification}}* expand(); \textcolor{comment}{// returns a copy of the notification expanded to include long description in the QFrame}}
-\DoxyCodeLine{37 }
-\DoxyCodeLine{38 \textcolor{keyword}{private}:}
-\DoxyCodeLine{39     \textcolor{keywordtype}{int} notificationID; \textcolor{comment}{// notification ID}}
-\DoxyCodeLine{40     std::string title; \textcolor{comment}{// title}}
-\DoxyCodeLine{41     std::string shortDesc; \textcolor{comment}{// short description}}
-\DoxyCodeLine{42     std::string longDesc; \textcolor{comment}{// long description}}
-\DoxyCodeLine{43     std::string timestamp; \textcolor{comment}{// timestamp // TODO do we need this?}}
-\DoxyCodeLine{44 }
-\DoxyCodeLine{45     QVBoxLayout* notificationLayout; \textcolor{comment}{// layout for the QFrame}}
-\DoxyCodeLine{46     QLabel* titleLabel; \textcolor{comment}{// Qlabel for title}}
-\DoxyCodeLine{47     QLabel* shortDescLabel; \textcolor{comment}{// QLabel for short description}}
-\DoxyCodeLine{48     QLabel* longDescLabel; \textcolor{comment}{// QLabel for long description}}
-\DoxyCodeLine{49     QLabel* timestampLabel; \textcolor{comment}{// QLabel for timestamp // TODO do we need this?}}
-\DoxyCodeLine{50 \};}
+\DoxyCodeLine{17 \textcolor{keyword}{class }\mbox{\hyperlink{classNotification}{Notification}} : \textcolor{keyword}{public} QFrame\{}
+\DoxyCodeLine{18     Q\_OBJECT}
+\DoxyCodeLine{19 \textcolor{keyword}{public}:}
+\DoxyCodeLine{30     \mbox{\hyperlink{classNotification_a2dbcf9edad618633e22c067ecdce047b}{Notification}}(\textcolor{keywordtype}{int} notificationID, std::string title, std::string shortDesc, std::string longDesc, QWidget *parent = \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{43     \mbox{\hyperlink{classNotification_a2dbcf9edad618633e22c067ecdce047b}{Notification}}(\textcolor{keywordtype}{int} notificationID, std::string title, std::string shortDesc, std::string longDesc, std::string timestamp, QWidget *parent = \textcolor{keyword}{nullptr}, \textcolor{keywordtype}{bool} \mbox{\hyperlink{classNotification_a78b96333212f175171c623d72109eb1f}{expand}} = \textcolor{keyword}{false});}
+\DoxyCodeLine{44     }
+\DoxyCodeLine{52     \textcolor{keyword}{static} \mbox{\hyperlink{classNotification}{Notification}}* \mbox{\hyperlink{classNotification_a017af0f2ee2e701cb7ba28ea9395d543}{copy}}(\mbox{\hyperlink{classNotification}{Notification}}* other, \textcolor{keywordtype}{bool} \mbox{\hyperlink{classNotification_a78b96333212f175171c623d72109eb1f}{expand}} = \textcolor{keyword}{false});}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{59     \mbox{\hyperlink{classNotification_a46fd3a902eb1bc5e7edfdba2b2f8c392}{\string~Notification}}(); \textcolor{comment}{// deconstructor}}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{67     \textcolor{keywordtype}{int} \mbox{\hyperlink{classNotification_ab80ddc009f7c482a05018c1031a3c12f}{getNotificationID}}(); \textcolor{comment}{// get notification ID}}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{75     std::string \mbox{\hyperlink{classNotification_a7599a002f19eaf3828cf83cabf6fc69a}{getTitle}}(); \textcolor{comment}{// get title}}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{83     \textcolor{keywordtype}{void} \mbox{\hyperlink{classNotification_af788c2489d559603e0f57ce63ab4b035}{setTitle}}(std::string title); \textcolor{comment}{// set title}}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{91     std::string \mbox{\hyperlink{classNotification_ac051981129e97161c241a61b17f9e20d}{getShortDesc}}(); \textcolor{comment}{// get short description}}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{99     \textcolor{keywordtype}{void} \mbox{\hyperlink{classNotification_a94b68557ac5350312d24cb78eccc5e47}{setShortDesc}}(std::string title); \textcolor{comment}{// set short description}}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{107     std::string \mbox{\hyperlink{classNotification_a0255d2903c6518520f15cea91a3450f7}{getLongDesc}}(); \textcolor{comment}{// get long description}}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{115     \textcolor{keywordtype}{void} \mbox{\hyperlink{classNotification_af1fa1d3b9fae2ee902e1f4f3c52c852f}{setLongDesc}}(std::string longDesc); \textcolor{comment}{// set long description}}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{123     std::string \mbox{\hyperlink{classNotification_af6bf3e1d775974dbbdd39a36bf350649}{getTimestamp}}(); \textcolor{comment}{// get the timestamp}}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{131     \mbox{\hyperlink{classNotification}{Notification}}* \mbox{\hyperlink{classNotification_a78b96333212f175171c623d72109eb1f}{expand}}(); \textcolor{comment}{// returns a copy of the notification expanded to include long description in the QFrame}}
+\DoxyCodeLine{132 }
+\DoxyCodeLine{133 \textcolor{keyword}{private}:}
+\DoxyCodeLine{134     \textcolor{keywordtype}{int} notificationID; }
+\DoxyCodeLine{135     std::string title; }
+\DoxyCodeLine{136     std::string shortDesc; }
+\DoxyCodeLine{137     std::string longDesc; }
+\DoxyCodeLine{138     std::string timestamp; }
+\DoxyCodeLine{140     QVBoxLayout* notificationLayout; }
+\DoxyCodeLine{141     QLabel* titleLabel; }
+\DoxyCodeLine{142     QLabel* shortDescLabel; }
+\DoxyCodeLine{143     QLabel* longDescLabel; }
+\DoxyCodeLine{144     QLabel* timestampLabel; \textcolor{comment}{// QLabel for timestamp */}}
+\DoxyCodeLine{145 \};}
 
 \end{DoxyCode}

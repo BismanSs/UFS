@@ -211,7 +211,7 @@ $(function() {
 <div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>  QVBoxLayout *m_notificationsLayout;</div>
 <div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
 <div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>  <span class="comment">//miscellaneous</span></div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>  std::map&lt;int, Event*&gt; allEvents = Cache::getEvents();</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>  std::map&lt;int, Event*&gt; allEvents = <a class="code hl_function" href="classCache.html#a74070da6513103c6dd76499063078b78">Cache::getEvents</a>();</div>
 <div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>  QRect screen;<span class="comment">//sets screen dimensions</span></div>
 <div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>  <span class="keywordtype">bool</span> checkPanelScheduleIsSet = <span class="keyword">false</span>; <span class="comment">//check if the onViewScheduleButtonReleased() has been called at least once</span></div>
 <div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>  <span class="keywordtype">bool</span> checkPanelFightersListIsSet = <span class="keyword">false</span>;</div>
@@ -268,7 +268,8 @@ $(function() {
 <div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span> </div>
 <div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>  <span class="keywordtype">void</span> onSearchInputPressed();</div>
 <div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>};</div>
-<div class="ttc" id="aclassNotificationHandler_html"><div class="ttname"><a href="classNotificationHandler.html">NotificationHandler</a></div><div class="ttdef"><b>Definition:</b> notificationhandler.h:19</div></div>
+<div class="ttc" id="aclassCache_html_a74070da6513103c6dd76499063078b78"><div class="ttname"><a href="classCache.html#a74070da6513103c6dd76499063078b78">Cache::getEvents</a></div><div class="ttdeci">static std::map&lt; int, Event * &gt; getEvents()</div><div class="ttdoc">Get map of events.</div><div class="ttdef"><b>Definition:</b> cache.cpp:66</div></div>
+<div class="ttc" id="aclassNotificationHandler_html"><div class="ttname"><a href="classNotificationHandler.html">NotificationHandler</a></div><div class="ttdoc">Notification Handler.</div><div class="ttdef"><b>Definition:</b> notificationhandler.h:23</div></div>
 <div class="ttc" id="aclassUserInterface_html"><div class="ttname"><a href="classUserInterface.html">UserInterface</a></div><div class="ttdoc">Represents the programs user interface, ie the main window, inherits QMainWindow.</div><div class="ttdef"><b>Definition:</b> userinterface.h:46</div></div>
 <div class="ttc" id="aclassUserInterface_html_a82cef45d14506dcb282651e9d1d7670f"><div class="ttname"><a href="classUserInterface.html#a82cef45d14506dcb282651e9d1d7670f">UserInterface::UserInterface</a></div><div class="ttdeci">UserInterface(QWidget *parent=nullptr)</div><div class="ttdoc">User Interface constructor.</div><div class="ttdef"><b>Definition:</b> userinterface.cpp:4</div></div>
 <div class="ttc" id="aclassUserInterface_html_ae588b2ff1711a016dd4c6fc5002c0841"><div class="ttname"><a href="classUserInterface.html#ae588b2ff1711a016dd4c6fc5002c0841">UserInterface::~UserInterface</a></div><div class="ttdeci">~UserInterface()</div><div class="ttdoc">Deconstructor.</div><div class="ttdef"><b>Definition:</b> userinterface.cpp:234</div></div>

@@ -378,13 +378,6 @@ void Cache::updateCacheFromFile() {
 
 }
 
-// scan cache for invalid data and remove
-void Cache::sanitizeCache() {
-    if (isInit) { // check if cache has been initialized
-        // do stuff
-    }
-}
-
 // deserialize raw fighter string into heap allocated object
 Fighter* Cache::parseFighter(std::string rawFighter) {
     if (isInit) { // check if cache has been initialized
