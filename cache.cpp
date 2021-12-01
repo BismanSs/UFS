@@ -66,8 +66,8 @@ std::map<int, Fight*> Cache::getFights() {
 std::map<int, Event*> Cache::getEvents() {
     if (isInit) { // check if cache has been initialized
         if (events.empty()) {
-            APIHandler apiHandler = APIHandler(sportsDataAPIKey, apiHandlersParent);
-            std::vector<Event*> eventsVec = apiHandler.getAllEvents();
+            APIHandler *apiHandler = new APIHandler(sportsDataAPIKey, apiHandlersParent);
+            std::vector<Event*> eventsVec = apiHandler->getAllEvents();
             for(long unsigned int i = 0; i < eventsVec.size(); i++) {
                 events.emplace(eventsVec.at(i)->getEventID(), eventsVec.at(i));
             }

@@ -767,18 +767,15 @@ void UserInterface::onSearchInputPressed() {
     bool found = false; //If found stays false until the end then must have found no results
 
     if(m_fightersRadioButton->isChecked()){
-  std::cout << 0 << std::endl;
-      
+
         std::map<int, Fighter*> fighterMap = Cache::getFighters();  //getFighters makes the map with data for each fighter seperated
 
         for (auto it = fighterMap.begin(); it != fighterMap.end(); ++it){   //Loops through fighterMap with iterator it
-  std::cout << 1 << std::endl;
-            
+
             if(boost::to_lower_copy(it->second->getLastName()) == boost::to_lower_copy(searchInput) ||
                     boost::to_lower_copy(it->second->getFirstName()) == boost::to_lower_copy(searchInput) ||
                     boost::to_lower_copy(it->second->getNickname()) == boost::to_lower_copy(searchInput)){
                 //If statement checks if searchInput and current member of map are equal when both are lowercase
-  std::cout << 2 << std::endl;
 
                 found = true;
                 //Assembling the output string with all data
