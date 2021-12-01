@@ -258,9 +258,9 @@ Fighter* APIHandler::parseJSONFighter(std::string json) {
     std::vector<std::string> memberVariables = Util::splitString(json, ","); // split json at ","
 
     for (long unsigned int i = 0; i < memberVariables.size(); i++) { // loop through variables in json
-    std::cout << i << "   " << memberVariables.at(i) << std::endl;
+    //std::cout << i << "   " << memberVariables.at(i) << std::endl;
         memberVariables.at(i) = formatLine(memberVariables.at(i));
-    std::cout << i << "   " << memberVariables.at(i) << std::endl;
+    //std::cout << i << "   " << memberVariables.at(i) << std::endl;
 
     }
     if (memberVariables.size() < 23) {
@@ -342,11 +342,11 @@ std::string APIHandler::formatLine(std::string line) {
     std::string returnStr = line;
 
     if (secLastPos != std::string::npos) {
-    std::cout << 1 << std::endl;
+    //std::cout << 1 << std::endl;
 
         returnStr = line.substr(secLastPos);
     } else {
-    std::cout << 2 << std::endl;
+    //std::cout << 2 << std::endl;
 
         returnStr = Util::splitString(line, ":").at(Util::splitString(line, ":").size()-1); // get last element in variable split at ":"
     }

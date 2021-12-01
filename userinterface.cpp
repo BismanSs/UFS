@@ -96,6 +96,8 @@ UserInterface::UserInterface(QWidget *parent)
 
   m_searchBar->setFixedWidth(centerPanelSize.width() - 20); // set search bar fixed width
 
+  m_centerFighterList = new QListWidget(); //QList widget
+  connect(m_centerFighterList, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(displayFighter(QListWidgetItem*)));
   // set fixed heights
   m_searchBar->setFixedHeight(30);
   m_searchOptions->setFixedHeight(100);
@@ -153,7 +155,7 @@ UserInterface::UserInterface(QWidget *parent)
   m_notificationsPanel->run(true); // running with redactYear flag set to true
   
   if (m_notificationsPanel->getUpcomingEvents().empty()) {
-    std::cout << "fafaefa" << std::endl;
+    //std::cout << "fafaefa" << std::endl;
     delete m_viewAllNotificationsButton;
     m_viewAllNotificationsButton = new QPushButton("No upcoming events, 2022 not yet supported.", this);
     m_viewAllNotificationsButton->setEnabled(false);
@@ -176,7 +178,7 @@ UserInterface::UserInterface(QWidget *parent)
       // connect(m_inputBox, &QLineEdit::returnPressed, this, &MainWindow::handleExec);
 
   // USER CAN VIEW RETRIEVED UFC DATA ACCEPTANCE TEST --------
-  std::cout << Cache::getFighters().at(140000025)->getLastName() << std::endl;
+  //std::cout << Cache::getFighters().at(140000025)->getLastName() << std::endl;
   
 }
 
@@ -249,32 +251,200 @@ void UserInterface::onViewScheduleButtonReleased() //Show calendar and schedule 
   
 }
 
-
-void UserInterface::onListFightersButtonReleased() //Show calendar and schedule when Button is pressed
+/**
+ * \brief This function displays a list of fighters
+ * 
+ * This function creates panels that are required to display the list of all fighters.
+ * Then, a map containing all the fighters are acquired from the cache by calling Cache::getFighters().
+ * From here, the map is iterated and QListWidgetItems corresponding to each fighter's name is added to the center panel
+ * which is a QListWidget.  Finally, the panel is displayed in the center and the button is highlighted a different colour.
+ * 
+ * @author Gouri Sikha
+ */
+void UserInterface::onListFightersButtonReleased() //Show a list of fighters when Button is pressed
 {
-  if (checkPanelFightersListIsSet == false) //if calling function for first time, initialize schedule window
+  if (checkPanelFightersListIsSet == false) //if calling function for first time, initialize fighters window
   {
     checkPanelFightersListIsSet = true;
-    m_centerFighterList = new QListWidget(); //QList widget
+    
     m_centerFighterListLayout = new QVBoxLayout();
     m_centerFighterListPanel = new QFrame(this);
 
+    m_centerFighterList->clear();
+    // CODE FOR SHOWING FIGHTERS HERE
+    std::map<int, Fighter*> fighterMap = Cache::getFighters();
+    std::pair<int, Fighter*> individual_fighter;
+    BOOST_FOREACH(individual_fighter, fighterMap) {
+      QString fighter_name = QString::fromStdString(individual_fighter.second->getFirstName() + " " + individual_fighter.second->getLastName());
+      
+      m_centerFighterList->addItem(fighter_name);
+  }
+    
     m_centerFighterListPanel->setFixedWidth(screen.width() * (7.0 / 12.0) - 10);
-
     m_centerFighterListPanel->setFrameStyle(QFrame::Panel);
     m_centerFighterListPanel->setFixedHeight(screen.height() - 50);
-
-    QString placeholderText = "The list fighters page is a work in progress";
-    m_centerFighterList->addItem(placeholderText);
-
     m_centerFighterListLayout->addWidget(m_centerFighterList);
     m_centerFighterListPanel->setLayout(m_centerFighterListLayout);
-    m_mainLayout->addWidget(m_centerFighterListPanel, 0, 2); //Adding schedule Panel as the center panel
+    m_mainLayout->addWidget(m_centerFighterListPanel, 0, 2); //Adding fighterlist Panel as the center panel
   }
 
   removeCenterPanel(); //remove any other window
-  m_centerFighterListPanel -> setVisible(true); //set schedule window visible
-  currentCenterPanel = "fighterlist"; //current window is schedule
+  m_centerFighterListPanel -> setVisible(true); //set fighterlist window visible
+  currentCenterPanel = "fighterlist"; //current window is fighterlist
+  m_listFightersButton -> setProperty("released", true);
+  m_listFightersButton -> style() -> unpolish(m_listFightersButton);
+  m_listFightersButton -> style() -> polish(m_listFightersButton);
+}
+
+/**
+ * \brief this function displays the statistics of a fighter that's been clicked on from the list
+ * 
+ * This function creates the panel where the statistics of a specific fighter are displayed.
+ * The fighter the user clicks on is the parameter to this function.  This fighter is then found in the 
+ * getFighters map. From there, all the fighters attributes are represented as QStrings and added to the QListWidget
+ * to display the statistics for the user to see
+ * 
+ * @param clickedFighter this is the fighter that the user clicks on from the list.
+ * @author Gouri Sikha
+ */ 
+void UserInterface::displayFighter(QListWidgetItem* clickedFighter) 
+{
+  if (checkDisplayFightersIsSet == false) 
+  {
+    m_centerDisplayFighterLayout = new QVBoxLayout();
+    m_centerDisplayFighter = new QListWidget();
+    m_centerDisplayFighterPanel = new QFrame(this);
+
+    m_centerDisplayFighterPanel->setFixedWidth(screen.width() * (7.0 / 12.0) - 10);
+    m_centerDisplayFighterPanel->setFrameStyle(QFrame::Panel);
+    m_centerDisplayFighterPanel->setFixedHeight(screen.height() - 50);
+
+    m_centerDisplayFighterLayout->addWidget(m_centerDisplayFighter);
+    m_centerDisplayFighterPanel->setLayout(m_centerDisplayFighterLayout);
+    m_mainLayout->addWidget(m_centerDisplayFighterPanel, 0, 2);
+  }
+
+  QString clicked_fighter = clickedFighter->text();
+
+  std::map<int, Fighter*> fighterMap = Cache::getFighters();
+  std::pair<int, Fighter*> individual_fighter;
+  BOOST_FOREACH(individual_fighter, fighterMap) {
+    QString fighter_name = QString::fromStdString(individual_fighter.second->getFirstName() + " " + individual_fighter.second->getLastName());
+    if (clicked_fighter == fighter_name) {
+      // Display all info on the fighter's page
+      QString fName = QString::fromStdString(individual_fighter.second->getFirstName());
+      QString label = QString::fromStdString("First Name: ");
+      m_centerDisplayFighter->addItem(label + fName);
+
+      QString lName = QString::fromStdString(individual_fighter.second->getLastName());
+      label = QString::fromStdString("Last Name: ");
+      m_centerDisplayFighter->addItem(label + lName);
+
+      // not every fighter has a nickname
+      if (individual_fighter.second ->getNickname() != "0") {
+        QString nickname = QString::fromStdString(individual_fighter.second->getNickname());
+        label = QString::fromStdString("Nickname: ");
+        m_centerDisplayFighter->addItem(label + nickname);
+      }
+
+      QString weightClass = QString::fromStdString(individual_fighter.second->getWeightClass());
+      label = QString::fromStdString("Weight Class: ");
+      m_centerDisplayFighter->addItem(label + weightClass);
+
+      QString birthDate = QString::fromStdString(individual_fighter.second->getBirthDate());
+      label = QString::fromStdString("Birth Date: ");
+      m_centerDisplayFighter->addItem(label + birthDate);
+
+      QString height = QString::number(individual_fighter.second->getHeight());
+      label = QString::fromStdString("Height (inches): ");
+      m_centerDisplayFighter->addItem(label + height);
+
+      QString weight = QString::number(individual_fighter.second->getWeight());
+      label = QString::fromStdString("Weight (lbs): ");
+      m_centerDisplayFighter->addItem(label + weight);
+
+      QString reach = QString::number(individual_fighter.second->getReach());
+      label = QString::fromStdString("Reach (inches): ");
+      m_centerDisplayFighter->addItem(label + reach); 
+
+      QString wins = QString::number(individual_fighter.second->getWins());
+      label = QString::fromStdString("Wins: ");
+      m_centerDisplayFighter->addItem(label + wins);     
+
+      QString losses = QString::number(individual_fighter.second->getLosses());
+      label = QString::fromStdString("Losses: ");
+      m_centerDisplayFighter->addItem(label + losses);
+
+      QString draws = QString::number(individual_fighter.second->getDraws());
+      label = QString::fromStdString("Draws: ");
+      m_centerDisplayFighter->addItem(label + draws);
+
+      QString noContests = QString::number(individual_fighter.second->getNoContests());
+      label = QString::fromStdString("No Contests: ");
+      m_centerDisplayFighter->addItem(label + noContests);
+
+      QString tkos = QString::number(individual_fighter.second->getTechnicalKnockouts());
+      label = QString::fromStdString("Technical Knockouts (TKO): ");
+      m_centerDisplayFighter->addItem(label + tkos);
+
+      QString tkols = QString::number(individual_fighter.second->getTechnicalKnockoutLosses());
+      label = QString::fromStdString("TKO Losses: ");
+      m_centerDisplayFighter->addItem(label + tkols);
+
+      QString submissions = QString::number(individual_fighter.second->getSubmissions());
+      label = QString::fromStdString("Submissions: ");
+      m_centerDisplayFighter->addItem(label + submissions);
+
+      QString submitted = QString::number(individual_fighter.second->getSubmissionLosses());
+      label = QString::fromStdString("Losses by Submission: ");
+      m_centerDisplayFighter->addItem(label + submitted);
+
+      QString titleWins = QString::number(individual_fighter.second->getTitleWins());
+      label = QString::fromStdString("Title Wins: ");
+      m_centerDisplayFighter->addItem(label + titleWins);
+
+      QString titleLosses = QString::number(individual_fighter.second->getTitleLosses());
+      label = QString::fromStdString("Title Losses: ");
+      m_centerDisplayFighter->addItem(label + titleLosses);
+
+      QString titleDraws = QString::number(individual_fighter.second->getTitleDraws());
+      label = QString::fromStdString("Title Draws: ");
+      m_centerDisplayFighter->addItem(label + titleDraws);
+
+      QString sigStrikesPerMin = QString::number(individual_fighter.second->getSigStrikesLandedPerMinute());
+      label = QString::fromStdString("Significant Strikes per Minute: ");
+      m_centerDisplayFighter->addItem(label + sigStrikesPerMin);
+
+      QString sigStrikesAccuracy = QString::number(individual_fighter.second->getSigStrikeAccuracy());
+      label = QString::fromStdString("Significant Strike Accuracy: ");
+      m_centerDisplayFighter->addItem(label + sigStrikesAccuracy);
+
+      QString takedownAvg = QString::number(individual_fighter.second->getTakedownAverage());
+      label = QString::fromStdString("Takedown Average: ");
+      m_centerDisplayFighter->addItem(label + takedownAvg);
+
+      QString submissionAvg = QString::number(individual_fighter.second->getSubmissionAverage());
+      label = QString::fromStdString("Submission Average: ");
+      m_centerDisplayFighter->addItem(label + submissionAvg);
+
+      QString KOpercent = QString::number(individual_fighter.second->getKnockoutPercentage());
+      label = QString::fromStdString("Knockout Percentage: ");
+      m_centerDisplayFighter->addItem(label + KOpercent);
+
+      QString decisionPercent = QString::number(individual_fighter.second->getDecisionPercentage());
+      label = QString::fromStdString("Decision Percentage: ");
+      m_centerDisplayFighter->addItem(label + decisionPercent);
+
+    }
+    else {
+      // Fighter not yet found
+      continue;
+    }
+  }
+
+  removeCenterPanel();
+  m_centerDisplayFighterPanel -> setVisible(true);
+  currentCenterPanel = "displayfighter";
 }
 
 void UserInterface::onViewBetsButtonReleased() //Show calendar and schedule when Button is pressed
@@ -367,7 +537,15 @@ void UserInterface::removeCenterPanel() //hides current center panel
   }
   else if(currentCenterPanel == "fighterlist")
   {
+    m_listFightersButton -> setProperty("released", false);
+    m_listFightersButton -> style() -> unpolish(m_listFightersButton); //change colour of button
+    m_listFightersButton -> style() -> polish(m_listFightersButton);
     m_centerFighterListPanel -> setVisible(false);
+  }
+  else if (currentCenterPanel == "displayfighter")
+  {
+    m_centerDisplayFighter->clear();
+    m_centerDisplayFighterPanel ->setVisible(false);
   }
   else if(currentCenterPanel == "viewbets") {
     m_centerViewBetsPanel -> setVisible(false);

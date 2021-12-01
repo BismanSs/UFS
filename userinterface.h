@@ -21,6 +21,7 @@
 #include <QCalendarWidget>
 #include <string>
 #include <QListWidget>
+#include <QListWidgetItem>
 #include <QtWidgets>
 
 #include <vector>
@@ -29,8 +30,10 @@
 
 #include "notificationhandler.h"
 #include "cache.h"
+
+#include "boost/foreach.hpp"
  
- // represents the programs user interface, ie the main window, inherits QMainWindow
+// represents the programs user interface, ie the main window, inherits QMainWindow
 class UserInterface : public QMainWindow
 {
   Q_OBJECT // needed for Qt to know this is a QObject
@@ -97,6 +100,11 @@ private: // private member variables
   QListWidget *m_centerFighterList;
   QFrame *m_centerFighterListPanel;
 
+  // Center panel - display fighter stats
+  QVBoxLayout *m_centerDisplayFighterLayout;
+  QListWidget *m_centerDisplayFighter;
+  QFrame *m_centerDisplayFighterPanel;
+
   // Center panel - view bets 
   QVBoxLayout *m_centerViewBetsLayout;
   QListWidget *m_centerViewBets;
@@ -124,6 +132,7 @@ private: // private member variables
   QRect screen;//sets screen dimensions
   bool checkPanelScheduleIsSet = false; //check if the onViewScheduleButtonReleased() has been called at least once
   bool checkPanelFightersListIsSet = false;
+  bool checkDisplayFightersIsSet = false;
   bool checkViewBetsIsSet = false;
   bool checkCompFightersIsSet = false;
   std::string currentCenterPanel = "home"; //possible values "home", "schedule", "bets", "compfighters", "listfighters"
@@ -132,6 +141,7 @@ private slots:
   void onViewScheduleButtonReleased(); //handler for "View UFC Schedule" Button
   void onHomeButtonReleased(); //handler for "Home" Button
   void onListFightersButtonReleased();
+  void displayFighter(QListWidgetItem* clickedFighter);
   void onViewBetsButtonReleased();
   void onCompareFightersButtonReleased();
 };
