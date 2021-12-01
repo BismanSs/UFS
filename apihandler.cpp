@@ -6,6 +6,7 @@ APIHandler::APIHandler(std::string sportsDataAPIKey , QObject *parent) : QObject
     this->sportsDataAPIKey = sportsDataAPIKey;
 }
 
+// APIHandler deconstructor
 APIHandler::~APIHandler() {
 
 }
@@ -37,7 +38,6 @@ std::vector<Event*> APIHandler::getAllEvents() {
 
 // Gets all available MMA fighters from sportsdata.io Fighters endpoint
 std::vector<Fighter*> APIHandler::getAllFighters() {
-
     QNetworkAccessManager *manager = new QNetworkAccessManager(this); // manages http requests, sets this as parent
     QNetworkRequest request = QNetworkRequest(QUrl((SPORTSDATA_API_URL + "Fighters?key=" + sportsDataAPIKey).c_str()));
     request.setRawHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -99,12 +99,15 @@ std::vector<Event*> APIHandler::parseJSONAllEvents(std::string json) {
 
 // parses json of all fighters into a Fighter* vector
 std::vector<Fighter*> APIHandler::parseJSONAllFighters(std::string json) {
+
     std::vector<std::string> fighters = Util::splitString(json, "},{"); // split the json at "FighterId"
     std::vector<Fighter*> returnVec;
 
     for (long unsigned int i = 0; i < fighters.size(); i++) { // loop through fighters
+
         returnVec.push_back(parseJSONFighter(fighters.at(i))); // parse single fighter and add to vector
     }
+
     return returnVec;
 }
 
@@ -130,7 +133,6 @@ Event* APIHandler::parseJSONEvent(std::string json) {
                                                          memberVariables.at(i), ":")
                                                          .size())-1))); // last element in split
         }
-
         memberVariables.at(i) = formatLine(memberVariables.at(i));
     }
 
@@ -151,13 +153,13 @@ Event* APIHandler::parseJSONEvent(std::string json) {
 // parses json and creates a heap allocated Fight object
 Fight* APIHandler::parseJSONFight(std::string json) {
 
-    json = "\"FightId" + json;
-    while (json.find(", ", 0) != std::string::npos)
+    json = "\"FightId" + json; // readd FightId
+    while (json.find(", ", 0) != std::string::npos) // remove all commas inside strings to avoid parsing errors
         json.replace(json.find(", ", 0), 2, " ");
     std::vector<std::string> memberVariables = Util::splitString(json, ","); // split json at ","
 
     for (long unsigned int i = 0; i < memberVariables.size(); i++) { // loop through variables in json
-        memberVariables.at(i) = formatLine(memberVariables.at(i));
+        memberVariables.at(i) = formatLine(memberVariables.at(i)); // format line
     }
 
     FightStat fightstats[] = { // initialize FightStat array of size 2
@@ -250,15 +252,20 @@ Fight* APIHandler::parseJSONFight(std::string json) {
 
 // parses json and creates a heap allocated Fighter object
 Fighter* APIHandler::parseJSONFighter(std::string json) {
-    while (json.find(", ", 0) != std::string::npos)
+    while (json.find(", ", 0) != std::string::npos) // remove all commas in strings to avoid parsing errors
         json.replace(json.find(", ", 0), 2, " ");
     std::vector<std::string> memberVariables = Util::splitString(json, ","); // split json at ","
 
     for (long unsigned int i = 0; i < memberVariables.size(); i++) { // loop through variables in json
-        memberVariables.at(i) = formatLine(memberVariables.at(i));
-    }
+        memberVariables.at(i) = formatLine(memberVariables.at(i)); // format line
 
-    if (memberVariables.size() < 23) {
+
+    }
+    if (memberVariables.size() <= 1) { // invalid json, i.e. if its empty because of no internet connection
+        return NULL;
+    }
+    if (memberVariables.size() < 23) { // career stats not included
+
         return new Fighter( // create heap allocated Fighter object and return pointer
                 std::stoi(memberVariables.at(0)), // fighterID
                 memberVariables.at(1), // firstName
@@ -321,10 +328,11 @@ Fighter* APIHandler::parseJSONFighter(std::string json) {
     }
 }
 
+// Formats a given line (string) into a valid string for parsing
 std::string APIHandler::formatLine(std::string line) {
-    if (line.substr(0, 14).compare("\"CareerStats\":") == 0) line = line.substr(14);
+    if (line.substr(0, 14).compare("\"CareerStats\":") == 0) line = line.substr(14); // remove instances of CareerStats to resolve parsing issues
 
-    line = Util::removeAllChar(line, '[');
+    line = Util::removeAllChar(line, '['); // remove brackets
     line = Util::removeAllChar(line, '{');
     std::size_t pos = 0;
     std::size_t secLastPos = std::string::npos;
@@ -337,15 +345,15 @@ std::string APIHandler::formatLine(std::string line) {
     std::string returnStr = line;
 
     if (secLastPos != std::string::npos) {
-        returnStr = line.substr(secLastPos);
+        returnStr = line.substr(secLastPos); // get string from second last quotation
     } else {
         returnStr = Util::splitString(line, ":").at(Util::splitString(line, ":").size()-1); // get last element in variable split at ":"
     }
-    returnStr = Util::removeAllChar(returnStr, '"'); // remove any braces
+    returnStr = Util::removeAllChar(returnStr, '"'); // remove brackets
     returnStr = Util::removeAllChar(returnStr, ']');
     returnStr = Util::removeAllChar(returnStr, '}');
 
-    if (returnStr.compare("null") == 0) return "0";
+    if (returnStr.compare("null") == 0) return "0"; // API returns empty number values as "null", replace with "0" since thats parseable
 
     return returnStr;
 }

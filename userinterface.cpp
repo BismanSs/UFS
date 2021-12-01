@@ -129,9 +129,8 @@ UserInterface::UserInterface(QWidget *parent)
   m_centerLayout->addWidget(m_searchBar);
   m_centerLayout->addWidget(m_searchOptions);
 
-  // create and add search results content panel to center layout on construction, replace with other panels later as needed
-  //m_centerLayout->addWidget(createSearchResultsContentPanel(), 0, Qt::AlignBottom);
-  m_centerLayout->addWidget(m_searchScroll, Qt::AlignBottom); //adding scroll widget last
+  //adding scroll widget ot the layout last
+  m_centerLayout->addWidget(m_searchScroll, Qt::AlignBottom);
 
   m_centerPanel->setLayout(m_centerLayout); // set layout of center panel
   // ------------------------------
@@ -203,14 +202,6 @@ UserInterface::~UserInterface()
 
   m_notificationsPanel->stop();
   delete m_notificationsPanel;
-}
-
-// creates and returns a heap allocated search results content panel
-QFrame *UserInterface::createSearchResultsContentPanel()
-{
-  QFrame *searchResultsContentPanel = new QFrame(); // create search results content panel
-  searchResultsContentPanel->setFixedHeight(500);   // set to fixed width
-  return searchResultsContentPanel;
 }
 
 // on main window closing X pressed
@@ -318,7 +309,11 @@ void UserInterface::onViewBetsButtonReleased() //Show calendar and schedule when
   m_centerViewBetsPanel -> setVisible(true); //set schedule window visible
   currentCenterPanel = "viewbets"; //current window is schedule
 }
-
+/**
+ * \brief Function to compare two fighters together
+ * \details Handles the comparing of two fighters and sets up the new view for it as well
+ * \authors
+ */
 void UserInterface::onCompareFightersButtonReleased() //Show calendar and schedule when Button is pressed
 {
   if (checkCompFightersIsSet == false) //if calling function for first time, initialize schedule window
@@ -350,7 +345,11 @@ void UserInterface::onCompareFightersButtonReleased() //Show calendar and schedu
   currentCenterPanel = "compfighter"; //current window is schedule
 }
 
-
+/**
+ * \brief Function called to set current center panel back to home
+ * \details Sets variable currentCenterPanel to home as well as the visibility of the home panel after home button clicked
+ * \author Paul Scoropan
+ */
 void UserInterface::onHomeButtonReleased() // Go back to home screen when "Home" button is pressed
 {
   removeCenterPanel(); //remove anh other window
@@ -362,7 +361,11 @@ void UserInterface::onHomeButtonReleased() // Go back to home screen when "Home"
   m_homeButton  -> style() -> polish(m_homeButton );
   
 }
-
+/**
+ * \brief Function called to remove current center panel
+ * \details Called when changing to new views, removes current center panel and adds effects to button that was clicked
+ * \author Paul Scoropan
+ */
 void UserInterface::removeCenterPanel() //hides current center panel
 {
   if(currentCenterPanel == "home")
@@ -392,9 +395,10 @@ void UserInterface::removeCenterPanel() //hides current center panel
 
 }
 /**
- * @brief Function called when enter is pressed on the search bar checks what radio button is selected and
+ * \brief Search and Display Function
+ * \details Function called when enter is pressed on the search bar checks what radio button is selected and
  * performs that certain search, then creates results in QTextBoxes, then displays these results on the main window
- * @author Jordan Avelar
+ * \author Jordan Avelar
  */
 void UserInterface::onSearchInputPressed() {
     std::string searchInput = m_searchBar->text().toStdString(); //put search input into string
@@ -405,7 +409,8 @@ void UserInterface::onSearchInputPressed() {
 
         for (auto it = fighterMap.begin(); it != fighterMap.end(); ++it){   //Loops through fighterMap with iterator it
             if(boost::to_lower_copy(it->second->getLastName()) == boost::to_lower_copy(searchInput) ||
-                    boost::to_lower_copy(it->second->getFirstName()) == boost::to_lower_copy(searchInput)){
+                    boost::to_lower_copy(it->second->getFirstName()) == boost::to_lower_copy(searchInput) ||
+                    boost::to_lower_copy(it->second->getNickname()) == boost::to_lower_copy(searchInput)){
                 //If statement checks if searchInput and current member of map are equal when both are lowercase
                 found = true;
                 //Assembling the output string with all data

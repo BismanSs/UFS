@@ -30,21 +30,31 @@
 
 #include "notificationhandler.h"
 #include "cache.h"
- 
- // represents the programs user interface, ie the main window, inherits QMainWindow
+
+ /**
+  * \brief Represents the programs user interface, ie the main window, inherits QMainWindow
+  * \details Class to represent all the Qt objects and functions involved in running the user interface
+  * \authors Paul Scoropan, Jordan Avelar
+  */
 class UserInterface : public QMainWindow
 {
   Q_OBJECT // needed for Qt to know this is a QObject
 public: // public methods
-  // constructor creates the main window UI
+  /**
+   * \brief User Interface constructor
+   * \details Initializes the main window UI, is explicit
+   * @param parent passed as null
+   */
   explicit UserInterface(QWidget *parent = nullptr); // pass no parent
-  ~UserInterface(); // deconstructor
-// private slots:
-//   void handleExec();
+  /**
+   * \brief Deconstructor
+   * \details Deletes any memory on the heap
+   */
+  ~UserInterface();
+
 private: // private methods
 
   // create corresponding content panel for center panel
-  QFrame *createSearchResultsContentPanel();
   QFrame *createListFightersContentPanel();
   QFrame *createScheduleContentPanel();
   QFrame *createCompareFightersContentPanel();
@@ -52,9 +62,17 @@ private: // private methods
   QFrame *createAllNewsContentPanel();
   QFrame *createAllNotificationsContentPanel();
 
+  /**
+   * \brief Removes the current center panel
+   * \details Sets currentCenterPanel visiblity to false, removing it from view to be replaced by new panel
+   */
   void removeCenterPanel();
 
-  // handles on X pressed close event
+  /**
+   * \brief Handles on X pressed (close event)
+   * \details Creates confirmation popup and handles closing the application
+   * @param event
+   */
   void closeEvent(QCloseEvent *event);
 
 private: // private member variables

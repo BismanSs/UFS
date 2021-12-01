@@ -3,31 +3,19 @@
 using namespace boost::algorithm;
 using namespace boost;
 
-// splits string at string delimiter, returns as vector
+/**
+ * \brief Splits string at string delimiter, returns as vector
+ * \author Paul Scoropan
+ * @param rawText String holding the raw string to be split
+ * @param delimiter String holding the delimiter to split the rawText at
+ * @return splitVec Vector holding multiple strings from rawText
+ */
 std::vector<std::string> Util::splitString(std::string rawText, std::string delimiter) {
     std::vector<std::string> splitVec;
 
     int start = 0;
     int end = 0;
     while(end!=std::string::npos){
-        // std::cout << delimiter << std::endl;
-        // if (delimiter.compare(",") == 0) {
-        //     std::cout << rawText.substr(rawText.find(delimiter, start), rawText.find(delimiter, start)+2) << "hhhhhhhh" << std::endl;
-        // }
-        // std::cout << "ok" << rawText.find(delimiter, start) << " " << std::string::npos << std::endl;
-        // if (rawText.find(delimiter, start)+2 < std::string::npos && rawText.find(delimiter, start) < std::string::npos && rawText.substr(rawText.find(delimiter, start), rawText.find(delimiter, start)+2).compare(", ") == 0) {
-        //     std::cout << "wh" << std::endl;
-        //     end = rawText.find(delimiter, start);
-        //     int start2 = end + delimiter.length();
-        //     end = rawText.find(delimiter, start2);
-        //     splitVec.push_back(rawText.substr(start, end-start));
-        //     start = end + delimiter.length();
-        //     std::cout << "fix" << std::endl;
-        // } else {
-        //     end = rawText.find(delimiter, start);
-        //     splitVec.push_back(rawText.substr(start, end-start));
-        //     start = end + delimiter.length();
-        // }
 
         end = rawText.find(delimiter, start);
         splitVec.push_back(rawText.substr(start, end-start));
@@ -35,18 +23,24 @@ std::vector<std::string> Util::splitString(std::string rawText, std::string deli
         
     }
 
-    // split(splitVec, "1,2000000,3", is_any_of(","), token_compress_on);
-    // std::cout << "SPLIT" << rawText << std::endl;
-    // split( splitVec, rawText, delimiter, token_compress_on ); // boost split function
     return splitVec;
 }
 
-// removes all instances of a char, returns string
+/**
+ * \brief Removes all instances of a char, returns String
+ * @param rawText String to have chars removed
+ * @param removed Char holding the removed character
+ * @return rawText String with new string without the removed character
+ */
 std::string Util::removeAllChar(std::string rawText, char removed) {
     erase_all(rawText, std::string(1, removed)); // boost erase_all function
     return rawText;
 }
-
+/**
+ * \brief Returns whether the String represents a true or false value
+ * @param rawText String to be compared as True or False
+ * @return Bool either true for 0 or false return value
+ */
 bool Util::toBool(std::string rawText) {
     return (rawText.compare("true") == 0 || rawText.compare("True") == 0) ? true : false;
 }
