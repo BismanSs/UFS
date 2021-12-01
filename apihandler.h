@@ -73,19 +73,49 @@ public:
 
 private: // private methods
     /*!
-    * \brief Gets a UFC fight by fight ID from the sportsdata.io API
-    * \details creates and returns a Fight pointer to a heap allocated Fight object from the /Fight endpoint
+    * \brief Parses json into vector of Event objects
+    * \details creates and returns a Event pointer vector of heap allocated Event objects parsed from the json
     * \author Paul Scoropan
-    * \param[in] fightID The ID of the fight, previously retrieved from an /Event API call
+    * \param[in] json the raw json string to parse
     */
     std::vector<Event*> parseJSONAllEvents(std::string json); // parses json, creates and returns vector of heap allocated Events
+    /*!
+    * \brief Parses json into vector of Fighter objects
+    * \details creates and returns a Fighter pointer vector of heap allocated Fighter objects parsed from the json
+    * \author Paul Scoropan
+    * \param[in] json the raw json string to parse
+    */
     std::vector<Fighter*> parseJSONAllFighters(std::string json); // parses json, creates and returns vector of heap allocated Fighters
+    /*!
+    * \brief Parses json into an Event object
+    * \details creates and returns a Event pointer to a heap allocated Event object parsed from the json
+    * \author Paul Scoropan
+    * \param[in] json the raw json string to parse
+    */
     Event* parseJSONEvent(std::string json); // parses json, creates and returns heap allocated Event
+    /*!
+    * \brief Parses json into an Fight object
+    * \details creates and returns a Fight pointer to a heap allocated Fight object parsed from the json
+    * \author Paul Scoropan
+    * \param[in] json the raw json string to parse
+    */
     Fight* parseJSONFight(std::string json); // parses json, creates and returns heap allocated Fight
+    /*!
+    * \brief Parses json into an Fighter object
+    * \details creates and returns a Fighter pointer to a heap allocated Fighter object parsed from the json
+    * \author Paul Scoropan
+    * \param[in] json the raw json string to parse
+    */
     Fighter* parseJSONFighter(std::string json); // parses json, creates and returns heap allocated Fighter
+    /*!
+    * \brief Formats a string line to be parsed
+    * \details strips brackets and other characters that would cause errors when parsing
+    * \author Paul Scoropan
+    * \param[in] line the string to format
+    */
     std::string formatLine(std::string line); // formats a given line to avoid parsing errors
 
 private: // private variables
-    const std::string SPORTSDATA_API_URL = "https://api.sportsdata.io/v3/mma/scores/json/"; // sportsdata.io API URL prefix, is constant
-    std::string sportsDataAPIKey; // sportsdata.io API key
+    const std::string SPORTSDATA_API_URL = "https://api.sportsdata.io/v3/mma/scores/json/"; /*!< sportsdata.io API URL prefix, is constant*/
+    std::string sportsDataAPIKey; /*!< sportsdata.io API key */
 };
