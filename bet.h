@@ -4,7 +4,11 @@
 
 // #include "cache.h"
 
-// represents a user bet on a specific fighter in a fight
+/*!
+* \brief Represents a user bet on a specific fighter in a fight
+* \details This class was not utilized in the final release of this project.
+* \author Paul Scoropan
+*/
 class Bet {
 public: // public methods
     // constructor sets all member variables

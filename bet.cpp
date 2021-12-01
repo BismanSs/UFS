@@ -1,7 +1,19 @@
 #include "bet.h"
 
-// Bet constructor, takes as parameters all member variables in the order they appear in serialized cache
-Bet::Bet(int betID,
+/*!
+    * \brief Bet constructor
+    * \details Takes as parameters all member variables in the order they appear in serialized cache
+    * \author Paul Scoropan
+    * \param[in] betID Bet ID
+    * \param[in] title Bet title
+    * \param[in] amount Bet amount
+    * \param[in] eventID Bet event ID
+    * \param[in] fightID Bet fight ID
+    * \param[in] fighterID Bet fighter ID
+    * \param[in] winning is bet winning
+    * \param[in] valid is bet valid
+    */
+   Bet::Bet(int betID,
         std::string title,
         float amount,
         int eventID,
@@ -19,42 +31,74 @@ Bet::Bet(int betID,
     this->winning = winning;
     this->valid = valid;}
         
-// deconstructor
+/*!
+    * \brief Bet deconstructor
+    * \details Deallocates memory
+    * \author Paul Scoropan
+*/
 Bet::~Bet() {
     // Cache::removeBet(betID); // circular dependency
 }
 
-// get Bet ID
+/*!
+    * \brief get bet ID
+    * \details returns bet ID
+    * \author Paul Scoropan
+    */
 int Bet::getBetID() {
     return betID;
 }
 
-// get bet title
+/*!
+    * \brief get bet title
+    * \details returns bet title
+    * \author Paul Scoropan
+    */
 std::string Bet::getTitle() {
     return title;
 }
 
-// get bet amount
+/*!
+    * \brief get bet amount
+    * \details returns bet amount
+    * \author Paul Scoropan
+    */
 float Bet::getAmount() {
     return amount;
 }
 
-// get bet event ID
+/*!
+    * \brief get bet event ID
+    * \details returns bet event ID
+    * \author Paul Scoropan
+    */
 int Bet::getEventID() {
     return eventID;
 }
 
-// get bet fight ID
+/*!
+    * \brief get bet fight ID
+    * \details returns bet fight ID
+    * \author Paul Scoropan
+    */
 int Bet::getFightID() {
     return fightID;
 }
 
-// get event fighterID
+/*!
+    * \brief get bet fighter ID
+    * \details returns bet figher ID
+    * \author Paul Scoropan
+    */
 int Bet::getFighterID() {
     return fighterID;
 }
 
-// get whether bet was winning
+/*!
+    * \brief is bet winning
+    * \details returns is bet winning
+    * \author Paul Scoropan
+    */
 bool Bet::isWinning() {
     return winning;
 }
