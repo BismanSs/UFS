@@ -170,6 +170,10 @@ UserInterface::UserInterface(QWidget *parent)
 
   m_rightPanel->setLayout(m_rightLayout); // set the right panel layout
 
+  m_homeButton -> setProperty("released", true); //change colour of Home button initially as it is default
+  m_homeButton  -> style() -> unpolish(m_homeButton );
+  m_homeButton  -> style() -> polish(m_homeButton );
+
   this->show(); // show the main window
       // Connect signals to appropriate slot
       // connect(m_execButton, &QPushButton::released, this, &MainWindow::handleExec);
@@ -222,8 +226,14 @@ void UserInterface::onViewScheduleButtonReleased() //Show calendar and schedule 
   {
     checkPanelScheduleIsSet = true;
     m_scheduleCalendar = new QCalendarWidget(); //Calendar widget
+    m_scheduleCalendar->setMinimumDate(QDate(2020, 1, 1));
+    m_scheduleCalendar->setGridVisible(true);
     m_scheduleText = new QTextBrowser(); // Calendar Text
-    m_scheduleText -> setText(QString::fromStdString("Click on a date to view the schedule for it")); //Default Text 
+    m_updateScheduleButton = new QPushButton("Click Here To Update Schedule", this);//button to update schedule
+    connect(m_updateScheduleButton, SIGNAL(released()), this, SLOT(onUpdateScheduleButton()));
+    
+    m_scheduleText -> setFontPointSize(16);
+    m_scheduleText -> setText(QString::fromStdString("Click on a date and press \"Update Scedule\" Button to view the schedule")); //Default Text 
     m_centerScheduleLayout = new QVBoxLayout(); //Calendar layout
 
     m_scheduleCenterPanel = new QFrame(this); //new Frame to add to main layout
@@ -234,12 +244,11 @@ void UserInterface::onViewScheduleButtonReleased() //Show calendar and schedule 
     m_scheduleCenterPanel->setFixedHeight(screen.height() - 50);
 
     m_centerScheduleLayout->addWidget(m_scheduleCalendar);
+    m_centerScheduleLayout->addWidget(m_updateScheduleButton);
     m_centerScheduleLayout->addWidget(m_scheduleText);
     m_scheduleCenterPanel->setLayout(m_centerScheduleLayout);
     m_mainLayout->addWidget(m_scheduleCenterPanel, 0, 2); //Adding schedule Panel as the center panel
   }
-
-
   removeCenterPanel(); //remove any other window
   m_scheduleCenterPanel -> setVisible(true); //set schedule window visible
   currentCenterPanel = "schedule"; //current window is schedule
@@ -249,6 +258,60 @@ void UserInterface::onViewScheduleButtonReleased() //Show calendar and schedule 
   
 }
 
+
+void UserInterface::onUpdateScheduleButton() //update schedule on button press
+{
+  std::map<int,Event*>::iterator it; //iterator to iterate over all the events 
+  QDate selectdate = m_scheduleCalendar->selectedDate();
+  int year = selectdate.year(); //selected year
+  int month = selectdate.month(); //selected month
+  int day = selectdate.day();//day of the month
+  it = allEvents.begin();
+  char* token;
+  bool found = false;
+  char* eventDateTimeDup;
+  for(; it != allEvents.end(); it++)
+  {
+    eventDateTimeDup = strdup(it->second->getDateTime().c_str());
+    token = strtok(eventDateTimeDup,"-");
+    if(atoi(token) == year)
+    { 
+      token = strtok(NULL,"-");
+      if(atoi(token) == month)
+      {
+        token = strtok(NULL,"T");
+        if(atoi(token) == day)
+        {
+          std::string eventFound = "Event found for this date:\n\n" + it->second->getName();
+          eventDateTimeDup = strdup(it->second->getDateTime().c_str());
+          std::string str = strtok(eventDateTimeDup,"T");
+          eventFound = eventFound + "\n\nDate: " + str;
+          str = strtok(NULL,"\t");
+          eventFound = eventFound + "\n\nTime: " + str;
+          eventFound = eventFound + "\n\nStatus: " + it->second->getStatus();
+          eventFound = eventFound + "\n\nActive Status: ";
+          if(it->second->isActive()!=true)
+          {
+            eventFound = eventFound + "Yes";
+          }
+          else
+          {eventFound = eventFound + "No";}
+          m_scheduleText -> setText(QString::fromStdString(eventFound));
+          found = true;
+          free(eventDateTimeDup);
+          break;
+        }
+      }
+    
+    }
+    free(eventDateTimeDup);
+  }
+  if(found == false)
+  {
+    m_scheduleText -> setText(QString::fromStdString("No events found for the selected date\nPlease select a different date"));
+  }
+
+}
 
 void UserInterface::onListFightersButtonReleased() //Show calendar and schedule when Button is pressed
 {
@@ -275,6 +338,9 @@ void UserInterface::onListFightersButtonReleased() //Show calendar and schedule 
   removeCenterPanel(); //remove any other window
   m_centerFighterListPanel -> setVisible(true); //set schedule window visible
   currentCenterPanel = "fighterlist"; //current window is schedule
+  m_listFightersButton -> setProperty("released", true);//colour
+  m_listFightersButton -> style() -> unpolish(m_listFightersButton); //change colour of button
+  m_listFightersButton -> style() -> polish(m_listFightersButton);
 }
 
 void UserInterface::onViewBetsButtonReleased() //Show calendar and schedule when Button is pressed
@@ -303,6 +369,9 @@ void UserInterface::onViewBetsButtonReleased() //Show calendar and schedule when
   removeCenterPanel(); //remove any other window
   m_centerViewBetsPanel -> setVisible(true); //set schedule window visible
   currentCenterPanel = "viewbets"; //current window is schedule
+  m_viewBetsButton -> setProperty("released", true);
+  m_viewBetsButton -> style() -> unpolish(m_viewBetsButton); //change colour of button
+  m_viewBetsButton -> style() -> polish(m_viewBetsButton);
 }
 
 void UserInterface::onCompareFightersButtonReleased() //Show calendar and schedule when Button is pressed
@@ -334,6 +403,9 @@ void UserInterface::onCompareFightersButtonReleased() //Show calendar and schedu
   removeCenterPanel(); //remove any other window
   m_centerCompFighterPanel -> setVisible(true); //set schedule window visible
   currentCenterPanel = "compfighter"; //current window is schedule
+  m_compareFightersButton -> setProperty("released", true);
+  m_compareFightersButton -> style() -> unpolish(m_compareFightersButton); //change colour of button
+  m_compareFightersButton -> style() -> polish(m_compareFightersButton);
 }
 
 
@@ -354,7 +426,7 @@ void UserInterface::removeCenterPanel() //hides current center panel
   if(currentCenterPanel == "home")
   {
     m_centerPanel -> setVisible(false);
-    m_homeButton -> setProperty("released", false); //change colour of Home button initially as it is default
+    m_homeButton -> setProperty("released", false); //change colour of button
     m_homeButton  -> style() -> unpolish(m_homeButton );
     m_homeButton  -> style() -> polish(m_homeButton );
   }
@@ -367,12 +439,21 @@ void UserInterface::removeCenterPanel() //hides current center panel
   }
   else if(currentCenterPanel == "fighterlist")
   {
+    m_listFightersButton -> setProperty("released", false);
+    m_listFightersButton -> style() -> unpolish(m_listFightersButton); //change colour of button
+    m_listFightersButton -> style() -> polish(m_listFightersButton);
     m_centerFighterListPanel -> setVisible(false);
   }
   else if(currentCenterPanel == "viewbets") {
+    m_viewBetsButton -> setProperty("released", false);
+    m_viewBetsButton -> style() -> unpolish(m_viewBetsButton); //change colour of button
+    m_viewBetsButton -> style() -> polish(m_viewBetsButton);
     m_centerViewBetsPanel -> setVisible(false);
   }
   else if(currentCenterPanel == "compfighter") {
+    m_compareFightersButton -> setProperty("released", false);
+    m_compareFightersButton -> style() -> unpolish(m_compareFightersButton); //change colour of button
+    m_compareFightersButton -> style() -> polish(m_compareFightersButton);
     m_centerCompFighterPanel -> setVisible(false);
   }
 

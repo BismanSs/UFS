@@ -22,7 +22,6 @@
 #include <string>
 #include <QListWidget>
 #include <QtWidgets>
-
 #include <vector>
 #include <iostream>
 #include <map>
@@ -45,6 +44,10 @@ private: // private methods
   // create corresponding content panel for center panel
   QFrame *createSearchResultsContentPanel();
   QFrame *createListFightersContentPanel();
+  /*!
+ * \brief Schedule Conetent Panel Creater
+ * \details This method initializes the Schedule Concent Panel and handles any request for schedule update
+ * \author Bisman Sawhney */
   QFrame *createScheduleContentPanel();
   QFrame *createCompareFightersContentPanel();
   QFrame *createSettingsContentPanel();
@@ -91,6 +94,7 @@ private: // private member variables
   // Center panel - Schedule window
   QVBoxLayout *m_centerScheduleLayout;
   QCalendarWidget *m_scheduleCalendar;
+  QPushButton *m_updateScheduleButton;
 
   // Center panel - list fighters
   QVBoxLayout *m_centerFighterListLayout;
@@ -121,6 +125,8 @@ private: // private member variables
 
 
   //miscellaneous
+  
+  std::map<int, Event*> allEvents = Cache::getEvents();
   QRect screen;//sets screen dimensions
   bool checkPanelScheduleIsSet = false; //check if the onViewScheduleButtonReleased() has been called at least once
   bool checkPanelFightersListIsSet = false;
@@ -131,6 +137,11 @@ private: // private member variables
 private slots:
   void onViewScheduleButtonReleased(); //handler for "View UFC Schedule" Button
   void onHomeButtonReleased(); //handler for "Home" Button
+    /*!
+ * \brief Schedule Conetent Update
+ * \details This method updates the Schedule with any events if available when the button is pressed
+ * \author Bisman Sawhney */
+  void onUpdateScheduleButton(); //handler for "Update Schedule" Button
   void onListFightersButtonReleased();
   void onViewBetsButtonReleased();
   void onCompareFightersButtonReleased();

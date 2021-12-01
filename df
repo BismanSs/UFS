@@ -1,0 +1,68 @@
+[33mcommit b9070c7960748c62ff0394fa8d4cbda02dc1427f[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Paul Richard Scoropan <pscoropa@uwo.ca>
+Date:   Mon Nov 22 13:52:39 2021 -0500
+
+    debugged getFighters, implemented notification handling
+
+[1mdiff --git a/UFS b/UFS[m
+[1mindex 3dd2d21..8b6be46 100755[m
+Binary files a/UFS and b/UFS differ
+[1mdiff --git a/apihandler.cpp b/apihandler.cpp[m
+[1mindex d166cd3..c61f535 100644[m
+[1m--- a/apihandler.cpp[m
+[1m+++ b/apihandler.cpp[m
+[36m@@ -99,10 +99,10 @@[m [mstd::vector<Event*> APIHandler::parseJSONAllEvents(std::string json) {[m
+ [m
+ // parses json of all fighters into a Fighter* vector[m
+ std::vector<Fighter*> APIHandler::parseJSONAllFighters(std::string json) {[m
+[31m-    std::vector<std::string> fighters = Util::splitString(json, "FighterId"); // split the json at "FighterId"[m
+[32m+[m[32m    std::vector<std::string> fighters = Util::splitString(json, "},{"); // split the json at "FighterId"[m
+     std::vector<Fighter*> returnVec;[m
+ [m
+[31m-    for (long unsigned int i = 1; i < fighters.size(); i++) { // loop through fighters[m
+[32m+[m[32m    for (long unsigned int i = 0; i < fighters.size(); i++) { // loop through fighters[m
+         returnVec.push_back(parseJSONFighter(fighters.at(i))); // parse single fighter and add to vector[m
+     }[m
+     return returnVec;[m
+[36m@@ -153,6 +153,8 @@[m [mEvent* APIHandler::parseJSONEvent(std::string json) {[m
+ [m
+ // parses json and creates a heap allocated Fight object[m
+ Fight* APIHandler::parseJSONFight(std::string json) {[m
+[32m+[m
+[32m+[m[32m    json = "\"FightId" + json;[m
+     while (json.find(", ", 0) != std::string::npos)[m
+         json.replace(json.find(", ", 0), 2, " ");[m
+     std::vector<std::string> memberVariables = Util::splitString(json, ","); // split json at ","[m
+[36m@@ -256,41 +258,79 @@[m [mFighter* APIHandler::parseJSONFighter(std::string json) {[m
+     std::vector<std::string> memberVariables = Util::splitString(json, ","); // split json at ","[m
+ [m
+     for (long unsigned int i = 0; i < memberVariables.size(); i++) { // loop through variables in json[m
+[32m+[m[32m    std::cout << i << "   " << memberVariables.at(i) << std::endl;[m
+         memberVariables.at(i) = formatLine(memberVariables.at(i));[m
+[31m-    }[m
+[32m+[m[32m    std::cout << i << "   " << memberVariables.at(i) << std::endl;[m
+ [m
+[31m-    return new Fighter( // create heap allocated Fighter object and return pointer[m
+[31m-        std::stoi(memberVariables.at(0)), // fighterID[m
+[31m-        memberVariables.at(1), // firstName[m
+[31m-        memberVariables.at(2), // lastName[m
+[31m-        memberVariables.at(3), // nickname[m
+[31m-        memberVariables.at(4), // weightClass[m
+[31m-        memberVariables.at(5), // birthDate[m
+[31m-        std::stof(memberVariables.at(6)), // height[m
+[31m-        std::stof(memberVariables.at(7)), // weight[m
+[31m-        std::stof(memberVariables.at(8)), // reach[m
+[31m-        std::stoi(memberVariables.at(9)), // wins[m
+[31m-        std::stoi(memberVariables.at(10)), // losses[m
+[31m-        std::stoi(memberVariables.at(11)), // draws[m
+[31m-        std::stoi(memberVariables.at(12)), // noContests[m
+[31m-        std::stoi(memberVariables.at(13)), // technicalKnockouts[m
+[31m-        std::stoi(memberVariables.at(14)), // technicalKnockoutLosses[m
+[31m-        std::stoi(memberVariables.at(15)), // submissions[m
+[31m-        std::stoi(memberVariables.at(16)), // submissionLosses[m
+[31m-        std::stoi(memberVariables.at(17)), // titleWins[m
+[31m-        std::stoi(memberVariables.at(18)), // titleLosses[m
+[31m-        std::stoi(memberVariables.at(19)),  // titleDraws[m
+[31m-        std::stof(memberVariables.at(23)), // sigStrikesLandedPerMinute (jump into career stats and append)[m
+[31m-        std::stof(memberVariables.at(24)), // sigStrikeAccuracy[m
+[31m-        std::stof(memberVariables.at(25)), // takedownAvera
