@@ -2,10 +2,48 @@
 
 #include <iostream>
 
-// represents a UFC fightstat object to be embedded in UFC fight object 
+/**
+ * \brief Represents all fightstats from a certain fight
+ * \details Class for UFC fightstat object to be embedded in UFC fight object
+ */
 class FightStat {
 public: // public methods
-    // constructor sets all member variables
+    /**
+     * \brief FightStat constructor
+     * \details Constructor sets all member variables
+     * @param fighterID
+     * @param firstName
+     * @param lastName
+     * @param winner
+     * @param fantasyPoints
+     * @param fantasyPointsDraftKings
+     * @param knockdowns
+     * @param totalStrikesAttempted
+     * @param totalStrikesLanded
+     * @param sigStrikesAttempted
+     * @param sigStrikesLanded
+     * @param takedownsAttempted
+     * @param takedownsLanded
+     * @param takedownSlams
+     * @param takedownAccuracy
+     * @param advances
+     * @param reverals
+     * @param submissions
+     * @param slamRate
+     * @param timeInControl
+     * @param firstRoundWin
+     * @param secondRoundWin
+     * @param thirdRoundWin
+     * @param fourthRoundWin
+     * @param fifthRoundWin
+     * @param decisionWin
+     * @param preFightWins
+     * @param preFightLosses
+     * @param preFightDraws
+     * @param preFightNoContests
+     * @param moneyLine
+     * @param active
+     */
     FightStat(int fighterID,
             std::string firstName,
             std::string lastName,
@@ -39,8 +77,15 @@ public: // public methods
             int moneyLine,
             bool active);
 
-    // default constructor sets all member variables to 0 or empty string
+    /**
+     * \brief Default constructor
+     * \details Sets all member variables to be empty
+     */
     FightStat();
+    /**
+     * \brief Destructor
+     * \details Deletes all memory on heap
+     */
     ~FightStat(); // deconstructor
 
     // get appropriate member variable

@@ -2,12 +2,26 @@
 
 #include <iostream>
 
-// #include "cache.h"
 
-// represents a user bet on a specific fighter in a fight
+/**
+ * \brief Represents a users bet
+ * \details Class for a users bet on a specific fighter in a fight
+ * \author Paul Scoropan
+ */
 class Bet {
 public: // public methods
-    // constructor sets all member variables
+    /**
+     * \brief Bet constructor
+     * \details Constructor sets all the member variables
+     * @param betID int
+     * @param title string
+     * @param amount float
+     * @param eventID int
+     * @param fightID int
+     * @param fighterID int
+     * @param winning bool
+     * @param valid bool
+     */
     Bet(int betID,
         std::string title,
         float amount,
@@ -16,7 +30,11 @@ public: // public methods
         int fighterID,
         bool winning,
         bool valid);
-    ~Bet();// deconstructor
+    /**
+     * \brief Bet deconstructor
+     * \details deletes memory allocated on the heap
+     */
+    ~Bet();
 
     // get the bet ID
     int getBetID();

@@ -3,12 +3,30 @@
 #include <iostream>
 
 #include "fightstat.h"
-// #include "cache.h"
 
-// represents a UFC fight
+/**
+ * \brief Represents a fight
+ * \details Class holding data pertaining to a fight instance
+ */
 class Fight {
 public: // public methods
-    // constructor sets all member variables
+    /**
+     * \brief Fight constructor
+     * \details Constructor sets all member variables
+     * @param fightID
+     * @param order
+     * @param status
+     * @param weightClass
+     * @param cardSegment
+     * @param referee
+     * @param rounds
+     * @param resultClock
+     * @param resultRound
+     * @param resultType
+     * @param winnerID
+     * @param active
+     * @param fightStats
+     */
     Fight(int fightID,
         int order,
         std::string status,
@@ -22,7 +40,11 @@ public: // public methods
         int winnerID,
         bool active,
         FightStat fightStats[2]);
-    ~Fight(); // deconstructor
+    /**
+     * \brief Fight destructor
+     * \details Destructor deletes memory on heap
+     */
+    ~Fight();
 
     // get appropriate member variables
 

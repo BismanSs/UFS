@@ -205,6 +205,10 @@ UserInterface::~UserInterface()
 }
 
 // on main window closing X pressed
+/**
+ * \brief
+ * @param event
+ */
 void UserInterface::closeEvent(QCloseEvent *event)
 {
   // confirmation popup box
@@ -220,7 +224,11 @@ void UserInterface::closeEvent(QCloseEvent *event)
     event->accept();           // accept event, closing window
   }
 }
-
+/**
+ * \brief Function to view the UFC schedule
+ * \details Creates a calender populated with the UFC event data
+ * \author
+ */
 void UserInterface::onViewScheduleButtonReleased() //Show calendar and schedule when Button is pressed
 {
   if (checkPanelScheduleIsSet == false) //if calling function for first time, initialize schedule window
@@ -254,7 +262,10 @@ void UserInterface::onViewScheduleButtonReleased() //Show calendar and schedule 
   
 }
 
-
+/**
+ * \brief Function to list all fighters
+ * \details Creates new window to show a list of all the fighter
+ */
 void UserInterface::onListFightersButtonReleased() //Show calendar and schedule when Button is pressed
 {
   if (checkPanelFightersListIsSet == false) //if calling function for first time, initialize schedule window
@@ -281,7 +292,10 @@ void UserInterface::onListFightersButtonReleased() //Show calendar and schedule 
   m_centerFighterListPanel -> setVisible(true); //set schedule window visible
   currentCenterPanel = "fighterlist"; //current window is schedule
 }
-
+/**
+ * \brief Function to create bets window
+ * \details Creates window for bets
+ */
 void UserInterface::onViewBetsButtonReleased() //Show calendar and schedule when Button is pressed
 {
   if (checkViewBetsIsSet == false) //if calling function for first time, initialize schedule window

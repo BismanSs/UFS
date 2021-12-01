@@ -16,12 +16,20 @@
 #include "util.h"
 #include "apihandler.h"
 
-// a static singleton class representing all data in the program, 
-// responsible for serializing/deserializing, reading/writing itself to a file and
-// updating itself from APIHandler when needed
+
+/**
+ * \brief Represents all the data in the program
+ * \details A static singleton class responsible for serializing/deserializing, reading/writing itself to a file and
+ * updating itself from APIHandler when needed
+ * \author Paul Scoropan
+ */
 class Cache {
 public: // public methods
-    // initializes the static cache
+    /**
+     * \brief Initialize the static cache
+     * @param outputPath String holding the outputPath to be written to
+     * @return bool true for success, error if else
+     */
     static bool init(std::string outputPath);
 
     static void setAPIHandlersParent(QObject *parent);
@@ -48,6 +56,10 @@ public: // public methods
     static void setOutputPath(std::string outputPath);
 
     // read or write to cache
+    /**
+     * \brief Write all info onto file cache
+     * \details Use all data taken from sportsdataapi and write to file for future reuse (not used)
+     */
     static void writeCacheToFile();
     static void updateCacheFromFile();
 
