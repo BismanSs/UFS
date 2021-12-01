@@ -1,0 +1,55 @@
+\hypertarget{event_8h_source}{}\doxysection{event.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{11 \textcolor{keyword}{class }\mbox{\hyperlink{classEvent}{Event}} \{}
+\DoxyCodeLine{12 \textcolor{keyword}{public}: \textcolor{comment}{// public methods}}
+\DoxyCodeLine{27 \textcolor{comment}{}    \mbox{\hyperlink{classEvent_a50f23fc0e49aaf4201cce5aafb053c6d}{Event}}(\textcolor{keywordtype}{int} eventID,}
+\DoxyCodeLine{28           \textcolor{keywordtype}{int} leagueID,}
+\DoxyCodeLine{29           std::string name,}
+\DoxyCodeLine{30           std::string shortName,}
+\DoxyCodeLine{31           \textcolor{keywordtype}{int} season,}
+\DoxyCodeLine{32           std::string day,}
+\DoxyCodeLine{33           std::string dateTime,}
+\DoxyCodeLine{34           std::string status,}
+\DoxyCodeLine{35           \textcolor{keywordtype}{bool} active,}
+\DoxyCodeLine{36           std::vector<int> fightIDs);}
+\DoxyCodeLine{41     \mbox{\hyperlink{classEvent_a7704ec01ce91e673885792054214b3d2}{\string~Event}}(); \textcolor{comment}{// deconstructor}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43     \textcolor{comment}{// get all member variables}}
+\DoxyCodeLine{44     \textcolor{keywordtype}{int} getEventID();}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46     \textcolor{keywordtype}{int} getLeagueID();}
+\DoxyCodeLine{47     std::string getName();}
+\DoxyCodeLine{48     std::string getShortName();}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50     \textcolor{keywordtype}{int} getSeason();}
+\DoxyCodeLine{51     std::string getDay();}
+\DoxyCodeLine{52     std::string getDateTime();}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54     std::string getStatus();}
+\DoxyCodeLine{55     \textcolor{keywordtype}{bool} isActive();}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57     std::vector<int> getFightIDs();}
+\DoxyCodeLine{58 \textcolor{keyword}{private}: \textcolor{comment}{// private member variables}}
+\DoxyCodeLine{59     \textcolor{keywordtype}{int} eventID;}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61     \textcolor{keywordtype}{int} leagueID;}
+\DoxyCodeLine{62     std::string name;}
+\DoxyCodeLine{63     std::string shortName;}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65     \textcolor{keywordtype}{int} season;}
+\DoxyCodeLine{66     std::string day;}
+\DoxyCodeLine{67     std::string dateTime;}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69     std::string status;}
+\DoxyCodeLine{70     \textcolor{keywordtype}{bool} active;}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72     std::vector<int> fightIDs;}
+\DoxyCodeLine{73 \};}
+
+\end{DoxyCode}

@@ -1,0 +1,55 @@
+\hypertarget{notification_8h_source}{}\doxysection{notification.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <QWidget>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <QLabel>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <QFrame>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <QVBoxLayout>}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <chrono>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <ctime>}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{comment}{// Represents a Notification, inherits QFrame, lifetime handled by NotificationHandler}}
+\DoxyCodeLine{13 \textcolor{keyword}{class }\mbox{\hyperlink{classNotification}{Notification}} : \textcolor{keyword}{public} QFrame\{}
+\DoxyCodeLine{14     Q\_OBJECT}
+\DoxyCodeLine{15 \textcolor{keyword}{public}:}
+\DoxyCodeLine{16     \textcolor{comment}{// Constructors, initialize member variables based on number of parameters provided}}
+\DoxyCodeLine{17     \mbox{\hyperlink{classNotification}{Notification}}(\textcolor{keywordtype}{int} notificationID, std::string title, std::string shortDesc, std::string longDesc, QWidget *parent = \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{18     \mbox{\hyperlink{classNotification}{Notification}}(\textcolor{keywordtype}{int} notificationID, std::string title, std::string shortDesc, std::string longDesc, std::string timestamp, QWidget *parent = \textcolor{keyword}{nullptr}, \textcolor{keywordtype}{bool} expand = \textcolor{keyword}{false});}
+\DoxyCodeLine{19     \textcolor{keyword}{static} \mbox{\hyperlink{classNotification}{Notification}}* copy(\mbox{\hyperlink{classNotification}{Notification}}* other, \textcolor{keywordtype}{bool} expand = \textcolor{keyword}{false});}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     \mbox{\hyperlink{classNotification}{\string~Notification}}(); \textcolor{comment}{// deconstructor}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     \textcolor{keywordtype}{int} getNotificationID(); \textcolor{comment}{// get notification ID}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     std::string getTitle(); \textcolor{comment}{// get title}}
+\DoxyCodeLine{26     \textcolor{keywordtype}{void} setTitle(std::string title); \textcolor{comment}{// set title}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28     std::string getShortDesc(); \textcolor{comment}{// get short description}}
+\DoxyCodeLine{29     \textcolor{keywordtype}{void} setShortDesc(std::string title); \textcolor{comment}{// set short description}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31     std::string getLongDesc(); \textcolor{comment}{// get long description}}
+\DoxyCodeLine{32     \textcolor{keywordtype}{void} setLongDesc(std::string longDesc); \textcolor{comment}{// set long description}}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     std::string getTimestamp(); \textcolor{comment}{// get the timestamp // TODO do we need to worry about this?}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36     \mbox{\hyperlink{classNotification}{Notification}}* expand(); \textcolor{comment}{// returns a copy of the notification expanded to include long description in the QFrame}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{keyword}{private}:}
+\DoxyCodeLine{39     \textcolor{keywordtype}{int} notificationID; \textcolor{comment}{// notification ID}}
+\DoxyCodeLine{40     std::string title; \textcolor{comment}{// title}}
+\DoxyCodeLine{41     std::string shortDesc; \textcolor{comment}{// short description}}
+\DoxyCodeLine{42     std::string longDesc; \textcolor{comment}{// long description}}
+\DoxyCodeLine{43     std::string timestamp; \textcolor{comment}{// timestamp // TODO do we need this?}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45     QVBoxLayout* notificationLayout; \textcolor{comment}{// layout for the QFrame}}
+\DoxyCodeLine{46     QLabel* titleLabel; \textcolor{comment}{// Qlabel for title}}
+\DoxyCodeLine{47     QLabel* shortDescLabel; \textcolor{comment}{// QLabel for short description}}
+\DoxyCodeLine{48     QLabel* longDescLabel; \textcolor{comment}{// QLabel for long description}}
+\DoxyCodeLine{49     QLabel* timestampLabel; \textcolor{comment}{// QLabel for timestamp // TODO do we need this?}}
+\DoxyCodeLine{50 \};}
+
+\end{DoxyCode}

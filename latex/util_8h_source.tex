@@ -1,0 +1,29 @@
+\hypertarget{util_8h_source}{}\doxysection{util.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <boost/range/iterator\_range.hpp>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <boost/algorithm/string/split.hpp>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <boost/algorithm/string.hpp>}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{comment}{// a collection of utility methods, utilizes Boost C++ libraries}}
+\DoxyCodeLine{11 \textcolor{comment}{// only talk to Boost libraries through this class}}
+\DoxyCodeLine{12 \textcolor{keyword}{class }\mbox{\hyperlink{classUtil}{Util}} \{}
+\DoxyCodeLine{13 \textcolor{keyword}{public}: \textcolor{comment}{// public methods}}
+\DoxyCodeLine{14     \textcolor{comment}{// split string at string delimiter, returning as vector}}
+\DoxyCodeLine{15     \textcolor{keyword}{static} std::vector<std::string> splitString(std::string rawText, std::string delimiter);}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17     \textcolor{comment}{// remove all instances of a char in a string, returns string}}
+\DoxyCodeLine{18     \textcolor{keyword}{static} std::string removeAllChar(std::string rawText, \textcolor{keywordtype}{char} removed);}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20     \textcolor{comment}{// turn a string into the bool it represents}}
+\DoxyCodeLine{21     \textcolor{keyword}{static} \textcolor{keywordtype}{bool} toBool(std::string rawText);}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     \textcolor{keyword}{inline} \textcolor{keyword}{static} \textcolor{keywordtype}{bool} insensitiveEquals(std::string a, std::string b) \{ \textcolor{keywordflow}{return} boost::iequals(a,b);\}}
+\DoxyCodeLine{24 \};}
+
+\end{DoxyCode}

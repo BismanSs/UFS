@@ -1,0 +1,207 @@
+\hypertarget{userinterface_8h_source}{}\doxysection{userinterface.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <QApplication>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <QWidget>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <QDesktopWidget>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <QMainWindow>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <QGroupBox>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <QFrame>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <QHBoxLayout>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <QVBoxLayout>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <QPushButton>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <QSpacerItem>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <QLineEdit>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <QRadioButton>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <QSize>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <QLabel>}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include <QCloseEvent>}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include <QString>}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#include <QCloseEvent>}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#include <QMessageBox>}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#include <QCalendarWidget>}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#include <QListWidget>}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#include <QtWidgets>}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#include <QLayoutItem>}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#include <QScrollArea>}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#include <QListWidgetItem>}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#include "{}notificationhandler.h"{}}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#include "{}cache.h"{}}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#include "{}util.h"{}}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#include "{}boost/foreach.hpp"{}}}
+\DoxyCodeLine{39  }
+\DoxyCodeLine{45 \textcolor{keyword}{class }\mbox{\hyperlink{classUserInterface}{UserInterface}} : \textcolor{keyword}{public} QMainWindow}
+\DoxyCodeLine{46 \{}
+\DoxyCodeLine{47   Q\_OBJECT \textcolor{comment}{// needed for Qt to know this is a QObject}}
+\DoxyCodeLine{48   QThread notificationsThread; \textcolor{comment}{// notification handler thread}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \textcolor{keyword}{public}: \textcolor{comment}{// public methods}}
+\DoxyCodeLine{56 \textcolor{comment}{}  \textcolor{keyword}{explicit} \mbox{\hyperlink{classUserInterface_a82cef45d14506dcb282651e9d1d7670f}{UserInterface}}(QWidget *parent = \textcolor{keyword}{nullptr}); \textcolor{comment}{// pass no parent}}
+\DoxyCodeLine{61 \textcolor{comment}{}  \mbox{\hyperlink{classUserInterface_ae588b2ff1711a016dd4c6fc5002c0841}{\string~UserInterface}}(); \textcolor{comment}{// deconstructor}}
+\DoxyCodeLine{62 \textcolor{comment}{// private slots:}}
+\DoxyCodeLine{63 \textcolor{comment}{//   void handleExec();}}
+\DoxyCodeLine{64 \textcolor{keyword}{private}: \textcolor{comment}{// private methods}}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66   \textcolor{comment}{// create corresponding content panel for center panel}}
+\DoxyCodeLine{67   QFrame *createSearchResultsContentPanel();}
+\DoxyCodeLine{68   \textcolor{comment}{// QFrame *createListFightersContentPanel();}}
+\DoxyCodeLine{73 \textcolor{comment}{}  QFrame *createScheduleContentPanel();}
+\DoxyCodeLine{74   \textcolor{comment}{// QFrame *createCompareFightersContentPanel();}}
+\DoxyCodeLine{75   \textcolor{comment}{// QFrame *createSettingsContentPanel();}}
+\DoxyCodeLine{76   \textcolor{comment}{// QFrame *createAllNewsContentPanel();}}
+\DoxyCodeLine{77   \textcolor{comment}{// QFrame *createAllNotificationsContentPanel();}}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{83   \textcolor{keywordtype}{void} removeCenterPanel();}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{90   \textcolor{keywordtype}{void} closeEvent(QCloseEvent *event);}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92 \textcolor{keyword}{private}: \textcolor{comment}{// private member variables}}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94   \textcolor{comment}{// the main panel of the window}}
+\DoxyCodeLine{95   QWidget *m\_mainPanel;}
+\DoxyCodeLine{96   QGridLayout *m\_mainLayout;}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98   \textcolor{comment}{// the 3 sections of the main panel}}
+\DoxyCodeLine{99   QFrame *m\_leftPanel;}
+\DoxyCodeLine{100   QFrame *m\_centerPanel;}
+\DoxyCodeLine{101   QFrame *m\_rightPanel;}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{103   \textcolor{comment}{//Schedule panel}}
+\DoxyCodeLine{104   QFrame *m\_scheduleCenterPanel;}
+\DoxyCodeLine{105   QTextBrowser *m\_scheduleText;}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{107   \textcolor{comment}{// Settings panel}}
+\DoxyCodeLine{108   QFrame *m\_settingsCenterPanel;}
+\DoxyCodeLine{109   QLabel *m\_settingsLabel;}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111   \textcolor{comment}{//In the left panel}}
+\DoxyCodeLine{112   QVBoxLayout *m\_leftLayout;}
+\DoxyCodeLine{113   QPushButton *m\_homeButton;}
+\DoxyCodeLine{114   QPushButton *m\_listFightersButton;}
+\DoxyCodeLine{115   QPushButton *m\_viewScheduleButton;}
+\DoxyCodeLine{116   QPushButton *m\_viewBetsButton;}
+\DoxyCodeLine{117   QPushButton *m\_compareFightersButton;}
+\DoxyCodeLine{118   QPushButton *m\_settingsButton;}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{120   \textcolor{comment}{//In the center panel}}
+\DoxyCodeLine{121   QVBoxLayout *m\_centerLayout;}
+\DoxyCodeLine{122   QLineEdit *m\_searchBar;}
+\DoxyCodeLine{123   QGroupBox *m\_searchOptions;}
+\DoxyCodeLine{124   QRadioButton *m\_fightersRadioButton;}
+\DoxyCodeLine{125   QRadioButton *m\_fightsRadioButton;}
+\DoxyCodeLine{126   QRadioButton *m\_eventsRadioButton;}
+\DoxyCodeLine{127 }
+\DoxyCodeLine{128   \textcolor{comment}{// Center panel -\/ Schedule window}}
+\DoxyCodeLine{129   QVBoxLayout *m\_centerScheduleLayout;}
+\DoxyCodeLine{130   QCalendarWidget *m\_scheduleCalendar;}
+\DoxyCodeLine{131   QPushButton *m\_updateScheduleButton;}
+\DoxyCodeLine{132 }
+\DoxyCodeLine{133   \textcolor{comment}{// Center panel -\/ list fighters}}
+\DoxyCodeLine{134   QVBoxLayout *m\_centerFighterListLayout;}
+\DoxyCodeLine{135   QListWidget *m\_centerFighterList;}
+\DoxyCodeLine{136   QFrame *m\_centerFighterListPanel;}
+\DoxyCodeLine{137 }
+\DoxyCodeLine{138   \textcolor{comment}{// Center panel -\/ display fighter stats}}
+\DoxyCodeLine{139   QVBoxLayout *m\_centerDisplayFighterLayout;}
+\DoxyCodeLine{140   QListWidget *m\_centerDisplayFighter;}
+\DoxyCodeLine{141   QFrame *m\_centerDisplayFighterPanel;}
+\DoxyCodeLine{142 }
+\DoxyCodeLine{143   \textcolor{comment}{// Center panel -\/ view bets }}
+\DoxyCodeLine{144   QVBoxLayout *m\_centerViewBetsLayout;}
+\DoxyCodeLine{145   QListWidget *m\_centerViewBets;}
+\DoxyCodeLine{146   QFrame *m\_centerViewBetsPanel;}
+\DoxyCodeLine{147 }
+\DoxyCodeLine{148   \textcolor{comment}{// center panel -\/ compare fighters}}
+\DoxyCodeLine{149   QGridLayout *m\_centerCompFighterLayout;}
+\DoxyCodeLine{150   QFrame *m\_centerCompFighterPanel;}
+\DoxyCodeLine{151   \textcolor{comment}{// QFrame *m\_leftFighterLayout;}}
+\DoxyCodeLine{152   \textcolor{comment}{// QFrame *m\_rightFighterLayout;}}
+\DoxyCodeLine{153 }
+\DoxyCodeLine{154 \textcolor{comment}{// Center panel -\/ search results}}
+\DoxyCodeLine{155   QScrollArea *m\_searchScroll;}
+\DoxyCodeLine{156   QVBoxLayout *m\_searchLayout;}
+\DoxyCodeLine{157 }
+\DoxyCodeLine{158   \textcolor{comment}{//In the right panel}}
+\DoxyCodeLine{159   QVBoxLayout *m\_rightLayout;}
+\DoxyCodeLine{160   QLabel *m\_newsAggregatorLabel;}
+\DoxyCodeLine{161   QFrame *m\_newsAggregatorPanel;}
+\DoxyCodeLine{162   QPushButton *m\_viewAllNewsButton;}
+\DoxyCodeLine{163 }
+\DoxyCodeLine{164   QPushButton *m\_viewAllNotificationsButton;}
+\DoxyCodeLine{165   QLabel *m\_notificationsLabel;}
+\DoxyCodeLine{166   \mbox{\hyperlink{classNotificationHandler}{NotificationHandler}} *m\_notificationsHandler;}
+\DoxyCodeLine{167 }
+\DoxyCodeLine{168   QFrame *m\_notificationsPanel;}
+\DoxyCodeLine{169   QScrollArea *m\_notificationsScrollArea;}
+\DoxyCodeLine{170   QVBoxLayout *m\_notificationsLayout;}
+\DoxyCodeLine{171 }
+\DoxyCodeLine{172   \textcolor{comment}{//miscellaneous}}
+\DoxyCodeLine{173   std::map<int, Event*> allEvents = Cache::getEvents();}
+\DoxyCodeLine{174   QRect screen;\textcolor{comment}{//sets screen dimensions}}
+\DoxyCodeLine{175   \textcolor{keywordtype}{bool} checkPanelScheduleIsSet = \textcolor{keyword}{false}; \textcolor{comment}{//check if the onViewScheduleButtonReleased() has been called at least once}}
+\DoxyCodeLine{176   \textcolor{keywordtype}{bool} checkPanelFightersListIsSet = \textcolor{keyword}{false};}
+\DoxyCodeLine{177   \textcolor{keywordtype}{bool} checkViewBetsIsSet = \textcolor{keyword}{false};}
+\DoxyCodeLine{178   \textcolor{keywordtype}{bool} checkDisplayFightersIsSet = \textcolor{keyword}{false};}
+\DoxyCodeLine{179   \textcolor{keywordtype}{bool} checkCompFightersIsSet = \textcolor{keyword}{false};}
+\DoxyCodeLine{180   std::string currentCenterPanel = \textcolor{stringliteral}{"{}home"{}}; \textcolor{comment}{//possible values "{}home"{}, "{}schedule"{}, "{}bets"{}, "{}compfighters"{}, "{}listfighters"{}}}
+\DoxyCodeLine{181 }
+\DoxyCodeLine{182 }
+\DoxyCodeLine{183   QLineEdit *searchA;                 \textcolor{comment}{// Search bar}}
+\DoxyCodeLine{184   QLineEdit *searchB;}
+\DoxyCodeLine{185 }
+\DoxyCodeLine{186   QLabel *firstNameA;}
+\DoxyCodeLine{187   QLabel *lastNameA;}
+\DoxyCodeLine{188   QLabel *weightClassA;}
+\DoxyCodeLine{189   QLabel *heightA;}
+\DoxyCodeLine{190   QLabel *weightA;}
+\DoxyCodeLine{191   QLabel *reachA;}
+\DoxyCodeLine{192   QLabel *winsA;}
+\DoxyCodeLine{193   QLabel *lossesA;}
+\DoxyCodeLine{194   QLabel *drawsA;}
+\DoxyCodeLine{195   QLabel *oddsA;}
+\DoxyCodeLine{196 }
+\DoxyCodeLine{197   QLabel *firstNameB;}
+\DoxyCodeLine{198   QLabel *lastNameB;}
+\DoxyCodeLine{199   QLabel *weightClassB;}
+\DoxyCodeLine{200   QLabel *heightB;}
+\DoxyCodeLine{201   QLabel *weightB;}
+\DoxyCodeLine{202   QLabel *reachB;}
+\DoxyCodeLine{203   QLabel *winsB;}
+\DoxyCodeLine{204   QLabel *lossesB;}
+\DoxyCodeLine{205   QLabel *drawsB;}
+\DoxyCodeLine{206   QLabel *oddsB;}
+\DoxyCodeLine{207 signals:}
+\DoxyCodeLine{208   \textcolor{keywordtype}{void} runNotifications(\textcolor{keywordtype}{bool} redactYear);}
+\DoxyCodeLine{209 }
+\DoxyCodeLine{210 \textcolor{keyword}{private} slots:}
+\DoxyCodeLine{211   \textcolor{keywordtype}{void} onViewScheduleButtonReleased(); \textcolor{comment}{//handler for "{}View UFC Schedule"{} Button}}
+\DoxyCodeLine{212   \textcolor{keywordtype}{void} onHomeButtonReleased(); \textcolor{comment}{//handler for "{}Home"{} Button}}
+\DoxyCodeLine{213 }
+\DoxyCodeLine{218   \textcolor{keywordtype}{void} onUpdateScheduleButton(); \textcolor{comment}{//handler for "{}Update Schedule"{} Button}}
+\DoxyCodeLine{219   \textcolor{keywordtype}{void} onListFightersButtonReleased();}
+\DoxyCodeLine{220   \textcolor{keywordtype}{void} onViewBetsButtonReleased();}
+\DoxyCodeLine{221   \textcolor{keywordtype}{void} onCompareFightersButtonReleased();}
+\DoxyCodeLine{222   \textcolor{keywordtype}{void} onViewAllNotificationsButtonReleased();}
+\DoxyCodeLine{223   \textcolor{keywordtype}{void} onSettingsButtonReleased();}
+\DoxyCodeLine{224 }
+\DoxyCodeLine{225   \textcolor{keywordtype}{void} onSearchFighterA();}
+\DoxyCodeLine{226   \textcolor{keywordtype}{void} onSearchFighterB();}
+\DoxyCodeLine{227 }
+\DoxyCodeLine{228   \textcolor{keywordtype}{void} displayFighter(QListWidgetItem* clickedFighter);}
+\DoxyCodeLine{229 }
+\DoxyCodeLine{230   \textcolor{keywordtype}{void} onNotificationUpdate();}
+\DoxyCodeLine{231 }
+\DoxyCodeLine{232   \textcolor{keywordtype}{void} onSearchInputPressed();}
+\DoxyCodeLine{233 \};}
+
+\end{DoxyCode}

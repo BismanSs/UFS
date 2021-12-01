@@ -1,0 +1,51 @@
+\hypertarget{apihandler_8h_source}{}\doxysection{apihandler.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <future>}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <QObject>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <QNetworkAccessManager>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <QNetworkRequest>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <QEventLoop>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <QNetworkReply>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <QUrl>}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}event.h"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}fight.h"{}}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}fighter.h"{}}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}util.h"{}}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{24 \textcolor{keyword}{class }\mbox{\hyperlink{classAPIHandler}{APIHandler}} : \textcolor{keyword}{public} QObject \{}
+\DoxyCodeLine{25     Q\_OBJECT }
+\DoxyCodeLine{27 \textcolor{keyword}{public}: }
+\DoxyCodeLine{28 }
+\DoxyCodeLine{35     \textcolor{keyword}{explicit} \mbox{\hyperlink{classAPIHandler_ace1de5aa80a76165eed45b938b8623e2}{APIHandler}}(std::string sportsDataAPIKey, QObject *parent = \textcolor{keyword}{nullptr}); \textcolor{comment}{// constructor only needs sportsdata.io API key}}
+\DoxyCodeLine{36     }
+\DoxyCodeLine{42     \mbox{\hyperlink{classAPIHandler_ab91de6f9d05aa213b671f54f2a0315eb}{\string~APIHandler}}(); \textcolor{comment}{// deconstructor}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{49     std::vector<Event*> \mbox{\hyperlink{classAPIHandler_a923c7cce776e0b1293932e4b89754a8f}{getAllEvents}}(); \textcolor{comment}{// creates and returns a vector of heap allocated Event objects from Schedule endpoint}}
+\DoxyCodeLine{50     }
+\DoxyCodeLine{56     std::vector<Fighter*> \mbox{\hyperlink{classAPIHandler_a779d9f51c8b3dec69a1a402de539442c}{getAllFighters}}(); \textcolor{comment}{// creates and returns a vector of heap allocated Fighter objects from the Fighters endpoint}}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{64     \mbox{\hyperlink{classEvent}{Event}}* \mbox{\hyperlink{classAPIHandler_af6b1e09e6d3d7dd2a7988afbbe6fb49d}{getEvent}}(\textcolor{keywordtype}{int} eventID); \textcolor{comment}{// creates and returns heap allocated Event object, with FightID vector, from Event endpoint}}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{72     \mbox{\hyperlink{classFight}{Fight}}* \mbox{\hyperlink{classAPIHandler_a834543ec5bb3636bbdd2b32e0db4dc25}{getFight}}(\textcolor{keywordtype}{int} fightID); \textcolor{comment}{// creates and returns heap allocated Fight object, with fightstats, from the Fight endpoint}}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74 \textcolor{keyword}{private}: \textcolor{comment}{// private methods}}
+\DoxyCodeLine{81 \textcolor{comment}{}    std::vector<Event*> parseJSONAllEvents(std::string json); \textcolor{comment}{// parses json, creates and returns vector of heap allocated Events}}
+\DoxyCodeLine{88 \textcolor{comment}{}    std::vector<Fighter*> parseJSONAllFighters(std::string json); \textcolor{comment}{// parses json, creates and returns vector of heap allocated Fighters}}
+\DoxyCodeLine{95 \textcolor{comment}{}    \mbox{\hyperlink{classEvent}{Event}}* parseJSONEvent(std::string json); \textcolor{comment}{// parses json, creates and returns heap allocated Event}}
+\DoxyCodeLine{102 \textcolor{comment}{}    \mbox{\hyperlink{classFight}{Fight}}* parseJSONFight(std::string json); \textcolor{comment}{// parses json, creates and returns heap allocated Fight}}
+\DoxyCodeLine{109 \textcolor{comment}{}    \mbox{\hyperlink{classFighter}{Fighter}}* parseJSONFighter(std::string json); \textcolor{comment}{// parses json, creates and returns heap allocated Fighter}}
+\DoxyCodeLine{116 \textcolor{comment}{}    std::string formatLine(std::string line); \textcolor{comment}{// formats a given line to avoid parsing errors}}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{118 \textcolor{keyword}{private}: \textcolor{comment}{// private variables}}
+\DoxyCodeLine{119     \textcolor{keyword}{const} std::string SPORTSDATA\_API\_URL = \textcolor{stringliteral}{"{}https://api.sportsdata.io/v3/mma/scores/json/"{}}; }
+\DoxyCodeLine{120     std::string sportsDataAPIKey; }
+\DoxyCodeLine{121 \};}
+
+\end{DoxyCode}

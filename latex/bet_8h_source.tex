@@ -1,0 +1,52 @@
+\hypertarget{bet_8h_source}{}\doxysection{bet.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{comment}{// \#include "{}cache.h"{}}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{12 \textcolor{keyword}{class }\mbox{\hyperlink{classBet}{Bet}} \{}
+\DoxyCodeLine{13 \textcolor{keyword}{public}: \textcolor{comment}{// public methods}}
+\DoxyCodeLine{14     \textcolor{comment}{// constructor sets all member variables}}
+\DoxyCodeLine{15     \mbox{\hyperlink{classBet_aa6ae60b227fec117f5c18d843c878157}{Bet}}(\textcolor{keywordtype}{int} betID,}
+\DoxyCodeLine{16         std::string title,}
+\DoxyCodeLine{17         \textcolor{keywordtype}{float} amount,}
+\DoxyCodeLine{18         \textcolor{keywordtype}{int} eventID,}
+\DoxyCodeLine{19         \textcolor{keywordtype}{int} fightID,}
+\DoxyCodeLine{20         \textcolor{keywordtype}{int} fighterID,}
+\DoxyCodeLine{21         \textcolor{keywordtype}{bool} winning,}
+\DoxyCodeLine{22         \textcolor{keywordtype}{bool} valid);}
+\DoxyCodeLine{23     \mbox{\hyperlink{classBet_af0c424c5648484debecd1e13ae990ae2}{\string~Bet}}();\textcolor{comment}{// deconstructor}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     \textcolor{comment}{// get the bet ID}}
+\DoxyCodeLine{26     \textcolor{keywordtype}{int} \mbox{\hyperlink{classBet_a273d6d2d8c037e65783a5990c5dabc28}{getBetID}}();}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28     \textcolor{comment}{// get all other bet member variables}}
+\DoxyCodeLine{29     std::string \mbox{\hyperlink{classBet_a448953f64e56a5449b2d3fd6e0f4ebcf}{getTitle}}();}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31     \textcolor{keywordtype}{float} \mbox{\hyperlink{classBet_a21ed874095a424c98d398aebee77232a}{getAmount}}();}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33     \textcolor{keywordtype}{int} \mbox{\hyperlink{classBet_afa811fca541904b755bf6f1d784cf2b5}{getEventID}}();}
+\DoxyCodeLine{34     \textcolor{keywordtype}{int} \mbox{\hyperlink{classBet_af20e51cab47ac4ea498410b184476b87}{getFightID}}();}
+\DoxyCodeLine{35     \textcolor{keywordtype}{int} \mbox{\hyperlink{classBet_a478db2ad41769d7f3df0de6c7e9d049b}{getFighterID}}();}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classBet_a8759aab7051fecb874ba17ec0a9b7773}{isWinning}}();}
+\DoxyCodeLine{38     \textcolor{keywordtype}{bool} isValid();}
+\DoxyCodeLine{39 \textcolor{keyword}{private}: \textcolor{comment}{// private member variables}}
+\DoxyCodeLine{40     \textcolor{keywordtype}{int} betID; \textcolor{comment}{// unique bet ID}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42     std::string title; \textcolor{comment}{// user defined title of bet}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44     \textcolor{keywordtype}{float} amount; \textcolor{comment}{// amount betted}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46     \textcolor{keywordtype}{int} eventID; \textcolor{comment}{// ID of event of the fight bet on}}
+\DoxyCodeLine{47     \textcolor{keywordtype}{int} fightID; \textcolor{comment}{// ID of the fight bet on}}
+\DoxyCodeLine{48     \textcolor{keywordtype}{int} fighterID; \textcolor{comment}{// ID of the fighter bet on}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50     \textcolor{keywordtype}{bool} winning; \textcolor{comment}{// flag for if bet was winning}}
+\DoxyCodeLine{51     \textcolor{keywordtype}{bool} valid; \textcolor{comment}{// flag for if the bet info represents a valid bet}}
+\DoxyCodeLine{52 \};}
+
+\end{DoxyCode}

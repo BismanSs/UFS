@@ -1,0 +1,149 @@
+\hypertarget{classAPIHandler}{}\doxysection{APIHandler Class Reference}
+\label{classAPIHandler}\index{APIHandler@{APIHandler}}
+
+
+Handles API calls.  
+
+
+
+
+{\ttfamily \#include $<$apihandler.\+h$>$}
+
+Inheritance diagram for APIHandler\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classAPIHandler}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classAPIHandler_ace1de5aa80a76165eed45b938b8623e2}{APIHandler}} (std\+::string sports\+Data\+APIKey, QObject $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em API Handler constuctor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classAPIHandler_ab91de6f9d05aa213b671f54f2a0315eb}{$\sim$\+APIHandler}} ()
+\begin{DoxyCompactList}\small\item\em API Handler deconstructor. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classEvent}{Event}} $\ast$ $>$ \mbox{\hyperlink{classAPIHandler_a923c7cce776e0b1293932e4b89754a8f}{get\+All\+Events}} ()
+\begin{DoxyCompactList}\small\item\em Gets all UFC events from the sportsdata.\+io API. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classFighter}{Fighter}} $\ast$ $>$ \mbox{\hyperlink{classAPIHandler_a779d9f51c8b3dec69a1a402de539442c}{get\+All\+Fighters}} ()
+\begin{DoxyCompactList}\small\item\em Gets all MMA fighters from the sportsdata.\+io API. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classEvent}{Event}} $\ast$ \mbox{\hyperlink{classAPIHandler_af6b1e09e6d3d7dd2a7988afbbe6fb49d}{get\+Event}} (int event\+ID)
+\begin{DoxyCompactList}\small\item\em Gets a UFC event by event ID from the sportsdata.\+io API. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classFight}{Fight}} $\ast$ \mbox{\hyperlink{classAPIHandler_a834543ec5bb3636bbdd2b32e0db4dc25}{get\+Fight}} (int fight\+ID)
+\begin{DoxyCompactList}\small\item\em Gets a UFC fight by fight ID from the sportsdata.\+io API. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Handles API calls. 
+
+Responsible for making API calls using QT and parsing the responses into objects, inherits from QObject \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classAPIHandler_ace1de5aa80a76165eed45b938b8623e2}\label{classAPIHandler_ace1de5aa80a76165eed45b938b8623e2}} 
+\index{APIHandler@{APIHandler}!APIHandler@{APIHandler}}
+\index{APIHandler@{APIHandler}!APIHandler@{APIHandler}}
+\doxysubsubsection{\texorpdfstring{APIHandler()}{APIHandler()}}
+{\footnotesize\ttfamily APIHandler\+::\+APIHandler (\begin{DoxyParamCaption}\item[{std\+::string}]{sports\+Data\+APIKey,  }\item[{QObject $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+API Handler constuctor. 
+
+\texorpdfstring{$<$}{<} Needed for Qt to understand this is a QObject
+
+This method initializes the API Handler, is explicit \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em sports\+Data\+APIKey} & The API key for sportsdata.\+io, a free version API key is provided in the README \\
+\hline
+\mbox{\texttt{ in}}  & {\em parent} & A pointer the the QObject to set as the Qt parent for this \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classAPIHandler_ab91de6f9d05aa213b671f54f2a0315eb}\label{classAPIHandler_ab91de6f9d05aa213b671f54f2a0315eb}} 
+\index{APIHandler@{APIHandler}!````~APIHandler@{$\sim$APIHandler}}
+\index{````~APIHandler@{$\sim$APIHandler}!APIHandler@{APIHandler}}
+\doxysubsubsection{\texorpdfstring{$\sim$APIHandler()}{~APIHandler()}}
+{\footnotesize\ttfamily APIHandler\+::$\sim$\+APIHandler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+API Handler deconstructor. 
+
+This method deletes any memory allocated on the heap \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classAPIHandler_a923c7cce776e0b1293932e4b89754a8f}\label{classAPIHandler_a923c7cce776e0b1293932e4b89754a8f}} 
+\index{APIHandler@{APIHandler}!getAllEvents@{getAllEvents}}
+\index{getAllEvents@{getAllEvents}!APIHandler@{APIHandler}}
+\doxysubsubsection{\texorpdfstring{getAllEvents()}{getAllEvents()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classEvent}{Event}} $\ast$ $>$ APIHandler\+::get\+All\+Events (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets all UFC events from the sportsdata.\+io API. 
+
+Creates and returns an \mbox{\hyperlink{classEvent}{Event}} pointer vector of heap allocated \mbox{\hyperlink{classEvent}{Event}} objects retrieved from the /\+Schedule API endpoint \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{classAPIHandler_a779d9f51c8b3dec69a1a402de539442c}\label{classAPIHandler_a779d9f51c8b3dec69a1a402de539442c}} 
+\index{APIHandler@{APIHandler}!getAllFighters@{getAllFighters}}
+\index{getAllFighters@{getAllFighters}!APIHandler@{APIHandler}}
+\doxysubsubsection{\texorpdfstring{getAllFighters()}{getAllFighters()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classFighter}{Fighter}} $\ast$ $>$ APIHandler\+::get\+All\+Fighters (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets all MMA fighters from the sportsdata.\+io API. 
+
+Creates and returns a \mbox{\hyperlink{classFighter}{Fighter}} pointer vector of heap allocated FIghter objects retireved from the /\+Fighters API endpoint \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{classAPIHandler_af6b1e09e6d3d7dd2a7988afbbe6fb49d}\label{classAPIHandler_af6b1e09e6d3d7dd2a7988afbbe6fb49d}} 
+\index{APIHandler@{APIHandler}!getEvent@{getEvent}}
+\index{getEvent@{getEvent}!APIHandler@{APIHandler}}
+\doxysubsubsection{\texorpdfstring{getEvent()}{getEvent()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEvent}{Event}} $\ast$ APIHandler\+::get\+Event (\begin{DoxyParamCaption}\item[{int}]{event\+ID }\end{DoxyParamCaption})}
+
+
+
+Gets a UFC event by event ID from the sportsdata.\+io API. 
+
+creates and returns an \mbox{\hyperlink{classEvent}{Event}} pointer to a heap allocated \mbox{\hyperlink{classEvent}{Event}} object from the /\+Event API endpoint \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em event\+ID} & The ID of the event, previously retrieved from the /\+Schedule API endpoint \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classAPIHandler_a834543ec5bb3636bbdd2b32e0db4dc25}\label{classAPIHandler_a834543ec5bb3636bbdd2b32e0db4dc25}} 
+\index{APIHandler@{APIHandler}!getFight@{getFight}}
+\index{getFight@{getFight}!APIHandler@{APIHandler}}
+\doxysubsubsection{\texorpdfstring{getFight()}{getFight()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classFight}{Fight}} $\ast$ APIHandler\+::get\+Fight (\begin{DoxyParamCaption}\item[{int}]{fight\+ID }\end{DoxyParamCaption})}
+
+
+
+Gets a UFC fight by fight ID from the sportsdata.\+io API. 
+
+creates and returns a \mbox{\hyperlink{classFight}{Fight}} pointer to a heap allocated \mbox{\hyperlink{classFight}{Fight}} object from the /\+Fight endpoint \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em fight\+ID} & The ID of the fight, previously retrieved from an /\+Event API call \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+apihandler.\+h\item 
+apihandler.\+cpp\end{DoxyCompactItemize}

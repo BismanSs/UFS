@@ -1,0 +1,105 @@
+\hypertarget{classCache}{}\doxysection{Cache Class Reference}
+\label{classCache}\index{Cache@{Cache}}
+
+
+Represents all the data in the program.  
+
+
+
+
+{\ttfamily \#include $<$cache.\+h$>$}
+
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{classCache_a2f871a069d658c8d27645df946aff3bd}{init}} (std\+::string output\+Path)
+\begin{DoxyCompactList}\small\item\em Initialize the static cache. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCache_a1da0fb254f448a5b981e7b1d32e0b2ac}\label{classCache_a1da0fb254f448a5b981e7b1d32e0b2ac}} 
+static void {\bfseries set\+APIHandlers\+Parent} (QObject $\ast$parent)
+\item 
+\mbox{\Hypertarget{classCache_a9d0ceb57d97ebae2366f89f55d36e332}\label{classCache_a9d0ceb57d97ebae2366f89f55d36e332}} 
+static QObject $\ast$ {\bfseries get\+APIHandlers\+Parent} ()
+\item 
+\mbox{\Hypertarget{classCache_af3c1ff8cb640bb0b2963e9d0b2e7208e}\label{classCache_af3c1ff8cb640bb0b2963e9d0b2e7208e}} 
+static std\+::map$<$ int, \mbox{\hyperlink{classFighter}{Fighter}} $\ast$ $>$ {\bfseries get\+Fighters} ()
+\item 
+\mbox{\Hypertarget{classCache_a616858fd60116df2c95fc127bbc1b145}\label{classCache_a616858fd60116df2c95fc127bbc1b145}} 
+static std\+::map$<$ int, \mbox{\hyperlink{classFight}{Fight}} $\ast$ $>$ {\bfseries get\+Fights} ()
+\item 
+\mbox{\Hypertarget{classCache_a74070da6513103c6dd76499063078b78}\label{classCache_a74070da6513103c6dd76499063078b78}} 
+static std\+::map$<$ int, \mbox{\hyperlink{classEvent}{Event}} $\ast$ $>$ {\bfseries get\+Events} ()
+\item 
+\mbox{\Hypertarget{classCache_ad84a2571004bc1389a10b035e04783cf}\label{classCache_ad84a2571004bc1389a10b035e04783cf}} 
+static std\+::map$<$ int, \mbox{\hyperlink{classBet}{Bet}} $\ast$ $>$ {\bfseries get\+Bets} ()
+\item 
+\mbox{\Hypertarget{classCache_a81741cdb34fdbb38dace5b374dcb1d55}\label{classCache_a81741cdb34fdbb38dace5b374dcb1d55}} 
+static \mbox{\hyperlink{classFighter}{Fighter}} $\ast$ {\bfseries get\+Fighter} (int fighter\+ID)
+\item 
+\mbox{\Hypertarget{classCache_aa5b52210348b852a4dbc8365fd2a599c}\label{classCache_aa5b52210348b852a4dbc8365fd2a599c}} 
+static \mbox{\hyperlink{classFight}{Fight}} $\ast$ {\bfseries get\+Fight} (int fight\+ID)
+\item 
+\mbox{\Hypertarget{classCache_a9eebde552b24e9d9abe5e6c99219b42d}\label{classCache_a9eebde552b24e9d9abe5e6c99219b42d}} 
+static \mbox{\hyperlink{classEvent}{Event}} $\ast$ {\bfseries get\+Event} (int event\+ID)
+\item 
+\mbox{\Hypertarget{classCache_ad4867c8b443724e5b6f36823e6d0d698}\label{classCache_ad4867c8b443724e5b6f36823e6d0d698}} 
+static \mbox{\hyperlink{classBet}{Bet}} $\ast$ {\bfseries get\+Bet} (int bet\+ID)
+\item 
+\mbox{\Hypertarget{classCache_a438b9cec24c42b3df522704c2b31b6fa}\label{classCache_a438b9cec24c42b3df522704c2b31b6fa}} 
+static std\+::string {\bfseries get\+Sports\+Data\+APIKey} ()
+\item 
+\mbox{\Hypertarget{classCache_ad07d30ba47f611d22c51cfd44fab9ceb}\label{classCache_ad07d30ba47f611d22c51cfd44fab9ceb}} 
+static void {\bfseries set\+Sports\+Data\+APIKey} (std\+::string sports\+Data\+APIKey)
+\item 
+\mbox{\Hypertarget{classCache_ab2739cacbe3454597f579f2668345422}\label{classCache_ab2739cacbe3454597f579f2668345422}} 
+static std\+::string {\bfseries get\+Output\+Path} ()
+\item 
+\mbox{\Hypertarget{classCache_a1e048a2c71df537a487b9cdb80941dc4}\label{classCache_a1e048a2c71df537a487b9cdb80941dc4}} 
+static void {\bfseries set\+Output\+Path} (std\+::string output\+Path)
+\item 
+\mbox{\Hypertarget{classCache_a5522cf2cc65eaf3c8c31db9af30d6e0d}\label{classCache_a5522cf2cc65eaf3c8c31db9af30d6e0d}} 
+static void {\bfseries write\+Cache\+To\+File} ()
+\item 
+\mbox{\Hypertarget{classCache_ae6179c97d77ef2dc84f0c0558ad75cc3}\label{classCache_ae6179c97d77ef2dc84f0c0558ad75cc3}} 
+static void {\bfseries update\+Cache\+From\+File} ()
+\item 
+\mbox{\Hypertarget{classCache_a18089513fb8fe0426b965d5e736b2304}\label{classCache_a18089513fb8fe0426b965d5e736b2304}} 
+static void {\bfseries sanitize\+Cache} ()
+\item 
+\mbox{\Hypertarget{classCache_a1c991199e62752174994dffead00ff12}\label{classCache_a1c991199e62752174994dffead00ff12}} 
+static void {\bfseries destroy} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents all the data in the program. 
+
+A static singleton class responsible for serializing/deserializing, reading/writing itself to a file and updating itself from \mbox{\hyperlink{classAPIHandler}{APIHandler}} when needed \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCache_a2f871a069d658c8d27645df946aff3bd}\label{classCache_a2f871a069d658c8d27645df946aff3bd}} 
+\index{Cache@{Cache}!init@{init}}
+\index{init@{init}!Cache@{Cache}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily bool Cache\+::init (\begin{DoxyParamCaption}\item[{std\+::string}]{output\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Initialize the static cache. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em output\+Path} & String holding the output\+Path to be written to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool true for success, error if else 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+cache.\+h\item 
+cache.\+cpp\end{DoxyCompactItemize}

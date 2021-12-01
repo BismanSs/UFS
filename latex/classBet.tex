@@ -1,0 +1,191 @@
+\hypertarget{classBet}{}\doxysection{Bet Class Reference}
+\label{classBet}\index{Bet@{Bet}}
+
+
+Represents a user bet on a specific fighter in a fight.  
+
+
+
+
+{\ttfamily \#include $<$bet.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBet_aa6ae60b227fec117f5c18d843c878157}{Bet}} (int bet\+ID, std\+::string title, float amount, int event\+ID, int fight\+ID, int fighter\+ID, bool winning, bool valid)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classBet}{Bet}} constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBet_af0c424c5648484debecd1e13ae990ae2}{$\sim$\+Bet}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classBet}{Bet}} deconstructor. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classBet_a273d6d2d8c037e65783a5990c5dabc28}{get\+Bet\+ID}} ()
+\begin{DoxyCompactList}\small\item\em get bet ID \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classBet_a448953f64e56a5449b2d3fd6e0f4ebcf}{get\+Title}} ()
+\begin{DoxyCompactList}\small\item\em get bet title \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classBet_a21ed874095a424c98d398aebee77232a}{get\+Amount}} ()
+\begin{DoxyCompactList}\small\item\em get bet amount \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classBet_afa811fca541904b755bf6f1d784cf2b5}{get\+Event\+ID}} ()
+\begin{DoxyCompactList}\small\item\em get bet event ID \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classBet_af20e51cab47ac4ea498410b184476b87}{get\+Fight\+ID}} ()
+\begin{DoxyCompactList}\small\item\em get bet fight ID \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classBet_a478db2ad41769d7f3df0de6c7e9d049b}{get\+Fighter\+ID}} ()
+\begin{DoxyCompactList}\small\item\em get bet fighter ID \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classBet_a8759aab7051fecb874ba17ec0a9b7773}{is\+Winning}} ()
+\begin{DoxyCompactList}\small\item\em is bet winning \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBet_a842c3eeffa874ac1b4c0740e9054aad5}\label{classBet_a842c3eeffa874ac1b4c0740e9054aad5}} 
+bool {\bfseries is\+Valid} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a user bet on a specific fighter in a fight. 
+
+This class was not utilized in the final release of this project. \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBet_aa6ae60b227fec117f5c18d843c878157}\label{classBet_aa6ae60b227fec117f5c18d843c878157}} 
+\index{Bet@{Bet}!Bet@{Bet}}
+\index{Bet@{Bet}!Bet@{Bet}}
+\doxysubsubsection{\texorpdfstring{Bet()}{Bet()}}
+{\footnotesize\ttfamily Bet\+::\+Bet (\begin{DoxyParamCaption}\item[{int}]{bet\+ID,  }\item[{std\+::string}]{title,  }\item[{float}]{amount,  }\item[{int}]{event\+ID,  }\item[{int}]{fight\+ID,  }\item[{int}]{fighter\+ID,  }\item[{bool}]{winning,  }\item[{bool}]{valid }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{classBet}{Bet}} constructor. 
+
+Takes as parameters all member variables in the order they appear in serialized cache \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em bet\+ID} & \mbox{\hyperlink{classBet}{Bet}} ID \\
+\hline
+\mbox{\texttt{ in}}  & {\em title} & \mbox{\hyperlink{classBet}{Bet}} title \\
+\hline
+\mbox{\texttt{ in}}  & {\em amount} & \mbox{\hyperlink{classBet}{Bet}} amount \\
+\hline
+\mbox{\texttt{ in}}  & {\em event\+ID} & \mbox{\hyperlink{classBet}{Bet}} event ID \\
+\hline
+\mbox{\texttt{ in}}  & {\em fight\+ID} & \mbox{\hyperlink{classBet}{Bet}} fight ID \\
+\hline
+\mbox{\texttt{ in}}  & {\em fighter\+ID} & \mbox{\hyperlink{classBet}{Bet}} fighter ID \\
+\hline
+\mbox{\texttt{ in}}  & {\em winning} & is bet winning \\
+\hline
+\mbox{\texttt{ in}}  & {\em valid} & is bet valid \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBet_af0c424c5648484debecd1e13ae990ae2}\label{classBet_af0c424c5648484debecd1e13ae990ae2}} 
+\index{Bet@{Bet}!````~Bet@{$\sim$Bet}}
+\index{````~Bet@{$\sim$Bet}!Bet@{Bet}}
+\doxysubsubsection{\texorpdfstring{$\sim$Bet()}{~Bet()}}
+{\footnotesize\ttfamily Bet\+::$\sim$\+Bet (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{classBet}{Bet}} deconstructor. 
+
+Deallocates memory \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBet_a21ed874095a424c98d398aebee77232a}\label{classBet_a21ed874095a424c98d398aebee77232a}} 
+\index{Bet@{Bet}!getAmount@{getAmount}}
+\index{getAmount@{getAmount}!Bet@{Bet}}
+\doxysubsubsection{\texorpdfstring{getAmount()}{getAmount()}}
+{\footnotesize\ttfamily float Bet\+::get\+Amount (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get bet amount 
+
+returns bet amount \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{classBet_a273d6d2d8c037e65783a5990c5dabc28}\label{classBet_a273d6d2d8c037e65783a5990c5dabc28}} 
+\index{Bet@{Bet}!getBetID@{getBetID}}
+\index{getBetID@{getBetID}!Bet@{Bet}}
+\doxysubsubsection{\texorpdfstring{getBetID()}{getBetID()}}
+{\footnotesize\ttfamily int Bet\+::get\+Bet\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get bet ID 
+
+returns bet ID \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{classBet_afa811fca541904b755bf6f1d784cf2b5}\label{classBet_afa811fca541904b755bf6f1d784cf2b5}} 
+\index{Bet@{Bet}!getEventID@{getEventID}}
+\index{getEventID@{getEventID}!Bet@{Bet}}
+\doxysubsubsection{\texorpdfstring{getEventID()}{getEventID()}}
+{\footnotesize\ttfamily int Bet\+::get\+Event\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get bet event ID 
+
+returns bet event ID \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{classBet_a478db2ad41769d7f3df0de6c7e9d049b}\label{classBet_a478db2ad41769d7f3df0de6c7e9d049b}} 
+\index{Bet@{Bet}!getFighterID@{getFighterID}}
+\index{getFighterID@{getFighterID}!Bet@{Bet}}
+\doxysubsubsection{\texorpdfstring{getFighterID()}{getFighterID()}}
+{\footnotesize\ttfamily int Bet\+::get\+Fighter\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get bet fighter ID 
+
+returns bet figher ID \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{classBet_af20e51cab47ac4ea498410b184476b87}\label{classBet_af20e51cab47ac4ea498410b184476b87}} 
+\index{Bet@{Bet}!getFightID@{getFightID}}
+\index{getFightID@{getFightID}!Bet@{Bet}}
+\doxysubsubsection{\texorpdfstring{getFightID()}{getFightID()}}
+{\footnotesize\ttfamily int Bet\+::get\+Fight\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get bet fight ID 
+
+returns bet fight ID \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{classBet_a448953f64e56a5449b2d3fd6e0f4ebcf}\label{classBet_a448953f64e56a5449b2d3fd6e0f4ebcf}} 
+\index{Bet@{Bet}!getTitle@{getTitle}}
+\index{getTitle@{getTitle}!Bet@{Bet}}
+\doxysubsubsection{\texorpdfstring{getTitle()}{getTitle()}}
+{\footnotesize\ttfamily std\+::string Bet\+::get\+Title (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get bet title 
+
+returns bet title \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{classBet_a8759aab7051fecb874ba17ec0a9b7773}\label{classBet_a8759aab7051fecb874ba17ec0a9b7773}} 
+\index{Bet@{Bet}!isWinning@{isWinning}}
+\index{isWinning@{isWinning}!Bet@{Bet}}
+\doxysubsubsection{\texorpdfstring{isWinning()}{isWinning()}}
+{\footnotesize\ttfamily bool Bet\+::is\+Winning (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+is bet winning 
+
+returns is bet winning \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+bet.\+h\item 
+bet.\+cpp\end{DoxyCompactItemize}

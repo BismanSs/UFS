@@ -1,0 +1,108 @@
+\hypertarget{classEvent}{}\doxysection{Event Class Reference}
+\label{classEvent}\index{Event@{Event}}
+
+
+Represents a UFC event.  
+
+
+
+
+{\ttfamily \#include $<$event.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEvent_a50f23fc0e49aaf4201cce5aafb053c6d}{Event}} (int event\+ID, int league\+ID, std\+::string name, std\+::string short\+Name, int season, std\+::string day, std\+::string date\+Time, std\+::string status, bool active, std\+::vector$<$ int $>$ fight\+IDs)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classEvent}{Event}} constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classEvent_a7704ec01ce91e673885792054214b3d2}{$\sim$\+Event}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classEvent}{Event}} destructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classEvent_ac7492a35d23c5451fdda43107813310a}\label{classEvent_ac7492a35d23c5451fdda43107813310a}} 
+int {\bfseries get\+Event\+ID} ()
+\item 
+\mbox{\Hypertarget{classEvent_a92b6c074207483fc40b61ac533dc6b69}\label{classEvent_a92b6c074207483fc40b61ac533dc6b69}} 
+int {\bfseries get\+League\+ID} ()
+\item 
+\mbox{\Hypertarget{classEvent_adf0f3e50061123d6f24200661eeb66eb}\label{classEvent_adf0f3e50061123d6f24200661eeb66eb}} 
+std\+::string {\bfseries get\+Name} ()
+\item 
+\mbox{\Hypertarget{classEvent_aa1b1a78c90b19d2f528fcb89c7bd27e0}\label{classEvent_aa1b1a78c90b19d2f528fcb89c7bd27e0}} 
+std\+::string {\bfseries get\+Short\+Name} ()
+\item 
+\mbox{\Hypertarget{classEvent_ae1695deca613386963690b05eb4650e1}\label{classEvent_ae1695deca613386963690b05eb4650e1}} 
+int {\bfseries get\+Season} ()
+\item 
+\mbox{\Hypertarget{classEvent_ab4cbf5d2d314bb12efa02c326c668785}\label{classEvent_ab4cbf5d2d314bb12efa02c326c668785}} 
+std\+::string {\bfseries get\+Day} ()
+\item 
+\mbox{\Hypertarget{classEvent_adfb3cae2f413cefd8b1d3f030f62f076}\label{classEvent_adfb3cae2f413cefd8b1d3f030f62f076}} 
+std\+::string {\bfseries get\+Date\+Time} ()
+\item 
+\mbox{\Hypertarget{classEvent_a9af446c0f67b7e332eceb95fa725ec97}\label{classEvent_a9af446c0f67b7e332eceb95fa725ec97}} 
+std\+::string {\bfseries get\+Status} ()
+\item 
+\mbox{\Hypertarget{classEvent_a273a216d2f6c9596e6e92ebf2c9ac36c}\label{classEvent_a273a216d2f6c9596e6e92ebf2c9ac36c}} 
+bool {\bfseries is\+Active} ()
+\item 
+\mbox{\Hypertarget{classEvent_abb240e8d4313197caeaae2f6c9d9b8ca}\label{classEvent_abb240e8d4313197caeaae2f6c9d9b8ca}} 
+std\+::vector$<$ int $>$ {\bfseries get\+Fight\+IDs} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a UFC event. 
+
+Class represents an instance of a UFC event with corresponding data \begin{DoxyAuthor}{Author}
+Paul Scoropan 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classEvent_a50f23fc0e49aaf4201cce5aafb053c6d}\label{classEvent_a50f23fc0e49aaf4201cce5aafb053c6d}} 
+\index{Event@{Event}!Event@{Event}}
+\index{Event@{Event}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{Event()}{Event()}}
+{\footnotesize\ttfamily Event\+::\+Event (\begin{DoxyParamCaption}\item[{int}]{event\+ID,  }\item[{int}]{league\+ID,  }\item[{std\+::string}]{name,  }\item[{std\+::string}]{short\+Name,  }\item[{int}]{season,  }\item[{std\+::string}]{day,  }\item[{std\+::string}]{date\+Time,  }\item[{std\+::string}]{status,  }\item[{bool}]{active,  }\item[{std\+::vector$<$ int $>$}]{fight\+IDs }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{classEvent}{Event}} constructor. 
+
+Constructor sets all important member variables 
+\begin{DoxyParams}{Parameters}
+{\em event\+ID} & int \\
+\hline
+{\em league\+ID} & int \\
+\hline
+{\em name} & string \\
+\hline
+{\em short\+Name} & string \\
+\hline
+{\em season} & int \\
+\hline
+{\em day} & string \\
+\hline
+{\em date\+Time} & string \\
+\hline
+{\em status} & string \\
+\hline
+{\em active} & bool \\
+\hline
+{\em fight\+IDs} & vector$<$int$>$ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classEvent_a7704ec01ce91e673885792054214b3d2}\label{classEvent_a7704ec01ce91e673885792054214b3d2}} 
+\index{Event@{Event}!````~Event@{$\sim$Event}}
+\index{````~Event@{$\sim$Event}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{$\sim$Event()}{~Event()}}
+{\footnotesize\ttfamily Event\+::$\sim$\+Event (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{classEvent}{Event}} destructor. 
+
+Deletes any memory saved on the heap 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+event.\+h\item 
+event.\+cpp\end{DoxyCompactItemize}
