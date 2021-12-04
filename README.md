@@ -1,7 +1,7 @@
 # UFS
 ## Ultimate Fighting Statistics
 #### UFC statistics tool
-#### Group #16: Paul Scoropan, Gouri Sikha, Bisman Sawnhey, Omer Noor, Jordan Avelar
+#### Authors: Bisman Sawnhey, Paul Scoropan, Gouri Sikha, Jordan Avelar
 
 ## How to compile
 
